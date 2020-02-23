@@ -1,36 +1,30 @@
 ---
 layout: post
-title:  "Using Jekyll to create web pages"
+title:  "GitHub hosted web page using Jekyll"
 date:   2020-02-06 12:47:57 +0000
 categories: jekyll update
 ---
 
-I admit to being too lazy to dig deep into JavaScript, REACT, etc. to
-learn how to make a beautiful site. Instead I'm defaulting on using 
-whatever GitHub is recommending, in particular Jekyll.
-
-I'll leave the following instructions here until I know them well enough to not need them. 
+I have decided to create a web page to commnicate and document projects and personal experiences in the fascinating world of Data Science. Fortunately Github hosts web pages that are connected to an account and you can use the [Jekyll][jekyll-docs] platform to convert Markdown text to stylish pages. This is useful, so one doesn't have to dig deep into JavaScript to get something reasonable runnign a in short amount of time. 
 
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
-
-Jekyll requires blog post files to be named according to the following format:
-
-`YEAR-MONTH-DAY-title.MARKUP`
-
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+{% highlight print %}
+print('Jekyll also offers powerful support for code snippets :-)')
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+Jekyll have [walk-trough videos](https://jekyllrb.com/tutorials/video-walkthroughs/) and I used part of [this tutorial](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to do the set up in the GitHub pages.
+
+My only other advices is adding to `.gitignore` the following 
+
+```
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.DS_Store   # Mac users, you know what I'm talking about :-)
+```
+
+
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
