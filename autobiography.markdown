@@ -4,11 +4,16 @@ title: Autobiography
 permalink: /autobiography/
 ---
 
-Most details here are targeted towards future me, but you are welcome to listen in.  
+Most details here are targeted towards future me, but you are welcome to listen in.  (This is a work in progress.)
 
-### Cosmology (2006-2014)
-**XKCD-ish pitch**: I measured a bump on a graph which excited a small number of specialists.  
-**Professional 10 second elevator pitch**: As an observational cosmologist, I analysed 3D maps of galaxies to quantify the amount of dark matter in the Universe as well as measure its expansion rate.     
+### Cosmology (2006-2014) 
+<p> 
+<img src="https://upload.wikimedia.org/wikipedia/en/5/58/NYU_logo.svg" width="400">   
+<img src="https://upload.wikimedia.org/wikipedia/en/0/06/Logo_of_Swinburne_University_of_Technology.svg" width="150">  
+</p>
+
+*I measured a bump on a graph which excited a small number of specialists.*    
+**10 second elevator pitch**: As an observational cosmologist, I analysed 3D maps of galaxies to quantify the amount of dark matter in the Universe as well as measure its expansion rate.     
 **Elevator pitch to the 100th floor**: To this end I measured the gravity generated large-scale structure of ensembles of distant galaxies. My focus was on a weak signal (1% effect!) which is considered the longest [*standard ruler*](https://en.wikipedia.org/wiki/Standard_ruler){:target="_blank"} known is cosmology at a length of half a billion light years!     
 **Claim for fame**: In my [second publication](https://ui.adsabs.harvard.edu/abs/2010ApJ...719.1032K/abstract){:target="_blank"} I pissed off a tenured professor by debunking [his claims](https://ui.adsabs.harvard.edu/abs/2009MNRAS.399.1663G/abstract){:target="_blank"}. 
 **Claim for fame II**: I met eight nobel prize winners in physics, six of which attended my lectures.  
@@ -29,18 +34,25 @@ In practice this meant analysing 3D maps of galaxies surveyed by two groups of a
 My publications of this eight year journey can be found on [Google Scholar](https://scholar.google.com/citations?user=yNVHEacAAAAJ&hl=en&oi=ao){:target="_blank"} or by first author on the [astrophysics data system](https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=database%3A%20astronomy&q=author%3A(%22%5Ekazin%2C%20eyal%22)&sort=date%20desc%2C%20bibcode%20desc&p_=0){:target="_blank"}. For some reason NYU still has my site where I share the [Luminous Red Galaxy data](https://cosmo.nyu.edu/~eak306/BAF.html){:target="_blank"}. [My Swinburne profile page](https://web.archive.org/web/20130501120349/http://astronomy.swin.edu.au/staff/ekazin.html){:target="_blank"}, and my personal page used to be [here](http://www.astronomy.swin.edu.au/~ekazin/){:target="_blank"}.
 
 ### Transitioning To Data Science (2014)  
-**XKCD-ish pitch**: I worked on a garbage-in garbage-out project for [a non-startup](https://web.archive.org/web/20170912075710/http://connectomex.com/){:target="_blank"}.      
+*I participated in a garbage-in garbage-out project for [a](https://beta.companieshouse.gov.uk/company/08386775){:target="_blank"} [non-startup](https://web.archive.org/web/20170912075710/http://connectomex.com/){:target="_blank"}.*        
 **Claim for fame**: I was known as "that guy with the blog post with the notebook". Strategically advertised in LinkedIn and Facebook forums, [the post](https://betterbayes.wordpress.com/2014/07/24/preperation-for-a-transition-to-data-science/){:target="_blank"} had over 1,000 reads in the first day (which was a lot at the time!)
 
 TBD
 
-### SCL Group / Cambridge Analytica (2014-2018)
-**What most people want to know**: I requested not to work on the Republican 2016 presidential campain.   
+### [SCL Group](https://en.wikipedia.org/wiki/SCL_Group){:target="_blank"} / [Cambridge Analytica](https://en.wikipedia.org/wiki/Cambridge_Analytica){:target="_blank"} (2014-2018)
+
+<p float="left">
+<img src="https://upload.wikimedia.org/wikipedia/en/b/b7/SCL_Group_logo.png" width="200">  
+<img src="https://upload.wikimedia.org/wikipedia/en/5/5c/Cambridge_Analytica_logo.svg" width="100">  
+</p>
+*3.5 year highlight: A successful snail-mail A/B test project*  
+**What most people want to know**: Upon request I did not work on the 2016 presidential campain.   
 **Claim for fame**: Half of a joke that I made about [Alexander Nix](https://en.wikipedia.org/wiki/Alexander_Nix){:target="_blank"} at a company party was [printed in the NY Times](https://www.nytimes.com/2017/03/06/us/politics/cambridge-analytica.html){:target="_blank"}.  
 
-![image]({{ site.url }}/assets/2017-03-06_NewYorkTimes1.png)
 
-![image]({{ site.url }}/assets/2017-03-06_NewYorkTimes2.png)
+<img src="{{ site.url }}/assets/2017-03-06_NewYorkTimes1.png" width=600>  
+<img src="{{ site.url }}/assets/2017-03-06_NewYorkTimes2.png" width=600>  
+
 
 But for the intended auidence that was not the punch line. The punch line was (which needs context to appreciate): 
 > How does he do it? He sells them Ripon!  
@@ -51,11 +63,10 @@ The context: Ripon was a customized campaign software platform that Cambridge An
 
 ![image]({{ site.url }}/assets/look-at-the-data.png)
 
-
 [SCL Github page](https://github.com/SCLElections){:target="_blank"} 
 
 ### [LabGenius](https://www.labgeni.us/){:target="_blank"} (2018-2020)
-**XKCD-ish pitch**: I made nice AI-ish visuals to impress investors.  
+*I made nice AI-ish visuals to impress investors.*    
 **Claim for fame**: I made a presentation with cool animation of dancing Amino Acid letters that was seen by representatives of all big pharmaceuticals worldwide.   
 
 ### [Babylon Health](https://www.babylonhealth.com/){:target="_blank"} (2020-)
