@@ -6,7 +6,26 @@ permalink: /autobiography/
 
 Most details here are targeted towards future me, but you are welcome to listen in.  (This is a work in progress.)
 
-### Cosmology (2006-2014) 
+## High School (1994-1996) קציני ים עכו
+
+![image](https://upload.wikimedia.org/wikipedia/he/e/e3/Kzineyamakko.jpg){:width="150"}  
+*I learned to not like sailing*
+
+## Israeli Defence Forces בה״ד 7  (1996-2000)
+<p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Badge_of_the_Israel_Defense_Forces.svg" width="150">   
+<img src="https://upload.wikimedia.org/wikipedia/he/3/31/Bahad7_logo.png" width="100">  
+</p>
+*Instructor in the Communication Corps. At least I wasn't at sea ...*
+
+
+
+## Physics B.Sc (2002-2005)
+![image](https://upload.wikimedia.org/wikipedia/en/2/29/Ben-Gurion_University_of_the_Negev.svg){:width="150"}  
+*I learned how to learn*   
+
+
+## Cosmology Research (2006-2014) 
 <p> 
 <img src="https://upload.wikimedia.org/wikipedia/en/5/58/NYU_logo.svg" width="400">   
 <img src="https://upload.wikimedia.org/wikipedia/en/0/06/Logo_of_Swinburne_University_of_Technology.svg" width="150">  
@@ -33,13 +52,13 @@ In practice this meant analysing 3D maps of galaxies surveyed by two groups of a
 
 My publications of this eight year journey can be found on [Google Scholar](https://scholar.google.com/citations?user=yNVHEacAAAAJ&hl=en&oi=ao){:target="_blank"} or by first author on the [astrophysics data system](https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=database%3A%20astronomy&q=author%3A(%22%5Ekazin%2C%20eyal%22)&sort=date%20desc%2C%20bibcode%20desc&p_=0){:target="_blank"}. For some reason NYU still has my site where I share the [Luminous Red Galaxy data](https://cosmo.nyu.edu/~eak306/BAF.html){:target="_blank"}. [My Swinburne profile page](https://web.archive.org/web/20130501120349/http://astronomy.swin.edu.au/staff/ekazin.html){:target="_blank"}, and my personal page used to be [here](http://www.astronomy.swin.edu.au/~ekazin/){:target="_blank"}.
 
-### Transitioning To Data Science (2014)  
+## Transitioning To Data Science (2014)  
 *I participated in a garbage-in garbage-out project for [a](https://beta.companieshouse.gov.uk/company/08386775){:target="_blank"} [non-startup](https://web.archive.org/web/20170912075710/http://connectomex.com/){:target="_blank"}.*        
 **Claim for fame**: I was known as "that guy with the blog post with the notebook". Strategically advertised in LinkedIn and Facebook forums, [the post](https://betterbayes.wordpress.com/2014/07/24/preperation-for-a-transition-to-data-science/){:target="_blank"} had over 1,000 reads in the first day (which was a lot at the time!)
 
 TBD
 
-### [SCL Group](https://en.wikipedia.org/wiki/SCL_Group){:target="_blank"} / [Cambridge Analytica](https://en.wikipedia.org/wiki/Cambridge_Analytica){:target="_blank"} (2014-2018)
+## [SCL Group](https://en.wikipedia.org/wiki/SCL_Group){:target="_blank"} / [Cambridge Analytica](https://en.wikipedia.org/wiki/Cambridge_Analytica){:target="_blank"} (2014-2018)
 
 <p float="left">
 <img src="https://upload.wikimedia.org/wikipedia/en/b/b7/SCL_Group_logo.png" width="200">  
@@ -65,10 +84,10 @@ The context: Ripon was a customized campaign software platform that Cambridge An
 
 [SCL Github page](https://github.com/SCLElections){:target="_blank"} 
 
-### [LabGenius](https://www.labgeni.us/){:target="_blank"} (2018-2020)
+## [LabGenius](https://www.labgeni.us/){:target="_blank"} (2018-2020)
 *I made nice AI-ish visuals to impress investors.*    
-**Claim for fame**: I made a presentation with cool animation of dancing Amino Acid letters that was seen by representatives of all big pharmaceuticals worldwide.   
+**Claim for fame**: I made a presentation with cool animations that was circulated to all large pharmaceuticals worldwide.   
 
-### [Babylon Health](https://www.babylonhealth.com/){:target="_blank"} (2020-)
+## [Babylon Health](https://www.babylonhealth.com/){:target="_blank"} (2020-)
 I joined Babylon Health in mid April of 2020.  
 TBD   
