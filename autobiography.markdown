@@ -68,10 +68,9 @@ TBD
 **What most people want to know**: Upon request I did not work on the 2016 presidential campain.   
 **Claim for fame**: Half of a joke that I made about the [CEO](https://en.wikipedia.org/wiki/Alexander_Nix){:target="_blank"} at a company party was [printed in the NY Times](https://www.nytimes.com/2017/03/06/us/politics/cambridge-analytica.html){:target="_blank"}.  
 
-<p float="left">
-<img src="{{ site.url }}/assets/2017-03-06_NewYorkTimes1.png" width=600> 
-<img src="{{ site.url }}/assets/2017-03-06_NewYorkTimes2.png" width=600>  
-</p>
+![image]({{ site.url }}/assets/2017-03-06_NewYorkTimes1.png){:width="600"}
+![image]({{ site.url }}/assets/2017-03-06_NewYorkTimes2.png){:width="600"}
+
 
 But for the intended auidence that was not the punch line. The punch line was (which needs context to appreciate): 
 > How does he do it? He sells them Ripon!  
