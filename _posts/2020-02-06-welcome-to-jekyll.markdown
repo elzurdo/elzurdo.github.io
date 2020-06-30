@@ -14,6 +14,20 @@ print('Jekyll also offers powerful support for code snippets :-)')
 
 Jekyll have [walk-trough videos](https://jekyllrb.com/tutorials/video-walkthroughs/) and I used part of [this tutorial](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to do the set up in the GitHub pages.
 
+In order to display an image and control for its size, the markdown looks something like 
+{% highlight print %}
+![](https://upload.wikimedia.org/wikipedia/commons/6/65/Hypsibiusdujardini.jpg){:width="300"}
+{% endhighlight %}
+which results in:  
+![](https://upload.wikimedia.org/wikipedia/commons/6/65/Hypsibiusdujardini.jpg){:width="300"}
+
+For an asset image the markdown looks like  
+{% highlight print %}
+![image]({{ site.url }}/assets/much-about-a-bump.png){:width="400"}   
+{% endhighlight %}   
+(note that the url part displayed above (on laptop, e.g, `http://localhost:4000`) is actually scripted as `{ site.url }`), and yields something like:  
+![image]({{ site.url }}/assets/much-about-a-bump.png){:width="400"}   
+
 My only other advices is adding to `.gitignore` the following 
 
 ```
