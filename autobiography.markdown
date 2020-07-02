@@ -36,7 +36,26 @@ Most details here are targeted towards future me, but you are welcome to listen 
 **Elevator pitch to the 100th floor**: To this end I measured the gravity generated large-scale structure of ensembles of distant galaxies. My focus was on a weak signal (1% effect!) which is considered the longest [*standard ruler*](https://en.wikipedia.org/wiki/Standard_ruler){:target="_blank"} known is cosmology at a length of half a billion light years!     
 **Claim for fame**: In my [second publication](https://ui.adsabs.harvard.edu/abs/2010ApJ...719.1032K/abstract){:target="_blank"} I pissed off a tenured professor by debunking [his claims](https://ui.adsabs.harvard.edu/abs/2009MNRAS.399.1663G/abstract){:target="_blank"}. 
 **Claim for fame II**: I met eight nobel prize winners in physics, six of which attended my lectures.  
-     
+
+
+**Favourite Quotes** 
+> Blanton thinks before he speaks  
+
+Excellent advice from a postdoc on how to choose an advisor for my Ph.D. 
+
+
+> If you're going to do a job, might as well get it right  
+
+Ph.D advisor, Prof. Michael Blanton, on work ethics.  
+
+> Go where the data are  
+
+Prof. Michael Blanton suggesting how to choose between postdoc offers. 
+
+> I still can't believe that someone is paying me to study physics in New York City.  
+
+Me a few months in NYU confessing to a professor about my amazement of living and studying in NY thanks to a [fellowship](https://www.macfound.org){:target="_blank"}.  
+
 ![image]({{ site.url }}/assets/much-about-a-bump.png)  
 
 This is the kind of plot I generated and stared at for years. The bump at the tick mark at value 100 is a beautiful beast. It represents our understanding of early Unvierse physics and its propagation to the recent Universe and its manifestation on the large-scale structure of galaxies. This bump, called by specialist the [*Baryonic Acoustic Oscilattions*](https://en.wikipedia.org/wiki/Baryon_acoustic_oscillations){:target="_blank"} (though I prefered calling it the *Baryonic Acoutstic Feature*) is the largest standard ruler known at half a billion of light-years. They are real and they are [magnificant :-)](https://www.youtube.com/watch?v=aQNkeugaAMc){:target="_blank"}.
@@ -89,4 +108,8 @@ The context: Ripon was a customized campaign software platform that Cambridge An
 
 ## [Babylon Health](https://www.babylonhealth.com/){:target="_blank"} (2020-)
 I joined Babylon Health in mid April of 2020.  
-TBD   
+
+**Favourite Quotes** 
+> Hard skills determine if you will win or lose, soft skills determine by how much   
+
+My line manager on Data Scientists' ingredients for success. 
