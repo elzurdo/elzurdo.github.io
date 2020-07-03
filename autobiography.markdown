@@ -24,6 +24,10 @@ Most details here are targeted towards future me, but you are welcome to listen 
 ![image](https://upload.wikimedia.org/wikipedia/en/2/29/Ben-Gurion_University_of_the_Negev.svg){:width="150"}  
 *I learned how to learn*   
 
+> We all get to physics by mistake   
+
+Professor Aharon Davidson to my confession that I originally intended on doing an engineering degree. 
+
 
 ## Cosmology Research (2006-2014) 
 <p> 
@@ -70,6 +74,10 @@ In practice this meant analysing 3D maps of galaxies surveyed by two groups of a
 
 
 My publications of this eight year journey can be found on [Google Scholar](https://scholar.google.com/citations?user=yNVHEacAAAAJ&hl=en&oi=ao){:target="_blank"} or by first author on the [astrophysics data system](https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=database%3A%20astronomy&q=author%3A(%22%5Ekazin%2C%20eyal%22)&sort=date%20desc%2C%20bibcode%20desc&p_=0){:target="_blank"}. For some reason NYU still has my site where I share the [Luminous Red Galaxy data](https://cosmo.nyu.edu/~eak306/BAF.html){:target="_blank"}. [My Swinburne profile page](https://web.archive.org/web/20130501120349/http://astronomy.swin.edu.au/staff/ekazin.html){:target="_blank"}, and my personal page used to be [here](http://www.astronomy.swin.edu.au/~ekazin/){:target="_blank"}.
+
+> Postdoc positions are the golden years of research  
+
+Marina Cortes and why she postponed professorship offers
 
 ## Transitioning To Data Science (2014)  
 *I participated in a garbage-in garbage-out project for [a](https://beta.companieshouse.gov.uk/company/08386775){:target="_blank"} [non-startup](https://web.archive.org/web/20170912075710/http://connectomex.com/){:target="_blank"}.*        
