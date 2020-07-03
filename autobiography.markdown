@@ -42,48 +42,17 @@ Professor Aharon Davidson to my confession that I originally intended on doing a
 **Claim for fame II**: I met eight nobel prize winners in physics, six of which attended my lectures.  
 
 
-**Favourite Quotes** 
-> Blanton thinks before he speaks  
-
-Excellent advice from a postdoc on how to choose an advisor for my Ph.D. 
-
-
-> If you're going to do a job, might as well get it right  
-
-Ph.D advisor, Prof. Michael Blanton, on work ethics.  
-
-> Go where the data are  
-
-Prof. Michael Blanton suggesting how to choose between postdoc offers. 
-
 > I still can't believe that someone is paying me to study physics in New York City.  
 
 Me a few months in NYU confessing to a professor about my amazement of living and studying in NY thanks to a [fellowship](https://www.macfound.org){:target="_blank"}.  
-
-![image]({{ site.url }}/assets/much-about-a-bump.png)  
-
-This is the kind of plot I generated and stared at for years. The bump at the tick mark at value 100 is a beautiful beast. It represents our understanding of early Unvierse physics and its propagation to the recent Universe and its manifestation on the large-scale structure of galaxies. This bump, called by specialist the [*Baryonic Acoustic Oscilattions*](https://en.wikipedia.org/wiki/Baryon_acoustic_oscillations){:target="_blank"} (though I prefered calling it the *Baryonic Acoutstic Feature*) is the largest standard ruler known at half a billion of light-years. They are real and they are [magnificant :-)](https://www.youtube.com/watch?v=aQNkeugaAMc){:target="_blank"}.
-
-
-Fascinated by the concept of gravity I started my career in data analysis when I did research in cosmology. Like most things in my life I got into astronomy by random chance. In the summer of 2006 [Professor David Hogg](https://cosmo.nyu.edu/hogg/){:target="_blank"} from NYU offered free laptops and a Cosmology Summer School in Santa Fe conditioned that we work on a project. He linked me with [Andreas Berlind](https://www.linkedin.com/in/aberlind/){:target="_blank"}, who was a postdoc at the time. He was my first anlaysis and astronomy guru and I during that summer I performe a few calculations for an analysis of his of clustering of dark matter based on simulations. I presented my results to the department and  [Professor Michael Blanton](https://as.nyu.edu/faculty/michael-blanton.html){:target="_blank"} offered me a subsequent project which led me to choose him as my Ph.D advisor. 
-
-Most of my research in my Ph.D (New York University [Center for Cosmology and Particle Physics](https://cosmo.nyu.edu/){:target="_blank"}  2006-2011) and subsequent postdoc (Swinburne University of Technology [Center of Astronomy and Super Computing](https://astronomy.swin.edu.au/){:target="_blank"}  2011-2014) was about relating astronomical observations to the standard theory of the BigBang, which cosmologists call the standard LCDM. That means a Unvierse that is dominated gravitaionially by Cold Dark Matter (CDM) but is expanding in an accelerating mode due to another unkown material (perhaps too) conveniently called Dark Matter (where we use Lambda as a symbol to quantify it).  
-
-In practice this meant analysing 3D maps of galaxies surveyed by two groups of astronomers that I was part of, the [Sloan Digital Sky Survey (SDSS)](https://www.sdss.org/){:target="_blank"} and the [WiggleZ Dark Energy Survey](https://en.wikipedia.org/wiki/WiggleZ_Dark_Energy_Survey){:target="_blank"}. The observable of interest is the said bump, the Baryonic Acoustic Feature. My closest collaborator was [Ariel Sanchez](https://www.mpe.mpg.de/~arielsan/){:target="_blank"}, for who I would visit him in Munich for great conversations.
-
-
-
-My publications of this eight year journey can be found on [Google Scholar](https://scholar.google.com/citations?user=yNVHEacAAAAJ&hl=en&oi=ao){:target="_blank"} or by first author on the [astrophysics data system](https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=database%3A%20astronomy&q=author%3A(%22%5Ekazin%2C%20eyal%22)&sort=date%20desc%2C%20bibcode%20desc&p_=0){:target="_blank"}. For some reason NYU still has my site where I share the [Luminous Red Galaxy data](https://cosmo.nyu.edu/~eak306/BAF.html){:target="_blank"}. [My Swinburne profile page](https://web.archive.org/web/20130501120349/http://astronomy.swin.edu.au/staff/ekazin.html){:target="_blank"}, and my personal page used to be [here](http://www.astronomy.swin.edu.au/~ekazin/){:target="_blank"}.
-
-> Postdoc positions are the golden years of research  
-
-Marina Cortes and why she postponed professorship offers
 
 ## Transitioning To Data Science (2014)  
 *I participated in a garbage-in garbage-out project for [a](https://beta.companieshouse.gov.uk/company/08386775){:target="_blank"} [non-startup](https://web.archive.org/web/20170912075710/http://connectomex.com/){:target="_blank"}.*        
 **Claim for fame**: I was known as "that guy with the blog post with the notebook". Strategically advertised in LinkedIn and Facebook forums, [the post](https://betterbayes.wordpress.com/2014/07/24/preperation-for-a-transition-to-data-science/){:target="_blank"} had over 1,000 reads in the first day (which was a lot at the time!)
 
-TBD
+> Go where the data are  
+
+Prof. Michael Blanton suggesting how to choose between postdoc offers. I took his offer and did a postdoc in Australia, and then following the same advise left for a career in Data Science.  
 
 ## [SCL Group](https://en.wikipedia.org/wiki/SCL_Group){:target="_blank"} / [Cambridge Analytica](https://en.wikipedia.org/wiki/Cambridge_Analytica){:target="_blank"} (2014-2018)
 
@@ -91,7 +60,7 @@ TBD
 <img src="https://upload.wikimedia.org/wikipedia/en/b/b7/SCL_Group_logo.png" width="200">  
 <img src="https://upload.wikimedia.org/wikipedia/en/5/5c/Cambridge_Analytica_logo.svg" width="100">  
 </p>
-*3.5 year highlight: A successful snail-mail A/B test project*  
+*3.5 year highlight: A successful snail-mail A/B test project where I proved to myself that my Machine Learning model actually has some merit to it.*  
 **What most people want to know**: Upon request I did not work on the 2016 presidential campain.   
 **Claim for fame**: Half of a joke that I made about the [CEO](https://en.wikipedia.org/wiki/Alexander_Nix){:target="_blank"} at a company party was [printed in the NY Times](https://www.nytimes.com/2017/03/06/us/politics/cambridge-analytica.html){:target="_blank"}.  
 
@@ -104,9 +73,6 @@ But for the intended auidence that was not the punch line. The punch line was (w
 
 The context: Ripon was a customized campaign software platform that Cambridge Analytic sold. I always thought it a peculiar name (considering it sounds so much like Rip Off) until I learned that is is named after the town of [Ripon, Wisconsin](https://en.wikipedia.org/wiki/Ripon){:target="_blank"}, where the Republican Party was founded).
 
-
-
-![image]({{ site.url }}/assets/look-at-the-data.png)
 
 [SCL Github page](https://github.com/SCLElections){:target="_blank"} 
 
