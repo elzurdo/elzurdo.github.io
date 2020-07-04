@@ -91,6 +91,10 @@ I loved that we solved this just with words, and then learned the math tools to 
 
 Me a few months in NYU confessing to a professor about my amazement of living and studying in NY thanks to a [fellowship](https://www.macfound.org){:target="_blank"}.  
 
+> You are the world expert!  
+
+Professor David Hogg enlightening me that the fact that I looked a bit deeper into a topic than has before, no matter [how small my lump of knowldge](http://matt.might.net/articles/phd-school-in-pictures/){:target="_blank"}, put me on the academic global stage.
+
 Favourite [Professor Andrei Gruzinov](https://as.nyu.edu/faculty/andrei-gruzinov.html){:target="_blank"} quotes:  
 
 > So, what should I go home and tell my wife?  
