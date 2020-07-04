@@ -38,8 +38,8 @@ Most details here are targeted towards future me, but you are welcome to listen 
 ## Backpacking South America (Dec 2000 - Apr 2001)
 ![image](https://upload.wikimedia.org/wikipedia/commons/6/6b/Map_of_South_America_with_flags.svg){:width="150"}
 
-## Interim (Apr - Sep 2001)  
-*Pestered people on the phone on six hour shifts, some of them completely fruitless*
+## Interim (Apr - Sep 2001)   
+* Worked in marketing for Dad's *ABC Boards* project  
 * Subscription Telemarketing for Ma'ariv newspaper
 
 ## Physics B.Sc (2001-2004)
@@ -90,6 +90,16 @@ I loved that we solved this just with words, and then learned the math tools to 
 > I still can't believe that someone is paying me to study physics in New York City.  
 
 Me a few months in NYU confessing to a professor about my amazement of living and studying in NY thanks to a [fellowship](https://www.macfound.org){:target="_blank"}.  
+
+Favourite [Professor Andrei Gruzinov](https://as.nyu.edu/faculty/andrei-gruzinov.html){:target="_blank"} quotes:  
+
+> So, what should I go home and tell my wife?  
+
+Andre's questions for most speakers (including Nobel Prize winners) of what the conclusion of their presentation was.  
+
+> I'll sign your Ph.D paper thing, but my adivse to you is that you should learn more statistics.  
+
+His conclusion after my dissertation cross-fire examination. He was right, and I did!.  
 
 ## Transitioning To Data Science (2014)  
 *I participated in a garbage-in garbage-out project for [a](https://beta.companieshouse.gov.uk/company/08386775){:target="_blank"} [non-startup](https://web.archive.org/web/20170912075710/http://connectomex.com/){:target="_blank"}.*        
