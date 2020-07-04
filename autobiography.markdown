@@ -4,32 +4,77 @@ title: Autobiography
 permalink: /autobiography/
 ---
 
-Most details here are targeted towards future me, but you are welcome to listen in.  (This is a work in progress.)
+Most details here are targeted towards future me, but you are welcome to listen in.  
 
-## High School (1994-1996) קציני ים עכו
+## [High School](http://www.kzineyam.org.il/){:target="_blank"} (1994-1996) קציני ים עכו
 
 ![image](https://upload.wikimedia.org/wikipedia/he/e/e3/Kzineyamakko.jpg){:width="150"}  
 *I learned to not like sailing*
 
-## Israeli Defence Forces בה״ד 7  (1996-2000)
+[ויקיפדיה](https://he.wikipedia.org/wiki/%D7%91%D7%99%D7%AA_%D7%94%D7%A1%D7%A4%D7%A8_%D7%9C%D7%A7%D7%A6%D7%99%D7%A0%D7%99_%D7%99%D7%9D_%D7%A2%D7%9B%D7%95){:target="_blank"}
+
+## Israeli Defence Forces בה״ד 7  (1996-1999)
 <p>
 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Badge_of_the_Israel_Defense_Forces.svg" width="150">   
-<img src="https://upload.wikimedia.org/wikipedia/he/3/31/Bahad7_logo.png" width="100">  
+<img src="https://upload.wikimedia.org/wikipedia/he/3/31/Bahad7_logo.png" width="100"> 
+<img src="https://upload.wikimedia.org/wikipedia/he/0/05/Levanon_ugda1.png" width="100"> 
 </p>
 *Instructor in the Communication Corps. At least I wasn't at sea ...*
 
 
+[בה״ד 7](https://he.wikipedia.org/wiki/%D7%91%D7%94%22%D7%93_7){:target="_blank"}
 
-## Physics B.Sc (2002-2005)
+## Satellite Technician (2000) 
+
+![image](https://upload.wikimedia.org/wikipedia/he/4/44/Gilat-logo.jpg){:width="200"}
+
+[ויקיפדיה](https://he.wikipedia.org/wiki/%D7%92%D7%99%D7%9C%D7%AA_%D7%98%D7%9C%D7%A7%D7%95%D7%9D){:target="_blank"}
+
+## Interim (Sep - Dec 2000)
+* Worked briefly in a laundromat  
+* Waited tables  
+* Learned Spanish
+
+## Backpacking South America (Dec 2000 - Apr 2001)
+![image](https://upload.wikimedia.org/wikipedia/commons/6/6b/Map_of_South_America_with_flags.svg){:width="150"}
+
+## Interim (Apr - Sep 2001)  
+*Pestered people on the phone on six hour shifts, some of them completely fruitless*
+* Subscription Telemarketing for Ma'ariv newspaper
+
+## Physics B.Sc (2001-2004)
 ![image](https://upload.wikimedia.org/wikipedia/en/2/29/Ben-Gurion_University_of_the_Negev.svg){:width="150"}  
 *I learned how to learn*   
+**Claim for fame**: I never took a test twice.  אף פעם לא עשיתי מועד ב׳   
+**Claim for fame II**: For a time I tutored enough not to use an ATM for months.  
+**Claim for fame III**: Volunteered for reserve army training and released because I am "a good person".  
 
 > We all get to physics by mistake   
 
-Professor Aharon Davidson to my confession that I originally intended on doing an engineering degree. 
+[Professor Aharon Davidson](https://physics.bgu.ac.il/~davidson/){:target="_blank"} about my confession that I  initially intended on studying engineering before I fell in love with physics.  
+
+ 
+* Tutored Mechanics and Electro Magnitism, Modern Physics  
+* Briefly ran a "Quantum Camp" (קייטנת קוונטים)  
+* In summer of 2002 I worked in construction  
+
+The question with which I fell in love with physics as presented in Mechanics recitation by Irit Maor:  
+> A helicopter is hovering above a mark X on the equator. The pilot drops a rock. Neglecting wind and friction, where in respect to the X will the rock land: North-East-South-West or something in between?  
+
+I loved that we solved this just with words, and then learned the math tools to generate quantifiable predictions. By the time I got back to my dorm, I forgot the verbal explanation and had to build the logic up again from scratch. It was great!  
+
+## Interim (Jul 2004 - Feb 2005)  
+* Salvador Dali themed trip to Spain with Mom  
+* While visiting Grandma in New Jersey, I fell in love with New York City for the second time  
+* Applied to Universities in the USA.  
+* Travelled the USA and went to many NBA games and concerts.  
+
+## Backpacking Central America (Feb - Jun 2005)
+![image](https://upload.wikimedia.org/wikipedia/commons/4/49/Flag-map_of_Central_America.svg
+){:width="300"}
 
 
-## Cosmology Research (2006-2014) 
+## Cosmology Research (2005-2014) 
 <p> 
 <img src="https://upload.wikimedia.org/wikipedia/en/5/58/NYU_logo.svg" width="400">   
 <img src="https://upload.wikimedia.org/wikipedia/en/0/06/Logo_of_Swinburne_University_of_Technology.svg" width="150">  
@@ -62,7 +107,10 @@ Prof. Michael Blanton suggesting how to choose between postdoc offers. I took hi
 </p>
 *3.5 year highlight: A successful snail-mail A/B test project where I proved to myself that my Machine Learning model actually has some merit to it.*  
 **What most people want to know**: Upon request I did not work on the 2016 presidential campain.   
-**Claim for fame**: Half of a joke that I made about the [CEO](https://en.wikipedia.org/wiki/Alexander_Nix){:target="_blank"} at a company party was [printed in the NY Times](https://www.nytimes.com/2017/03/06/us/politics/cambridge-analytica.html){:target="_blank"}.  
+**Claim for fame**: Half of a joke that I made about the [CEO](https://en.wikipedia.org/wiki/Alexander_Nix){:target="_blank"} at a company party [made The NY Times](https://www.nytimes.com/2017/03/06/us/politics/cambridge-analytica.html){:target="_blank"}.   
+**Claim for fame II**: I gave my one month notice before the massive press coverage.   
+
+The half joke that made The New York Times: 
 
 ![image]({{ site.url }}/assets/2017-03-06_NewYorkTimes1.png){:width="600"}
 ![image]({{ site.url }}/assets/2017-03-06_NewYorkTimes2.png){:width="600"}
@@ -78,7 +126,9 @@ The context: Ripon was a customized campaign software platform that Cambridge An
 
 ## [LabGenius](https://www.labgeni.us/){:target="_blank"} (2018-2020)
 *I made nice AI-ish visuals to impress investors.*    
-**Claim for fame**: I made a presentation with cool animations that was circulated to all large pharmaceuticals worldwide.   
+**Claim for fame**: I made a presentation with cool animations that was circulated to all large pharmaceuticals worldwide.  
+**Highlight**:  Got to learn protein biology on the job  
+
 
 ## [Babylon Health](https://www.babylonhealth.com/){:target="_blank"} (2020-)
 I joined Babylon Health in mid April of 2020.  
@@ -86,4 +136,8 @@ I joined Babylon Health in mid April of 2020.
 **Favourite Quotes** 
 > Hard skills determine if you will win or lose, soft skills determine by how much   
 
-My line manager on Data Scientists' ingredients for success. 
+My line manager on Data Scientists' ingredients for success.  
+
+> Make yourself a priority  
+
+Colleague's advise on how to get things done.  
