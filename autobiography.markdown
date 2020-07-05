@@ -9,7 +9,15 @@ Most details here are targeted towards future me, but you are welcome to listen 
 ## [High School](http://www.kzineyam.org.il/){:target="_blank"} (1994-1996) קציני ים עכו
 
 ![image](https://upload.wikimedia.org/wikipedia/he/e/e3/Kzineyamakko.jpg){:width="150"}  
-*I learned to not like sailing*
+*I learned to not like sailing*  
+
+> Honesty is the best policy   
+
+Physics teacher Meir Boneh wrote this on the board (in English) at the beginning of each lecture.  
+
+> כמה שלא תנער, תמיד ישאר
+
+Professor Melamed Emanuel's response to requests to leave for the restroom: *No matter how much you dangle, some will remain* (in Hebrew it rhymes).  
 
 [ויקיפדיה](https://he.wikipedia.org/wiki/%D7%91%D7%99%D7%AA_%D7%94%D7%A1%D7%A4%D7%A8_%D7%9C%D7%A7%D7%A6%D7%99%D7%A0%D7%99_%D7%99%D7%9D_%D7%A2%D7%9B%D7%95){:target="_blank"}
 
@@ -49,7 +57,7 @@ Most details here are targeted towards future me, but you are welcome to listen 
 **Claim for fame II**: For a time I tutored enough not to use an ATM for months.  
 **Claim for fame III**: Volunteered for reserve army training and released because I am "a good person".  
 
-> We all get to physics by mistake   
+> Most of us get to physics by accident  רובינו מגיעים לפיזיקה בטעות   
 
 [Professor Aharon Davidson](https://physics.bgu.ac.il/~davidson/){:target="_blank"} about my confession that I  initially intended on studying engineering before I fell in love with physics.  
 
@@ -62,6 +70,14 @@ The question with which I fell in love with physics as presented in Mechanics re
 > A helicopter is hovering above a mark X on the equator. The pilot drops a rock. Neglecting wind and friction, where in respect to the X will the rock land: North-East-South-West or something in between?  
 
 I loved that we solved this just with words, and then learned the math tools to generate quantifiable predictions. By the time I got back to my dorm, I forgot the verbal explanation and had to build the logic up again from scratch. It was great!  
+
+> I should have squashed you in Calculus ! אני הייתי צריך לאכול אותך בחדו״א 
+
+Professor Kagalovski response to my quesetion during the Advanced Mechanics final exam when he misunderstood my question regarding cosine angles.  
+
+> ואז אתם עושים אנטגרל על תחת
+
+This only makes sense in Hebrew ... but basically an  Professor Dan Rich says in Hebrew during a Solid State lecture, with a strong American accent, to do an *integral on our ass*, actually meaning *on one cell*.  פרופסור דן ריץ׳ בשיעור מצב מוצק מתכוון שנעשה אנטגרל *על תא אחת*
 
 ## Interim (Jul 2004 - Feb 2005)  
 * Salvador Dali themed trip to Spain with Mom  
