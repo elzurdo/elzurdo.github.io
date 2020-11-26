@@ -113,7 +113,7 @@ Panama-Costa Rica-Nicaragua-Honduras-Guatemala on a shoe string
 </p>
 
 *I measured a bump on a graph which excited a small number of specialists.*    
-**10 second elevator pitch**: As an observational cosmologist, I analysed 3D maps of galaxies to quantify the amount of dark matter in the Universe as well as measure its expansion rate.     
+**10 second elevator pitch**: As an observational cosmologist, I analysed 3D maps of galaxy distributions to quantify the amount of dark matter in the Universe as well as measure its expansion rate.     
 **Elevator pitch to the 100th floor**: To this end I measured the large-scale structure of ensembles of distant galaxies. My focus was on a weak signal (1% effect!) which is considered the longest [*standard ruler*](https://en.wikipedia.org/wiki/Standard_ruler){:target="_blank"} known is cosmology at a length of half a billion light years!     
 **Claim for fame**: In my [second publication](https://ui.adsabs.harvard.edu/abs/2010ApJ...719.1032K/abstract){:target="_blank"} I pissed off a tenured professor by debunking [his claims](https://ui.adsabs.harvard.edu/abs/2009MNRAS.399.1663G/abstract){:target="_blank"}. 
 **Claim for fame II**: I met eight nobel prize winners in physics, six of which attended my lectures.  
@@ -127,9 +127,9 @@ Favourite [Professor Andrei Gruzinov](https://as.nyu.edu/faculty/andrei-gruzinov
 
 > So, what should I go home and tell my wife?  
 
-Andre's questions for most speakers (including Nobel Prize winners) of what the conclusion of their presentation was.  
+Andre's question for most speakers (including Nobel Prize winners) about the conclusion of their presentation.   
 
-> I'll sign your Ph.D paper thing, but I advise you learn more statistics.  
+> I'll sign your Ph.D approval paper thing, but I advise you learn more statistics.  
 
 His conclusion after my dissertation cross-fire examination. He was right, and I did!.  
 
