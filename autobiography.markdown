@@ -16,7 +16,7 @@ Giving my respects to a pioneering statistician
 ![image](https://nilizy.tik-tak.net/wp-content/uploadfiles/sites/165/2016/10/logo.png){:width="150"} 
 
 ## [Middle School](https://binyamina.ort.org.il/){:target="_blank"} (1991-1994) אורט בנימינה
-![image](https://binyamina.ort.org.il/wp-content/uploads/2019/01/%D7%9C%D7%95%D7%92%D7%95-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg){:width="200"} 
+![image](https://www.kamoha.org.il/wp-content/uploads/2011/12/Ort.jpg){:width="200"} 
 
 
 ## [High School](http://www.kzineyam.org.il/){:target="_blank"} (1994-1996) קציני ים עכו
