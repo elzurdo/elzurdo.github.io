@@ -181,7 +181,7 @@ I also dabbled with Design of Experiment with the objective of maximising DNA yi
 [LG webpage](https://web.archive.org/web/20191217092043/https://www.labgeni.us/) around the time I left.  
 ## [Babylon Health](https://www.babylonhealth.com/){:target="_blank"} (2020-)
 
-<img src="https://camunda.com/wp-content/uploads/2020/07/babylon-health.png" width="150"> 
+<img src="https://camunda.com/wp-content/uploads/2020/07/babylon-health.png" width="300"> 
 
 
 I joined Babylon Health in mid April of 2020 as a data scientist.  
