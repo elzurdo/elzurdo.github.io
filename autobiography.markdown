@@ -167,8 +167,7 @@ The context: Ripon was a customized campaign software platform that Cambridge An
 [SCL Github page](https://github.com/SCLElections){:target="_blank"} 
 
 ## [LabGenius](https://www.labgeni.us/){:target="_blank"} (2018-2020)  
-<img src="https://images.squarespace-cdn.com/content/v1/5f182bbf3a199f5c49722c0e/1595525274866-MV6MCZ0SC6G7Z29J38SM/ke17ZwdGBToddI8pDm48kO2pS9cMHbO4RvHPc8Skf1tZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7SSwGn0TPzISNt3iSJufpcvR7xFZ2oYA-YTitnkXPCuTgiUfhLEJ_Uxi_cK3qclb8w/LG+logo.png
-" width="150"> 
+<img src="https://photos.angel.co/startups/i/127625-b833346cb16ac095bedcc91fb0993032-medium_jpg.jpg?buster=1511490846" width="150"> 
 
 
 *I made nice AI-ish visuals to impress investors.*    
@@ -182,8 +181,7 @@ I also dabbled with Design of Experiment with the objective of maximising DNA yi
 [LG webpage](https://web.archive.org/web/20191217092043/https://www.labgeni.us/) around the time I left.  
 ## [Babylon Health](https://www.babylonhealth.com/){:target="_blank"} (2020-)
 
-<img src="https://www.uokpl.rs/fpng/f/306-3066410_babylon-health-logo.png
-" width="150"> 
+<img src="https://camunda.com/wp-content/uploads/2020/07/babylon-health.png" width="150"> 
 
 
 I joined Babylon Health in mid April of 2020 as a data scientist.  
