@@ -26,7 +26,15 @@ Besides work related books, I find myself enjoying reading more and more non fic
 In particular I'm fascinated by authors that manage to articulate nuanced issues 
 involved in our species continual evolution. 
 
-The purpose of this post is to share books that I find life changing.
+The purpose of this post is to share books that I find life changing. 
+
+> All models are wrong, but some are useful (George E.P Box)
+
+A common theme throughout this list of books is cognitive evolution.
+We all have our own models of how we think that the world works. 
+These personal models are useful for us to navigate the chaos which surrounds us. 
+Sometimes these models can be found to be embarrassingly incorrect. 
+I find that these books serve as useful guides. 
 
 Here is a non exhaustive list (which I hope to maintain throughout the years), 
 followed by a brief take of each.
