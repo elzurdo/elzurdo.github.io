@@ -15,9 +15,7 @@ title:  "Books Of Enlightenment"
 <img src="https://images-na.ssl-images-amazon.com/images/I/918yVxlcnuL.jpg" width="150">
 <img src="https://cdn.waterstones.com/override/v1/large/9781/8479/9781847941398.jpg" width="150">
 <img src="https://images-na.ssl-images-amazon.com/images/I/510H3ZETbFL._SX332_BO1,204,203,200_.jpg" width="150">
-
-
-   
+<img src="https://images-na.ssl-images-amazon.com/images/I/51BTXCDCQPL._SX302_BO1,204,203,200_.jpg" width="150">
 </p>
 {: refdef} 
 
@@ -173,7 +171,8 @@ the program was over, I was kind of sad that the bubble was bursting and to cont
 scratch the surface of Quantum and Relativity I would have to do so in a more demanding environment. 
 So a Ph.D program was the obvious nex step. 
 
-Even in amongst communities of scientists the [Plank's principle](https://en.wikipedia.org/wiki/Planck%27s_principle){: target="_blank"}    
+Even in amongst communities of scientists the 
+[Plank's principle](https://en.wikipedia.org/wiki/Planck%27s_principle){: target="_blank"} 
 nicely paraphrased as:  
 > Science progresses one funeral at a time 
 
@@ -189,6 +188,6 @@ a bit of sense of the composition of the universe, how it functions (to a certai
 and Earth's spacial and temporal relationship within it.  
 
 I started also reading layman biology and was fortunate enough to work nearly two years 
-in a biotech lab, in which I got to learn about the proteins, the amazing work horses 
-of our body function.
+in a biotech lab, in which I got to learn about the proteins, our bodies' amazing work horses.
+
 
