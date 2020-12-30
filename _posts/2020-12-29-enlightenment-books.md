@@ -101,7 +101,7 @@ each as individuals and their intellectually fruitful, but intense and rocky rel
 {:refdef: style="text-align: center;"}
 <p>
 <img src="https://m.media-amazon.com/images/I/417Y78D+TeL.jpg" width="150">     
-<img src="https://lh3.googleusercontent.com/proxy/RJmfsY6l8CAQ11vAHcP8Dg_tMwsK5Zu1zcTe1sD1kMc9wV2FYnw4k3cp-rnH6j_z4W3BOTeIC1cLxxmEV3t2w2n9VkGYIuOV" width="150">  
+<img src="https://d386vep05x5edh.cloudfront.net/product_images/2629/2629903_500px_jpg/causal_inference_in_statistics_a_primer.jpg" width="150">  
 </p>
 {: refdef} 
 
