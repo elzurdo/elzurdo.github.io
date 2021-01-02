@@ -6,9 +6,12 @@ permalink: /autobiography/
 
 Most details here are targeted towards future me, but you are welcome to listen in.  
 
-<img src="https://pbs.twimg.com/profile_images/981572229107539970/z1r0jy9H_400x400.jpg" width="300">  
-Giving my respects to a pioneering statistician  
-(even though he was a frequentist ...)
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="300"}
+{: refdef} 
+ 
+Giving my respects to Thomas Bayes in Tunbridge Wells, England.  
 
 
 ---
