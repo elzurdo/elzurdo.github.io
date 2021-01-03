@@ -13,6 +13,10 @@ Most details here are targeted towards future me, but you are welcome to listen 
  
 Giving my respects to Thomas Bayes in Tunbridge Wells, England.  
 
+> Bayesian by Nature
+
+> I infer therefore I am
+
 
 ---
 ## [Elementray School](https://nilizy.tik-tak.net/){:target="_blank"} (1986-1991) ביה״ס ניל״י
