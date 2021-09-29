@@ -85,16 +85,16 @@ for the average female in the age range of 35-40, to be able to predict for your
 
 ---
 
-## Any more for anymore?
+## Anymore for anymore?
 
 The content of this blog post and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
-* [Slide Deck](https://bit.ly/start-ask-why)
-* [Recording of presentation at EuroPython 2021](https://bit.ly/start-ask-why-europython)
+* [Slide Deck](https://bit.ly/start-ask-why){:target="_blank"}
+* [Recording of presentation at EuroPython 2021](https://bit.ly/start-ask-why-europython){:target="_blank"}
 
 
 {:refdef: style="text-align: center;"}
-<img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="300"> 
+<img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="500"> 
 {: refdef} 
 
 ---
