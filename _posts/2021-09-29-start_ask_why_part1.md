@@ -12,9 +12,7 @@ Here we describe the importance of causal thinking and what to expect from this 
 
 Decision makers put a lot of trust in data. This confidence manifests in claims like “data does not lie”, “data is king”, “data is the new oil”, or best quipped by the statistician William E. Denim:
  
-<center> “In [deity] we trust, all others bring data!” </center>
-
-
+<center> “In [deity] we trust, all others bring data!” </center><br>
 
 We are all beneficiaries of data driven decisions. 
 We live healthier lives than our ancestors thanks to medical conclusions from biological research that suggest what we should and should not put into our bodies.
@@ -59,7 +57,30 @@ and machine learning practitioners apologetically claim that
 
 <center> “Correlation does not imply Causation” </center><br>
 
+But, as it turns out, we can do better. 
+With some simple ingenious tricks that have been developed in the past 30 years, 
+one can unveil causal relationships with readily available data, 
+without having to resort to expensive randomised control trials.[^2]
 
-But, as it turns out, we can do better. With some simple ingenious tricks that have been developed in the past 30 years, one can unveil causal relationships with readily available data, without having to resort to expensive randomised control trials.
+[^2]: Randomised Control Trials are considered the golden standard for causal analysis in many experimental settings by controlling for confounding factors. Their main setback, however, is that these tend to be either very expensive, or not feasible, or both. In causal inference we are interested in finding causal relationships in more readily available and cheaper data sets, often referred to as “observational data”.
  
- 
+In this series of posts you will learn how to add causal reasoning to your tool box.
+
+In the second post you will learn about the importance of describing 
+***the story behind data*** which will enable you to draw more meaningful conclusions.
+
+This will be followed up by a post introducing ***Graph Models*** as a simple to understand 
+yet powerful visual aid to portray ***the story behind the data***. 
+This will enable practitioners to both better interpret their experiments as well as design them.
+
+In the fourth and final post we will discuss a classic case of data misinterpretation 
+called ***Simpson’s paradox***, where you will learn how to identify and resolve it by controlling for confounding factors.
+
+For the more technical minded we will also provide pointers at how to climb the 
+***Causality Ladder*** from the lowest rung of the common associative method of analysis, 
+via cohort causal inference (c.f, *interventions*), and ultimately to causality on 
+individuals (c.f, *counterfactuals*). 
+To illustrate this last point, imagine that instead of quantifying the benefit of taking medicine 
+for the average female in the age range of 35-40, to be able to predict for your own family member.
+
+
