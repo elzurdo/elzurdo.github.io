@@ -41,8 +41,25 @@ It has recently been [quipped](https://www.economist.com/science-and-technology/
 smarter than a seven month old. 
 That’s why machine *learning* is not regarded as *understanding*.[^1]
 
-
 [^1]:  Ironically my spelling corrector is doing an amazing job at pointing out grammar mistakes and making excellent suggestions, but does not comment on the fact that I am somewhat deriding it by pointing out the limitations of it and its non sentient siblings and cousins …
 
+As a consequence, small changes to an algorithm’s settings may result in meaningless to deleterious outcomes. 
+This manifests in toy examples as deep learning modules that outperform humans in video games but requires hours to days of recalibration when, 
+e.g, the input is slightly modified, in a manner which makes no significant difference for a human. 
+Imagine, e.g,  a game of Tetris or Breakout being modified by adding or subtracting one row of pixels. 
+
+A more concerning example is dangerous situations that may arise from vulnerabilities of 
+image recognition algorithms in self-driving cars. 
+Something as simple as adding a post-it on a stop sign may cause confusion in a neural network 
+which would result in it to confidently classify the sign as a yield, something that would never fool a human. 
+Not only can mishaps be dangerous but even more worrisome vulnerabilities may be maliciously exploited.  
+
+Research inconclusiveness and machine learning hiccups make it not uncommon to hear scientists 
+and machine learning practitioners apologetically claim that 
+
+<center> “Correlation does not imply Causation” </center><br>
+
+
+But, as it turns out, we can do better. With some simple ingenious tricks that have been developed in the past 30 years, one can unveil causal relationships with readily available data, without having to resort to expensive randomised control trials.
  
  
