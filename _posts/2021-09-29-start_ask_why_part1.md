@@ -32,5 +32,17 @@ in the 1950’s and 1960’s this was hotly debated, where many times data analy
 Another example is the famous 2013 study on the benefits of the Mediterranean diet against 
 heart disease that had to be retracted in 2018 by the most prestigious of medical journals, 
 because not all participants were randomly recruited (see: [3](https://www.bmj.com/content/364/bmj.l341), [4](https://phys.org/news/2018-07-beware-scientific-studiesmost-wrong.html)).  
+
+
+As for automated decision making, 
+many modern algorithms, such as neural networks, 
+excel at identifying patterns, but not context. 
+It has recently been [quipped](https://www.economist.com/science-and-technology/is-it-smarter-than-a-seven-month-old/21804141) that the most sophisticated computer algorithms are not 
+smarter than a seven month old. 
+That’s why machine *learning* is not regarded as *understanding*.[^1]
+
+
+[^1]:  Ironically my spelling corrector is doing an amazing job at pointing out grammar mistakes and making excellent suggestions, but does not comment on the fact that I am somewhat deriding it by pointing out the limitations of it and its non sentient siblings and cousins …
+
  
  
