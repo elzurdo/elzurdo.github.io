@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Start Asking Your Data 'Why?' - A Gentle Introduction To Causal Inference - Part 1/4"
+title:  "Start Asking Your Data 'Why?' - A Gentle Intro To Causal Inference - Part 1/4"
 ---
 
 This is the first of a four part series aimed at decision makers, technical or managerial, who would like to improve their skills by adding causal intuition to their tool box. 
 
 Here we describe the importance of causal thinking and what to expect from this series.
 
-## Part 1of 4 - Why Ask *“Why?”*
+## Part 1 of 4 - Why Ask *“Why?”*
 **Causal techniques may result in more meaningful results than the common associative interpretation of data.**
 
 Decision makers put a lot of trust in data. This confidence manifests in claims like “data does not lie”, “data is king”, “data is the new oil”, or best quipped by the statistician William E. Denim:
@@ -26,16 +26,16 @@ However, when it comes to decision making, human or automated, a critical questi
 After all, a research lead might draw inconclusive or, even worse, incorrect conclusions from data. 
 For example, even though we now know that smoking adds risk to developing lung cancer, 
 in the 1950’s and 1960’s this was hotly debated, where many times data analyses were deemed inconclusive 
-(see: [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5298160/), [2](https://cebp.aacrjournals.org/content/16/6/1070.long)). 
+(see: [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5298160/){:target="_blank"}, [2](https://cebp.aacrjournals.org/content/16/6/1070.long){:target="_blank"}). 
 Another example is the famous 2013 study on the benefits of the Mediterranean diet against 
 heart disease that had to be retracted in 2018 by the most prestigious of medical journals, 
-because not all participants were randomly recruited (see: [3](https://www.bmj.com/content/364/bmj.l341), [4](https://phys.org/news/2018-07-beware-scientific-studiesmost-wrong.html)).  
+because not all participants were randomly recruited (see: [3](https://www.bmj.com/content/364/bmj.l341){:target="_blank"}, [4](https://phys.org/news/2018-07-beware-scientific-studiesmost-wrong.html){:target="_blank"}).  
 
 
 As for automated decision making, 
 many modern algorithms, such as neural networks, 
 excel at identifying patterns, but not context. 
-It has recently been [quipped](https://www.economist.com/science-and-technology/is-it-smarter-than-a-seven-month-old/21804141) that the most sophisticated computer algorithms are not 
+It has recently been [quipped](https://www.economist.com/science-and-technology/is-it-smarter-than-a-seven-month-old/21804141){:target="_blank"} that the most sophisticated computer algorithms are not 
 smarter than a seven month old. 
 That’s why machine *learning* is not regarded as *understanding*.[^1]
 
@@ -83,4 +83,18 @@ individuals (c.f, *counterfactuals*).
 To illustrate this last point, imagine that instead of quantifying the benefit of taking medicine 
 for the average female in the age range of 35-40, to be able to predict for your own family member.
 
+---
 
+## Any more for anymore?
+
+The content of this blog post and further information and resources are provided in
+my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
+* [Slide Deck](https://bit.ly/start-ask-why)
+* [Recording of presentation at EuroPython 2021](https://bit.ly/start-ask-why-europython)
+
+
+{:refdef: style="text-align: center;"}
+<img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="300"> 
+{: refdef} 
+
+---
