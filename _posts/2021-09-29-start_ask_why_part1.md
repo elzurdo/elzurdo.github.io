@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Start Asking Your Data 'Why?' - A Gentle Intro To Causal Inference - Part 1/4"
+title:  "Start Asking Your Data 'Why?' - Why Ask 'Why?' (part 1/4)"
 ---
 
 This is the first of a four part series aimed at decision makers, technical or managerial, who would like to improve their skills by adding causal intuition to their tool box. 
@@ -8,7 +8,7 @@ This is the first of a four part series aimed at decision makers, technical or m
 Here we describe the importance of causal thinking and what to expect from this series.
 
 ## Part 1 of 4 - Why Ask *“Why?”*
-**Causal techniques may result in more meaningful results than the common associative interpretation of data.**
+**Causal inference techniques may result in more meaningful results than the common associative interpretation of data.**
 
 Decision makers put a lot of trust in data. This confidence manifests in claims like “data does not lie”, “data is king”, “data is the new oil”, or best quipped by the statistician William E. Denim:
  
