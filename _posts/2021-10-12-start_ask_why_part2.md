@@ -29,7 +29,9 @@ Imagine that you work in a council of a city with a beach and want to reduce dro
 
 If you feed a standard associative algorithm (e.g. linear regression, neural network or a graph   model) drowning rate data, and other variables in the city, if available, it would highlight a strong correlation with the sales of ice cream. In Figure 1 we visualise such a correlation using made up, but plausible, data, where each point is the value of drowning rates and ice cream sales for a given week.
 
+{:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/ice-cream-drowning-rates-graph-unclassified.png){:width="400"}
+{: refdef}
 
 In this graph we clearly identify the correlation picked up by the algorithm. 
 But does one truly cause the other? Surely common intuition tells us that these two are independent, 
@@ -54,7 +56,9 @@ where the arrow indicates the direction of causality
 In Figure 3 we display the same data as in Figure 1 but use symbols to represent sunny 
 (yellow suns faces) or chilli days (blue freezing faces).
 
+{:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/ice-cream-drowning-rates-graph-classified.png){:width="400"}
+{: refdef}
 
 This clearly shows that by controlling for the weather parameter, i.e by highlighting its importance, 
 these parameters are independent. 
