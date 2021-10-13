@@ -34,9 +34,7 @@ because not all participants were randomly recruited (see: [3](https://www.bmj.c
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/now_1950s.png){:width="600"}
 {: refdef}
-<center> Figure 1: We now appreciate that smoking adds risk to lung cancer, but this was not the case in the 1950s. </center><br>
-
-Test text{: style="color:gray; font-size: 80%; text-align: center;"}
+<center> Figure 1: Smoking added risk to lung cancer is now appreciated, but it wasn't in the 1950s. </center><br>
 
 As for automated decision making, 
 many modern algorithms, such as neural networks, 
