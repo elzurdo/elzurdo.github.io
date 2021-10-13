@@ -56,6 +56,14 @@ Something as simple as adding a post-it on a stop sign may cause confusion in a 
 which would result in it to confidently classify the sign as a yield, something that would never fool a human. 
 Not only can mishaps be dangerous but even more worrisome vulnerabilities may be maliciously exploited.  
 
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/stop_sign.png){:width="400"}
+{: refdef}
+<center> Figure 2: The post-it on this stop sign triggered an image recognition software 
+to confidently declare it as a speed limit sign.<br>(Credit: WIRED)
+ </center><br>
+
+
 Research inconclusiveness and machine learning hiccups make it not uncommon to hear scientists 
 and machine learning practitioners apologetically claim that 
 
