@@ -60,7 +60,7 @@ Not only can mishaps be dangerous but even more worrisome vulnerabilities may be
 ![image]({{ site.url }}/assets/start-ask-why/stop_sign.png){:width="400"}
 {: refdef}
 <center> <b>Figure 2</b>: The post-it on this stop sign triggered an image recognition algorithm<br> 
-to confidently declare it as a speed limit sign.<br>(Credit: <a href="https://www.wired.com/story/machine-learning-backdoors/">WIRED</a>)
+to confidently declare it as a speed limit sign.<br>(Credit: <a href="https://www.wired.com/story/machine-learning-backdoors/" target="_blank">WIRED</a>)
  </center><br>
 
 
@@ -96,7 +96,7 @@ For the more technical minded we will also provide pointers at how to climb the
 {: refdef}
 <center> <b>Figure 3</b>: Judea Pearl’s Causal Ladder. Each rung represents a<br>
 different level of complexity of causal inference.<br> 
-(Credit: <a href="http://bayes.cs.ucla.edu/WHY/">The Book of Why</a>)
+(Credit: <a href="http://bayes.cs.ucla.edu/WHY/" target="_blank">The Book of Why</a>)
  </center><br>
  
  We illustrate how the lowest rung symbolises the associative/correlation methods of analysis that 
@@ -117,7 +117,7 @@ it should be an inspiration of a goal to aim for in any analysis and data driven
 
 The content of this blog post and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
-* [Slide Deck](https://bit.ly/start-ask-why){:target="_blank"}
+* [Slide Deck: `bit.ly/start-ask-why`](https://bit.ly/start-ask-why){:target="_blank"}
 * [EuroPython presentation: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
 
 {:refdef: style="text-align: center;"}
