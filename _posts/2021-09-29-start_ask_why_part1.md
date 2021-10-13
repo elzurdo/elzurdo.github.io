@@ -110,6 +110,10 @@ different level of complexity of causal inference.<br>
 Finally we emphasise that whereas causal inference is not always possible, 
 it should be an inspiration of a goal to aim for in any analysis and data driven decision making.
 
+Enjoyed this post? 
+
+In [part 2]({% post_url 2021-10-12-start_ask_why_part2 %}) you will learn about the importance 
+of understanding the **story behind the data** to draw causal conclusions. 
 
 ---
 
