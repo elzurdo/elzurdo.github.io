@@ -34,7 +34,7 @@ because not all participants were randomly recruited (see: [3](https://www.bmj.c
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/now_1950s.png){:width="600"}
 {: refdef}
-<center> Figure 1: Smoking added risk to lung cancer is now appreciated, but it wasn't in the 1950s. </center><br>
+<center> <b>Figure 1</b>: Smoking added risk to lung cancer is now appreciated, but it wasn't in the 1950s. </center><br>
 
 As for automated decision making, 
 many modern algorithms, such as neural networks, 
@@ -59,8 +59,8 @@ Not only can mishaps be dangerous but even more worrisome vulnerabilities may be
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/stop_sign.png){:width="400"}
 {: refdef}
-<center> <b>Figure 2</b>: The post-it on this stop sign triggered<br>an image recognition software 
-to confidently declare it as a speed limit sign.<br>(Credit: WIRED)
+<center> <b>Figure 2</b>: The post-it on this stop sign triggered an image recognition algorithm<br> 
+to confidently declare it as a speed limit sign.<br>(Credit: <a href="https://www.wired.com/story/machine-learning-backdoors/">WIRED</a>)
  </center><br>
 
 
@@ -89,11 +89,27 @@ In the fourth and final post we will discuss a classic case of data misinterpret
 called ***Simpson’s paradox***, where you will learn how to identify and resolve it by controlling for confounding factors.
 
 For the more technical minded we will also provide pointers at how to climb the 
-***Causality Ladder*** from the lowest rung of the common associative method of analysis, 
-via cohort causal inference (c.f, *interventions*), and ultimately to causality on 
-individuals (c.f, *counterfactuals*). 
-To illustrate this last point, imagine that instead of quantifying the benefit of taking medicine 
-for the average female in the age range of 35-40, to be able to predict for your own family member.
+*Causality ladder*, as illustrated in Figure 3.
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/causal_ladder.png){:width="600"}
+{: refdef}
+<center> <b>Figure 3</b>: Judea Pearl’s Causal Ladder. Each rung represents a<br>
+different level of complexity of causal inference.<br> 
+(Credit: <i>The Book of Why</i>)
+ </center><br>
+ 
+ We illustrate how the lowest rung symbolises the associative/correlation methods of analysis that 
+ are commonly used in predictive modeling including advanced machine learning. 
+ We describe how by understanding the **story behind the data** one advances to the next rung - 
+ causal inference of cohorts. The highest rung is where the most powerful causal inference lies - 
+ on individual cases. 
+ To illustrate this last point, imagine that instead of quantifying the benefit of taking medicine 
+ for the average female in the age range of 35-40, to be able to predict for your own family member.
+
+Finally we emphasise that whereas causal inference is not always possible, 
+it should be an inspiration of a goal to aim for in any analysis and data driven decision making.
+
 
 ---
 
@@ -103,6 +119,10 @@ The content of this blog post and further information and resources are provided
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
 * [Slide Deck](https://bit.ly/start-ask-why){:target="_blank"}
 * [Recording of presentation at EuroPycon 2021](https://bit.ly/start-ask-why-europython){:target="_blank"}
+
+{:refdef: style="text-align: center;"}
+<iframe width="756" height="567" src="https://www.youtube.com/embed/NzcCDUs7OTc" frameborder="0" allowfullscreen> </iframe>
+{: refdef} 
 
 
 {:refdef: style="text-align: center;"}
