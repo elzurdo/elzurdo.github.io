@@ -50,8 +50,9 @@ We can draw the relationships in the form of a graph as in Figure 2,
 where the arrow indicates the direction of causality 
 (the weather determines both drowning rates and ice cream sales, not vice versa).
 
-
-[Image of simplistic ice cream PGM]
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_simple.jpg){:width="400"}
+{: refdef}
 
 In Figure 3 we display the same data as in Figure 1 but use symbols to represent sunny 
 (yellow suns faces) or chilli days (blue freezing faces).
@@ -74,7 +75,9 @@ For completeness, in Figure 4 we illustrate a more detailed graph of the relatio
 between the target variable to improve (drowning rates), the intervention (life guards) 
 as well as the story between the ice cream deliveries and the sales which requires demand and supply.
 
-[Image of complex ice cream PGM]
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="400"}
+{: refdef}
 
 The purpose of this figure is to show that between the three variables of interest ice cream sales, 
 the intervention variable of life guards and the target variable of drowning rates, 
