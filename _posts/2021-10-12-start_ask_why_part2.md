@@ -101,7 +101,7 @@ Hence *Fire Alarm* is a misnomer, and should be called a *Smoke Detector*.
 We illustrate the relationships in Figure 6.
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="400"}
+![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="600"}
 {: refdef}
 
 Here we see that the smoke component is a mediator between the fire (what we are interested in learning about; or the treatment variable) 
@@ -116,5 +116,56 @@ This simple idea of a mediator variable can be quite powerful as we shall see in
 where we continue with the theme of smoke, this time that generated from burning of tobacco … 
 and human lungs.
 
+It is well established that smoking may increase risk of lung cancer, 
+which was not that clear prior to the 1950’s or even 1960’s. 
+Although scientists pointed out correlation in data between smoking of cigarettes and 
+development of lung cancer,  the tobacco industry cast doubt that it meant causation (Figure 7).
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs.jpg){:width="400"}
+{: refdef}
+
+They further suggested a possible unobserved variable that might be the cause, 
+perhaps a  lung cancer gene. Their story behind the data might have looked something 
+like Figure 8 where one’s DNA is a confounding factor that causes both tendency to smoke 
+and increase risk of lung cancer.
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_fork.png){:width="400"}
+{: refdef}
+
+Taking our lesson from the drowning rates example, 
+the tobacco industry was claiming spurious correlations.
+
+Another possible story behind the data is in Figure 9, 
+which is similar to before but adding a direct causality arrow from smoking to risk of lung cancer. 
+This suggests that smoking is a direct cause to increase risk of lung cancer, 
+but there might be a latent contribution from one’s genes. 
+In this case one needs to control for DNA attributes[^1], which might be possible today under 
+the correct experimental settings, but wasn’t in the 1960’s.
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_simpson.png){:width="400"}
+{: refdef}
+
+[^1]: We will discuss this controlling mechanism further in detail in the fourth post when we examine Simpson’s paradox.
+
+The smoking gun turned out to be from … residual tar in the lung 
+which is a mediator between smoking and lung cancer risk, as shown in Figure 10.
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_tar_dna.jpg){:width="400"}
+{: refdef}
+
+Since tar in the lung:
+* is a direct byproduct from smoking and not encoded in DNA and 
+* is a direct cause of increase of lung cancer 
+we can confidently conclude the likely risk of smoking to one’s health.
+
+Figure 10 illustrates that even without access to DNA data, 
+by measuring the amount of tar in lungs and associating it with smoking frequencies 
+and lung cancer outcomes we can infer causality of smoking to disease. 
+This sort of causal inference is possible thanks to understanding the relationships between the parameters, 
+i.e, the story behind the data.
 
 [To be continued ...]
