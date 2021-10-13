@@ -32,9 +32,11 @@ heart disease that had to be retracted in 2018 by the most prestigious of medica
 because not all participants were randomly recruited (see: [3](https://www.bmj.com/content/364/bmj.l341){:target="_blank"}, [4](https://phys.org/news/2018-07-beware-scientific-studiesmost-wrong.html){:target="_blank"}).  
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/start-ask-why/now_1950s.png){:width="400"}
+![image]({{ site.url }}/assets/start-ask-why/now_1950s.png){:width="600"}
 {: refdef}
-<center> **Figure 1**: We now appreciate that smoking adds risk to lung cancer, but this was not the case in the 1950s. </center><br>
+<center> Figure 1: We now appreciate that smoking adds risk to lung cancer, but this was not the case in the 1950s. </center><br>
+
+Test text{: style="color:gray; font-size: 80%; text-align: center;"}
 
 As for automated decision making, 
 many modern algorithms, such as neural networks, 
