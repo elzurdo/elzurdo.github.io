@@ -118,15 +118,17 @@ it should be an inspiration of a goal to aim for in any analysis and data driven
 The content of this blog post and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
 * [Slide Deck](https://bit.ly/start-ask-why){:target="_blank"}
-* [Recording of presentation at EuroPycon 2021](https://bit.ly/start-ask-why-europython){:target="_blank"}
+* [EuroPython presentation: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
+
+{:refdef: style="text-align: center;"}
+<img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
+{: refdef} 
+
+Or watch here! 
 
 {:refdef: style="text-align: center;"}
 <iframe width="756" height="567" src="https://www.youtube.com/embed/NzcCDUs7OTc" frameborder="0" allowfullscreen> </iframe>
 {: refdef} 
 
-
-{:refdef: style="text-align: center;"}
-<img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="500"> 
-{: refdef} 
 
 ---
