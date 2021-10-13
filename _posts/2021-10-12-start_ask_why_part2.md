@@ -154,7 +154,7 @@ The smoking gun turned out to be from … residual tar in the lung
 which is a mediator between smoking and lung cancer risk, as shown in Figure 10.
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_tar_dna.jpg){:width="400"}
+![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_tar_dna.jpg){:width="600"}
 {: refdef}
 
 Since tar in the lung:
