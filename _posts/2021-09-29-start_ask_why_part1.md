@@ -59,7 +59,7 @@ Not only can mishaps be dangerous but even more worrisome vulnerabilities may be
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/stop_sign.png){:width="400"}
 {: refdef}
-<center> Figure 2: The post-it on this stop sign triggered an image recognition software 
+<center> <b>Figure 2</b>: The post-it on this stop sign triggered<br>an image recognition software 
 to confidently declare it as a speed limit sign.<br>(Credit: WIRED)
  </center><br>
 
