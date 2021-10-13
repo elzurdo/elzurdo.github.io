@@ -92,7 +92,7 @@ For the more technical minded we will also provide pointers at how to climb the
 *Causality ladder*, as illustrated in Figure 3.
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/start-ask-why/causal_ladder.png){:width="600"}
+![image]({{ site.url }}/assets/start-ask-why/causal_ladder.png){:width="400"}
 {: refdef}
 <center> <b>Figure 3</b>: Judea Pearl’s Causal Ladder. Each rung represents a<br>
 different level of complexity of causal inference.<br> 
