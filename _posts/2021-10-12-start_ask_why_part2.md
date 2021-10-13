@@ -5,7 +5,7 @@ title:  "Start Asking Your Data 'Why?' - The Importance of the Story Behind the 
 
 This is the second of a four part series aimed at decision makers, technical or managerial, who would like to improve their skills by adding causal intuition to their tool box. 
 
-Here we describe the importance of the narrative behind the data.
+Here we demonstrate that causality requires an understanding of the narrative behind the data.
 
 ## Part 2 of 4 - The Importance of the Story Behind the Data
 **Causality is derived from understanding the essence of the data.**

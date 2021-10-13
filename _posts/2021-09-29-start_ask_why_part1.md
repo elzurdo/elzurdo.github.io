@@ -31,6 +31,10 @@ Another example is the famous 2013 study on the benefits of the Mediterranean di
 heart disease that had to be retracted in 2018 by the most prestigious of medical journals, 
 because not all participants were randomly recruited (see: [3](https://www.bmj.com/content/364/bmj.l341){:target="_blank"}, [4](https://phys.org/news/2018-07-beware-scientific-studiesmost-wrong.html){:target="_blank"}).  
 
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/now_1950s.png){:width="400"}
+{: refdef}
+<center> **Figure 1**: We now appreciate that smoking adds risk to lung cancer, but this was not the case in the 1950s. </center><br>
 
 As for automated decision making, 
 many modern algorithms, such as neural networks, 
@@ -67,7 +71,7 @@ without having to resort to expensive randomised control trials.[^2]
 In this series of posts you will learn how to add causal reasoning to your tool box.
 
 In the second post you will learn about the importance of describing 
-***the story behind data*** which will enable you to draw more meaningful conclusions.
+***the story behind the data*** which will enable you to draw more meaningful conclusions.
 
 This will be followed up by a post introducing ***Graph Models*** as a simple to understand 
 yet powerful visual aid to portray ***the story behind the data***. 
@@ -90,7 +94,7 @@ for the average female in the age range of 35-40, to be able to predict for your
 The content of this blog post and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
 * [Slide Deck](https://bit.ly/start-ask-why){:target="_blank"}
-* [Recording of presentation at EuroPython 2021](https://bit.ly/start-ask-why-europython){:target="_blank"}
+* [Recording of presentation at EuroPycon 2021](https://bit.ly/start-ask-why-europython){:target="_blank"}
 
 
 {:refdef: style="text-align: center;"}
