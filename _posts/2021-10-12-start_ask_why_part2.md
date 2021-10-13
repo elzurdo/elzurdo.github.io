@@ -76,12 +76,45 @@ between the target variable to improve (drowning rates), the intervention (life 
 as well as the story between the ice cream deliveries and the sales which requires demand and supply.
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="400"}
+![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="600"}
 {: refdef}
 
 The purpose of this figure is to show that between the three variables of interest ice cream sales, 
 the intervention variable of life guards and the target variable of drowning rates, 
 there might be a simple interpretation, or story, behind it. 
 In the third post, when we formally introduce graph models, we will show how this is the missing ingredient in the mainstream statistics vocabulary to discuss causality.
+
+
+### Mediators As Causal Smoking Guns
+
+Let’s turn to an engineer who is designing an improved fire alarm system. 
+A simple approach would be to collect data solely about fire (e.g, heat, height). 
+Such a rationale might be based on a relationship described in Figure 5.
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/fire_sound.png){:width="400"}
+{: refdef}
+
+In reality, however, this approach is naive as the alarm device is not triggered by the fire itself, 
+but rather the smoke it produces. 
+Hence *Fire Alarm* is a misnomer, and should be called a *Smoke Detector*. 
+We illustrate the relationships in Figure 6.
+
+{:refdef: style="text-align: center;"}
+![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="400"}
+{: refdef}
+
+Here we see that the smoke component is a mediator between the fire (what we are interested in learning about; or the treatment variable) 
+and the alarm - the outcome. 
+If, e.g, the smoke is ventilated away from the alarm it will not go off, even though the fire may be close by. 
+
+In other words, our engineer, when calibrating the gadget, 
+should not only measure parameters of fire, 
+but also smoke parameters (e.g, density of carbon monoxide).
+
+This simple idea of a mediator variable can be quite powerful as we shall see in the next example, 
+where we continue with the theme of smoke, this time that generated from burning of tobacco … 
+and human lungs.
+
 
 [To be continued ...]
