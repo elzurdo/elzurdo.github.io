@@ -96,7 +96,7 @@ For the more technical minded we will also provide pointers at how to climb the
 {: refdef}
 <center> <b>Figure 3</b>: Judea Pearl’s Causal Ladder. Each rung represents a<br>
 different level of complexity of causal inference.<br> 
-(Credit: <i>The Book of Why</i>)
+(Credit: <a href="http://bayes.cs.ucla.edu/WHY/">The Book of Why</a>)
  </center><br>
  
  We illustrate how the lowest rung symbolises the associative/correlation methods of analysis that 
