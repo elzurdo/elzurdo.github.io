@@ -144,7 +144,8 @@ development of lung cancer,  the tobacco industry cast doubt that it meant causa
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs.jpg){:width="400"}
 {: refdef}
 <center> <b>Figure 6</b>: Correlation analysis is suggestive at best.<br>
-The question still remains, however: Does smoking truly cause lung cancer? <br>
+The question still remains, however:<br>
+Does smoking truly add risk to getting lung cancer? <br>
 Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
 </center><br>
 
@@ -156,6 +157,11 @@ and increase risk of lung cancer.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_fork.png){:width="400"}
 {: refdef}
+<center> <b>Figure 7</b>: 
+The tobacco industry suggested a spurious correlation via a common cause in one's DNA.<br>
+(The astute reader will notice similarity with Figure 2.)<br>
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
+</center><br>
 
 Taking our lesson from the drowning rates example, 
 the tobacco industry was claiming spurious correlations.
@@ -170,6 +176,11 @@ the correct experimental settings, but wasn’t in the 1960’s.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_simpson.png){:width="400"}
 {: refdef}
+<center> <b>Figure 8</b>: 
+Alternative story behind the data:<br>
+multiple causes for lung cancer. How may they be disentangled?<br>
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
+</center><br>
 
 [^1]: We will discuss this controlling mechanism further in detail in the fourth post when we examine Simpson’s paradox.
 
@@ -179,6 +190,10 @@ which is a mediator between smoking and lung cancer risk, as shown in Figure 10.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_tar_dna.jpg){:width="600"}
 {: refdef}
+<center> <b>Figure 9</b>: 
+Tar in lung as a mediator variable resolves causality.  
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
+</center><br>
 
 Since tar in the lung:
 * is a direct byproduct from smoking and not encoded in DNA and 
@@ -197,4 +212,6 @@ Beautiful illustrations by:
 Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/) who is a Staff Software Engineer @ Babylon.
 
 <img src="https://user-images.githubusercontent.com/6064016/137285890-a65e491f-4eb3-4a51-9fb6-d2a02c8ec293.jpeg" alt="drawing" width="100"/>
+![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="200"}
+![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_fork.png){:width="200"}
