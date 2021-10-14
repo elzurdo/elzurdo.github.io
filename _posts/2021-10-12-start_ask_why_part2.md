@@ -5,7 +5,7 @@ title:  "Start Asking Your Data 'Why?' - The Importance of the Story Behind the 
 
 This is the second of a four part series aimed at decision makers, technical or managerial, who would like to improve their skills by adding causal intuition to their tool box. 
 
-In the [firsst post]({% post_url 2021-09-29-start_ask_why_part1 %}) we discussed why 
+In the [first post]({% post_url 2021-09-29-start_ask_why_part1 %}){:target="_blank"} we discussed why 
 causality is important in today's data driven society and what to expect from this series of posts.
 
 Here we demonstrate that causality requires an understanding of the narrative behind the data.

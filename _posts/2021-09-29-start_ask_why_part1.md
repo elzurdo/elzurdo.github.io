@@ -78,7 +78,7 @@ without having to resort to expensive randomised control trials.[^2]
  
 In this series of posts you will learn how to add causal reasoning to your tool box.
 
-In the [second post]({% post_url 2021-10-12-start_ask_why_part2 %}) you will learn about the importance of describing 
+In the [second post]({% post_url 2021-10-12-start_ask_why_part2 %}){:target="_blank"} you will learn about the importance of describing 
 ***the story behind the data*** which will enable you to draw more meaningful conclusions.
 
 This will be followed up by a post introducing ***Graph Models*** as a simple to understand 
@@ -112,7 +112,7 @@ it should be an inspiration of a goal to aim for in any analysis and data driven
 
 Enjoyed this post? 
 
-In [part 2]({% post_url 2021-10-12-start_ask_why_part2 %}) you will learn about the importance 
+In [part 2]({% post_url 2021-10-12-start_ask_why_part2 %}){:target="_blank"} you will learn about the importance 
 of understanding the **story behind the data** to draw causal conclusions. 
 
 ---
