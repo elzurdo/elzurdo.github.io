@@ -210,11 +210,22 @@ This sort of causal inference is possible thanks to understanding the relationsh
 i.e, the story behind the data.
 
 [To be continued ...]  
-
-This blog post is based on a presentation delivered in 2021.    
-![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"}   
+  
+    
+The content of this blog post and further information and resources are provided in
+my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*  
 * [Slide Deck: `bit.ly/start-ask-why`](https://bit.ly/start-ask-why){:target="_blank"}
 * [EuroPython recording: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
+
+![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
+
+{:refdef: style="text-align: center;"}
+<img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
+{: refdef} 
+
+{:refdef: style="text-align: center;"}
+<img src="https://secure.meetupstatic.com/photos/event/e/1/d/600_498843613.jpeg" width="400"> 
+{: refdef} 
 
 Beautiful illustrations by:   
 Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/) who is a Staff Software Engineer @ Babylon.

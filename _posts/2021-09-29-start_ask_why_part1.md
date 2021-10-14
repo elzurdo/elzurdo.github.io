@@ -128,6 +128,10 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
 {: refdef} 
 
+{:refdef: style="text-align: center;"}
+<img src="https://secure.meetupstatic.com/photos/event/e/1/d/600_498843613.jpeg" width="400"> 
+{: refdef} 
+
 Or watch here! 
 
 {:refdef: style="text-align: center;"}
