@@ -207,7 +207,32 @@ Figure 10 illustrates that even without access to DNA data,
 by measuring the amount of tar in lungs and associating it with smoking frequencies 
 and lung cancer outcomes we can infer causality of smoking to disease. 
 This sort of causal inference is possible thanks to understanding the relationships between the parameters, 
-i.e, the story behind the data.
+i.e, **the story behind the data**.
+
+
+### An Elephant In the Room Named Subjectivity
+
+![](https://thecomicninja.files.wordpress.com/2012/09/bizarro-the-elephant-in-the-room.jpg?w=584)
+
+
+Critics correctly point out that causality in general, and **the story behind the data** in particular, 
+is based on judgement calls. 
+In the three examples demonstrated above one can probably imagine different graphs to 
+describe the relationships between the parameters.
+
+I learned from research and predictive modeling experience that an analyst's job requires 
+making subjective decisions. The challenge is to ensure that those made are sound and 
+can adhere to the deliverable requirements. 
+For example, when dealing with a multi-modal distribution one should not naively quote 
+the mean value but rather understand the source of the modes. 
+
+In causal inference three points are worth considering in this regard:
+* Causality from data requires understanding the story behind it.
+* Constructing a narrative is subjective
+* Subjective assumptions may be tested
+
+We will address testing for assumptions in the third post when we discuss Graph Models.
+
 
 [To be continued ...]  
   
