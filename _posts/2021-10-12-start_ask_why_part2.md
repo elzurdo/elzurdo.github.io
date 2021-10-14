@@ -211,6 +211,11 @@ i.e, the story behind the data.
 
 [To be continued ...]  
 
+This blog post is based on a presentation delivered in 2021.    
+![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"}   
+* [Slide Deck: `bit.ly/start-ask-why`](https://bit.ly/start-ask-why){:target="_blank"}
+* [EuroPython recording: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
+
 Beautiful illustrations by:   
 Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/) who is a Staff Software Engineer @ Babylon.
 
