@@ -86,7 +86,7 @@ as well as the story between the ice cream deliveries and the sales which requir
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="800"}
 {: refdef}
-<center> <b>Figure 4</b>: The true story behind the data probably requires further details<br>
+<center> <b>Figure 4</b>: The true story behind the data is likely to be detailed<br>
 Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> </center><br>
 
 
@@ -143,7 +143,7 @@ development of lung cancer,  the tobacco industry cast doubt that it meant causa
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs.jpg){:width="400"}
 {: refdef}
-<center> <b>Figure 6</b>: Correlation analysis is suggestive at best.<br>
+<center> <b>Figure 7</b>: Correlation analysis is suggestive at best.<br>
 The question still remains, however:<br>
 Does smoking truly add risk to getting lung cancer? <br>
 Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
@@ -157,7 +157,7 @@ and increase risk of lung cancer.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_fork.png){:width="400"}
 {: refdef}
-<center> <b>Figure 7</b>: 
+<center> <b>Figure 8</b>: 
 The tobacco industry suggested a spurious correlation via a common cause in one's DNA.<br>
 (The astute reader will notice similarity with Figure 2.)<br>
 Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
@@ -176,7 +176,7 @@ the correct experimental settings, but wasn’t in the 1960’s.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_simpson.png){:width="400"}
 {: refdef}
-<center> <b>Figure 8</b>: 
+<center> <b>Figure 9</b>: 
 Alternative story behind the data:<br>
 multiple causes for lung cancer. How may they be disentangled?<br>
 Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
@@ -190,8 +190,8 @@ which is a mediator between smoking and lung cancer risk, as shown in Figure 10.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_tar_dna.jpg){:width="600"}
 {: refdef}
-<center> <b>Figure 9</b>: 
-Tar in lung as a mediator variable resolves causality.  
+<center> <b>Figure 10</b>: 
+Tar in lung as a mediator variable resolves causality.<br>  
 Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
 </center><br>
 
