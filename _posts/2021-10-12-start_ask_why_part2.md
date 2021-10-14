@@ -237,8 +237,8 @@ We will address testing for assumptions in the third post when we discuss Graph 
 
 #### Summary
 
-To conclude this first post, we have demonstrated that data on its own is a first good step, 
-but it is limited to association. 
+To conclude this second post, we have demonstrated that data on its own is a first good step, 
+but on their own data is limited to association analyses. 
 To unveil causality one has to identify how the data might have been generated.  
 We saw, e.g, that ice cream sales and drowning rates depend on a common cause parameter, 
 the weather, not on each other. 
@@ -259,16 +259,16 @@ Or put in another way, paraphrasing Pearl:
 <center> “The story behind the data is as important as the data itself” </center><br>
 
 
-If you enjoyed this post, we highly recommend its follow up. 
-Whereas here we demonstrated examples using figures, 
-in the next we formally define this visualisation tool as a Graph Model. 
+If you enjoyed this post, I recommend its follow up. 
+Whereas here I demonstrated examples using figures, 
+in the next this visualisation tool will be formally defined as a Graph Model. 
 Pearl correctly articulated that Graph Models are the vocabulary missing from standard 
 statistics textbooks to discuss causality. 
 By mastering Graph Models you and your team are sure to improve data 
 interpretation as well as design better and more cost effective experiments and 
 ultimately obtain more value from your data.
 
-🚧 Sorry, the Graph Model post is under construction.👷
+🚧 Sorry, the Graph Model post is under construction ... 👷
  
   
     
