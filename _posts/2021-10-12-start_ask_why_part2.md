@@ -234,7 +234,42 @@ In causal inference three points are worth considering in this regard:
 We will address testing for assumptions in the third post when we discuss Graph Models.
 
 
-[To be continued ...]  
+
+#### Summary
+
+To conclude this first post, we have demonstrated that data on its own is a first good step, 
+but it is limited to association. 
+To unveil causality one has to identify how the data might have been generated.  
+We saw, e.g, that ice cream sales and drowning rates depend on a common cause parameter, 
+the weather, not on each other. 
+In both smoke examples (alarm and lung cancer) we also pointed out that sometimes we need to collect additional data, 
+in the form of a mediating variable, to solidify conclusions about cause and effect.
+
+Through examples like these you will realise that the common associative inferences, 
+which are limited in capacity for decision making, may be overcome. 
+Causal inference is not promised in all settings, but should be set as a goal. 
+
+So when designing your next analysis, it is worthwhile to paraphrase statistician William E. Denim:
+
+<center> “In [deity] we trust, all others bring data … and the story behind it!” </center><br>
+
+
+Or put in another way, paraphrasing Pearl:
+
+<center> “The story behind the data is as important as the data itself” </center><br>
+
+
+If you enjoyed this post, we highly recommend its follow up. 
+Whereas here we demonstrated examples using figures, 
+in the next we formally define this visualisation tool as a Graph Model. 
+Pearl correctly articulated that Graph Models are the vocabulary missing from standard 
+statistics textbooks to discuss causality. 
+By mastering Graph Models you and your team are sure to improve data 
+interpretation as well as design better and more cost effective experiments and 
+ultimately obtain more value from your data.
+
+🚧 Sorry, the Graph Model post is under construction.👷
+ 
   
     
 The content of this blog post and further information and resources are provided in
