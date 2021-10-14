@@ -54,9 +54,10 @@ where the arrow indicates the direction of causality
 (the weather determines both drowning rates and ice cream sales, not vice versa).
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_simple.jpg){:width="400"}
+![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_simple.jpg){:width="500"}
 {: refdef}
-<center> <b>Figure 2</b>: The weather is a common cause for both drowning rates and sales<br>Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> </center><br>
+<center> <b>Figure 2</b>: The weather is a common cause for both drowning rates and sales<br>
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> </center><br>
 
 
 In Figure 3 we display the same data as in Figure 1 but use symbols to represent sunny 
@@ -83,8 +84,11 @@ between the target variable to improve (drowning rates), the intervention (life 
 as well as the story between the ice cream deliveries and the sales which requires demand and supply.
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="600"}
+![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="800"}
 {: refdef}
+<center> <b>Figure 4</b>: The true story behind the data probably requires further details<br>
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> </center><br>
+
 
 The purpose of this figure is to show that between the three variables of interest ice cream sales, 
 the intervention variable of life guards and the target variable of drowning rates, 
@@ -101,6 +105,11 @@ Such a rationale might be based on a relationship described in Figure 5.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/fire_sound.png){:width="400"}
 {: refdef}
+<center> <b>Figure 5</b>: Does fire truly cause the sound to alarm?<br>
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
+</center><br>
+
+
 
 In reality, however, this approach is naive as the alarm device is not triggered by the fire itself, 
 but rather the smoke it produces. 
@@ -110,6 +119,9 @@ We illustrate the relationships in Figure 6.
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="600"}
 {: refdef}
+<center> <b>Figure 6</b>: Smoke causes the sound to alarm, not fire.<br>
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
+</center><br>
 
 Here we see that the smoke component is a mediator between the fire (what we are interested in learning about; or the treatment variable) 
 and the alarm - the outcome. 
@@ -131,6 +143,10 @@ development of lung cancer,  the tobacco industry cast doubt that it meant causa
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs.jpg){:width="400"}
 {: refdef}
+<center> <b>Figure 6</b>: Correlation analysis is suggestive at best.<br>
+The question still remains, however: Does smoking truly cause lung cancer? <br>
+Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> 
+</center><br>
 
 They further suggested a possible unobserved variable that might be the cause, 
 perhaps a  lung cancer gene. Their story behind the data might have looked something 
