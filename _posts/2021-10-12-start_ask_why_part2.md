@@ -171,5 +171,4 @@ i.e, the story behind the data.
 [To be continued ...]  
 
 Beautiful illustrations by:   
-Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/) who is a Staff Software Engineer @ Babylon.
-
+Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/) who is a Staff Software Engineer @ Babylon
