@@ -168,4 +168,8 @@ and lung cancer outcomes we can infer causality of smoking to disease.
 This sort of causal inference is possible thanks to understanding the relationships between the parameters, 
 i.e, the story behind the data.
 
-[To be continued ...]
+[To be continued ...]  
+
+Beautiful illustrations by:   
+Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/) who is a Staff Software Engineer @ Babylon.
+
