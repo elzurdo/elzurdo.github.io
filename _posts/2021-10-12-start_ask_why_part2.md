@@ -27,11 +27,14 @@ Those familiar with his writings and learnings will identify that we borrow some
 
 Imagine that you work in a council of a city with a beach and want to reduce drowning rates by improving the scheduling for lifeguards. How would you budget for their schedules? What seems like a quite obvious question for human beings is not for a machine.
 
-If you feed a standard associative algorithm (e.g. linear regression, neural network or a graph   model) drowning rate data, and other variables in the city, if available, it would highlight a strong correlation with the sales of ice cream. In Figure 1 we visualise such a correlation using made up, but plausible, data, where each point is the value of drowning rates and ice cream sales for a given week.
+If you feed a standard associative algorithm (e.g. linear regression, neural network or a graph model) drowning rate data, 
+and other variables in the city, if available, it would highlight a strong correlation with the sales of ice cream. 
+In Figure 1 we visualise such a correlation using made up, but plausible, data, where each point is the value of drowning rates and ice cream sales for a given week.
 
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/ice-cream-drowning-rates-graph-unclassified.png){:width="400"}
 {: refdef}
+<center> <b>Figure 1</b>: The data suggests a correlation between the variables. Does this imply causation? </center><br>
 
 In this graph we clearly identify the correlation picked up by the algorithm. 
 But does one truly cause the other? Surely common intuition tells us that these two are independent, 
@@ -53,6 +56,8 @@ where the arrow indicates the direction of causality
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_simple.jpg){:width="400"}
 {: refdef}
+<center> <b>Figure 2</b>: The weather is a common cause for both drowning rates and sales<br>Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">James Barker</a> </center><br>
+
 
 In Figure 3 we display the same data as in Figure 1 but use symbols to represent sunny 
 (yellow suns faces) or chilli days (blue freezing faces).
@@ -60,6 +65,8 @@ In Figure 3 we display the same data as in Figure 1 but use symbols to represent
 {:refdef: style="text-align: center;"}
 ![image]({{ site.url }}/assets/start-ask-why/ice-cream-drowning-rates-graph-classified.png){:width="400"}
 {: refdef}
+<center> <b>Figure 3</b>: Same data as Figure 1, but now highlighting the weather component.<br>We learn that the correlation in Figure 1 was spurious.</center><br>
+
 
 This clearly shows that by controlling for the weather parameter, i.e by highlighting its importance, 
 these parameters are independent. 
