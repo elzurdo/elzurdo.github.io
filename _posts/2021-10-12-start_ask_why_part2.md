@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Start Asking Your Data 'Why?' - The Importance of the Story Behind the Data (part 2/4)"
+title:  "Start Asking Your Data 'Why?' - The Importance Of The Story Behind The Data (Part 2/4)"
 ---
 {:refdef: style="text-align: center;"}
 ![rube goldberg machine](https://user-images.githubusercontent.com/6064016/137504966-875c898b-6c09-4c45-a801-97c3ff240914.png)

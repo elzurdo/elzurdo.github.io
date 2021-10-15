@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Start Asking Your Data 'Why?' - A Gentle Intro To Causal Inference (part 1/4)"
+title:  "Start Asking Your Data 'Why?' - A Gentle Intro To Causal Inference (Part 1/4)"
 ---
 {:refdef: style="text-align: center;"}
 ![rube goldberg machine](https://user-images.githubusercontent.com/6064016/137504966-875c898b-6c09-4c45-a801-97c3ff240914.png)
