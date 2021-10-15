@@ -2,13 +2,18 @@
 layout: post
 title:  "Start Asking Your Data 'Why?' - The Importance of the Story Behind the Data (part 2/4)"
 ---
+{:refdef: style="text-align: center;"}
+![rube goldberg machine](https://user-images.githubusercontent.com/6064016/137503758-bfba48f5-d05c-4fc7-926c-29b6926c7188.png)
+{: refdef}
 
-This is the second of a four part series aimed at decision makers, technical or managerial, who would like to improve their skills by adding causal intuition to their tool box. 
 
-In the [first post]({% post_url 2021-09-29-start_ask_why_part1 %}){:target="_blank"} we discussed why 
-causality is important in today's data driven society and what to expect from this series of posts.
+*This is the second of a four part series aimed at decision makers, technical or managerial, 
+who would like to improve their skills by adding causal intuition to their tool box.* 
 
-Here we demonstrate that causality requires an understanding of the narrative behind the data.
+*In the [first post]({% post_url 2021-09-29-start_ask_why_part1 %}){:target="_blank"} we discussed why 
+causality is important in today's data driven society and what to expect from this series of posts.*
+
+*Here we demonstrate that causality requires an understanding of the narrative behind the data.*
 
 ## The Importance of the Story Behind the Data
 **Causality is derived from understanding the essence of the data.**
@@ -286,7 +291,7 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 
 
 Beautiful illustrations by:   
-Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/) who is a Staff Software Engineer @ Babylon.
+Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target="_blank"} who is a Staff Software Engineer @ Babylon.
 
 <img src="https://user-images.githubusercontent.com/6064016/137285890-a65e491f-4eb3-4a51-9fb6-d2a02c8ec293.jpeg" alt="drawing" width="100"/>
 ![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="200"}

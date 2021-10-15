@@ -2,10 +2,14 @@
 layout: post
 title:  "Start Asking Your Data 'Why?' - A Gentle Intro To Causal Inference (part 1/4)"
 ---
+{:refdef: style="text-align: center;"}
+![rube goldberg machine](https://user-images.githubusercontent.com/6064016/137503758-bfba48f5-d05c-4fc7-926c-29b6926c7188.png)
+{: refdef}
 
-This is the first of a four part series aimed at decision makers, technical or managerial, who would like to improve their skills by adding causal intuition to their tool box. 
+*This is the first of a four part series aimed at decision makers, technical or managerial, 
+who would like to improve their skills by adding causal intuition to their tool box.*
 
-Here we describe the importance of causal thinking and what to expect from this series.
+*Here we describe the importance of causal thinking and what to expect from this series.*
 
 ## Why Ask *“Why?”*
 **Causal inference techniques may result in more meaningful results than the common associative interpretation of data.**
@@ -110,9 +114,8 @@ different level of complexity of causal inference.<br>
 Finally we emphasise that whereas causal inference is not always possible, 
 it should be an inspiration of a goal to aim for in any analysis and data driven decision making.
 
-Enjoyed this post? 
 
-In [part 2]({% post_url 2021-10-12-start_ask_why_part2 %}){:target="_blank"} you will learn about the importance 
+In the [next post]({% post_url 2021-10-12-start_ask_why_part2 %}){:target="_blank"} you will learn about the importance 
 of understanding the **story behind the data** to draw causal conclusions. 
 
 ---
