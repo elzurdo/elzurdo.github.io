@@ -17,7 +17,7 @@ sequence space to discover therapeutic proteins,
 I discuss Pareto Front optimisation using Evolutionary Algorithms. 
 In particular, I highlight [`DEAP`](https://github.com/DEAP/deap){:target="_blank"}, a Python platform for prototyping.
 
-Watch on [YouTube][pydata2019-talk], 
+Watch on [YouTube][pydata2019-talk]{:target="_blank"}, 
 or here:
 
 {:refdef: style="text-align: center;"}
