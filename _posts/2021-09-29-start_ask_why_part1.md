@@ -153,13 +153,13 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 
 
 {:refdef: style="text-align: center;"}
-<a href="https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/">
+<a href="https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/" target="_blank">
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
 </a>
 {: refdef} 
 
 {:refdef: style="text-align: center;"}
-<a href="https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/">
+<a href="https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/" target="_blank">
 <img src="https://secure.meetupstatic.com/photos/event/e/1/d/600_498843613.jpeg" width="400"> 
 </a>
 {: refdef} 
