@@ -122,6 +122,8 @@ of understanding the **story behind the data** to draw causal conclusions.
 
 ## The Story Behind This Series
 
+![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
+
 As a data scientist, in late 2020 I decided to add causal inference to my statistical toolbox 
 to improve how I facilitate stakeholders to make data driven decisions.
 
@@ -151,11 +153,15 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 
 
 {:refdef: style="text-align: center;"}
+<a href="https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/">
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
+</a>
 {: refdef} 
 
 {:refdef: style="text-align: center;"}
+<a href="https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/">
 <img src="https://secure.meetupstatic.com/photos/event/e/1/d/600_498843613.jpeg" width="400"> 
+</a>
 {: refdef} 
 
 
@@ -165,9 +171,5 @@ Alternatively you can watch the EuroPython presentation here. No background in p
 {:refdef: style="text-align: center;"}
 <iframe width="756" height="567" src="https://www.youtube.com/embed/NzcCDUs7OTc" frameborder="0" allowfullscreen> </iframe>
 {: refdef} 
-
-For completeness this is a list of abstracts of when and where this material has been presented: 
-* [EuroPython abstract](https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/)
-* [PyData Global abstract](https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/)
 
 ---

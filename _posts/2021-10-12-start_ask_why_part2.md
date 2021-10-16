@@ -285,10 +285,13 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 ![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
 
 
+<a href="https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/">
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
+</a>
 <br>
+<a href="https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/">
 <img src="https://secure.meetupstatic.com/photos/event/e/1/d/600_498843613.jpeg" width="400"> 
-
+</a>
 
 Beautiful illustrations by:   
 Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target="_blank"} who is a Staff Software Engineer @ Babylon.
