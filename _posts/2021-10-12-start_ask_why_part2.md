@@ -300,4 +300,4 @@ Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target=
 
 
 The story behind this series is detailed in the 
-[first post]({% post_url 2021-09-29-start_ask_why_part1#the-story-behind-this-series %}){:target="_blank"}.
+[first post]({% post_url 2021-09-29-start_ask_why_part1 %}){:target="_blank"}.
