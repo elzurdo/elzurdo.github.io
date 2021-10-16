@@ -6,6 +6,8 @@ layout: home
 ---
 Welcome to my blog! My name is Eyal.   
 
+![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
+
 Here you can read about my love for anything about inference, 
 e.g,  causality, information visualisation machine/deep learning 
 and other mind blowing techniques like optimisation.  
