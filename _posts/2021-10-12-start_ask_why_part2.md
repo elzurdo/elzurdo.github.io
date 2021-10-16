@@ -297,3 +297,7 @@ Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target=
 ![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_fork.png){:width="200"}
+
+
+The story behind this series is detailed in the 
+[first post]({% post_url 2021-09-29-start_ask_why_part1#the-story-behind-this-series %}){:target="_blank"}.

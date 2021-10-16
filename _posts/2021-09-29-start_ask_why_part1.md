@@ -153,12 +153,10 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 {:refdef: style="text-align: center;"}
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
 {: refdef} 
-[EuroPython abstract](https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/)
 
 {:refdef: style="text-align: center;"}
 <img src="https://secure.meetupstatic.com/photos/event/e/1/d/600_498843613.jpeg" width="400"> 
 {: refdef} 
-[PyData Global abstract](https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/)
 
 
 
@@ -168,5 +166,8 @@ Alternatively you can watch the EuroPython presentation here. No background in p
 <iframe width="756" height="567" src="https://www.youtube.com/embed/NzcCDUs7OTc" frameborder="0" allowfullscreen> </iframe>
 {: refdef} 
 
+For completeness this is a list of abstracts of when and where this material has been presented: 
+* [EuroPython abstract](https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/)
+* [PyData Global abstract](https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/)
 
 ---
