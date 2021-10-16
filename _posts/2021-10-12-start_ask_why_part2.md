@@ -3,7 +3,7 @@ layout: post
 title:  "Start Asking Your Data 'Why?' - The Importance Of The Story Behind The Data (Part 2/4)"
 ---
 {:refdef: style="text-align: center;"}
-![rube goldberg machine](https://user-images.githubusercontent.com/6064016/137504966-875c898b-6c09-4c45-a801-97c3ff240914.png)
+![image]({{ site.url }}/assets/start-ask-why/rube_goldberg_machine.png)
 {: refdef}
 
 
@@ -216,9 +216,9 @@ i.e, **the story behind the data**.
 
 
 ### An Elephant In the Room Named Subjectivity
-
+{:refdef: style="text-align: center;"}
 ![](https://thecomicninja.files.wordpress.com/2012/09/bizarro-the-elephant-in-the-room.jpg?w=584)
-
+{: refdef}
 
 Critics correctly point out that causality in general, and **the story behind the data** in particular, 
 is based on judgement calls. 
