@@ -120,22 +120,49 @@ of understanding the **story behind the data** to draw causal conclusions.
 
 ---
 
-## Anymore for anymore?
+## The Story Behind This Series
 
-The content of this blog post and further information and resources are provided in
+As a data scientist, in late 2020 I decided to add causal inference to my statistical toolbox 
+to improve how I facilitate stakeholders to make data driven decisions.
+
+For this purpose I formed in my company a study group in which we covered [Pearl's Primer textbook](http://bayes.cs.ucla.edu/PRIMER){:target="_blank"} 
+within six sessions. This resulted in both improved interpretation of analyses as well 
+as experiment design. 
+
+I found myself advocating for the learnings from the study group in numerous circles so 
+much so I figured, as the saying goes:
+
+<center> “If you repeat something for a third time, you might as well write a blog post.” </center><br>
+
+
+Hence this series.
+
+To that I'd like to add
+
+<center> “Fifth time? Write a talk proposal.” </center><br>
+  
+Which I did. In 2021 I was fortunate to have the opportunity to present both internally at work, 
+as well as two outreach talks globally (virtually).
+
+The content of this series and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
 * [Slide Deck: `bit.ly/start-ask-why`](https://bit.ly/start-ask-why){:target="_blank"}
 * [EuroPython recording: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
 
+
 {:refdef: style="text-align: center;"}
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
 {: refdef} 
+[EuroPython abstract](https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/)
 
 {:refdef: style="text-align: center;"}
 <img src="https://secure.meetupstatic.com/photos/event/e/1/d/600_498843613.jpeg" width="400"> 
 {: refdef} 
+[PyData Global abstract](https://pydata.org/global2021/schedule/presentation/29/start-asking-your-data-why-a-gentle-introduction-to-causal-inference/)
 
-Or watch here! 
+
+
+Alternatively you can watch the EuroPython presentation here. No background in python or statistics is required.
 
 {:refdef: style="text-align: center;"}
 <iframe width="756" height="567" src="https://www.youtube.com/embed/NzcCDUs7OTc" frameborder="0" allowfullscreen> </iframe>
