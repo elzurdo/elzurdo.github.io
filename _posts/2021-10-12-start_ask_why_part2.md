@@ -275,15 +275,15 @@ ultimately obtain more value from your data.
 
 🚧 Sorry, the Graph Model post is under construction ... 👷
  
-  
-    
+ ---
+ 
+ ## The Story Behind This Post
+![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
+
 The content of this blog post and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*  
 * [Slide Deck: `bit.ly/start-ask-why`](https://bit.ly/start-ask-why){:target="_blank"}
 * [EuroPython recording: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
-
-![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
-
 
 <a href="https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/" target="_blank">
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
