@@ -275,7 +275,7 @@ ultimately obtain more value from your data.
 
 🚧 Sorry, the Graph Model post is under construction ... 👷
  
- ---
+---
  
  ## The Story Behind This Post
 ![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
