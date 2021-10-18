@@ -275,9 +275,11 @@ ultimately obtain more value from your data.
 
 🚧 Sorry, the Graph Model post is under construction ... 👷
  
+ 
 ---
  
- ## The Story Behind This Post
+## The Story Behind This Post
+ 
 ![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
 
 The content of this blog post and further information and resources are provided in
