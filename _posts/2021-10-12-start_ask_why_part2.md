@@ -296,7 +296,7 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 </a>
 
 Beautiful illustrations by:   
-Doodle master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target="_blank"} who is a Staff Software Engineer @ Babylon.
+Doodle Master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target="_blank"} who is a Staff Software Engineer @ Babylon.
 
 <img src="https://user-images.githubusercontent.com/6064016/137285890-a65e491f-4eb3-4a51-9fb6-d2a02c8ec293.jpeg" alt="drawing" width="100"/>
 ![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="200"}
