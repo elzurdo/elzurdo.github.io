@@ -14,4 +14,9 @@ As presented at the Institute of Theoretical Astrophysics Oslo.
 
 One interesting fact is that there was a participant that had hearing problems, so my every word was translated to sign language by a translater and her assistent.  
 
-[YouTube](https://tinyurl.com/tfxr6t4)
+{:refdef: style="text-align: center;"}
+<iframe width="756" height="567" src="https://www.youtube.com/embed/yDvJbG9za4Y" frameborder="0" allowfullscreen> </iframe>
+{: refdef} 
+
+
+Or watch on [YouTube](https://tinyurl.com/tfxr6t4)
