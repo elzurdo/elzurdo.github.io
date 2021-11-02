@@ -304,7 +304,7 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 Beautiful illustrations by:   
 Doodle Master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target="_blank"} who is a Staff Software Engineer @ Babylon.
 
-![image]({{ site.url }}/assets/start-ask-why/james_barker.jpg)
+![image]({{ site.url }}/assets/start-ask-why/james_barker.jpg){:width="50"}
 ![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_fork.png){:width="200"}
