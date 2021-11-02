@@ -205,7 +205,8 @@ Credit: <a href="https://www.linkedin.com/in/silvershnoop/" target="_blank">Jame
 
 Since tar in the lung:
 * is a direct byproduct from smoking and not encoded in DNA and 
-* is a direct cause of increase of lung cancer 
+* is a direct cause of increase of lung cancer, 
+
 we can confidently conclude the likely risk of smoking to one’s health.
 
 Figure 10 illustrates that even without access to DNA data, 
@@ -273,7 +274,7 @@ By mastering Graph Models you and your team are sure to improve data
 interpretation as well as design better and more cost effective experiments and 
 ultimately obtain more value from your data.
 
-🚧 Sorry, the Graph Model post is under construction ... 👷
+🚧  Sorry, the Graph Model post is under construction ... 👷
  
  
 ---
@@ -282,10 +283,15 @@ ultimately obtain more value from your data.
  
 ![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
 
+The story behind this series is detailed in the 
+[first post]({% post_url 2021-09-29-start_ask_why_part1 %}){:target="_blank"}.
+
 The content of this blog post and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*  
 * [Slide Deck: `bit.ly/start-ask-why`](https://bit.ly/start-ask-why){:target="_blank"}
-* [EuroPython recording: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
+* [EuroPython recording: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}
+* [PyData Global recording](https://zoom.us/rec/share/yPATxs1QUqLhQCNhFEQ7WDvUDMhDB7iNoNaDFSvvm3JaXXsyL92X6LRNTsoumxvj.6z4xmAkawqvtrPZr?startTime=1635413557000){:target="_blank"}
+
 
 <a href="https://ep2021.europython.eu/talks/3hhnEFT-a-gentle-introduction-to-causal-inference/" target="_blank">
 <img src="https://ep2021.europython.eu/static/img/ep2021-social-online-card.jpg" width="400"> 
@@ -298,11 +304,8 @@ my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causa
 Beautiful illustrations by:   
 Doodle Master [James Barker](https://www.linkedin.com/in/silvershnoop/){:target="_blank"} who is a Staff Software Engineer @ Babylon.
 
-<img src="https://user-images.githubusercontent.com/6064016/137285890-a65e491f-4eb3-4a51-9fb6-d2a02c8ec293.jpeg" alt="drawing" width="100"/>
+![image]({{ site.url }}/assets/start-ask-why/james_barker.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/sunny_pgm_detailed.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/fire_smoke_sound.jpg){:width="200"}
 ![image]({{ site.url }}/assets/start-ask-why/cigarette_lungs_dna_fork.png){:width="200"}
 
-
-The story behind this series is detailed in the 
-[first post]({% post_url 2021-09-29-start_ask_why_part1 %}){:target="_blank"}.

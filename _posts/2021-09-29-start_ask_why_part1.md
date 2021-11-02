@@ -150,6 +150,7 @@ The content of this series and further information and resources are provided in
 my presentation: *Start Asking Your Data 'Why?' - A Gentle Introduction to Causal Inference*
 * [Slide Deck: `bit.ly/start-ask-why`](https://bit.ly/start-ask-why){:target="_blank"}
 * [EuroPython recording: `bit.ly/start-ask-why-europython`](https://bit.ly/start-ask-why-europython){:target="_blank"}.
+* [PyData Global recording](https://zoom.us/rec/share/yPATxs1QUqLhQCNhFEQ7WDvUDMhDB7iNoNaDFSvvm3JaXXsyL92X6LRNTsoumxvj.6z4xmAkawqvtrPZr?startTime=1635413557000){:target="_blank"}
 
 
 {:refdef: style="text-align: center;"}
