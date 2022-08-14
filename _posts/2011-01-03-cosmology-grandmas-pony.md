@@ -8,7 +8,7 @@ title: "My Cosmology Research - A Pony For My Grandmother"
 > Pony - a literal translation of a foreign-language text, used illicitly by students  
 
 ![Alt Text .gif](https://media.giphy.com/media/3o7TKI8StknO4vrUas/giphy.gif){:width="1000"}
-*The is a video of Albert Einstein peering through Edwin Hubble's telescope at the Mount Wilson Observatory. My job was to analyse theories created by theoretical physicists like Einstein and see how well they agree with astronomical data obtained by observers like Hubble.*
+*Video of Albert Einstein peering through Edwin Hubble's telescope at the Mount Wilson Observatory. My job was to analyse theories created by theoretical physicists like Einstein and see how well they agree with astronomical data obtained by observers like Hubble.*
 
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/1/14/Monster_in_the_deep.jpg){:width="1000"}
