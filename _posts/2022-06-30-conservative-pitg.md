@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Don't Stop 'till You Get Enough - Introducing Conservative Precision Is The Goal"
+title:  "More Conclusive Hypothesis Testing By Introduction Of Conservative Precision Is The Goal "
 ---
 
 # 
