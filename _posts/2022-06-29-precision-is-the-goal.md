@@ -13,20 +13,18 @@ This is especially true with sequential testing where demands for quick results 
 
 Hypothesis testing may come off as a dark art. On the one hand, data collection is expensive. On the other, small data sets may not yield enough statistical significance to draw meaningful conclusions. Combining these constraints with stakeholder requirements for quick answers from data makes the task of choosing the sample size stopping criterion a challenging balancing act.
 
-
 This is especially true if the data is collected in a sequential manner, where a person, or an algorithm needs to determine when to stop collecting data to satisfy the project requirements without introducing confirmation bias.
-
 
 This post is targeted to anyone involved in experimentation, technical or managerial, and is interested in improving how they plan an experiment budget and conduct post data collection interpretation. 
 
-A basic understanding of statistics and hypothesis testing experience are nice-to-haves but not essential as I will outline the basics.  
+[//]: <>  (A basic understanding of statistics and hypothesis testing experience are nice-to-haves but not essential as I will outline the basics.)  
 
-You will learn why even though Bayesian approaches are more reliable than Frequentist ones for small data sets they do not magically solve the problem of confirmation bias. 
+[//]: <>  (You will learn why even though Bayesian approaches are more reliable than Frequentist ones for small data sets they do not magically solve the problem of confirmation bias. )
 
 This will be followed with an introduction to John Kruschke's “Precision is the Goal” method, where by determining in advance the experiment expected precision level yields robust results.
 
 ## Hypothesis Testing in a Nutshell
-Hypothesis testing may considered a scientific methodology to answer a question about a system by the collection and interpretation of relevant data.
+Hypothesis testing may be considered a scientific methodology to answer a question about a system by the collection and interpretation of relevant data.
 
 Two common goals of hypothesis testing are:
 * To rule out a baseline hypothesis, often referred to as a *null hypothesis*
@@ -68,7 +66,7 @@ One of the key questions for the designer of an experiment is the sample size.
 
 Stakeholders want reliable results at minimal cost, which is normally a balancing act because on 
 the one hand data might be costly, in monetary terms, time or both. 
-On the other statistical power, the probability of the sample result to convey the truth of the population,
+On the other, statistical power, the probability of the sample result to convey the truth of the population,
 benefits from more data.  
 
 In some domains there is also a need to stop collecting as soon as possible for ethical reasons. 
@@ -79,18 +77,38 @@ E.g, a clinician that suspsects that a new drug might have deleterious effects.
 
 ## The Problem with the Most Common Method - NHST
 
-* Non intuitive
+The *Null Hypothesis Significance Test* (NHST) is by far the most popular method used. Unfortunately this frequentist approach has many flaws that, due to lack of understanding, causes it to be misused. This is the subject of another post (LINK). Here I briefly highlight key issues.
+
+* Non intuitive - most non experts who use the method do not understand it and just plug-n'-play wishing for the best (or *winging it* ...). This causes ??? since as [p-hacking](https://en.wikipedia.org/wiki/Misuse_of_p-values).
 * Cannot accept null hypotheses
 * Yields 100% false alarms (... with infinite patients ...) 
 
+
+In a hisotircal sense NHST was created before the advent of the computer, when statisticians, e.g, its creator Fisher, calculated everything by hand. .... main point to stress: we have better technologies today, so should probably not use when dealing with small N.
+
+
 ## Bayesian is Better but does not Magically Rid of Bias
 
-### Highest Density Interval (HDI)
+We are in the midst of the Bayesian statistical revolution which provides richer in detail information in analysis. Some think that using a Bayesian approach, which I'll later define, magically solves for problems stated above. In the following I argue that there are multiple Bayesian approaches, and that the most common ones, even though better than Frequentist, still pertain confirmation bias.
 
-### Region of Practical Equivalence (ROPE)
+First, though, we should refreshen our understanding between Bayes and Frequentist approaches.
+
+### Frequentist vs. Bayesian Statistics
+
+
+### HDI with ROPE
 
 * Can accept null hypotheses
 * May incorrectly reject the null hypothesis 
+
+#### Highest Density Interval (HDI)
+
+#### Region of Practical Equivalence (ROPE)
+
+
+
+
+
 
 ## Precision is the Goal
 
