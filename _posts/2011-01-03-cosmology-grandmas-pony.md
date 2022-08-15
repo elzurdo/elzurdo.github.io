@@ -85,7 +85,7 @@ Earlier this year I have compled a second analysis on this “standing wave”, 
 I feel very fortunate to have find my way (by mistake…), to the forefront of cosmology. I am in the interesting phase where experts are taking my analysis seriously, and consider me an expert on the matter, where only five years ago I didn’t even know astronomy … Go figure… I realize that not everyone can spend their days thinking about and working on things I do, and am very grateful to all my educators who put my on this random, but exciting track.
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/7/71/2dfgrs.png){:width="1000"}
-*Distance galaxies as dots on the screen.: This is what the data that I analysed looked like more or less. The reason for the large void is due to survey coverage. The SDSS covered about one fourth of the night sky.*
+*Distance galaxies as dots on the screen. This is what the data that I analysed looked like more or less. The reason for the large void is due to survey coverage. The SDSS covered about one fourth of the night sky.*
 
 
 
