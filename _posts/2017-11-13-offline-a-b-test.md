@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Case Study: An Offline A/B Test"
+title: "No Gut (Intuition) No Glory: My First A/B Test"
 --- 
 
 One of the holy grails of Data Scientists is to see their predictive models have positive impact on the world. 
