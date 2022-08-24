@@ -8,7 +8,7 @@ title: "My Cosmology Research - A Pony For My Grandmother"
 > Pony - a literal translation of a foreign-language text, used illicitly by students  
 
 ![Alt Text .gif](https://media.giphy.com/media/3o7TKI8StknO4vrUas/giphy.gif){:width="1000"}
-*The is a video of Albert Einstein peering through Edwin Hubble's telescope at the Mount Wilson Observatory. My job was to analyse theories created by theoretical physicists like Einstein and see how well they agree with astronomical data obtained by observers like Hubble.*
+*Video of Albert Einstein peering through Edwin Hubble's telescope at the Mount Wilson Observatory. My job was to analyse theories created by theoretical physicists like Einstein and see how well they agree with astronomical data obtained by observers like Hubble.*
 
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/1/14/Monster_in_the_deep.jpg){:width="1000"}
@@ -85,7 +85,7 @@ Earlier this year I have compled a second analysis on this “standing wave”, 
 I feel very fortunate to have find my way (by mistake…), to the forefront of cosmology. I am in the interesting phase where experts are taking my analysis seriously, and consider me an expert on the matter, where only five years ago I didn’t even know astronomy … Go figure… I realize that not everyone can spend their days thinking about and working on things I do, and am very grateful to all my educators who put my on this random, but exciting track.
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/7/71/2dfgrs.png){:width="1000"}
-*Distance galaxies as dots on the screen.: This is what the data that I analysed looked like more or less. The reason for the large void is due to survey coverage. The SDSS covered about one fourth of the night sky.*
+*Distance galaxies as dots on the screen. This is what the data that I analysed looked like more or less. The reason for the large void is due to survey coverage. The SDSS covered about one fourth of the night sky.*
 
 
 
