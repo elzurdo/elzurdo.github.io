@@ -11,7 +11,7 @@ Most details here are targeted towards future me, but you are welcome to listen 
 ![image]({{ site.url }}/assets/kazin_bitmoji_persistence-of-memory.jpeg){:width="300"}
 {: refdef} 
  
-One of my favourite paintings, Dali's [Persistance of Memory](https://en.wikipedia.org/wiki/The_Persistence_of_Memory), rendered by [Bitmoji](https://www.bitmoji.com/).  
+One of my favourite paintings, Dali's [Persistance of Memory](https://en.wikipedia.org/wiki/The_Persistence_of_Memory){:target="_blank"}, rendered by [Bitmoji](https://www.bitmoji.com/){:target="_blank"}.  
 
 > Bayesian by Nature
 
@@ -19,7 +19,16 @@ One of my favourite paintings, Dali's [Persistance of Memory](https://en.wikiped
 
 
 ---
-## [Elementray School](https://nilizy.tik-tak.net/){:target="_blank"} (1986-1991) ביה״ס ניל״י
+## [Osborneville Elementray School](https://www.brickschools.org/oes/){:target="_blank"} (1983-1984)
+![image](https://www.brickschools.org/oes/wp-content/uploads/sites/18/2021/07/Osborneville-Split-.png){:width="100"}  
+
+---
+## [Tomoka Elementray School](https://tomoka.vcsedu.org/){:target="_blank"} (1985)
+ ![image]( https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1657963179/myvolusiaschoolsorg/icgshmdhkzpfidrnsm1d/TomokaNewLogo.png){:width="150"}  
+
+
+---
+## [Nili Elementray School](https://nilizy.tik-tak.net/){:target="_blank"} (1986-1991) ביה״ס ניל״י
 ![image](https://nilizy.tik-tak.net/wp-content/uploadfiles/sites/165/2016/10/logo.png){:width="150"}   
 
 ---
