@@ -8,10 +8,10 @@ Most details here are targeted towards future me, but you are welcome to listen 
 
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="300"}
+![image]({{ site.url }}/assets/kazin_bitmoji_persistence-of-memory.jpeg){:width="300"}
 {: refdef} 
  
-Giving my respects to Thomas Bayes in Tunbridge Wells, England.  
+One of my favourite paintings, Dali's [Persistance of Memory](https://en.wikipedia.org/wiki/The_Persistence_of_Memory), rendered by [Bitmoji](https://www.bitmoji.com/).  
 
 > Bayesian by Nature
 
