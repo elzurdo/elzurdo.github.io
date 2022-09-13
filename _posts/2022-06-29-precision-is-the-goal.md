@@ -91,29 +91,7 @@ In a hisotircal sense NHST was created before the advent of the computer, when s
 
 We are in the midst of the Bayesian statistical revolution which provides richer in detail information in analysis. Some think that using a Bayesian approach, which I'll later define, magically solves for problems stated above. In the following I argue that there are multiple Bayesian approaches, and that the most common ones, even though better than Frequentist (by virtue of providing more information), still pertain confirmation bias.
 
-First, though, we should refresh our understanding between Bayes and Frequentist approaches.
-
-### Frequentist vs. Bayesian Statistics
-
-In the previous century two main streams of stastical thought have been developed.  
-They slightly differ in philosophy.  
-
-The *Freuqnetist* approach puts a focus on *likelihoods*, which means quantifying the probability of the observed data for a given hypothesis. 
-
-The *Bayesian* does the exact opposite by trying to quantify the *posterior*, i.e, the probability of a hypothesis for a given set of data.  
-
-![Screenshot 2022-09-12 at 11 35 28](https://user-images.githubusercontent.com/6064016/189633143-3bbc3ee1-776f-445b-b399-2069df8151d0.png) 
-
-
-Since the Freuqnetist is focused around a given hypothesis and the Bayesian is not, one insight is that the latter is a more flexible approach to examining and comparing multiple hypotheses. 
-
-This topic is quite controversal amongst statisticians. I tried to summarise my two cents in this short summary
-
-![Screenshot 2022-09-12 at 11 42 08](https://user-images.githubusercontent.com/6064016/189634319-c4ec6d81-cbbd-44bd-b871-01c08d509b25.png)
-
-This is not the focus of this post, but just a reflection of my thoughts to what follows.
-
-
+To understand the differences between Bayes and Frequentist approaches wrote a  [short post]({% post_url 2022-06-28-frequentist-vs-bayesian %}){:target="_blank"}.
 
 ### HDI with ROPE
 
