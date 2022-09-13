@@ -91,7 +91,7 @@ In a hisotircal sense NHST was created before the advent of the computer, when s
 
 We are in the midst of the Bayesian statistical revolution which provides richer in detail information in analysis. Some think that using a Bayesian approach, which I'll later define, magically solves for problems stated above. In the following I argue that there are multiple Bayesian approaches, and that the most common ones, even though better than Frequentist (by virtue of providing more information), still pertain confirmation bias.
 
-To understand the differences between Bayes and Frequentist approaches wrote a  [short post]({% post_url 2022-06-28-frequentist-vs-bayesian %}){:target="_blank"}.
+To understand the differences between Bayes and Frequentist approaches wrote a [short post]({% post_url 2022-06-28-frequentist-vs-bayesian %}){:target="_blank"}.
 
 ### HDI with ROPE
 
