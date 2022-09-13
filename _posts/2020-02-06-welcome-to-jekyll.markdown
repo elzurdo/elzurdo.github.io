@@ -13,14 +13,31 @@ Markdown text to stylish pages. This is useful,
 so one doesn't have to dig deep into JavaScript to get something 
 reasonable running a in short amount of time. 
 
+The purpose of this post is to flag useful snippets of code that I use throughout. 
 
-{% highlight print %}
-print('Jekyll also offers powerful support for code snippets :-)')
-{% endhighlight %}
 
 Jekyll have [walk-trough videos](https://jekyllrb.com/tutorials/video-walkthroughs/){:target="_blank"} 
 and I used [this tutorial](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages){:target="_blank"} 
 to do the set up in the GitHub pages.
+
+# Code Snippets
+
+You can highlight a snippet to look something like this
+
+{% highlight print %}
+awesome = 'code snippets'
+print(f'Jekyll also offers powerful support for {awesome} :-)')
+{% endhighlight %}
+
+This is example is created by 
+{% highlight print %}
+{\% highlight print \%}
+awesome = 'code snippets'
+print(f'Jekyll also offers powerful support for {awesome} :-)')
+{\% endhighlight \%}
+{% endhighlight %}
+
+(Note - remove the backslash from the percent sign: should read `%`, not `\%`. I used the `\` so woud be legible here.)
 
 # Images
 
@@ -115,6 +132,23 @@ $$E = m c^2$$
 There is an alternative explanation using kramdown which might also be worth exploring in the future.
 
 
+# Referencing to another post
+
+One can also reference to [another post]({% post_url 2011-01-03-cosmology-grandmas-pony %}){:target="_blank"}.
+
+This is example is created by 
+{% highlight print %}
+One can also reference to [another post]({\% post_url 2011-01-03-cosmology-grandmas-pony \%}){:target="_blank"}
+{% endhighlight %}
+
+(Note - remove the backslash from the percent sign: should read `%`, not `\%`. I used the `\` so woud be legible here.)
+
+When doing references in general I like to add `{:target="_blank"}` in the end which causes the user to open 
+in a new tab.
+
+One anecdote regarding hyperlinks - I happen to be a distant cousin of the co-creator [Andries van Dam](https://en.wikipedia.org/wiki/Andries_van_Dam){:target="_blank"}.
+
+
 # `.gitignore` file
 
 My only other advice is adding to `.gitignore` the following 
@@ -126,8 +160,6 @@ _site/
 .jekyll-metadata
 .DS_Store   # Mac users, you know what I'm talking about :-)
 ```
-
-
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
