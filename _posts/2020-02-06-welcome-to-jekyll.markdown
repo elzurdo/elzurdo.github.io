@@ -22,6 +22,8 @@ Jekyll have [walk-trough videos](https://jekyllrb.com/tutorials/video-walkthroug
 and I used [this tutorial](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages){:target="_blank"} 
 to do the set up in the GitHub pages.
 
+# Images
+
 In order to display an image and control for its size, the markdown looks something like 
 {% highlight print %}
 ![](https://upload.wikimedia.org/wikipedia/commons/6/65/Hypsibiusdujardini.jpg){:width="300"}
@@ -63,6 +65,8 @@ And this is how you can embed multiple images side by side
 <img src="https://upload.wikimedia.org/wikipedia/en/7/70/Tina_musical_poster.png" width="230">  
 </p>
 
+# Video Embedding
+
 Embedding a video from YouTube and aligning to center is as easy as 
 
 {% highlight print %}
@@ -81,8 +85,39 @@ frameborder="0" allowfullscreen>
 </iframe>
 </p>
 
+# $\LaTeX$
 
-My only other advices is adding to `.gitignore` the following 
+To use $\LaTeX$ I followed one piece advice from many on [stackoverflow](https://stackoverflow.com/questions/26275645/how-to-support-latex-in-github-pages){:target="_blank"}. 
+I chose the one which says that in `_includes/head.html` (copied over from the source for modification, which is found using `bundle info minima`) I add 
+
+{% highlight print %}
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+{% endhighlight %}
+
+
+This enables to display within the text a symbol like $\alpha$ just by using {% highlight print %} $\alpha$ {% endhighlight %} within the text. 
+
+Otherwise, if I want to centeralise, e.g, an equation the notation is with two dollar signs as in:
+
+{% highlight print %} $$E = m c^2$$ {% endhighlight %} 
+
+
+$$E = m c^2$$
+
+There is an alternative explanation using kramdown which might also be worth exploring in the future.
+
+
+# `.gitignore` file
+
+My only other advice is adding to `.gitignore` the following 
 
 ```
 _site/

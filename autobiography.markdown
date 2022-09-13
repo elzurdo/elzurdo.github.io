@@ -8,10 +8,10 @@ Most details here are targeted towards future me, but you are welcome to listen 
 
 
 {:refdef: style="text-align: center;"}
-![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="300"}
+![image]({{ site.url }}/assets/kazin_bitmoji_persistence-of-memory.jpeg){:width="300"}
 {: refdef} 
  
-Giving my respects to Thomas Bayes in Tunbridge Wells, England.  
+One of my favourite paintings, Dali's [Persistance of Memory](https://en.wikipedia.org/wiki/The_Persistence_of_Memory){:target="_blank"}, rendered by [Bitmoji](https://www.bitmoji.com/){:target="_blank"}.  
 
 > Bayesian by Nature
 
@@ -19,7 +19,16 @@ Giving my respects to Thomas Bayes in Tunbridge Wells, England.
 
 
 ---
-## [Elementray School](https://nilizy.tik-tak.net/){:target="_blank"} (1986-1991) ביה״ס ניל״י
+## [Osborneville Elementray School](https://www.brickschools.org/oes/){:target="_blank"} (1983-1984)
+![image](https://www.brickschools.org/oes/wp-content/uploads/sites/18/2021/07/Osborneville-Split-.png){:width="100"}  
+
+---
+## [Tomoka Elementray School](https://tomoka.vcsedu.org/){:target="_blank"} (1985)
+ ![image]( https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1657963179/myvolusiaschoolsorg/icgshmdhkzpfidrnsm1d/TomokaNewLogo.png){:width="150"}  
+
+
+---
+## [Nili Elementray School](https://nilizy.tik-tak.net/){:target="_blank"} (1986-1991) ביה״ס ניל״י
 ![image](https://nilizy.tik-tak.net/wp-content/uploadfiles/sites/165/2016/10/logo.png){:width="150"}   
 
 ---
@@ -128,7 +137,7 @@ Panama-Costa Rica-Nicaragua-Honduras-Guatemala on a shoe string
 ## Cosmology Research (2005-2014) 
 <p> 
 <img src="https://upload.wikimedia.org/wikipedia/en/5/58/NYU_logo.svg" width="400">   
-<img src="https://upload.wikimedia.org/wikipedia/en/0/06/Logo_of_Swinburne_University_of_Technology.svg" width="150">  
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Logo_of_Swinburne_University_of_Technology.svg" width="150">  
 </p>
 
 *I measured a bump on a graph which excited a small number of specialists.*    
@@ -136,6 +145,8 @@ Panama-Costa Rica-Nicaragua-Honduras-Guatemala on a shoe string
 **Elevator pitch to the 100th floor**: To this end I measured the large-scale structure of ensembles of distant galaxies. My focus was on a weak signal (1% effect!) which is considered the longest [*standard ruler*](https://en.wikipedia.org/wiki/Standard_ruler){:target="_blank"} known is cosmology at a length of half a billion light years!     
 **Claim for fame**: In my [second publication](https://ui.adsabs.harvard.edu/abs/2010ApJ...719.1032K/abstract){:target="_blank"} I pissed off a tenured professor by debunking [his claims](https://ui.adsabs.harvard.edu/abs/2009MNRAS.399.1663G/abstract){:target="_blank"}. 
 **Claim for fame II**: I met eight nobel prize winners in physics, six of which attended my lectures.  
+
+As of 2022-09-11 [my NYU site](https://cosmo.nyu.edu/~eak306/){:target="_blank"} is sill available. Perhaps one of the best things that I have done is publicise in my [LSS page](https://cosmo.nyu.edu/~eak306/LSS.html){:target="_blank"} all of my results (this was not too common, at the time), which, I suspect, help me boost my citation numbers :-). Unfortunately no Jupyer notebooks, because I didn't know python at the time (I followed the astronomers' lead of using [IDL](https://en.wikipedia.org/wiki/IDL_(programming_language)){:target="_blank"} which they used foremost for data processing and everything following.)
 
 
 > I still can't believe that someone is paying me to study physics in New York City.  
@@ -153,7 +164,10 @@ Andre's question for most speakers (including Nobel Prize winners) about the con
 His conclusion after my dissertation cross-fire examination. He was right, and I did!.  
 
 ---
-## Transitioning To Data Science (2014)  
+## Transitioning To Data Science (2014) 
+
+<img src="https://betterbayes.files.wordpress.com/2014/07/img_4288.jpg" width="400">
+
 *I participated in a garbage-in garbage-out project for [a](https://beta.companieshouse.gov.uk/company/08386775){:target="_blank"} [non-startup](https://web.archive.org/web/20170912075710/http://connectomex.com/){:target="_blank"}.*        
 **Claim for fame**: I was known as "that guy who wrote the blog post with the picture of a notebook". Strategically advertised in LinkedIn and Facebook forums, [the post](https://betterbayes.wordpress.com/2014/07/24/preperation-for-a-transition-to-data-science/){:target="_blank"} had over 1,000 reads in the first day (which was a lot at the time!)
 
