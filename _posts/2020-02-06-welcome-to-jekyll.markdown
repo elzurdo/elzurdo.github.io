@@ -87,7 +87,7 @@ frameborder="0" allowfullscreen>
 
 # $\LaTeX$
 
-To use $\LaTeX$ I followed one piece advice from many on [stackoverflow](https://stackoverflow.com/questions/26275645/how-to-support-latex-in-github-pages). 
+To use $\LaTeX$ I followed one piece advice from many on [stackoverflow](https://stackoverflow.com/questions/26275645/how-to-support-latex-in-github-pages){:target="_blank"}. 
 I chose the one which says that in `_includes/head.html` (copied over from the source for modification, which is found using `bundle info minima`) I add 
 
 {% highlight print %}
