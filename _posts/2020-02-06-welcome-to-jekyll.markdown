@@ -85,12 +85,34 @@ frameborder="0" allowfullscreen>
 </iframe>
 </p>
 
-# LaTeX
+# $\LaTeX$
 
-$\alpha$
+To use $\LaTeX$ I followed one piece advice from many on [stackoverflow](https://stackoverflow.com/questions/26275645/how-to-support-latex-in-github-pages). 
+I chose the one which says that in `_includes/head.html` (copied over from the source for modification, which is found using `bundle info minima`) I add 
 
-$$\alpha$$
+{% highlight print %}
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+{% endhighlight %}
 
+
+This enables to display within the text a symbol like $\alpha$ just by using {% highlight print %} $\alpha$ {% endhighlight %} within the text. 
+
+Otherwise, if I want to centeralise, e.g, an equation the notation is with two dollar signs as in:
+
+{% highlight print %} $$E = m c^2$$ {% endhighlight %} 
+
+
+$$E = m c^2$$
+
+There is an alternative explanation using kramdown which might also be worth exploring in the future.
 
 
 # `.gitignore` file
