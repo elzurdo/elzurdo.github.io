@@ -87,9 +87,9 @@ frameborder="0" allowfullscreen>
 
 # LaTeX
 
-$alpha$
+$\alpha$
 
-$$alpha$$
+$$\alpha$$
 
 
 
