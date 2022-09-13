@@ -22,6 +22,8 @@ Jekyll have [walk-trough videos](https://jekyllrb.com/tutorials/video-walkthroug
 and I used [this tutorial](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages){:target="_blank"} 
 to do the set up in the GitHub pages.
 
+# Images
+
 In order to display an image and control for its size, the markdown looks something like 
 {% highlight print %}
 ![](https://upload.wikimedia.org/wikipedia/commons/6/65/Hypsibiusdujardini.jpg){:width="300"}
@@ -63,6 +65,8 @@ And this is how you can embed multiple images side by side
 <img src="https://upload.wikimedia.org/wikipedia/en/7/70/Tina_musical_poster.png" width="230">  
 </p>
 
+# Video Embedding
+
 Embedding a video from YouTube and aligning to center is as easy as 
 
 {% highlight print %}
@@ -81,8 +85,17 @@ frameborder="0" allowfullscreen>
 </iframe>
 </p>
 
+# LaTeX
 
-My only other advices is adding to `.gitignore` the following 
+$alpha$
+
+$$alpha$$
+
+
+
+# `.gitignore` file
+
+My only other advice is adding to `.gitignore` the following 
 
 ```
 _site/
