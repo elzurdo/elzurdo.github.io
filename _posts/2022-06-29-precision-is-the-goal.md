@@ -91,18 +91,53 @@ In a hisotircal sense NHST was created before the advent of the computer, when s
 
 We are in the midst of the Bayesian statistical revolution which provides richer in detail information in analysis. Some think that using a Bayesian approach, which I'll later define, magically solves for problems stated above. In the following I argue that there are multiple Bayesian approaches, and that the most common ones, even though better than Frequentist (by virtue of providing more information), still pertain confirmation bias.
 
-To understand the differences between Bayes and Frequentist approaches wrote a [short post]({% post_url 2022-06-28-frequentist-vs-bayesian %}){:target="_blank"}.
+For those interested in understanding the key differences between Bayes and Frequentist approaches I wrote a [short post]({% post_url 2022-06-28-frequentist-vs-bayesian %}){:target="_blank"}.
 
-### HDI with ROPE
+We will start by examining a popular Bayesian approach called *HDI with ROPE* which allows for accepting null hypotheses, but, unfortunately still may yield confirmation bias.
+
+### HDI with ROPE Stop Criterion
+
+The HDI with ROPE in the most simplest terms examines if the lion's share of the posterior (called the *Highest Density Interval* or HDI) is within a range of interest (called the *Region or Practical Equivalence* or ROPE).
+
+#### Highest Density Interval (HDI)
+The Highest Density Interval is a popular Bayesian way to calculate a region called a *credible interval* (somewhat similar to the *confidence interval* that Frequentists use). 
+
+It is defined as the interval where a percentage of the mass of the posterior lays when scanning from above. The percentage is chosen by the user, common choices are 95% in analytical solutions where non analytical might choose 94% for further stability (although 89% has been suggested to highlight how arbitrary this choice is; It's the highest prime below 95%; Why? Why not?!).
+
+
+For an even better visual see the one in 3.1.1 of Claudiobellei's [Baysian AB testing post](http://www.claudiobellei.com/2017/11/02/bayesian-AB-testing/){:target="_blank"}.
+
+
+#### Region of Practical Equivalence (ROPE)
+The Region of Practical Equivalence, as mentioned by JK,  
+ 
+> Indicates a small range of parameter values that are considered to be practically equivalent to the null value for purposes of a particular application.
+
+In other words, take your null value, and decide the upper and lower boundaries that your case study consideres to be for all practical reasons and considerations equivalent.
+
+E.g, ....
+
+#### The Stop Criterion
+The stop criterion is the decision algorithm to determine when to stop collecting data as well as the consequence of the result. ((Perhaps this should be further up)) 
+
+The decision to stop collecting data in the case of HDI + ROPE is:  
+> Collect data until the HDI is completely within the ROPE or completely outside of it.
+
+This may be illustrated here:
+
+
+If the HDI is **completely** within the ROPE we accept the null hypothesis.    
+If it is **completely** outside of the ROPE we reject the null hypothesis.  
+If there is **overlap** the result is inconclusive.  We will later discuss how to deal with inconclusiveness.
+
+#### Case Study: Binomial Tests
+As before we examine
 
 * Can accept null hypotheses
 * May incorrectly reject the null hypothesis 
 
-#### Highest Density Interval (HDI)
 
-#### Region of Practical Equivalence (ROPE)
-
-
+### Dealing With Inconclusiveness
 
 
 
