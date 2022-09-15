@@ -79,12 +79,30 @@ E.g, a clinician that suspsects that a new drug might have deleterious effects.
 
 The *Null Hypothesis Significance Test* (NHST) is by far the most popular method used. Unfortunately this frequentist approach has many flaws that, due to lack of understanding, causes it to be misused. This is the subject of another post (LINK). Here I briefly highlight key issues.
 
-* Non intuitive - most non experts who use the method do not understand it and just plug-n'-play wishing for the best (or *winging it* ...). This causes ??? since as [p-hacking](https://en.wikipedia.org/wiki/Misuse_of_p-values).
-* Cannot accept null hypotheses
-* Yields 100% false alarms (... with infinite patients ...) 
+* Non intuitive - most non experts who use the method do not understand it and just plug-n'-play wishing for the best (or *winging it* ...). The Wikipedia [p-hacking entry](https://en.wikipedia.org/wiki/Misuse_of_p-values){:target="_blank"} contains a list of common misconceptions which mostly boils down to confusing likelihood with posterior.
+* Cannot accept null hypotheses.  I why NHST only can reject the null hypothesis and "not reject" it, but never accept another post]({% post_url 2011-01-03-cosmology-grandmas-pony %}){:target="_blank"}
+* In terms of confirmation bias, given enough time, NHST yields 100% false alarms
 
+This last point was highlighted by JK, and worth going over to build an understanding of the subsequent sections.
+In brief - in the case where the null hypothesis is true, using the p-value as the stopping criterion will, eventually (if one tests outcomes long enough), incorrectly reject the null hypothesis.
 
-In a hisotircal sense NHST was created before the advent of the computer, when statisticians, e.g, its creator Fisher, calculated everything by hand. .... main point to stress: we have better technologies today, so should probably not use when dealing with small N.
+Let's learn by an example.
+
+The following chart summarises results of a fair coin ($\theta_\text{true}=0.5$) tossed 1,500 times in sequence. In each iteration the cumsum average is taken (top chart) and the p-value is calculated assuming a null hypothesis of 
+$\theta_\text{null}=0.5$. 
+
+<img width="661" alt="Screenshot 2022-09-15 at 07 26 56" src="https://user-images.githubusercontent.com/6064016/190330145-1d5cb3a0-41e1-481f-99cb-5c1fa999d9ff.png">
+
+In this particular test we clearly see that this is an extreme case where most tests are failures (or Tails of a coin), which given enough time will assymptot to the true success rate of 0.5.  
+
+The main point is that if we use the standard p-value of 5% as the stopping criterion we are bound to incorrectly reject the null hypothesis without bothering to learn the truth which would have required collecting more data.
+
+This particular extreme test case, however, was cherry picked to make a point. But is it representative?
+
+For this purpose I have conducted 1,000 similar tests, end let each continue generating tests until it meets the stopping criterion. 
+
+<img width="659" alt="Screenshot 2022-09-15 at 07 38 40" src="https://user-images.githubusercontent.com/6064016/190332304-4c9d4002-d3f8-4601-bb97-0772fceefe5c.png">
+
 
 
 ## Bayesian is Better but does not Magically Rid of Bias
