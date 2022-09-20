@@ -13,7 +13,7 @@ This is especially true with sequential testing where demands for quick results 
 
 Hypothesis testing may come off as a dark art. On the one hand, data collection is expensive. On the other, small data sets may not yield enough statistical significance to draw meaningful conclusions. Combining these constraints with stakeholder requirements for quick answers from data makes the task of choosing the sample size stopping criterion a challenging balancing act.
 
-This is especially true if the data is collected in a sequential manner, where a person, or an algorithm needs to determine when to stop collecting data to satisfy the project requirements without introducing confirmation bias.
+This is especially true if the data is collected in a sequential manner, where a person, or an algorithm, needs to determine when to stop collecting data to satisfy the project requirements without introducing confirmation bias, i.e, disproportionately supporting the researchers prior beliefs.
 
 This post is targeted to anyone involved in experimentation, technical or managerial, and is interested in improving how they plan an experiment budget and conduct post data collection interpretation. 
 
@@ -21,19 +21,16 @@ This post is targeted to anyone involved in experimentation, technical or manage
 
 [//]: <>  (You will learn why even though Bayesian approaches are more reliable than Frequentist ones for small data sets they do not magically solve the problem of confirmation bias. )
 
-The main theme is around John Kruschke's “Precision is the Goal” method, who showed that by determining in advance the experiment expected precision level yields robust results.
+The main theme is around John Kruschke's “Precision is the Goal” method, who showed that one may obtain robust  unbiased results by determining **in advance** the experiment expected precision level.
 
 ## Hypothesis Testing in a Nutshell
-Hypothesis testing may be considered a scientific methodology to answer a question about a system by the collection and interpretation of relevant data.
+Hypothesis testing is a scientific methodology to answer a question about a system by the collection and interpretation of relevant data.
 
 Two common goals of hypothesis testing are:
 * To rule out a baseline hypothesis, often referred to as a *null hypothesis*
-* To accept a hypothesis. 
+* To accept a hypothesis be it the *null* or an alternative.
 
-The former is more common due to the popular NHST method that is used.  
-One of the objectives of this post is to make people more aware that this method 
-does not enable the latter, and promote methods that do.
-
+  
 This method is applicable for nearly any industry, just to name a few examples:
 * Drug discovery - is one therapeutic better than another/a placebo?
 * Polling - is one candidate more likely to win over another?
@@ -48,21 +45,27 @@ This method is applicable for nearly any industry, just to name a few examples:
 
 
 
-### Main Challenge
+### Sample Results Are An Estimate Of The Truth, Not Equal
 
-In most scenarios the hypothesis may not be applied to the whole population, but rather a sample. 
+When discussing results of a hypothesis test to a non technical stakeholder, one of the most confusing aspects is communicating what has been observed vs what is likely to be the reality. By that I mean that the result of a ***sample***, whereas indicative of the result of a ***population***, it is not equal. It is an estimate.
+
+Most of the stakeholders kind of understand this, but it's not fully internalised.
+
+The challenge lies, of course, in the fact that in most scenarios the hypothesis may not be applied to the whole population, but rather a sample.   
 A clinician cannot test all men for a new cure for prostate cancer.  
-A pollster cannot ring every phone in a district. 
+A pollster cannot ring every phone in a district.   
 A company would lose a lot of money trying to reach out to every potential customer.
 
 When interpreting results of a sample it is important to remember:
 * whereas sample results are indicative of those of the population, they are not equal
 * sample variance may yield an extreme result
-* to avoid misinterpretation the analyst should guard themselves with statistical tools
+* to avoid misinterpretation the analyst should guard themselves with relevant statistical tools
+
+The final challenge of the analyst is to convey the results in a way that is meaningful to the stakeholder, without bogging them down in complicated detail.
+
+When it comes to collecting the sample data one of the key questions for the designer of an experiment is the sample size. 
 
 ### Stop Criterion - Decision Rule for "Enough"
-
-One of the key questions for the designer of an experiment is the sample size.  
 
 Stakeholders want reliable results at minimal cost, which is normally a balancing act because on 
 the one hand data might be costly, in monetary terms, time or both. 
@@ -72,10 +75,15 @@ benefits from more data.
 In some domains there is also a need to stop collecting as soon as possible for ethical reasons. 
 E.g, a clinician that suspsects that a new drug might have deleterious effects.
 
+Knowing when to stop collecting data is a dark art. Many analysts *wing it* by searching online for a convinient power calculator, use default or adjust a few parameters, pull the desired *n*. I suspect, based on my own experience in my first A/B test, is that they later might forget these step in their analysis.
 
 ### Coin Flipping Statistics
+The type of statistics used to quantify the sample size and interpret data depends on the data collected. E.g, continuous ...
 
-## The Problem with the Most Common Method - NHST
+
+This concludes a brief 101 on Hypothesis Testing. In the next parts we'll discuss problems with popular methods and suggest an alternative.
+
+##  The Popular NHST Is Very Problematic
 
 The *Null Hypothesis Significance Test* (NHST) is by far the most popular method used. Unfortunately this frequentist approach has many flaws that, due to lack of understanding, causes it to be misused. This is the subject of another post (LINK). Here I briefly highlight key issues.
 
@@ -103,7 +111,12 @@ For this purpose I have conducted 1,000 similar tests, end let each continue gen
 
 <img width="659" alt="Screenshot 2022-09-15 at 07 38 40" src="https://user-images.githubusercontent.com/6064016/190332304-4c9d4002-d3f8-4601-bb97-0772fceefe5c.png">
 
+Consider this text if needed and to further edit 
 
+
+The popular is Null Hypothesis Significance Test method (NHST) is known to be notoriously confusing in such 
+that it may be used only to "rule out the null hypothesis" or "**not** rule out the null hypothesis", but 
+never "accept the null hypothesis" (or alternatives). This is due to known limitations of the Frequentist approach (TBD link). The more descriptive Bayesian methods, however, may be used to accept (and reject) hypothesises. If not careful, however, also Bayesian methods may introduce confirmation bias, as we show below.
 
 ## Bayesian is Better but does not Magically Rid of Bias
 
