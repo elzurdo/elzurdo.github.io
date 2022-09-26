@@ -36,39 +36,31 @@ This method is applicable for nearly any industry, just to name a few examples:
 * Polling - is one candidate more likely to win over another?
 * Marketing - is this promotion scheme likely to improve results over doing nothing or an alternative promotion? 
 
+When discussing Hypothesis Testing with stakeholders, I try to simplify the challenges to main points
 
+1. **Sample** results are indicative of the **population**, but not equal
+2. Accuracy/precision is expensive
 
-[//]: # (For most practiionares hypothesis testing is a means to "rule out a *null hypothesis*", i.e a baseline hypothesis, like:)
-[//]: # (* Drug discovery: "Results of this new therapeutic are indistinguishable from a plaebo")
-[//]: # (* Polling: "Both candidates are equally likely to win")
-[//]: # (* Marketing: "Gifting a coupon has no impact on churn rates")
-
+It's worth going into a bit of detail into these two points.
 
 
 ### Sample Results Are An Estimate Of The Truth, Not Equal
 
-When discussing results of a hypothesis test to a non technical stakeholder, one of the most confusing aspects is communicating what has been observed vs what is likely to be the reality. By that I mean that the result of a ***sample***, whereas indicative of the result of a ***population***, it is not equal. It is an estimate.
+Most of the stakeholders kind of understand this, but because it is not intuitive it's worth emphasising.
 
-Most of the stakeholders kind of understand this, but it's not fully internalised.
+The challenge lies, of course, in the fact that in most scenarios the hypothesis may not be applied to the whole population, but rather a sample.    
 
-The challenge lies, of course, in the fact that in most scenarios the hypothesis may not be applied to the whole population, but rather a sample.   
 A clinician cannot test all men for a new cure for prostate cancer.  
 A pollster cannot ring every phone in a district.   
 A company would lose a lot of money trying to reach out to every potential customer.
 
-When interpreting results of a sample it is important to remember:
-* whereas sample results are indicative of those of the population, they are not equal
-* sample variance may yield an extreme result
-* to avoid misinterpretation the analyst should guard themselves with relevant statistical tools
+When interpreting results of a sample it is important to remember that sample variance may yield an extreme result. This may be reduced by collecting more data. 
 
-The final challenge of the analyst is to convey the results in a way that is meaningful to the stakeholder, without bogging them down in complicated detail.
-
-When it comes to collecting the sample data one of the key questions for the designer of an experiment is the sample size. 
+Hence, one of the key questions for the designer of an experiment is the sample size. 
 
 ### Stop Criterion - Decision Rule for "Enough"
 
-Stakeholders want reliable results at minimal cost, which is normally a balancing act because on 
-the one hand data might be costly, in monetary terms, time or both. 
+When designing an experiment normally desires **reliable results** at **minimal cost**, which is normally a balancing act because on the one hand data might be costly, in monetary terms, time or both. 
 On the other, statistical power, the probability of the sample result to convey the truth of the population,
 benefits from more data.  
 
@@ -77,50 +69,59 @@ E.g, a clinician that suspsects that a new drug might have deleterious effects.
 
 Knowing when to stop collecting data is a dark art. Many analysts *wing it* by searching online for a convinient power calculator, use default or adjust a few parameters, pull the desired *n*. I suspect, based on my own experience in my first A/B test, is that they later might forget these step in their analysis.
 
-### Coin Flipping Statistics
-The type of statistics used to quantify the sample size and interpret data depends on the data collected. E.g, continuous ...
-
-
-This concludes a brief 101 on Hypothesis Testing. In the next parts we'll discuss problems with popular methods and suggest an alternative.
+This concludes a brief 101 on Hypothesis Testing. In the next parts we'll discuss problems with commonly used Frequentis and Bayesian methods and suggest an alternative.
 
 ##  The Popular NHST Is Very Problematic
 
-The *Null Hypothesis Significance Test* (NHST) is by far the most popular method used. Unfortunately this frequentist approach has many flaws that, due to lack of understanding, causes it to be misused. This is the subject of another post (LINK). Here I briefly highlight key issues.
+The *Null Hypothesis Significance Test* (NHST) is by far the most popular method used. Unfortunately this frequentist approach has many flaws that, due to lack of understanding by non experts, causes it to be misused. This is the subject of [a separate post]({% post_url 2022-07-01-why-nhst-does-not-accept-null-hypotheses %}){:target="_blank"}. Here I briefly highlight key issues.
 
-* Non intuitive - most non experts who use the method do not understand it and just plug-n'-play wishing for the best (or *winging it* ...). The Wikipedia [p-hacking entry](https://en.wikipedia.org/wiki/Misuse_of_p-values){:target="_blank"} contains a list of common misconceptions which mostly boils down to confusing likelihood with posterior.
-* Cannot accept null hypotheses.  I why NHST only can reject the null hypothesis and "not reject" it, but never accept another post]({% post_url 2011-01-03-cosmology-grandmas-pony %}){:target="_blank"}
+* Notoriously non intuitive - most non experts who use the method do not understand it and just plug-n'-play wishing for the best (or *winging it* ...). The Wikipedia [p-hacking entry](https://en.wikipedia.org/wiki/Misuse_of_p-values){:target="_blank"} contains a list of common misconceptions which mostly boils down to confusing likelihoods with posteriors.
+* Cannot accept null hypotheses.  The NHST only can only be used to reject the null hypothesis or ***not reject*** it, but never accept it. [This is a subject of another post]({% post_url 2022-07-01-why-nhst-does-not-accept-null-hypotheses %}){:target="_blank"}
 * In terms of confirmation bias, given enough time, NHST yields 100% false alarms
 
 This last point was highlighted by JK, and worth going over to build an understanding of the subsequent sections.
-In brief - in the case where the null hypothesis is true, using the p-value as the stopping criterion will, eventually (if one tests outcomes long enough), incorrectly reject the null hypothesis.
+In brief - in the case where the null hypothesis is true, using the p-value as the stopping criterion will, eventually, incorrectly reject the null hypothesis (i.e, if one tests outcomes long enough).
 
 Let's learn by an example.
 
-The following chart summarises results of a fair coin ($\theta_\text{true}=0.5$) tossed 1,500 times in sequence. In each iteration the cumsum average is taken (top chart) and the p-value is calculated assuming a null hypothesis of 
-$\theta_\text{null}=0.5$. 
+For our empirical examinations throughout this post we will explore Bernouli trials (or coin toss statistics) as these are well defined and are useful as an analogy for many dichotomic systems, i.e, those with two options success and fail (e.g, HEAD or TAILS of a coin toss, recovered or not recovered in medicine). The statistic of interest is the success rate denoted as $\theta$. 
+
+The following chart summarises simulated results of a fair coin ($\theta_\text{true}=0.5$) tossed 1,500 times in sequence. In each iteration the cumsum average is taken (top chart) and the p-value is calculated assuming a null hypothesis of $\theta_\text{null}=0.5$. The blue "x"s on the bottom slide indicate when the p-value is below a commonly used stopping criterion threshold of 5%.
 
 <img width="661" alt="Screenshot 2022-09-15 at 07 26 56" src="https://user-images.githubusercontent.com/6064016/190330145-1d5cb3a0-41e1-481f-99cb-5c1fa999d9ff.png">
 
-In this particular test we clearly see that this is an extreme case where most tests are failures (or Tails of a coin), which given enough time will assymptot to the true success rate of 0.5.  
+In this particular test we clearly see that this is an extreme case where most tests are failures (or Tails of a coin). 
 
-The main point is that if we use the standard p-value of 5% as the stopping criterion we are bound to incorrectly reject the null hypothesis without bothering to learn the truth which would have required collecting more data.
+Since we know that this is a fiar coin, given enough time, it will asymptote to the true success rate of 0.5.  But in real life we do not know this and the according to the bottom diagram we would be bound to adhere to the stopping criterion just before the 400th toss. If we suspected the is not fair this would be considered *confirmation bias*.
 
-This particular extreme test case, however, was cherry picked to make a point. But is it representative?
+This point has been made in multiple posts, where the main idea is that we have not corrected for sensitivity of exterme cases, as this cherry picked one.
 
-For this purpose I have conducted 1,000 similar tests, end let each continue generating tests until it meets the stopping criterion. 
+Considering that the presented simulation was chosen to drive this point, you would be correct to ask - how representative is this sort of situation?
+
+For this purpose I have conducted 1,000 similar simulations, end let each continue generating tests until it meets the stopping criterion:  
+
+<p align="center">
+<b> Collect data until p-value $<\alpha$ </b>
+</p>
+
+The metric of interest is for a given sequence iteration, what is the rate of rejecting the null hypothesis (or not rejecting) at the iteration ***or before***. E.g, in the first simulation we would have marked that as of iteration XX (where we marked the first X in the previous chart), all iterations prior would be marked as "not reject" and onwards would be considered "reject" because we stopped collecting data due to the stop criterion. We do this for all 1,000 simulations and then determine the cumulative proportions of these decisions.
+
+
+(here we use the term "inconclusive")
+
+The following diagram summarises the results. The horizontal axis is still the sequence iteration but the vertical axis is the cumulative proportion of decisions. (Note that we label "not reject" as "inconclusive" as this will be more consistent with what is to follow.)
 
 <img width="659" alt="Screenshot 2022-09-15 at 07 38 40" src="https://user-images.githubusercontent.com/6064016/190332304-4c9d4002-d3f8-4601-bb97-0772fceefe5c.png">
 
-Consider this text if needed and to further edit 
+To answer the question "how representative is it for a fair coin simulation to stop an reject the null hypothesis incorrectly after XX tests or prior" we see that this roughly happens over 30% of the time!
 
+We notice an intersesting trend in which if we wait long enough using the p-value as the stop criterion one would eventually (as JK says: "with enough patients") incorrectly reject the null hypothesis 100% of the time!  This is because even though the statistical significance is getting smaller, the p-value gets more sensitive at picking up deviations.
 
-The popular is Null Hypothesis Significance Test method (NHST) is known to be notoriously confusing in such 
-that it may be used only to "rule out the null hypothesis" or "**not** rule out the null hypothesis", but 
-never "accept the null hypothesis" (or alternatives). This is due to known limitations of the Frequentist approach (TBD link). The more descriptive Bayesian methods, however, may be used to accept (and reject) hypothesises. If not careful, however, also Bayesian methods may introduce confirmation bias, as we show below.
+We have seen here and in [a dedicated post]({% post_url 2022-07-01-why-nhst-does-not-accept-null-hypotheses %}){:target="_blank"} that the Frequentist NHST method, even though convinient and popular, has major limitations (e.g, never accepting the null hypothesis) flaws (in the case of the fair coin will eventually always incorrectly reject the null hypothesis).In what follows we shall see that the more descriptive Bayesian methods overcome these (e.g, may be used to accept and reject hypothesises). If not careful, however, also Bayesian methods may introduce confirmation bias, as we show below.
 
 ## Bayesian is Better but does not Magically Rid of Bias
 
-We are in the midst of the Bayesian statistical revolution which provides richer in detail information in analysis. Some think that using a Bayesian approach, which I'll later define, magically solves for problems stated above. In the following I argue that there are multiple Bayesian approaches, and that the most common ones, even though better than Frequentist (by virtue of providing more information), still pertain confirmation bias.
+We are in the midst of the Bayesian statistical revolution which provides richer in detail information in analysis. Some think that using a Bayesian approach, which I'll later define, magically solves for problems stated above. In the following I argue that the most common Bayesian methods, even though they are better than Frequentist (by virtue of providing more information), still pertain confirmation bias.
 
 For those interested in understanding the key differences between Bayes and Frequentist approaches I wrote a [short post]({% post_url 2022-06-28-frequentist-vs-bayesian %}){:target="_blank"}.
 
@@ -128,7 +129,7 @@ We will start by examining a popular Bayesian approach called *HDI with ROPE* wh
 
 ### HDI with ROPE Stop Criterion
 
-The HDI with ROPE in the most simplest terms examines if the lion's share of the posterior (called the *Highest Density Interval* or HDI) is within a range of interest (called the *Region or Practical Equivalence* or ROPE).
+In the most simplest sense, to determine if to accept a hypothesis (null or otherwise), the HDI with ROPE examines if the lion's share of the posterior (called the *Highest Density Interval* or HDI) is within a range of interest (called the *Region or Practical Equivalence* or ROPE).
 
 #### Highest Density Interval (HDI)
 The Highest Density Interval is a popular Bayesian way to calculate a region called a *credible interval* (somewhat similar to the *confidence interval* that Frequentists use). 
@@ -142,9 +143,9 @@ For an even better visual see the one in 3.1.1 of Claudiobellei's [Baysian AB te
 #### Region of Practical Equivalence (ROPE)
 The Region of Practical Equivalence, as mentioned by JK,  
  
-> Indicates a small range of parameter values that are considered to be practically equivalent to the null value for purposes of a particular application.
+> indicates a small range of parameter values that are considered to be practically equivalent to the null value for purposes of a particular application.
 
-In other words, take your null value, and decide the upper and lower boundaries that your case study consideres to be for all practical reasons and considerations equivalent.
+In other words, take the null value, and decide the upper and lower boundaries that the case study consideres to be for all practical reasons and considerations equivalent.
 
 E.g, ....
 
@@ -152,7 +153,10 @@ E.g, ....
 The stop criterion is the decision algorithm to determine when to stop collecting data as well as the consequence of the result. ((Perhaps this should be further up)) 
 
 The decision to stop collecting data in the case of HDI + ROPE is:  
-> Collect data until the HDI is completely within the ROPE or completely outside of it.
+
+<p align="center">
+<b> Collect data until the HDI is <u>completely within</u> the ROPE or <u>completely outside</u> of it.</b>
+</p>
 
 This may be illustrated here:
 
