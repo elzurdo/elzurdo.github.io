@@ -160,10 +160,33 @@ The decision to stop collecting data in the case of HDI + ROPE is:
 
 This may be illustrated here:
 
+![Screenshot 2022-09-26 at 20 31 18](https://user-images.githubusercontent.com/6064016/192365918-5454aac5-e8ab-4d3d-8b78-c9a8c09f0e16.png)
+
+
 
 If the HDI is **completely** within the ROPE we accept the null hypothesis.    
 If it is **completely** outside of the ROPE we reject the null hypothesis.  
 If there is **overlap** the result is inconclusive.  We will later discuss how to deal with inconclusiveness.
+
+It is instructive to visualse all six scenarios (two of which were presented in the previous visual): 
+
+![Screenshot 2022-09-26 at 20 48 52](https://user-images.githubusercontent.com/6064016/192366854-c23984b2-8b82-4e93-92f7-69ad6238f0cb.png)
+
+This visual is the most straight forward and intuitive. We see that the HDI regions are completely out of the ROPE, hence one rejects the null hypothesis.
+
+![Screenshot 2022-09-26 at 20 49 06](https://user-images.githubusercontent.com/6064016/192366928-6edbe967-de48-4b18-a352-2934aaddb1de.png)
+
+This is where Bayesian in general, and HDI+ROPE in particular, is more useful than the NHST - when the HDI is fully within the ROPE we can accept the null hypothesis value. JK emphasises, though, not the other values in the ROPE, just the value in the center.
+
+![Screenshot 2022-09-26 at 20 49 34](https://user-images.githubusercontent.com/6064016/192366960-c680cc82-bc5e-44c5-a2dc-6bb88dd88757.png)
+
+Here we see that we need a third cateogry: ***Inconclusive***. 
+
+This is may be considered a slight limitation of the method, since many stakeholders prefer a conclusive decision to made accept/reject. I will address this point later on (LINK).  
+
+
+
+
 
 #### Case Study: Binomial Tests
 As before we examine
