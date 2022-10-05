@@ -149,7 +149,7 @@ In other words, take the null value, and decide the upper and lower boundaries t
 
 E.g, ....
 
-#### The Stop Criterion
+#### HDI+ROPE Stop Criterion
 The stop criterion is the decision algorithm to determine when to stop collecting data as well as the consequence of the result. ((Perhaps this should be further up)) 
 
 The decision to stop collecting data in the case of HDI + ROPE is:  
@@ -185,15 +185,61 @@ Here we see that we need a third cateogry: ***Inconclusive***.
 This is may be considered a slight limitation of the method, since many stakeholders prefer a conclusive decision to made accept/reject. I will address this point later on (LINK).  
 
 
-
-
-
 #### Case Study: Binomial Tests
-As before we examine
+As before we examine binomial tests. 
 
-* Can accept null hypotheses
-* May incorrectly reject the null hypothesis 
+We first examine the cherry picked similation in the NHST section but this time using the HDI+ROPE selection criterion. 
+As a reminder we are using a fair coin ($\theta_\text{true}=0.5$) with a null hypothesis of the same value ($\theta_\text{null}=0.5$).
+We obtain the following graphs, where the top is the same ....
 
+We next rerun the same 1,000 simulations of $\theta_\text{true}=0.5=\theta_\text{null}$ as before using the HDI+ROPE and obtain the following cummulalative proportion of decisions: 
+
+![Screenshot 2022-09-27 at 21 10 36](https://user-images.githubusercontent.com/6064016/192625732-f5f2264f-eae2-4857-8fcc-0df552ac0100.png)
+
+In it we see a few interesting features:
+* Below 400 tests the null hypothesis is either rejected (20% of the time) or inconclusive (80% of the time).
+* Between 400 and 1,500 there is a transition period where inconclusiveness deminishes while acceptance grows.
+* After 1,500 tests the null hypothesis is accepted 80% and 20% of the time is rejected! (why so much rejection? ...)
+
+To build an intuition it is constructive to compare these results to those obtaind with simulations with $\theta_\text{true}=0.65$, $\theta_\text{null}=0.5$, ROPE=0.45-0.55, which the results are shown here:
+
+
+![Screenshot 2022-09-27 at 21 19 03](https://user-images.githubusercontent.com/6064016/192627114-d2635315-ec28-426e-968f-41335971a97f.png)
+
+It appears that in terms of decision making, one might conclude that if the null hypothesis is far from the truth one is likely to make the correct decsion.
+
+There are two problems with such an approach, though:  
+* The most obvious one is that the truth which is known in a simulation setting is not likely to be known in a real world one 
+* A more subtle point - the sample value, which one might want to use as a proxy for the population may be highly skewed. 
+
+We examine this last point in the next figure where we display for $\theta_\text{true}=0.65$, $\theta_\text{null}=0.5$, ROPE=0.45-0.55 simulations a histogram of the sample success rate at the time of making a decision. The the filled triangle is the mean of all samples (rate at the decision $\hat{\theta}$), $\overline{\hat{\theta}}$, where the nonfilled is $\theta_\text{true}$. 
+
+![Screenshot 2022-09-27 at 21 20 14](https://user-images.githubusercontent.com/6064016/192627345-0edb1b96-d094-404d-9ca1-bed9853679c4.png)
+
+We clearly see that $\overline{\hat{\theta}} = 0.72 > \theta_\text{true} = 0.65$, that is, there is a strong bias towards higher means. The reason is apparent by the cluster of results of $\hat{\theta} > 0.85$. These particular simulations happened to be sampled at high success rates where they successfully passed the criterion (HDI region larger than ROPE). The problem with the mean value, however is that this is not balanced at the other side. If we consider the results at $\hat{\theta} < 0.45$ (the mirror region of  $\hat{\theta} > 0.85$ around $\theta_\text{true}=0.65$), these would not pass the criterion (as part of the HDI will be within the ROPE).
+
+This is, of course, quite concerning for setups that rely on using the sample result as a proxy of the population. Here we see that there is still a bias: The null hypothesis is correctly rejected ($\theta_\text{null}=0.5$), but it is weighed too high. 
+
+To summarise this section, we learn that one of the most common Bayesian methods for A/B testing, HDI+ROPE, on the one hand has the advantage of accepting the null hypothesis as well as provides a descriptive credible interval. On the other hand, we also learned two limitations:
+* In the fair coin test it may incorrectly reject the null hypothesis (for we saw that this happens 20% of the time)
+* In the unfair coin test (our case of $\theta_\text{true}=0.65$, ROPE=0.45-0.55) it correctly rejects the null hypothesis after certain number of tests (~200), but the sample success rate at the time of decision is biased ($\overline{\hat{\theta}} = 0.72$)
+
+To solve for both of these we turn to JK's improved method called "Precision is the Goal", which, as it's name suggests focuses on the expected precision of the sample.
+
+## Precision Is The Goal
+
+If you understood HDI+ROPE, the idea behind this method is quite simple - we collect data until the HDI is smaller than a predefined precision.
+
+<p align="center">
+<b> Collect data until HDI < Precision Goal.</b>
+</p>
+
+We use the ROPE for two parts. First we use it to determine the *Precision Goal*. A common choice is Precision Goal is 80% of the ROPE.  
+Once the sample passes the criterion the precision criterion, we use the ROPE, as before in the HDI+ROPE method to determine the decision: reject, accept, inconclusive.
+
+That is it! A small computational change (one or two lines of code), but conceptually more powerful.
+
+Let's see this change in action in both of our fair and unfair tests.
 
 ### Dealing With Inconclusiveness
 
