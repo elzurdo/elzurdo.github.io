@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Publications/Talks
+title: Public Material
 permalink: /pub/
 ---
-
 
 ## Data Science and Machine Learning
 
@@ -36,7 +35,7 @@ As of August 2024 I've started creating articles for Towards Data Science on
 <img src="https://ep2021.europython.eu/static/img/ep2021-online-logo.png" width="400"> 
 
 
-#### 🧠🧹 Causality — Mental Hygiene for Data Science
+#### 🧠🧹 ***Causality — Mental Hygiene for Data Science***
 
 Presented in:
 
@@ -45,7 +44,7 @@ Presented in:
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTJmqJTpb6-6wqiSZNyr3AYBh75zKJ32eQTuKWsc7vN51KdYR2RHI3iSsQBF6XEoMAODDwMz31WChFM/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
-#### ➡️ Start Asking Your Data “Why?” — A Gentle Intro To Causality
+#### ➡️ ***Start Asking Your Data “Why?” — A Gentle Intro To Causality***
 
 Presented in:
 
@@ -57,7 +56,7 @@ Presented in:
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSAXWlGk_0iPyDRletFDcEd_SMR5p-0EOJP_M4ReONFdc91LpYDHxWGIeQsayOXbl2A3WiyGLKhu2ui/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
-#### 🛑 Don't Stop 'til You Get Enough - Hypothesis Testing Stop Criterion  with “Precision Is The Goal”
+#### 🛑 ***Don't Stop 'til You Get Enough - Hypothesis Testing Stop Criterion  with “Precision Is The Goal”***
 
 Presented in:
 
@@ -70,3 +69,40 @@ Slides:
 
 Poster:
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSmHPBE0gxaSkX_Q3lxtHn4Giw_hQvXeDp3mITCNH3L2h2p-QjMDKD64gvV6jvT8ent6uRyK667tNLt/embed?start=false&loop=false&delayms=3000" frameborder="0" width="2247" height="1618" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
+## Cosmology 
+
+<p> 
+<img src="https://upload.wikimedia.org/wikipedia/en/5/58/NYU_logo.svg" width="400">   
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Logo_of_Swinburne_University_of_Technology.svg" width="150">  
+</p>
+
+As an academic researcher I’ve published five peer-reviewed articles in cosmology as
+lead contributor resulting in over 940 citations to date (2024-12; [Google Scholar](https://scholar.google.com/citations?user=7KJ4H4IAAAAJ)).
+
+
+
+#### ***Improved distance measurements to z=1 with reconstruction of the baryonic acoustic feature***
+
+[Kazin et al. (2014)](https://academic.oup.com/mnras/article/441/4/3524/1217202)
+
+We demonstrate on real and simulated data that by using velocity
+fields to shift galaxies to their near-original positions one obtains more accurate
+estimates of dark matter and dark energy. Cited 420 times (132 since 2019).
+
+Wach presentation in Institute of Theoretical Astrophysics Oslo from 2014-05-20.
+
+{:refdef: style="text-align: center;"}
+<iframe width="756" height="567" src="https://www.youtube.com/embed/yDvJbG9za4Y" frameborder="0" allowfullscreen> </iframe>
+{: refdef} 
+
+Or watch on [YouTube](https://tinyurl.com/tfxr6t4)
+
+
+#### ***The baryonic acoustic feature and large-scale clustering in the Sloan Digital Sky Survey luminous red galaxy sample***
+
+[Kazin et al. (2010)](https://iopscience.iop.org/article/10.1088/0004-637X/710/2/1444/meta)
+
+By using simulations we demonstrate that an apparent abnormality in the real galaxy 2-point clustering is likely to be due to cosmic variance rather than “new physics”. Cited 296 times (38 since 2019).
