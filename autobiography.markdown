@@ -67,11 +67,16 @@ Was in reserve training call until 2010. Retired as Sergeant first class רב-ס
 [בה״ד 7](https://he.wikipedia.org/wiki/%D7%91%D7%94%22%D7%93_7){:target="_blank"}
 
 ---
-## Satellite Technician (2000) 
+## Gilat Tikshort גילת תקשורת  (2000) 
 
-![image](https://upload.wikimedia.org/wikipedia/he/4/44/Gilat-logo.jpg){:width="200"}
+![image](https://www.pc.co.il/wp-content/uploads/2012/02/gilat300.jpg){:width="200"}
 
-[ויקיפדיה](https://he.wikipedia.org/wiki/%D7%92%D7%99%D7%9C%D7%AA_%D7%98%D7%9C%D7%A7%D7%95%D7%9D){:target="_blank"}
+In my first role after immediately after my IDS service I worked
+as a satellite technician.
+
+[Wikipedia](https://en.wikipedia.org/wiki/Gilat_Satellite_Networks){:target="_blank"}
+
+[ויקיפדיה](https://he.wikipedia.org/wiki/%D7%92%D7%99%D7%9C%D7%AA_%D7%A8%D7%A9%D7%AA%D7%95%D7%AA_%D7%9C%D7%95%D7%95%D7%99%D7%9F#%D7%92%D7%99%D7%9C%D7%AA_%D7%AA%D7%A7%D7%A9%D7%95%D7%A8%D7%AA){:target="_blank"}
 
 ---
 ## Interim (Sep - Dec 2000)
@@ -247,7 +252,37 @@ My line manager, [Tom Mayo](https://www.linkedin.com/in/tom-mayo/){:target="_bla
 
 Colleague's advise on how to get things done.  
 
+---
+## [Zimmer Biomet](https://www.zimmerbiomet.com/){:target="_blank"} (2022-)
 
+
+
+<img src="https://img.swapcard.com/?u=https%3A%2F%2Fcdn-api.swapcard.com%2Fpublic%2Fimages%2F046302f5711b40f0b964ecee9b514f0d.png&q=0.8&m=fit&w=400&h=200" width="300"> 
+
+On Halloween 2022 I joined Zimmer Biomet as a Senior Machine Learning Researcher.
+
+
+
+---
+## [Medium / Towards Data Science Writer](https://eyal-kazin.medium.com/){:target="_blank"} (2024-)
+
+<img src="https://cdn-1.webcatalog.io/catalog/medium/medium-icon-filled-256.png?v=1714773071983" width="300"> 
+<img src="https://cdn-images-1.medium.com/max/1200/1*CJe3891yB1A1mzMdqemkdg.jpeg" width="300"> 
+
+
+
+As of August 2024 I've started creating articles for Towards Data Science on
+[my Medium page](https://eyal-kazin.medium.com/):
+
+* 🧠🧹  [Causality — Mental Hygiene for Data Science](https://bit.ly/causal-mental-hygiene)
+
+
+* ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality
+](https://bit.ly/start-ask-why-medium)
+
+* 🪜 [Mastering Simpson’s Paradox — My Gateway to Causality](https://bit.ly/simpsons-paradox-tds)
+
+* 🚪🚪🐐 [Lessons in Decision Making from the Monty Hall Problem](https://bit.ly/monty-hall-lessons)
 
 ---
 

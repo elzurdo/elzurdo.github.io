@@ -17,6 +17,20 @@ creating visuals that communicate actionable insights.
 Other strong suits of mine are learning new topics, attention to detail, obtaining and 
 communicating results as well as finding creative ways to prototype pragmatic solutions for complex problems.
 
+
+As of August 2024 I've started creating articles for Towards Data Science on
+[my Medium page](https://eyal-kazin.medium.com/):
+
+* 🧠🧹  [Causality — Mental Hygiene for Data Science](https://bit.ly/causal-mental-hygiene)
+
+
+* ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality
+](https://bit.ly/start-ask-why-medium)
+
+* 🪜 [Mastering Simpson’s Paradox — My Gateway to Causality](https://bit.ly/simpsons-paradox-tds)
+
+* 🚪🚪🐐 [Lessons in Decision Making from the Monty Hall Problem](https://bit.ly/monty-hall-lessons)
+
 [comment]: <>  I am looking for a London-based permanent technical role as an individual contributor in a data-driven company with exciting and challenging questions.
 
 
@@ -27,13 +41,16 @@ In 2014 I transitioned to data science, where I first worked for 3.5 years in a 
 
 In 2018 I was employed as the first Data Scientist in a biotech company where I worked mostly on protein design for therapeutics by creating Machine/Deep Learning predictive models from the data produced in the lab.  
 
-In 2020 I joined Babylon as a Senior Data Scientist.  
+In 2020 I joined Babylon as a Senior Data Scientist and was promoted to Staff.  
 I developed end-to-end R&D projects and conducted technical support 
 to improve the Symptom Checker product. 
 In practice I assisted transfer of medical knowledge to the product, 
 prototyped solutions and collaborated with engineers to put into production and consult 
 with product managers and clinicians to ensure projects were delivered on time and quantified 
 impact reported to the larger Tribe as well as the CTO.
+
+In late 2022 I joined Zimmer Biomet as a Senior Machine Learning Researcher.
+
 
 ## Aw Shucks, More?  
 I wrote a short [Autobiogrphy]({% link autobiography.markdown %}) summarising my work experiences. 
