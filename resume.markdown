@@ -16,7 +16,7 @@ Last updated: 2024-12-10
 \
 I just found my acadmic CV from 2021-03-02, and thought it might be a nice walk
 in memory lane of the various publications, talks and grants.
-Considering it does not include my last two lead author publications in cosmology,
+Considering the posted talks and that it does not include my last two lead author publications in cosmology,
 I'm guessing that it was written around 2013.
 
 
@@ -41,7 +41,8 @@ I'm guessing that it was written around 2013.
 * June 2011-September 2011:\
     &nbsp;&nbsp;&nbsp;&nbsp;Post Doc Research, Research at the Center of Cosmology and Particle Physics, NYU
 * June 2007-May 2011:\
-    &nbsp;&nbsp;&nbsp;&nbsp;PhD Research at the Center of Cosmology and Particle Physics, NYU, under supervision of Prof. Michael Blanton.
+    &nbsp;&nbsp;&nbsp;&nbsp;PhD Research at the Center of Cosmology and Particle Physics, NYU,\
+    &nbsp;&nbsp;&nbsp;&nbsp;under supervision of Prof. Michael Blanton.
 
 **Education**
 * September 2005-May 2011:\
@@ -67,20 +68,20 @@ I'm guessing that it was written around 2013.
 	     in the Sloan Digital Sky Survey Luminous Red Galaxy Sample***,\
 	     Astrophysical Journal 710 (2010) 1444-1461
 
-  Selected contributions - 
+Selected contributions - 
 
-* Blake Chris,  Kazin E. A et al.\
+* Blake Chris,  **Kazin E. A** et al.\
 	     ***The WiggleZ Dark Energy Survey: Mapping the Distance-Redshift Relation with
 	     Baryon Acoustic Oscillations***,\
        Monthly Notices of the Royal Astronomical Society  418 (2011) 1707-1724
 
-* Padmanabhan N., Xu X., Eisenstein D., Scalzo R., Cuesta A., Mehta K., Kazin E. A
+* Padmanabhan N., Xu X., Eisenstein D., Scalzo R., Cuesta A., Mehta K., **Kazin E. A**\
          ***A 2% Distance to z=0.35 by Reconstructing Baryon Acoustic Oscillations - I:
 	       Methods and Application to the Sloan Digital Sky Survey***,\
          ArXiv  1202.0090 (2012) 
 
 
-* White M, Blanton M. R, Bolton A., Schlegel D, Tinker J, Da Costa L, Kazin E. A et al.\
+* White M, Blanton M. R, Bolton A., Schlegel D, Tinker J, Da Costa L, **Kazin E. A** et al.\
 	     ***The Clustering of Massive Galaxies at z~0.5 from the First Semester of BOSS Data***,\ 
 	     Astrophysical Journal 728 (2011)   
 
@@ -98,12 +99,16 @@ I'm guessing that it was written around 2013.
 
 
 
- **Invited writer** 
+ **Invited Speaker/writer** 
 
 * Way & Naud  
 	***Proceedings of the 2011 New York Workshop on Computer, Earth and Space Science***,\
-	ArXiv 1104.1580\
-  Contriubiton titled: ***Cosmology through the large-scale structure of the Universe***   
+	NASA Goddard Institute for Space Studies\\
+  February 24-25, 2011\\
+  [ArXiv 1104.1580](https://arxiv.org/abs/1104.1580), [Agenda w/links](https://www.giss.nasa.gov/events/cess2011/agenda.html)
+  \
+  Contriubiton titled: ***Cosmology through the large-scale structure of the Universe***\
+  ([abstract](https://www.giss.nasa.gov/events/cess2011/abstracts/kazin.txt), [pdf](https://www.giss.nasa.gov/events/cess2011/presentations/kazin.pdf), [keynote](https://www.giss.nasa.gov/events/cess2011/presentations/kazin.key), [youtube](https://www.youtube.com/watch?v=1PLNwviXrmw&ab_channel=NASAGoddardInstituteforSpaceStudies))
    
 
 **Scientific Work**
