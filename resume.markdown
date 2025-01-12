@@ -105,10 +105,10 @@ Selected contributions -
 	***Proceedings of the 2011 New York Workshop on Computer, Earth and Space Science***,\
 	NASA Goddard Institute for Space Studies\\
   February 24-25, 2011\\
-  [ArXiv 1104.1580](https://arxiv.org/abs/1104.1580), [Agenda w/links](https://www.giss.nasa.gov/events/cess2011/agenda.html)
+  [ArXiv 1104.1580](https://arxiv.org/abs/1104.1580){:target="_blank"}, [Agenda w/links](https://www.giss.nasa.gov/events/cess2011/agenda.html){:target="_blank"}
   \
   Contriubiton titled: ***Cosmology through the large-scale structure of the Universe***\
-  ([abstract](https://www.giss.nasa.gov/events/cess2011/abstracts/kazin.txt), [pdf](https://www.giss.nasa.gov/events/cess2011/presentations/kazin.pdf), [keynote](https://www.giss.nasa.gov/events/cess2011/presentations/kazin.key), [youtube](https://www.youtube.com/watch?v=1PLNwviXrmw&ab_channel=NASAGoddardInstituteforSpaceStudies))
+  ([abstract](https://www.giss.nasa.gov/events/cess2011/abstracts/kazin.txt){:target="_blank"}, [pdf](https://www.giss.nasa.gov/events/cess2011/presentations/kazin.pdf){:target="_blank"}, [keynote](https://www.giss.nasa.gov/events/cess2011/presentations/kazin.key){:target="_blank"}, [youtube](https://www.youtube.com/watch?v=1PLNwviXrmw&ab_channel=NASAGoddardInstituteforSpaceStudies){:target="_blank"})
    
 
 **Scientific Work**
