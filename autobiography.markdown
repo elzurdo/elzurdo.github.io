@@ -252,6 +252,10 @@ My line manager, [Tom Mayo](https://www.linkedin.com/in/tom-mayo/){:target="_bla
 
 Colleague's advise on how to get things done.  
 
+> Facilitating stakeholders to make data driven decisions
+
+A colleague articulating one of my strengths.
+
 ---
 ## [Zimmer Biomet](https://www.zimmerbiomet.com/){:target="_blank"} (2022-)
 
@@ -259,7 +263,7 @@ Colleague's advise on how to get things done.
 
 <img src="https://img.swapcard.com/?u=https%3A%2F%2Fcdn-api.swapcard.com%2Fpublic%2Fimages%2F046302f5711b40f0b964ecee9b514f0d.png&q=0.8&m=fit&w=400&h=200" width="300"> 
 
-On Halloween 2022 I joined Zimmer Biomet as a Senior Machine Learning Researcher.
+On Halloween 2022 I joined Zimmer Biomet as a Lead Applied Machine Learning Researcher.
 
 
 
