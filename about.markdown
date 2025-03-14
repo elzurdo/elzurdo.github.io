@@ -18,18 +18,16 @@ Other strong suits of mine are learning new topics, attention to detail, obtaini
 communicating results as well as finding creative ways to prototype pragmatic solutions for complex problems.
 
 
-As of August 2024 I've started creating articles for Towards Data Science on
-[my Medium page](https://eyal-kazin.medium.com/):
+As of August 2024 I've started to craft technical articles on
+[my Medium page](https://eyal-kazin.medium.com/). The main theme so far is
+statistics and application in data science and machine learning.
+For the keen I recommend start with these and see links within:
 
-* 🧠🧹  [Causality — Mental Hygiene for Data Science](https://bit.ly/causal-mental-hygiene)
+* ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality](https://bit.ly/start-ask-why-medium): *A beginner’s guide to thinking beyond correlations.*
 
+* 🚅 [Information Theory for People in a Hurry](https://pub.towardsai.net/information-theory-in-a-hurry-a549a57f9bbb): *A quick guide to Entropy, Cross-Entropy and KL Divergence. Python code provided.* 🐍
 
-* ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality
-](https://bit.ly/start-ask-why-medium)
-
-* 🪜 [Mastering Simpson’s Paradox — My Gateway to Causality](https://bit.ly/simpsons-paradox-tds)
-
-* 🚪🚪🐐 [Lessons in Decision Making from the Monty Hall Problem](https://bit.ly/monty-hall-lessons)
+* 🚪🚪🐐 [Lessons in Decision Making from the Monty Hall Problem](https://medium.com/towards-data-science/lessons-in-decision-making-from-the-monty-hall-problem-a6032f4b1032): *A journey into three intuitions: Common, Bayesian and Causal.*
 
 [comment]: <>  I am looking for a London-based permanent technical role as an individual contributor in a data-driven company with exciting and challenging questions.
 

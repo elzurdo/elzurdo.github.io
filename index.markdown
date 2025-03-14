@@ -11,9 +11,10 @@ with ❤️ for beautiful data visualisations applied statistics.
  
 ![image]({{ site.url }}/assets/bayes_tunbridge_wells.jpg){:width="200"} 
 
-As of August 2024 I've started crafting technical articles on
-[my Medium page](https://eyal-kazin.medium.com/). The main themes so far are
-Causality and Information Theory. I recommend start with these and see links within:
+As of August 2024 I've started to craft technical articles on
+[my Medium page](https://eyal-kazin.medium.com/). The main theme so far is
+statistics and application in data science and machine learning.
+For the keen I recommend start with these and see links within:
 
 * ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality](https://bit.ly/start-ask-why-medium): *A beginner’s guide to thinking beyond correlations.*
 
