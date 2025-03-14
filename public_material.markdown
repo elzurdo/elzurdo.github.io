@@ -4,6 +4,8 @@ title: Public Material
 permalink: /pub/
 ---
 
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zurdo" data-description="Support me on Buy me a coffee!" data-message="Buy me a slice of pizza! 🍕" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
 ## Data Science and Machine Learning
 
 ### [Medium / Towards Data Science Writer](https://eyal-kazin.medium.com/){:target="_blank"} (2024-)
@@ -13,19 +15,16 @@ permalink: /pub/
 
 
 
-As of August 2024 I've started creating articles for Towards Data Science on
-[my Medium page](https://eyal-kazin.medium.com/):
+As of August 2024 I've started to craft technical articles on
+[my Medium page](https://eyal-kazin.medium.com/). The main theme so far is
+statistics and application in data science and machine learning.
+For the keen I recommend start with these and see links within:
 
-* 🧠🧹  [Causality — Mental Hygiene for Data Science](https://bit.ly/causal-mental-hygiene)
+* ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality](https://bit.ly/start-ask-why-medium): *A beginner’s guide to thinking beyond correlations.*
 
+* 🚅 [Information Theory for People in a Hurry](https://pub.towardsai.net/information-theory-in-a-hurry-a549a57f9bbb): *A quick guide to Entropy, Cross-Entropy and KL Divergence. Python code provided.* 🐍
 
-* ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality
-](https://bit.ly/start-ask-why-medium)
-
-* 🪜 [Mastering Simpson’s Paradox — My Gateway to Causality](https://bit.ly/simpsons-paradox-tds)
-
-* 🚪🚪🐐 [Lessons in Decision Making from the Monty Hall Problem](https://bit.ly/monty-hall-lessons)
-
+* 🚪🚪🐐 [Lessons in Decision Making from the Monty Hall Problem](https://medium.com/towards-data-science/lessons-in-decision-making-from-the-monty-hall-problem-a6032f4b1032): *A journey into three intuitions: Common, Bayesian and Causal.*
 
 ---
 

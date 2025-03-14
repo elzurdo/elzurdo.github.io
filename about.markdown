@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zurdo" data-description="Support me on Buy me a coffee!" data-message="Buy me a slice of pizza! 🍕" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
 ## TL;DR  
 I am an ex-Cosmologist turned Data Scientist with over 10 years experience in Machine/Deep Learning, 
 statistical inference, and with some experience Optimisation. 
