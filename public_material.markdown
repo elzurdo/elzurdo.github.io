@@ -8,6 +8,20 @@ permalink: /pub/
 
 ## Data Science and Machine Learning
 
+### S2DS Podcast Interview 2024-10-25
+
+I'm now officially on Spotify!
+
+Kelly Vanroy from the Science to Data Science program chatted with me about my journey
+from academia to the private sector and my decade of experience as a data scientist.
+
+The 40-minute episode was recorded on October 25th 2024 and released on 2025-03-19.
+
+Listen here or on Spotify (I'll post the Apple link when available):
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0UIcxAybdvxPbIzqNV5sfJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
 ### [Medium / Towards Data Science Writer](https://eyal-kazin.medium.com/){:target="_blank"} (2024-)
 
 <img src="https://cdn-1.webcatalog.io/catalog/medium/medium-icon-filled-256.png?v=1714773071983" width="75"> 
