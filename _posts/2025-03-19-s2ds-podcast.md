@@ -19,7 +19,7 @@ from academia to the private sector and my decade of experience as a data scient
 
 The 40-minute episode was recorded last October 2024 and released today!
 
-For a preview video please scroll to the bottom of this page.
+For preview videos please scroll to the bottom of this page.
 
 Listen here or on [Spotify](https://open.spotify.com/episode/0UIcxAybdvxPbIzqNV5sfJ?si=4f74bc00690a4431){:target="_blank"}:
 
@@ -33,8 +33,15 @@ or on [Apple Podcast](https://podcasts.apple.com/us/podcast/ep-22-eyal-kazin-lea
 
 
 
-Preview:
+Preview 1:
 
 <div style="text-align:center">
     <iframe src="https://drive.google.com/file/d/152pGvaFga4RNoT3TNf-OrHZNrbw3Su-E/preview" width="640" height="360" allow="autoplay"></iframe>
+</div>
+
+<br>
+Preview 2:
+
+<div style="text-align:center">
+    <iframe src="https://drive.google.com/file/d/1x4bJRp2j3bxJoEGiEm-SjYGg80BAMxHA/preview" width="640" height="360" allow="autoplay"></iframe>
 </div>
