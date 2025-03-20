@@ -31,9 +31,9 @@ or on [Apple Podcast](https://podcasts.apple.com/us/podcast/ep-22-eyal-kazin-lea
 <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.podcasts.apple.com/us/podcast/ep-22-eyal-kazin-lead-data-scientist-at-zimmer-biomet/id1744017931?i=1000699792031"></iframe>
 
 
-## Podcast Video
 
-Watch the podcast interview video:
+
+Preview:
 
 <div style="text-align:center">
     <iframe src="https://drive.google.com/file/d/152pGvaFga4RNoT3TNf-OrHZNrbw3Su-E/preview" width="640" height="360" allow="autoplay"></iframe>
