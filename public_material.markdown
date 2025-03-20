@@ -10,7 +10,7 @@ permalink: /pub/
 
 ### S2DS Podcast Interview 2024-10-25
 
-I'm now officially on Spotify!
+I'm now officially on [Spotify](https://open.spotify.com/episode/0UIcxAybdvxPbIzqNV5sfJ?si=4f74bc00690a4431)!\*
 
 Kelly Vanroy from the Science to Data Science program chatted with me about my journey
 from academia to the private sector and my decade of experience as a data scientist.
@@ -21,7 +21,9 @@ Listen here or on Spotify (I'll post the Apple link when available):
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0UIcxAybdvxPbIzqNV5sfJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
+\*And [Apple Podcast](https://podcasts.apple.com/us/podcast/ep-22-eyal-kazin-lead-data-scientist-at-zimmer-biomet/id1744017931?i=1000699792031)
 
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.podcasts.apple.com/us/podcast/ep-22-eyal-kazin-lead-data-scientist-at-zimmer-biomet/id1744017931?i=1000699792031"></iframe>
 ### [Medium / Towards Data Science Writer](https://eyal-kazin.medium.com/){:target="_blank"} (2024-)
 
 <img src="https://cdn-1.webcatalog.io/catalog/medium/medium-icon-filled-256.png?v=1714773071983" width="75"> 
