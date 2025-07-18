@@ -4,7 +4,7 @@ title: Résumé
 permalink: /resume/
 ---
 
-Last updated: 2024-12-10
+Last updated: 2025-07-18
 
 <object data="../assets/resume_kazin_eyal.pdf" width="1000" height="1000" type='application/pdf'></object>
 
