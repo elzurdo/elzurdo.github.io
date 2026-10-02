@@ -1,5 +1,5 @@
 # elzurdo.github.io
-Sharing projects and ideas on my GitHub page
+Sharing projects and ideas on my GitHub page [elzurdo.github.io](https://elzurdo.github.io).
 
 # Starting locally
 
