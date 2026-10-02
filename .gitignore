@@ -7,3 +7,6 @@ Pipfile
 
 # pycharm
 *.idea
+
+# bundler
+vendor/bundle
