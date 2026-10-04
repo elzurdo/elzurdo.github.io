@@ -36,6 +36,12 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+# Leave LaTeX untouched so MathJax 3 (loaded in _includes/head.html) can render it.
+# Kramdown's default math_engine emits <script type="math/tex"> tags, which MathJax 3
+# does not understand.
+kramdown:
+  math_engine: null
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -45,6 +51,7 @@ plugins:
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - _from_medium/
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
