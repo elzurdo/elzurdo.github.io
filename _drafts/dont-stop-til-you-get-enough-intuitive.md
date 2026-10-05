@@ -21,6 +21,8 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
      after reading this?
 
      HERO: PitG. DPitG is a short final act, not a co-hero.
+     EMOJI LOCK: the five bullets in the reader contract use 📷 ⚖️ 🛑 ✅ 🧮, and each reappears
+     as the heading of the section that delivers that promise. Change one, change both.
      ANALOGIES: 📷 camera answers the question (early). 🗳️ election dramatises
      the failure (later). Fair coin is the worked numeric example throughout.
      LENGTH TARGET: spine ~2,000–2,400 words. Everything heavy goes to ⚔️.
@@ -31,34 +33,80 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zurdo" data-description="Support me on Buy me a coffee!" data-message="Buy me a slice of pizza! 🍕" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
-#### [SUBTITLE — one line promising a gain, not a summary. What will they be able to *do*? Decide when to stop collecting, and be able to say "no difference" out loud.]
+<!-- OPENER, 6 SLOTS. Order taken from all ten Medium pieces, which are consistent:
+     title → subtitle → epigraph → context → motivating question → contract.
+     The question is never first; it always follows a beat of context. -->
+
+<!-- SLOT 2 of 6 — SUBTITLE. -->
+
+<!-- #### [SUBTITLE — one line promising a gain, not a summary. What will they be able to *do*? Decide when to stop collecting, and be able to say "no difference" out loud. It has to counterweight the Kruschke epigraph below, which is a negative claim about NHST; if both pull the same way the piece reads as an anti-frequentist polemic it never delivers.] -->
+
+#### Know when you have enough data, and when to confidently say there's no difference. Interactive calculator provided. 🧮
 
 <!-- FIGURE D (suggested, lead image): one sequence, three stops.
      A single iteration axis 1→1000 with three markers — 126 (HDI+ROPE, ⛔ wrong),
      598 (PitG, 🤷 inconclusive), 804 (DPitG, ✅ accept). The whole argument in one
      picture. If you build only one new figure, this or Figure A. -->
 
-> [EPIGRAPH — Kruschke, standing named: "With infinite patience, NHST results in 100% false alarms."
-> The spine cashes this in at the 🗳️ section.]
+<!-- SLOT 3 of 6 — EPIGRAPH. Never preceded by prose; it sits directly under the subtitle.
+     4 of your 10 Medium pieces carry one (Pearl ×2, Shannon, F. Gump).
+     ⚠️ VERIFY BEFORE PUBLISHING: exact wording and source. The old draft attributes this to
+     Kruschke, who calls false rejections "false alarms", but whether it is from the book, the
+     video or a talk is unconfirmed. Name the actual source in the attribution line. -->
 
-[READER CONTRACT — three parts, the most reliable feature of your corpus and the thing the old draft
-lacks entirely:
- • who it's for — anyone running an A/B test, trial or poll who has never examined the rule by which
-   they decide to stop
- • what they'll gain — a bulleted list of the five things they'll be able to do by the end
- • what's assumed — basic probability, no Bayes
-Then one line for the second audience, which doubles as their skip signpost: *if you already know
-your way around a posterior, the ⚔️ sections after the summary are where the detail is.*]
+> *"With infinite patience, NHST results in 100% false alarms."*
+> — John Kruschke, author of *Doing Bayesian Data Analysis*
 
-> [MOTIVATING QUESTION, on its own line, with cost already in it — when can we confidently stop,
-> given that samples cost money?]
+<!-- SLOT 4 of 6 — THE TWO QUESTIONS. Carried up from the old draft, where they opened the piece.
+     They are the post's two uses: the prospective one is the planning tool and the companion
+     calculator, the retrospective one is the stopping rule. Keeping both makes the structure
+     visible from the first screen. Nachbar's cost framing is folded into the second question.
+
+     NOTE: these two sentences now come BEFORE the context paragraph, inverting the corpus pattern
+     (Shannon's story before "How can we quantify communication?"). Deliberate: Shannon needed
+     setup, this question doesn't, and the Power Analysis beat works better as the answer to the
+     question than as a preamble to it. -->
+
+> “How much data is required?”
+
+This is one of the most common questions in hypothesis and A/B testing, and it gets asked at two very different moments. Before any data is collected, it is a planning question. Once collection is under way, with every extra sample costing time or money, it becomes a live one: 🛑
+
+> “Have we collected enough data yet?”
+
+<!-- SLOT 5 of 6 — POWER ANALYSIS, as the bridge into the contract. Names the standard answer
+     without attacking it; the critique is held back for the 🗳️ section. -->
+
+The standard answer to the first question is a *Power Analysis*: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. This post is about what happens to that number afterwards, and about the second question, which a Power Analysis was never designed to answer.
+
+<!-- SLOT 6 of 6 — READER CONTRACT. -->
+
+This post is targeted at anyone who runs experiments and has to decide when to stop them: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
+
+No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning.)
+
+By the end you will be able to:
+
+- 📷 **Separate the two questions** that most methods answer with a single number: when do we stop collecting, and what do we conclude?
+- ⚖️ **Set an effect size that survives to the end of the study** (the ROPE), rather than one quietly forgotten somewhere between the planning meeting and the write-up.
+- 🛑 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*. That one change removes a bias you probably didn't know you had.
+- ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it. This matters whenever "no meaningful difference" is the finding you actually need.
+- 🧮 **Estimate how much data you'll need** before collecting any of it, from a closed-form formula.
+
+If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The ⚔️ supplementary sections after the summary are where the detail lives.
 
 ## You Already Have a Stopping Rule
 
 [~150 words, no figure. THE HOOK. You check the dashboard each morning and stop when it goes green.
 That *is* a stopping rule; you never chose it; it has a failure mode. Name it, promise the fix, move
-on — the evidence arrives later at 🗳️. Without this the target reader has no reason to believe the
+on. The evidence arrives later at 🗳️. Without this the target reader has no reason to believe the
 post is about them.]
+
+[CLOSE THE SECTION ON THE REPLICATION CRISIS — moved here from the old draft's intro, where it was
+the wrong altitude for this reader. It works here because the section has just described their own
+Monday: this same mechanism, repeated across thousands of studies, is one of the things people mean
+by the replication crisis, and p-hacking and HARKing are usually not anyone deciding to cheat, they
+are this. Converts an abstract crisis into a description of the reader. Also sets up pre-registration
+later, since a fully pre-specified stopping rule is the answer to it.]
 
 ## What I'm Talking About When I Talk About Accepting the Null
 
