@@ -41,7 +41,21 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 <!-- #### [SUBTITLE — one line promising a gain, not a summary. What will they be able to *do*? Decide when to stop collecting, and be able to say "no difference" out loud. It has to counterweight the Kruschke epigraph below, which is a negative claim about NHST; if both pull the same way the piece reads as an anti-frequentist polemic it never delivers.] -->
 
-#### Know when you have enough data, and when to confidently say there's no difference. Interactive calculator provided. 🧮
+#### Know when you have enough data, and when a null result is a real finding. Interactive calculator provided. 🧮
+
+<!-- Your TK: "no difference" could be misparsed as "no difference in enough data", because the
+     two "when" clauses look parallel. "A null result" can't be read that way, and it covers the
+     single-group case too (the worked example is coin tosses, so "tie"/"two options" would narrow
+     it wrongly). It also avoids reusing bullet 4's exact wording. Alternatives if you prefer:
+       · …and when it's safe to conclude there is no meaningful effect.
+       · …and when "no change" is a finding rather than a failure.
+
+     PARKED QUOTES, for use lower down (you said you're moving both):
+       · Gelman, "N is never enough" — fits the ⚔️ planning-formula or the epistemic-honesty beat
+         in "When This Is Worth Using".
+       · Kruschke, "With infinite patience, NHST results in 100% false alarms" — belongs at 🗳️,
+         where the simulation gives it the context it needs. ⚠️ source still unverified. -->
+
 
 <!-- FIGURE D (suggested, lead image): one sequence, three stops.
      A single iteration axis 1→1000 with three markers — 126 (HDI+ROPE, ⛔ wrong),
@@ -50,12 +64,24 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 <!-- SLOT 3 of 6 — EPIGRAPH. Never preceded by prose; it sits directly under the subtitle.
      4 of your 10 Medium pieces carry one (Pearl ×2, Shannon, F. Gump).
-     ⚠️ VERIFY BEFORE PUBLISHING: exact wording and source. The old draft attributes this to
-     Kruschke, who calls false rejections "false alarms", but whether it is from the book, the
-     video or a talk is unconfirmed. Name the actual source in the attribution line. -->
 
-> *"With infinite patience, NHST results in 100% false alarms."*
-> — John Kruschke, author of *Doing Bayesian Data Analysis*
+     This is the 1943 objection that created sequential analysis. Captain Garret L. Schuyler of the
+     US Navy's Bureau of Ordnance was testing anti-aircraft fire; W. Allen Wallis was proposing a
+     fixed-sample design. Schuyler's objection went to Wallis and Milton Friedman, who could not
+     solve it and passed it to Abraham Wald, who produced the Sequential Probability Ratio Test.
+
+     Why this one rather than Kruschke's "100% false alarms": it needs no statistical context to
+     land, it is the post's exact subject stated by a practitioner rather than a statistician, and
+     it is positive — a reason to want to stop early, not an attack on NHST — so it pulls with the
+     subtitle instead of against it.
+
+     Source: Milton & Rose Friedman, "Two Lucky People" (1998), quoting Wallis's account. Verified
+     via https://python.quantecon.org/wald_friedman.html — worth a second check against the book
+     before publishing. The "[rounds]" bracket is in the original. -->
+
+> *"He would see after the first few thousand or even few hundred [rounds] that the experiment need not be completed, either because the new method is obviously inferior or because it is obviously superior beyond what was hoped for."*
+> — W. Allen Wallis, recalling Captain Garret L. Schuyler's objection, 1943
+
 
 <!-- SLOT 4 of 6 — THE TWO QUESTIONS. Carried up from the old draft, where they opened the piece.
      They are the post's two uses: the prospective one is the planning tool and the companion
@@ -69,14 +95,18 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 > “How much data is required?”
 
-This is one of the most common questions in hypothesis and A/B testing, and it gets asked at two very different moments. Before any data is collected, it is a planning question. Once collection is under way, with every extra sample costing time or money, it becomes a live one: 🛑
+This is one of the most common questions in hypothesis and A/B testing, and it gets asked at two very different moments. Before any data is collected, it is a planning question. Once collection is under way, with every extra sample costing time or money, it becomes a live one:
 
 > “Have we collected enough data yet?”
 
 <!-- SLOT 5 of 6 — POWER ANALYSIS, as the bridge into the contract. Names the standard answer
      without attacking it; the critique is held back for the 🗳️ section. -->
 
-The standard answer to the first question is a *Power Analysis*: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. This post is about what happens to that number afterwards, and about the second question, which a Power Analysis was never designed to answer.
+The standard answer to the first question is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or saved lives, if the drug being tested turns out to be harmful?
+
+Checking as the data arrives is tempting, and it has a name: *sequential hypothesis testing*, or sequential testing for short. It also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample crosses your threshold; and because that same threshold is also what decides the verdict, the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
+
+That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way. In a companion post we'll show that the same machinery works before a study starts, for planning how much data to collect in the first place.
 
 <!-- SLOT 6 of 6 — READER CONTRACT. -->
 
@@ -95,6 +125,9 @@ By the end you will be able to:
 If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The ⚔️ supplementary sections after the summary are where the detail lives.
 
 ## You Already Have a Stopping Rule
+
+> *"With infinite patience, NHST results in 100% false alarms."*
+> — John Kruschke, author of *Doing Bayesian Data Analysis*
 
 [~150 words, no figure. THE HOOK. You check the dashboard each morning and stop when it goes green.
 That *is* a stopping rule; you never chose it; it has a failure mode. Name it, promise the fix, move
@@ -310,6 +343,8 @@ otherwise. One 🗳️ callback to close.]
 - [DPitG keeps PitG's low error rates, is highly conclusive, and costs little more]
 - [Demonstrated on coin tosses; generalises to continuous data and between-group comparisons]
 - [A closed-form formula makes it work prospectively and retrospectively, not just sequentially]
+
+> You can't spell pROPEr without ROPE ...
 
 ## 🧮 A Companion: The Calculator
 
