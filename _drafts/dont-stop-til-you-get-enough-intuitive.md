@@ -9,7 +9,7 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
      agentdocs/dpitg-post-outline.md
 
      TARGET READER: someone running A/B tests or hypothesis tests who does not
-     fully understand the stopping criterion they are already using. They peek
+     fully understand the stopping rule they are already using. They peek
      at a dashboard, stop when it goes green, and have never articulated that
      this is a stopping rule with a failure mode.
 
@@ -102,9 +102,9 @@ This is one of the most common questions in hypothesis and A/B testing, and it g
 <!-- SLOT 5 of 6 — POWER ANALYSIS, as the bridge into the contract. Names the standard answer
      without attacking it; the critique is held back for the 🗳️ section. -->
 
-The standard answer to the first question is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or saved lives, if the drug being tested turns out to be harmful?
+The standard answer to the first question is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, by cutting short a clinical trial once the treatment shows signs of doing damage?
 
-Checking as the data arrives is tempting, and it has a name: *sequential hypothesis testing*, or sequential testing for short. It also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample crosses your threshold; and because that same threshold is also what decides the verdict, the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
+Checking as the data arrives is tempting, and it has a name: *sequential hypothesis testing*, often shortened to sequential testing. It also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample meets the stopping rule. In most standard methods that same rule is also what decides the verdict, so the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
 
 That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way. In a companion post we'll show that the same machinery works before a study starts, for planning how much data to collect in the first place.
 
@@ -113,6 +113,8 @@ That correction is the focus of this post: a rule that tells you when you can co
 This post is targeted at anyone who runs experiments and has to decide when to stop them: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
 
 No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning.)
+
+<!-- At the final stage of revisions readdress the itemising to make sure still sensible  -->
 
 By the end you will be able to:
 
@@ -245,7 +247,7 @@ isn't.]
 
 *[CAPTION NEEDED — state the claim: at N=126 the HDI is fully outside the ROPE, so a coupled algorithm stops and rejects a coin we know to be fair.]*
 
-[THE HINGE OF THE PIECE, in one sentence: both of these criteria are stopping on the verdict.]
+[THE HINGE OF THE PIECE, in one sentence: both of these rules are stopping on the verdict.]
 
 ## 🛑 Precision is the Goal
 
