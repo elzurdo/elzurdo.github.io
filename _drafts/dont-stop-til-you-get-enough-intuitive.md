@@ -99,16 +99,18 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 > “How much data is required?”
 
-This is one of the most common questions in hypothesis and A/B testing, and it gets asked at two very different moments. Before any data is collected, it is a planning question. Once collection is under way, with every extra sample costing time or money, it becomes a live one:
-
-> “Have we collected enough data yet?”
+This is one of the most common questions in hypothesis and A/B testing, and it gets asked at two very different moments. Before any data is collected, it is a planning question. 
 
 <!-- SLOT 5 of 6 — POWER ANALYSIS, as the bridge into the contract. Names the standard answer
      without attacking it; the critique is held back for the 🗳️ section. -->
 
-The standard answer to the first question is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, by cutting short a clinical trial once the treatment shows signs of doing damage?
+The standard answer is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, by cutting short a clinical trial once the treatment shows signs of doing damage?
 
-Checking as the data arrives is tempting, and it has a name: *sequential hypothesis testing*, often shortened to sequential testing. It also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample meets the stopping rule. In most standard methods that same rule is also what decides the verdict, so the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
+Checking as the data arrives is tempting, and it has a name: *sequential hypothesis testing*, often shortened to sequential testing. This method addresses the question:
+
+> “Have we collected enough data yet?”
+
+It also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample meets the stopping rule. In most standard methods that same rule is also what decides the verdict, so the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
 
 That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way. In a companion post we'll show that the same machinery works before a study starts, for planning how much data to collect in the first place.
 
@@ -143,27 +145,71 @@ By the end you will be able to:
 
 If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The ⚔️ supplementary sections after the summary are where the detail lives.
 
-## You Already Have a Stopping Rule
+## How Experiments Actually End
 
 How did your last experiment actually end?
 
-If it was an A/B test, there was probably a dashboard, and you looked at it most mornings. For a while nothing much changed and you left it running. Then one morning the number turned green and the test was over. (Perhaps you gave it another day, to be sure.)
+In large-scale A/B testing the answer is rarely "when we reached the sample size we planned for". Results accumulate continuously, a dashboard reports them as they arrive, and nothing stands between seeing a number and acting on it. Tests get watched, and they get stopped once the numbers look convincing. Those numbers are *heuristics*: convenient stand-ins for the thing that actually matters, usually a p-value, sometimes a confidence interval or a Bayes Factor.
 
-That is a stopping rule. Nobody wrote it down or pre-registered it, and it was never really chosen. It emerged from the fact that you can watch the data arrive and are allowed to act on what you see. 👀
+<!-- CITE: Johari, Koomen, Pekelis & Walsh (2022), "Always Valid Inference: Continuous
+     Monitoring of A/B Tests", Operations Research. In references.bib as `johari2022`.
 
-Notice what it is made of. The thing that tells you to stop is the same thing that tells you what to conclude: you stop because the result has turned statistically significant, and you conclude that it is meaningful. (Those are two different claims, and we will come back to how far apart they can be.) Keep looking for long enough and something will eventually cross that line, whether or not there is anything there to find.
+     WHY IT JUSTIFIES THE CLAIM (for your reference): the paper's own framing is that
+     "A/B tests are typically analyzed via frequentist p-values and confidence intervals,
+     but these inferences are wholly unreliable if users endogenously choose sample sizes
+     by continuously monitoring their tests." Two things we need are in that sentence:
+     (a) continuous monitoring is the normal practice in industry A/B testing, not an
+     abuse — it is the premise the authors build a method for; (b) choosing the sample
+     size by watching is what breaks the inference. So you are reporting documented
+     practice rather than claiming personal experience, which was the concern.
+     Their fix (always-valid inference) is a frequentist cousin of the decoupling this
+     post argues for — worth one line in ⚔️ or the resources ladder. -->
 
-John Kruschke author of *Doing Bayesian Data Analysis* summarised this as:
+Scientific research mostly runs the other way round. The sample size is fixed in advance, usually by a power analysis, and the study runs to the end. Its characteristic failure arrives later, once the data is in: the minimum effect size that went into the planning calculation appears nowhere in the heuristics that are reported, so it quietly drops out of the conclusion. That second failure is the subject of the companion post. This one is about the first: continuous monitoring.
+
+<!-- CITE: Wasserstein & Lazar (2016), "The ASA Statement on p-Values: Context, Process,
+     and Purpose", The American Statistician 70(2):129–133. In references.bib as
+     `wasserstein2016`.
+
+     WHY IT JUSTIFIES THE CLAIM (for your reference): this is the American Statistical
+     Association's official position, which is why it carries institutional weight rather
+     than being one methodologist's opinion. Its Principle 5 states that a p-value does
+     not measure the size of an effect or the importance of a result. That is exactly the
+     claim being made here — the planned effect size cannot survive into a conclusion
+     reported as a p-value, because the p-value does not carry that information. You are
+     citing the statistic's acknowledged limits, not accusing researchers of anything.
+
+     HEDGE YOU MAY WANT: "research mostly preplans" is true as a norm but not universal.
+     Simmons, Nelson & Simonsohn (2011), `simmons2011`, showed that a researcher starting
+     with 10 observations per condition and testing after every new observation finds a
+     "significant" effect 22% of the time when nothing is there. So researchers peek too.
+     Left out of the body deliberately, because naming it blurs the two-failure split you
+     asked for — but it is the honest qualifier if you want one, and it is a strong number. -->
+
+Both of those are stopping rules. The researcher's was chosen in advance; the A/B one was made on the fly. That is not to say nothing was decided: somebody picked the heuristic, and somebody picked the threshold it has to cross. What nobody picked was when to look, or how many looks to allow. That part came free with the dashboard. 👀
+
+### One Heuristic, Two Jobs
+
+Look at what that stopping rule is made of. The heuristic that signals when to stop is the same one that delivers the verdict: the experimenter stops because the result has turned *statistically significant*, and concludes that it is *meaningful*. (Those are two different claims, and we will come back to how far apart they can be.) Given enough looks, something will eventually cross that line, whether or not there is anything there to find.
+
+John Kruschke, author of *Doing Bayesian Data Analysis*, puts the consequence for p-value stopping rules in one line:
 
 > *"With infinite patience, NHST results in 100% false alarms."*
 
-*NHST* is Null Hypothesis Significance Testing, the framework behind that green light. Its stopping rule is the one you already know: carry on until the p-value (how surprising your data would be if nothing were really going on) falls below an agreed threshold, usually 0.05, sometimes stricter.
+*NHST* is Null Hypothesis Significance Testing, the framework built on p-values. As a stopping rule it amounts to this: carry on until the p-value (which quantifies how surprising the data would be if the null hypothesis were true) falls below an agreed threshold, usually 0.05, sometimes stricter.
 
-A stopping rule that doubles as a verdict is worth sitting with, because it is one of the quieter engines behind the *replication crisis*. The crisis is the discovery, across psychology, medicine and economics, that a great many published findings simply do not reappear when somebody runs the study again. When the Open Science Collaboration repeated one hundred well-known psychology experiments in 2015, only about a third came back with the original result.
+What he means is that chance alone keeps producing small deviations from the null, and as data accumulates one of them will eventually be extreme enough to clear that threshold. Wait long enough and every experiment reports a finding, including the ones with nothing to find.
 
-The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesising after the results are known), and both sound like accusations of dishonesty. Mostly they are not. Mostly they are a competent person looking at a dashboard, seeing a result, and stopping, which is exactly what the dashboard was built to let them do.
+This is not only a laboratory concern. It is one of the quieter engines behind the *replication crisis*, where a great many published findings fail to reappear when somebody runs the study again: when the Open Science Collaboration repeated one hundred psychology experiments in 2015, only about a third came back with the original result.
 
-What helps is deciding, before any data arrives, what would make you stop.
+Two things are needed to avoid this. The first is to fix a minimum meaningful effect size in advance and actually hold to it, which is also what lets us accept a null hypothesis rather than merely fail to reject it. The second, which turns out to matter just as much, is to stop collecting data for a reason that has nothing to do with the verdict. 
+
+Before addressing both, let's first address a concept that those relying p-values might not be familiar with: accepting the null hypothesis.
+
+<!-- THIS SHOULD GO IN THE COMPANION PAPER: A stopping rule that doubles as a verdict is worth sitting with, because it is one of the quieter engines behind the *replication crisis*. The crisis is the discovery, across psychology, medicine and economics, that a great many published findings simply do not reappear when somebody runs the study again. When the Open Science Collaboration repeated one hundred well-known psychology experiments in 2015, only about a third came back with the original result.
+
+The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesising after the results are known), and both sound like accusations of dishonesty. Mostly they are not. Mostly they are a competent person looking at a dashboard, seeing a result, and stopping, which is exactly what the dashboard was built to let them do. -->
+
 
 ## What I'm Talking About When I Talk About Accepting the Null
 
