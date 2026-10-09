@@ -3,6 +3,10 @@ layout: post
 title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion"
 ---
 
+<!-- Notes:
+* analysts don't always know what they want at first
+* N is never enough .... -->
+
 <!-- ===========================================================================
      SCAFFOLD ONLY — every heading below carries one bracketed line of intent
      and no prose. The prose is yours. Full reasoning behind this structure:
@@ -114,7 +118,20 @@ This post is targeted at anyone who runs experiments and has to decide when to s
 
 No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning.)
 
-<!-- At the final stage of revisions readdress the itemising to make sure still sensible  -->
+<!-- At the final stage of revisions readdress the itemising to make sure still sensible
+
+     KNOWN ISSUE for that pass — bullet 5 (🧮) contradicts the opener.
+     The calculator is one app with two uses: this post is the RETROSPECTIVE / sequential use
+     (plug in summary stats, get a verdict on an experiment already under way); the companion post
+     is the PROSPECTIVE use (plan how much data to collect before starting).
+     SLOT 5 now says "In a companion post we'll show that the same machinery works before a study
+     starts, for planning how much data to collect in the first place" — but bullet 5 promises
+     exactly that as a takeaway of THIS post. One of the two has to move.
+     Suggested reword, keeping 🧮 here and the prospective promise in the companion:
+       · 🧮 **Check an experiment you've already run** by plugging in its summary statistics, and
+         see whether the data supports a verdict at all.
+     The closed-form formula still appears here in ⚔️; the companion does the applied planning. -->
+
 
 By the end you will be able to:
 
@@ -128,20 +145,25 @@ If you are already comfortable with posteriors, HDIs and ROPEs, the main thread 
 
 ## You Already Have a Stopping Rule
 
+How did your last experiment actually end?
+
+If it was an A/B test, there was probably a dashboard, and you looked at it most mornings. For a while nothing much changed and you left it running. Then one morning the number turned green and the test was over. (Perhaps you gave it another day, to be sure.)
+
+That is a stopping rule. Nobody wrote it down or pre-registered it, and it was never really chosen. It emerged from the fact that you can watch the data arrive and are allowed to act on what you see. 👀
+
+Notice what it is made of. The thing that tells you to stop is the same thing that tells you what to conclude: you stop because the result has turned statistically significant, and you conclude that it is meaningful. (Those are two different claims, and we will come back to how far apart they can be.) Keep looking for long enough and something will eventually cross that line, whether or not there is anything there to find.
+
+John Kruschke author of *Doing Bayesian Data Analysis* summarised this as:
+
 > *"With infinite patience, NHST results in 100% false alarms."*
-> — John Kruschke, author of *Doing Bayesian Data Analysis*
 
-[~150 words, no figure. THE HOOK. You check the dashboard each morning and stop when it goes green.
-That *is* a stopping rule; you never chose it; it has a failure mode. Name it, promise the fix, move
-on. The evidence arrives later at 🗳️. Without this the target reader has no reason to believe the
-post is about them.]
+*NHST* is Null Hypothesis Significance Testing, the framework behind that green light. Its stopping rule is the one you already know: carry on until the p-value (how surprising your data would be if nothing were really going on) falls below an agreed threshold, usually 0.05, sometimes stricter.
 
-[CLOSE THE SECTION ON THE REPLICATION CRISIS — moved here from the old draft's intro, where it was
-the wrong altitude for this reader. It works here because the section has just described their own
-Monday: this same mechanism, repeated across thousands of studies, is one of the things people mean
-by the replication crisis, and p-hacking and HARKing are usually not anyone deciding to cheat, they
-are this. Converts an abstract crisis into a description of the reader. Also sets up pre-registration
-later, since a fully pre-specified stopping rule is the answer to it.]
+A stopping rule that doubles as a verdict is worth sitting with, because it is one of the quieter engines behind the *replication crisis*. The crisis is the discovery, across psychology, medicine and economics, that a great many published findings simply do not reappear when somebody runs the study again. When the Open Science Collaboration repeated one hundred well-known psychology experiments in 2015, only about a third came back with the original result.
+
+The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesising after the results are known), and both sound like accusations of dishonesty. Mostly they are not. Mostly they are a competent person looking at a dashboard, seeing a result, and stopping, which is exactly what the dashboard was built to let them do.
+
+What helps is deciding, before any data arrives, what would make you stop.
 
 ## What I'm Talking About When I Talk About Accepting the Null
 
@@ -264,7 +286,7 @@ $\omega_{Goal} = 0.08$ <!-- medium: ωGoal = 0.08 -->, 80% of the ROPE width. Th
 now running to 598 rather than stopping at 126.]
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/05-pitg-algorithm.png" alt="PitG stop criterion triggered at iteration 598" width="700">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/05-pitg-algorithm.png" alt="PitG stopping rule met at iteration 598" width="700">
 </div>
 
 *[CAPTION NEEDED — state the claim: PitG ignores the verdict and keeps collecting until the HDI is narrow enough, reaching ωGoal at iteration 598.]*
@@ -485,6 +507,13 @@ for the 2022 correspondence, if he's content to be named.]
 - [The calculator — `https://r-w-t-y.streamlit.app/`]
 - [Dirk Nachbar's write-up — an independent practitioner's summary plus a continuous-variable
   implementation: `https://www.linkedin.com/pulse/precision-goal-dirk-nachbar-yfh5e/`]
+- [Open Science Collaboration (2015), "Estimating the reproducibility of psychological science",
+  *Science* **349**(6251), aac4716 — the replication study quoted in *You Already Have a Stopping
+  Rule*. Annotate with why it is worth the reader's time; it is the empirical anchor for the
+  replication crisis, and the one entry here that is about the problem rather than the method.
+  `https://doi.org/10.1126/science.aac4716`
+  ⚠️ Check the headline figure before publishing — the draft says "only about a third came back
+  with the original result", which should match this paper's own reported replication rate.]
 
 <div style="text-align:center">
     <iframe width="640" height="480" src="https://www.youtube.com/embed/lh5btlAvrLs" title="Precision is the Goal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
