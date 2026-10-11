@@ -25,11 +25,13 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
      after reading this?
 
      HERO: PitG. DPitG is a short final act, not a co-hero.
-     EMOJI LOCK: the five bullets in the reader contract use 📷 ⚖️ 🛑 ✅ 🧮, and each reappears
+     EMOJI LOCK: the five bullets in the reader contract use 🏀 ⚖️ 🛑 ✅ 🧮, and each reappears
      as the heading of the section that delivers that promise. Change one, change both.
-     ANALOGIES: 📷 camera answers the question (early). 🗳️ election dramatises
-     the failure (later). Fair coin is the worked numeric example throughout.
-     LENGTH TARGET: spine ~2,000–2,400 words. Everything heavy goes to ⚔️.
+     
+     ANALOGIES: 🏀 free throws answer the question (early). 🗳️ election dramatises
+     the failure (later). Fair coin is the worked numeric example from "What a
+     Posterior Is" onwards. 
+     LENGTH TARGET: spine ~2,000–2,400 words when excluding the footnotes. Everything heavy goes to ⚔️.
 
      Each LaTeX expression carries its unicode twin in an adjacent
      <!- - medium: … - -> comment, for regenerating the Medium version.
@@ -137,8 +139,8 @@ No prior knowledge of Bayesian statistics is required, just a basic understandin
 
 By the end you will be able to:
 
-- 📷 **Separate the two questions** that most methods answer with a single number: when do we stop collecting, and what do we conclude?
-- ⚖️ **Set an effect size that survives to the end of the study** (the ROPE), rather than one quietly forgotten somewhere between the planning meeting and the write-up.
+- 🏀 **Separate the two questions** that most methods answer with a single number: when do we stop collecting, and what do we conclude?
+- ⚖️ **Quantify what counts as "close enough"** (the ROPE), and hold to it, rather than letting the effect size you planned around be quietly forgotten between the planning meeting and the write-up.
 - 🛑 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*. That one change removes a bias you probably didn't know you had.
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it. This matters whenever "no meaningful difference" is the finding you actually need.
 - 🧮 **Estimate how much data you'll need** before collecting any of it, from a closed-form formula.
@@ -204,46 +206,113 @@ This is not only a laboratory concern. It is one of the quieter engines behind t
 
 Two things are needed to avoid this. The first is to fix a minimum meaningful effect size in advance and actually hold to it, which is also what lets us accept a null hypothesis rather than merely fail to reject it. The second, which turns out to matter just as much, is to stop collecting data for a reason that has nothing to do with the verdict. 
 
-Before addressing both, let's first address a concept that those relying p-values might not be familiar with: accepting the null hypothesis.
+The second asks us to stop without consulting the result, which sounds like a strange way to run an experiment. Let's take it first.
 
 <!-- THIS SHOULD GO IN THE COMPANION PAPER: A stopping rule that doubles as a verdict is worth sitting with, because it is one of the quieter engines behind the *replication crisis*. The crisis is the discovery, across psychology, medicine and economics, that a great many published findings simply do not reappear when somebody runs the study again. When the Open Science Collaboration repeated one hundred well-known psychology experiments in 2015, only about a third came back with the original result.
 
 The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesising after the results are known), and both sound like accusations of dishonesty. Mostly they are not. Mostly they are a competent person looking at a dashboard, seeing a result, and stopping, which is exactly what the dashboard was built to let them do. -->
 
 
-## What I'm Talking About When I Talk About Accepting the Null
+## 🏀 Gotta Keep 'em Separated: First Settle, Then Call
 
-[Three bullets, one line each — replaces the three `[some details tbd]` stubs in the old draft:]
+Let's follow a professional basketball player, unnamed but real, ten years into his career. Across more than five thousand free throws he has made 81% of them. Then he ruptures an Achilles tendon, has surgery, misses the rest of the season, and comes back.[^player]
 
-💊 [bioequivalence trials for generic drugs]
+Has the injury taken something away?
 
-💻 [do-no-harm regression testing in software deployment]
+Three weeks into the comeback it looks that way. He has attempted forty free throws and made twenty-nine, a rate of 72%, nine percentage points below his career record. The write-ups begin.
 
-📋 [futility stopping in programme evaluations]
+But forty attempts is almost nothing. A player who is exactly the shooter he always was will have a stretch this poor about one time in ten, for the same reason a fair coin sometimes throws a long run of tails. Account for that properly and those forty shots are consistent with a true rate anywhere between about 58% and 85%.[^raterange] His old 81% sits comfortably inside that span. So does a genuine collapse to 60%. The data cannot yet tell the two apart.[^prior]
 
-[Then the frequentist limitation in ONE sentence: NHST can only reject, or awkwardly "not reject".
-The formal treatment is fenced to ⚔️ — do not argue it here.]
+<!-- TK (yours): add a Beta distribution visual pointing at the values quoted here, and
+     refer to it in the text.
+     NOTE: this is very close to FIGURE A ("posterior 101"), currently planned for
+     "What a Posterior Is" using the fair-coin sequence. Worth deciding once: either
+     build Figure A on these free throws, so the running example carries the teaching
+     and the coin arrives later as the clean simulation case, or keep the coin and let
+     this section stay prose-only. Two narrowing-posterior figures a few sections apart
+     would be one too many. -->
 
-## 📷 Focus First, Then Look
+By the end of the season he has attempted 627 and made 82.8% of them. The span of rates consistent with the data now runs from about 80% to 86%, and each new shot barely moves it. There was no way to arrive here sooner: the only source of more attempts is more basketball.
 
-[~250 words. THE ANSWER, in picture form, before any Bayesian vocabulary. A blurry photo of a box:
-you cannot tell what is inside. Sharpen first, then look. Two jobs, and most methods fuse them:
+Two separate judgements follow, and the distinction between them is what the rest of this post rests on.
 
-  • the **stopping rule** — when do we stop collecting?
-  • the **decision rule** — what do we conclude once we have?
+**Has the span stopped moving?** This asks nothing about whether he is back to his old self. It asks how much the estimate would still shift if the season carried on.
 
-Then Kruschke's answer in one sentence: stop when the precision reaches a threshold. No formalism,
-no vocabulary, no HDI, no ROPE yet.]
+**What does the span say?** A real change in his shooting, or none worth worrying about.
 
-<!-- FIGURE B (suggested, nice-to-have): the camera pair.
-     2×2 — blurry→sharp photo of a box, beside blurry→sharp posterior against a ROPE.
-     Makes width-vs-position literal. The prose can carry this if you'd rather not build it. -->
+The first is a **stopping rule**: when to stop collecting. The second is a **decision rule**: what to conclude once we have stopped. Kruschke's answer to the first is to settle in advance how narrow that span has to be, then carry on until it is that narrow, whatever it turns out to say. How narrow it is has a name: *precision*.
 
-## ⚖️ What Counts as "The Same"
+The first judgement is now answerable; the second is not. The span has settled, but settled around what? To say whether 82.8% against a career record of 81% counts as a change in the player, we have to decide how large a change would matter, and decide it before the data arrives rather than after. That is the next section.
 
-[The ROPE, arriving as a consequence of the camera picture: to judge "is the object inside the box",
-you first have to say where the box is. This is the one piece of machinery a practitioner already
-has opinions about, which is why it comes before the posterior.
+[^player]: The numbers are Dominique Wilkins's. Nine-time All-Star, Hall of Famer, nicknamed the Human Highlight Film, and averaging 28.1 points a game when he ruptured his Achilles tendon against Philadelphia on 28 January 1992, aged 32. He returned the following season and averaged 29.9, second in the league behind Michael Jordan. I considered using Kevin Durant, whose Achilles ruptured in the 2019 Finals, but his comeback season was cut to 35 games and 238 free throws, too few to settle the question either way. We will come back to why that matters.
+
+[^raterange]: Every range quoted in this post is a 95% *credible interval*: the span of values most plausible given the data. It is the Bayesian cousin of the frequentist confidence interval. For a success rate like this one it comes from a Beta distribution, and later we will meet the particular flavour of credible interval this method uses, the highest density interval.
+
+[^prior]: We keep things simple with a flat prior, which treats every rate as equally plausible before the comeback season starts. A fuller analysis might bring in how other players' free-throw shooting has changed after returning from similar injuries. His own career record is deliberately *not* used as a prior: it is the baseline we are testing against, and feeding it in at both ends would quietly tilt the answer towards "nothing has changed".
+
+<!-- WHY THE PLAYER IS ANONYMOUS in the body: the argument is about a baseline and a
+     comeback season, and a famous name invites the reader to bring their own opinion about
+     whether he came back the same. The footnote keeps the provenance honest.
+
+     ⚠️ BASELINE CHOICE, still open and it matters. 81% is his WHOLE pre-injury career
+     (4,494/5,557 = 80.9%), which is dragged down by three developing seasons (68%, 77%,
+     81%). His prime-years baseline, 1986-87 onwards, is 82.5% (2,819/3,416), which is the
+     fairer like-for-like comparison.
+     This does not bite in THIS section, but it decides the verdict in ⚖️ and beyond:
+       · vs 80.9%, ROPE ±5pp → HDI [79.7, 85.6] sits inside [75.9, 85.9] by only 0.3pp
+       · vs 82.5%, ROPE ±5pp → comfortably inside [77.5, 87.5]
+     The second is the robust worked example. Settle this before writing ⚖️.
+
+     All figures, both players, every season, and the derived HDIs are in
+     agentdocs/freethrow-example-data.md, with verification warnings. -->
+
+
+<!-- FIGURE B (suggested) — respecified for the single-group version.
+     One chart. Attempts on the x axis (1 → 627), his running make-rate as a line with a
+     credible-interval band, and a horizontal line at the 81% career baseline.
+     Early: the band is enormous and the line sits well below the baseline, so the slump
+     looks real. Late: the band is narrow and straddles the baseline.
+     That is the whole section in one picture, and the horizontal baseline makes the
+     single-group framing visible at a glance.
+     (Was specified for two players' lines converging; that was the old between-group
+     version of the analogy.) -->
+
+## ⚖️ Quantifying "Close Enough"
+
+<!-- TK image idea: Someone doing Six Seven -->
+
+<!-- TITLE: echoes the information-theory series (Quantifying Surprise / Uncertainty /
+     Misalignment / Dependence / Gain), and the link is real rather than cosmetic — that
+     series puts numbers on things treated as unmeasurable, and this section does it for
+     sameness, the one verdict NHST structurally cannot deliver.
+
+     "Close enough" rather than "the same" on purpose: it is self-evidently a judgement
+     call, so it does not promise a derivation, and it is a truer gloss of *practical
+     equivalence* than "the same", since the ROPE exists precisely for values that are
+     not identical.
+
+     ⚠️ REQUIRED DISCLAIMER, early in this section. In the series "Quantifying X" always
+     means a formula computed from data. The ROPE is the opposite: a number chosen from
+     domain knowledge before any data arrives. One sentence saying so, near the top,
+     otherwise the title primes the reader for a derivation that never comes — and the
+     section's central claim is that no derivation exists. -->
+
+[THE DISCLAIMER FIRST, one or two sentences: unlike the quantities in the information theory
+series, this number is not computed from anything. It is chosen, in advance, from knowledge of
+the domain. The rest of the section is about how to choose it well.]
+
+[Then the ROPE, arriving as a consequence of the free-throw question the previous section left open:
+the span has settled, but settled around *what*? To say whether 82.8% against a baseline of 81%
+counts as a change, we first have to say how large a change would matter. That is the ROPE, and it
+has to be fixed before the data arrives, not after.
+
+The running example gives this for free: a 5pp drop would mean a different tier of shooter; 1.8pp is
+the kind of wobble any shooter has between seasons. This is the one piece of machinery a
+practitioner already has opinions about, which is why it comes before the posterior.
+
+⚠️ Settle the baseline first — see the comment in the 🏀 section. Against his whole-career 80.9%
+the verdict is Accept by only 0.3pp; against his prime-years 82.5% it is comfortable. Use 82.5%
+unless you have a reason not to.
 
 Carries the therapeutic example — 72.1% beneficial for males, 72.3% for females — and the pull quote:]
 
@@ -255,6 +324,31 @@ bullets in the old draft.]
 [THE MISCONCEPTION BLOCK — worth its own pull quote:]
 
 > The decision method accepts/rejects the null **value**, not the sample value.
+
+### What I'm Talking About When I Talk About Accepting the Null
+
+<!-- MOVED here from its own ## section between "How Experiments Actually End" and 📷.
+     Two reasons. (1) It was standing between "One Heuristic, Two Jobs" and "Focus First,
+     Then Look", which are a question and its answer — nothing should sit in that gap.
+     (2) Accepting the null only becomes picturable once the ROPE exists: it is what
+     happens when the posterior sits wholly inside the region. Motivating it earlier meant
+     motivating something undefined.
+
+     Note it now does double duty — bioequivalence is the canonical argument for wanting a
+     region of practical equivalence at all, so these bullets justify the ⚖️ machinery as
+     well as the capability. The capability itself is delivered two sections later, at
+     "Inside, Outside, or Straddling". -->
+
+[Three bullets, one line each — replaces the three `[some details tbd]` stubs in the old draft:]
+
+💊 [bioequivalence trials for generic drugs]
+
+💻 [do-no-harm regression testing in software deployment]
+
+📋 [futility stopping in programme evaluations]
+
+[Then the frequentist limitation in ONE sentence: NHST can only reject, or awkwardly "not reject".
+The formal treatment is fenced to ⚔️ — do not argue it here.]
 
 ## What a Posterior Is
 
@@ -588,10 +682,10 @@ for the 2022 correspondence, if he's content to be named.]
       98–127    →  the stopping/decision distinction → 📷 "Focus First, Then Look"
      129–144    →  ⚔️ "What a p-value Actually Is"
      144–167    →  🗳️ "Your stopping rule, simulated"
-     168–184    →  ⚖️ "What Counts as 'The Same'"
+     168–184    →  ⚖️ 'Quantifying "Close Enough"' 
      186–204    →  split: informal HDI → "What a Posterior Is";
                    formal HDI → ⚔️ "What the HDI Actually Is"
-     205–215    →  ⚖️ "What Counts as 'The Same'" (fill the two empty bullets)
+     205–215    →  ⚖️ 'Quantifying "Close Enough"' (fill the two empty bullets)
      217–233    →  "Inside, Outside, or Straddling" + the misconception quote
      235–281    →  🗳️ "And going Bayesian doesn't fix it"
                    (CUT the 1,500-character binary sequence at line 248)
