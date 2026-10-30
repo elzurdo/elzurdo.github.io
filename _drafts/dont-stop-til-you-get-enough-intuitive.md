@@ -85,8 +85,24 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
      via https://python.quantecon.org/wald_friedman.html — worth a second check against the book
      before publishing. The "[rounds]" bracket is in the original. -->
 
-> *"He would see after the first few thousand or even few hundred [rounds] that the experiment need not be completed, either because the new method is obviously inferior or because it is obviously superior beyond what was hoped for."*
-> — W. Allen Wallis, recalling Captain Garret L. Schuyler's objection, 1943
+<!-- > *"He would see after the first few thousand or even few hundred [rounds] that the experiment need not be completed, either because the new method is obviously inferior or because it is obviously superior beyond what was hoped for."*
+> — W. Allen Wallis, recalling Captain Garret L. Schuyler's objection, 1943 -->
+
+
+### What I'm Talking About When I Talk About Accepting the Null
+
+TK: where would be best to place this?
+
+[Three bullets, one line each — replaces the three `[some details tbd]` stubs in the old draft:]
+
+💊 [bioequivalence trials for generic drugs]
+
+💻 [do-no-harm regression testing in software deployment]
+
+📋 [futility stopping in programme evaluations]
+
+[Then the frequentist limitation in ONE sentence: NHST can only reject, or awkwardly "not reject".
+The formal treatment is fenced to ⚔️ — do not argue it here.]
 
 
 <!-- SLOT 4 of 6 — THE TWO QUESTIONS. Carried up from the old draft, where they opened the piece.
@@ -101,20 +117,22 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 > “How much data is required?”
 
-This is one of the most common questions in hypothesis and A/B testing, and it gets asked at two very different moments. Before any data is collected, it is a planning question. 
+This is one of the most common questions in hypothesis and A/B testing, and it may be asked at different moments. Before any data is collected, it is a planning question. 
 
 <!-- SLOT 5 of 6 — POWER ANALYSIS, as the bridge into the contract. Names the standard answer
      without attacking it; the critique is held back for the 🗳️ section. -->
 
-The standard answer is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, by cutting short a clinical trial once the treatment shows signs of doing damage?
+The standard answer is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, e.g, by clinic cutting short a trial once a treatment shows signs of doing damage?
 
-Checking as the data arrives is tempting, and it has a name: *sequential hypothesis testing*, often shortened to sequential testing. This method addresses the question:
+A more flexible option is checking as the data arrives is called *sequential hypothesis testing*, often shortened to sequential testing. This method addresses the question:
 
 > “Have we collected enough data yet?”
 
-It also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample meets the stopping rule. In most standard methods that same rule is also what decides the verdict, so the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
+As tempting as sequential hypothesis testing is it also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample meets the stopping rule. In most standard methods that same rule is also what decides the verdict, so the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
 
 That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way. In a companion post we'll show that the same machinery works before a study starts, for planning how much data to collect in the first place.
+
+An interesting consequence of this correction is that one can complete an experiment with fairly low false positive/negative rates. In particular we'll see that if the null hypothesis happens to be true, one can accept it with near zero false rejections.
 
 <!-- SLOT 6 of 6 — READER CONTRACT. -->
 
@@ -139,7 +157,7 @@ No prior knowledge of Bayesian statistics is required, just a basic understandin
 
 By the end you will be able to:
 
-- 🏀 **Separate the two questions** that most methods answer with a single number: when do we stop collecting, and what do we conclude?
+- 🏀 **Read a posterior**: the two things it tells you, where your estimate sits and how uncertain it still is.
 - ⚖️ **Quantify what counts as "close enough"** (the ROPE), and hold to it, rather than letting the effect size you planned around be quietly forgotten between the planning meeting and the write-up.
 - 🛑 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*. That one change removes a bias you probably didn't know you had.
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it. This matters whenever "no meaningful difference" is the finding you actually need.
@@ -151,7 +169,8 @@ If you are already comfortable with posteriors, HDIs and ROPEs, the main thread 
 
 How did your last experiment actually end?
 
-In large-scale A/B testing the answer is rarely "when we reached the sample size we planned for". Results accumulate continuously, a dashboard reports them as they arrive, and nothing stands between seeing a number and acting on it. Tests get watched, and they get stopped once the numbers look convincing. Those numbers are *heuristics*: convenient stand-ins for the thing that actually matters, usually a p-value, sometimes a confidence interval or a Bayes Factor.
+In large-scale A/B testing results are watched, and they get stopped once a *heuristic*,
+such as a p-value, confidence interval or Bayes Factor, passed a predetermined threshold. 
 
 <!-- CITE: Johari, Koomen, Pekelis & Walsh (2022), "Always Valid Inference: Continuous
      Monitoring of A/B Tests", Operations Research. In references.bib as `johari2022`.
@@ -188,220 +207,335 @@ Scientific research mostly runs the other way round. The sample size is fixed in
      Left out of the body deliberately, because naming it blurs the two-failure split you
      asked for — but it is the honest qualifier if you want one, and it is a strong number. -->
 
-Both of those are stopping rules. The researcher's was chosen in advance; the A/B one was made on the fly. That is not to say nothing was decided: somebody picked the heuristic, and somebody picked the threshold it has to cross. What nobody picked was when to look, or how many looks to allow. That part came free with the dashboard. 👀
+<!-- Both of those are stopping rules. The researcher's sample size was chosen in advance; the A/B one was made on the fly. -->
 
 ### One Heuristic, Two Jobs
 
-Look at what that stopping rule is made of. The heuristic that signals when to stop is the same one that delivers the verdict: the experimenter stops because the result has turned *statistically significant*, and concludes that it is *meaningful*. (Those are two different claims, and we will come back to how far apart they can be.) Given enough looks, something will eventually cross that line, whether or not there is anything there to find.
+The most popular heuristic by far is the *p-value* in the 
+*Null Hypothesis Significance Testing* framework (*NHST*). 
+Briefly, the p-value quantifies how surprising the data would be if the null hypothesis were true. 
 
-John Kruschke, author of *Doing Bayesian Data Analysis*, puts the consequence for p-value stopping rules in one line:
+As a stopping rule in sequential hypothesis testing it means continuously examining the data p-value while data is being collected
+until it falls below an agreed threshold, usually 0.05, sometimes stricter. This coincides with the *decision rule*:
+if the p-value went under the threshold one can reject the null hypothesis. 
+[TKA: this should be a footnote] Other heuristics like Bayes Factors have different interpretations and thersholds, but the stopping mechanisms is quite similar.
+
+In other words the heuristic that signals when to stop collecting data is the same one
+that delivers the verdict.
+The experimenter stops because the result has turned *statistically significant*
+and many unwittingly will conclude that it is also *meaningful*. 
+
+[TK: add here example of drug tried on males and females]
+
+
+### Statistically Significant Does Not Imply Meaningful
+
+A popular misconception is confusing statistical significance with a meaningful outcome.
+
+Think of a researcher asking whether a therapeutic works differently for men and women, and finds it beneficial in 72.1% of one group and 72.3% of the other. They collect enough patients and that 0.2 percentage points will be considered statistically significant,
+say in terms of a p-value or Bayes Factor.
+In practice, however, no clinician is going to prescribe differently on it.
+
+They key takeaway is that the deviation from a null hypothesis should be large enough to
+justify to act on it, e.g, by making a decision to change the status-quo.
+
+To further understand why statistically significant does not necessarily mean a meaningful result we next turn to the simplest
+sequential hypothesis test in which the NHST framework fails: a fair coin toss.
+
+
+### NHST Catastrophically Fails the Fair Coin Test
+
+The beauty of tossing a virtual fair coin multipel times is that we know the ground truth
+and hence is a useful testbed for sequential hypothesis testing mechanisms.
+
+In the case of the a true fair coin the null hypothesis (of it being a fair coin) should be accepted,
+wherease that of a true loaded coin should rejected.
+
+The first problem of the NHST mechanism is that in the case of a fair coin
+the p-value does not contain acceptence
+information and hence one can only awkwardly use a double-negative and "not reject"
+the null hypothesis. We will later discuss Bayesian mechanisms that will be able to
+accept the null hypothesis.
+
+Even if we accept NHST as useful to be limited to rejecting the null hypothesis 
+(or not rejectiong = being inconclusive), it completely fails in the fair coin sequential hypothesis testing.
+
+To visualise this we've generated M=200 binomial sequences (of values 0, 1) of length N=30,000.
+At each iteration n≥30 we peek at the data.
+
+If p<0.5
+
+* The stopping criterai is triggered and we stop collecting data
+* The decision algorithm rejects the null hypothesis (incorrectly)
+
+If p≥0.05 we do not reject the null hypothesis (which may be considered "inconclusive")
+and move on to the next iteration.
+
+How often do we expect to incorrectly reject the null hypothesis?
+One would naïvely assume only 5% of the time as per the threshold.
+Whereas this may be correct at one peaking point, in the sequential context this error compounds.
+
+The following graph shows the cummulative decision rates 
+as a function of iteration n.  Reject rates are in red or not reject in gray, their sum is 100% at each iteration.
+(Note that when a sequence is rejected at a given iteration, e.g, n=100, that same rejection
+is propagated to all subsequent iterations of that sequence, e.g n≥100, since we have stopped the experiment.)
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/02-pvalue-decision-rates.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
+</div>
+
+*Sequential hypothesis decision rates for fair coins using p-values for stopping and deciding.* Python code to recreated this may be found here (TBD).
+
+The figure clearly shows the the incorrect rection rate grows as a function of the iteration.
+
+John Kruschke, author of *Doing Bayesian Data Analysis*, first demonstrated this limitation of p-value as 
+a stopping in the fair coin case and quipped:
 
 > *"With infinite patience, NHST results in 100% false alarms."*
 
-*NHST* is Null Hypothesis Significance Testing, the framework built on p-values. As a stopping rule it amounts to this: carry on until the p-value (which quantifies how surprising the data would be if the null hypothesis were true) falls below an agreed threshold, usually 0.05, sometimes stricter.
+The problem is that with more data the likelihood distribution (upon which the p-value is calculated)
+is narrower and any slight shift from the null value results in a stronger (i.e, lower) p-value,
+and hence is considered more "statistically significant", even though there is no meaningful difference
+between the likelihood distribution and the null value.
 
-What he means is that chance alone keeps producing small deviations from the null, and as data accumulates one of them will eventually be extreme enough to clear that threshold. Wait long enough and every experiment reports a finding, including the ones with nothing to find.
+One step to correct for this is using a Bayesian mechism with which one can accept the null hypothesis.
+Bayes Factor is such a mechanism, but it turns out that is not sufficient since it runs
+into similar confirmation bias problem. In his analysis
+John quantified that in the fair coin case it can result in 20% false rejects. 
+He also extend to testing loaded coins showing it incorrectly accepting the null
+hypothesis 40% of the time.
 
-This is not only a laboratory concern. It is one of the quieter engines behind the *replication crisis*, where a great many published findings fail to reappear when somebody runs the study again: when the Open Science Collaboration repeated one hundred psychology experiments in 2015, only about a third came back with the original result.
+The root issue is that both these mechanisms use the deciding heuristic as the stopping
+criteria.
 
-Two things are needed to avoid this. The first is to fix a minimum meaningful effect size in advance and actually hold to it, which is also what lets us accept a null hypothesis rather than merely fail to reject it. The second, which turns out to matter just as much, is to stop collecting data for a reason that has nothing to do with the verdict. 
+<!-- , but as we shall see it is not sufficient for the fair coin test. -->
+<!-- 
+### Bayes Factor Also Fails Coin Tests
 
-The second asks us to stop without consulting the result, which sounds like a strange way to run an experiment. Let's take it first.
+[TK: briefly describe Bayes Factor]
 
-<!-- THIS SHOULD GO IN THE COMPANION PAPER: A stopping rule that doubles as a verdict is worth sitting with, because it is one of the quieter engines behind the *replication crisis*. The crisis is the discovery, across psychology, medicine and economics, that a great many published findings simply do not reappear when somebody runs the study again. When the Open Science Collaboration repeated one hundred well-known psychology experiments in 2015, only about a third came back with the original result.
+[TK: add snapshot of Figure 13.6 from Krukche's book]
 
-The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesising after the results are known), and both sound like accusations of dishonesty. Mostly they are not. Mostly they are a competent person looking at a dashboard, seeing a result, and stopping, which is exactly what the dashboard was built to let them do. -->
+TL;DR
 
+Bayes Factor
+* Has a 20% FPR in the fair coin case
+* Has a 40% FNR in the loaded coin case (of thetatrue =0.65, thetanull =0.5)
 
-## 🏀 Gotta Keep 'em Separated: First Settle, Then Call
-
-Let's follow a professional basketball player, unnamed but real, ten years into his career. Across more than five thousand free throws he has made 81% of them. Then he ruptures an Achilles tendon, has surgery, misses the rest of the season, and comes back.[^player]
-
-Has the injury taken something away?
-
-Three weeks into the comeback it looks that way. He has attempted forty free throws and made twenty-nine, a rate of 72%, nine percentage points below his career record. The write-ups begin.
-
-But forty attempts is almost nothing. A player who is exactly the shooter he always was will have a stretch this poor about one time in ten, for the same reason a fair coin sometimes throws a long run of tails. Account for that properly and those forty shots are consistent with a true rate anywhere between about 58% and 85%.[^raterange] His old 81% sits comfortably inside that span. So does a genuine collapse to 60%. The data cannot yet tell the two apart.[^prior]
-
-<!-- TK (yours): add a Beta distribution visual pointing at the values quoted here, and
-     refer to it in the text.
-     NOTE: this is very close to FIGURE A ("posterior 101"), currently planned for
-     "What a Posterior Is" using the fair-coin sequence. Worth deciding once: either
-     build Figure A on these free throws, so the running example carries the teaching
-     and the coin arrives later as the clean simulation case, or keep the coin and let
-     this section stay prose-only. Two narrowing-posterior figures a few sections apart
-     would be one too many. -->
-
-By the end of the season he has attempted 627 and made 82.8% of them. The span of rates consistent with the data now runs from about 80% to 86%, and each new shot barely moves it. There was no way to arrive here sooner: the only source of more attempts is more basketball.
-
-Two separate judgements follow, and the distinction between them is what the rest of this post rests on.
-
-**Has the span stopped moving?** This asks nothing about whether he is back to his old self. It asks how much the estimate would still shift if the season carried on.
-
-**What does the span say?** A real change in his shooting, or none worth worrying about.
-
-The first is a **stopping rule**: when to stop collecting. The second is a **decision rule**: what to conclude once we have stopped. Kruschke's answer to the first is to settle in advance how narrow that span has to be, then carry on until it is that narrow, whatever it turns out to say. How narrow it is has a name: *precision*.
-
-The first judgement is now answerable; the second is not. The span has settled, but settled around what? To say whether 82.8% against a career record of 81% counts as a change in the player, we have to decide how large a change would matter, and decide it before the data arrives rather than after. That is the next section.
-
-[^player]: The numbers are Dominique Wilkins's. Nine-time All-Star, Hall of Famer, nicknamed the Human Highlight Film, and averaging 28.1 points a game when he ruptured his Achilles tendon against Philadelphia on 28 January 1992, aged 32. He returned the following season and averaged 29.9, second in the league behind Michael Jordan. I considered using Kevin Durant, whose Achilles ruptured in the 2019 Finals, but his comeback season was cut to 35 games and 238 free throws, too few to settle the question either way. We will come back to why that matters.
-
-[^raterange]: Every range quoted in this post is a 95% *credible interval*: the span of values most plausible given the data. It is the Bayesian cousin of the frequentist confidence interval. For a success rate like this one it comes from a Beta distribution, and later we will meet the particular flavour of credible interval this method uses, the highest density interval.
-
-[^prior]: We keep things simple with a flat prior, which treats every rate as equally plausible before the comeback season starts. A fuller analysis might bring in how other players' free-throw shooting has changed after returning from similar injuries. His own career record is deliberately *not* used as a prior: it is the baseline we are testing against, and feeding it in at both ends would quietly tilt the answer towards "nothing has changed".
-
-<!-- WHY THE PLAYER IS ANONYMOUS in the body: the argument is about a baseline and a
-     comeback season, and a famous name invites the reader to bring their own opinion about
-     whether he came back the same. The footnote keeps the provenance honest.
-
-     ⚠️ BASELINE CHOICE, still open and it matters. 81% is his WHOLE pre-injury career
-     (4,494/5,557 = 80.9%), which is dragged down by three developing seasons (68%, 77%,
-     81%). His prime-years baseline, 1986-87 onwards, is 82.5% (2,819/3,416), which is the
-     fairer like-for-like comparison.
-     This does not bite in THIS section, but it decides the verdict in ⚖️ and beyond:
-       · vs 80.9%, ROPE ±5pp → HDI [79.7, 85.6] sits inside [75.9, 85.9] by only 0.3pp
-       · vs 82.5%, ROPE ±5pp → comfortably inside [77.5, 87.5]
-     The second is the robust worked example. Settle this before writing ⚖️.
-
-     All figures, both players, every season, and the derived HDIs are in
-     agentdocs/freethrow-example-data.md, with verification warnings. -->
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/pvalue-bayesfactor-decision_rates_fair.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
+</div>
 
 
-<!-- FIGURE B (suggested) — respecified for the single-group version.
-     One chart. Attempts on the x axis (1 → 627), his running make-rate as a line with a
-     credible-interval band, and a horizontal line at the 81% career baseline.
-     Early: the band is enormous and the line sits well below the baseline, so the slump
-     looks real. Late: the band is narrow and straddles the baseline.
-     That is the whole section in one picture, and the horizontal baseline makes the
-     single-group framing visible at a glance.
-     (Was specified for two players' lines converging; that was the old between-group
-     version of the analogy.) -->
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/pvalue-bayesfactor-decision_rates_loaded.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
+</div> -->
+
+
+### 🛑 Gotta Keep 'em Separated ⚖️
+
+Whereas it is tempting to apply the decision rule as the stopping rule, it is the source
+of cofirmation bias. Given enough looks, a statistical fluke will eventually happen and
+the decision/stopping line may be crossed, whether or not it is meaningful.
+
+The soltion is that stopping criterion should be based on a different heuristic than the decision one.
+John Kruskche's method puts the posterior width (i.e, the uncertainty in the parameter value) as the stopping critera
+regardless of the decision criteria. 
+
+As we shall see:
+
+* The stopping criteria is a function of how un/certain we are about the parameter - regardless of its locaiton relative to the null
+* The decision criteria depends both on the relative location of the parameter value relative to the null and a predetermined effect size.
+
+To appreciate these we first need to understand two key properties of a probability posterior:
+quantifying its location and its width.
+
+
+## 🏀 HDI as a Posterior Width and Location Heuristic
+
+
+The posterior distribution contains the information of what is known about a variable value given the data. 
+
+In the context of a stopping criteria its useful to consider two properties:
+
+* Width: a measure of un/certainty. If its too wide, we might not have collected enough data.
+* Location: we can relate this to the null hypothesis: does is it in the vicinity of the null hypothesis?
+
+As a running example let's consider the free throw success rate of Shaquille O'Neal,
+a former professsional basketball player who dominated play close to the basket but
+was a poor shooter from the line. This is a useful analogy for any experiment that uses
+binomial data, i.e, that is testing the result similar to a flip of coin (fair or loaded).
+
+In the figure below we display his the posterior probability distribution functions (PDF)
+based on freethrow success rates in the 2004/5 season of 67 games (left panel) and full career
+of 1,207 games (right panel).
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/oneal_freethrows.png" alt="Two PDFs: left wide, right narrow" width="700">
+</div>
+
+
+The posterior means the probability that the true value of the variable given the data
+p(theta|data).
+The shaded areas convey the *credible interval* of the posteriors. Think of it as the Bayesian
+parralel of he frequentist confidence interval. The credible interval flags the region
+where most of the mass resides. For the purpose of this post we'll use 95% of the mass. The heuristic
+of choice is called the *High Density Interval* (HDI) which calculates where 95% of the mass
+is inside is larger than the 5% outside of it. See dedicated section below for a formal definition.
+
+Once the 95% HDI is defined we can use its boundaries $\rm HDI_{min}$ and $\rm HDI_{max}$
+to define its location vicinity as well as its width $\omega_{\rm HDI} \equiv \rm HDI_{max}$ - $\rm HDI_{min}$.
+
+The most obvious difference between these two PDFs is their width. The single season width
+$\omega_{\rm HDI}^{\rm 2004/5}=7.1\%$ is much broader than the full career $\omega_{\rm HDI}^{\rm career}=1.8\%$.
+This is a manifestation that with more data the uncertainty of the variable range of values decrease.
+In the case of binomial data $\omega_{\rm HDI}$ decreases by $1/N^2$, where $N$ is the sample size.
+
+The location information is quantfied as $\rm HDI_{min \ 2004/5}^{max}= _{42.6\%}^{49.7\%}$ for one season.
+It addresses the question: "If Shaquile were to shoot more than 765 shots in 2004/5, 
+everything consider even, we have 95% credability that the true value would be between 42.6-49.7%".
+
+For the full career it is defined as $\rm HDI_{min \ career}^{max}= _{42.6\%}^{49.7\%}$.
+
+
+These stats invite other questions like:
+
+> "Was Shaquile's freethrow ability better or worse than a toss of a [fair] coin?"
+
+<!-- Examining these stats it is tempting to make conclusions backed by two-sided p-values for
+statistical significance. According to NHST in 2004/5 for the fair coin null hypothesis
+we obtain a p-value of 0.033. In the full career results p-value < 0.001 (6e-9). Assuming
+a false positive rate of  -->
+
+As seen when sequentailly testing coin tosses, there is a key flaw to this question
+since according to NHST one will eventually always reject the null hypothesis since
+
+> [Given enough data] even a practically meaningless result may be considered "statistically significant".
+
+This is relevant for both sequential hypothesis testing,
+as well as retrospective analyses.
+
+The solution to is to compare the posterior to an minimum effect size. In other words, we need to ask to rephrase the question to
+
+> "Was Shaquile's freethrow ability **meaningfully** better or worse than a toss of a [fair] coin?"
+
+
+Let's turn to see how to quantify "meaningful".
+
+A more important question than did is the posterior higher or lower than a certain benchmark
+value is: is it meaningfully higher or lower?
+
+
+TK: discuss prior at some stage.[^prior]
+
+[^prior]: We keep things simple with a flat prior, which treats every rate as equally plausible before the comeback season starts. A fuller analysis might bring in how other players' free-throw shooting has changed after returning from similar injuries. His own pre-injury record is deliberately *not* used as a prior: it is the baseline we are testing against, and feeding it in at both ends would quietly tilt the answer towards "nothing has changed".
 
 ## ⚖️ Quantifying "Close Enough"
 
 <!-- TK image idea: Someone doing Six Seven -->
 
-<!-- TITLE: echoes the information-theory series (Quantifying Surprise / Uncertainty /
-     Misalignment / Dependence / Gain), and the link is real rather than cosmetic — that
-     series puts numbers on things treated as unmeasurable, and this section does it for
-     sameness, the one verdict NHST structurally cannot deliver.
 
-     "Close enough" rather than "the same" on purpose: it is self-evidently a judgement
-     call, so it does not promise a derivation, and it is a truer gloss of *practical
-     equivalence* than "the same", since the ROPE exists precisely for values that are
-     not identical.
+> In an experiment or a study, what counts as a meaningful change?
 
-     ⚠️ REQUIRED DISCLAIMER, early in this section. In the series "Quantifying X" always
-     means a formula computed from data. The ROPE is the opposite: a number chosen from
-     domain knowledge before any data arrives. One sentence saying so, near the top,
-     otherwise the title primes the reader for a derivation that never comes — and the
-     section's central claim is that no derivation exists. -->
 
-[THE DISCLAIMER FIRST, one or two sentences: unlike the quantities in the information theory
-series, this number is not computed from anything. It is chosen, in advance, from knowledge of
-the domain. The rest of the section is about how to choose it well.]
 
-[Then the ROPE, arriving as a consequence of the free-throw question the previous section left open:
-the span has settled, but settled around *what*? To say whether 82.8% against a baseline of 81%
-counts as a change, we first have to say how large a change would matter. That is the ROPE, and it
-has to be fixed before the data arrives, not after.
+Above we discussed the fact that a statistically significant result does not imply
+that it is meaingful. The observed effect is required to be large enough to justify making a real
+life decision.
 
-The running example gives this for free: a 5pp drop would mean a different tier of shooter; 1.8pp is
-the kind of wobble any shooter has between seasons. This is the one piece of machinery a
-practitioner already has opinions about, which is why it comes before the posterior.
+On the one hand this is domain specific, on the other hand there is a machinery that may
+be applied which we explore next.
 
-⚠️ Settle the baseline first — see the comment in the 🏀 section. Against his whole-career 80.9%
-the verdict is Accept by only 0.3pp; against his prime-years 82.5% it is comfortable. Use 82.5%
-unless you have a reason not to.
+### ROPE as a Minimum Effect Size Heuristic
 
-Carries the therapeutic example — 72.1% beneficial for males, 72.3% for females — and the pull quote:]
+One method to quantify "close enough to the null hypothesis" is the 
+ *Region of Practical Equivalence*, or ROPE: a region around the null hypothesis, wide enough
+ to hold every result we would be content to consider a non result or not worthy of a change. If the truth sits anywhere inside the ROPE, the honest report is that nothing meaningful happened.
+ Given its boundaries $\rm ROPE_{max}$ and $\rm ROPE_{min}$,
+ its width is quantified as $\Delta_{\rm ROPE}\equiv \rm ROPE_{max} - ROPE_{min}$ <!-- medium: ΔROPE ≡ ROPEmax - ROPEmin -->.
 
-> [Given enough data] even a practically meaningless result may be statistically significant.
+How wide should the ROPE be? There is no general answer, and that is the whole point,
+because the width *is* the domain-specific question of what a meaningful minimal effect size is.
 
-[Then width depends on the task: wider is less conservative, and cheaper. Replaces the two empty
-bullets in the old draft.]
+This means that the ROPE boundary values are not computed but rather chosen, before any data arrives, out of what we already know about the domain.
+That is the discipline of it. We commit to what counts as a meaningful change while the result is still unknown, so that the commitment cannot later be shaped by the result it is meant to judge.
 
-[THE MISCONCEPTION BLOCK — worth its own pull quote:]
+ 
+Domains that need highly accurate measurements will demand narrower ROPEs around the null, we shall see that this means larger sample sizes,
+because this means a smaller precision.
 
-> The decision method accepts/rejects the null **value**, not the sample value.
+Let's consider playing dice accuracy. 
+<!-- that are a useful anaology for ordinal data. A fair die should have 1/6 chance to land on any value.  -->
+A board-game manufacturer needs its dice fair enough that no player notices any bias;
+a casino needs them fair enough to satisfy a regulator which will be more strict. This means that the ROPE around fair dice metrics for someone manufacturing for a the Monte Carlo Casino need to be much tighter (i.e, larger sample size) for that manufacutring for Hasbro who owns and publishes the popular Monopoly game. 
 
-### What I'm Talking About When I Talk About Accepting the Null
+Now that we've learned about the HDI and ROPE heuristics we are ready to see how we
+can use them together. We'll start by exploring how the locational information of both may be
+useful for a decision rule. After that we'll see how the HDI width may be used indepenetly as
+as a reliable stopping rule.
 
-<!-- MOVED here from its own ## section between "How Experiments Actually End" and 📷.
-     Two reasons. (1) It was standing between "One Heuristic, Two Jobs" and "Focus First,
-     Then Look", which are a question and its answer — nothing should sit in that gap.
-     (2) Accepting the null only becomes picturable once the ROPE exists: it is what
-     happens when the posterior sits wholly inside the region. Motivating it earlier meant
-     motivating something undefined.
 
-     Note it now does double duty — bioequivalence is the canonical argument for wanting a
-     region of practical equivalence at all, so these bullets justify the ⚖️ machinery as
-     well as the capability. The capability itself is delivered two sections later, at
-     "Inside, Outside, or Straddling". -->
+## ⚖️ The HDI+ROPE Decision Rule 
 
-[Three bullets, one line each — replaces the three `[some details tbd]` stubs in the old draft:]
-
-💊 [bioequivalence trials for generic drugs]
-
-💻 [do-no-harm regression testing in software deployment]
-
-📋 [futility stopping in programme evaluations]
-
-[Then the frequentist limitation in ONE sentence: NHST can only reject, or awkwardly "not reject".
-The formal treatment is fenced to ⚔️ — do not argue it here.]
-
-## What a Posterior Is
-
-[The section the old draft is missing entirely, and the reason a beginner can follow the rest.
-Taught on the running coin sequence: the curve of values still plausible after the data, narrowing
-as tosses accumulate. The HDI arrives here informally — "the narrowest band holding 95% of it".
-The formal definition is ⚔️.]
-
-<!-- FIGURE A (suggested, HIGHEST PRIORITY): posterior 101.
-     Four panels of the same coin sequence at N=10, 30, 126, 598 — the curve narrowing.
-     One image teaches "posterior", "more data → narrower" and "HDI = the shaded band".
-     Without it the post has no answer to "what is that curve?" -->
-
-## Inside, Outside, or Straddling
-
-[The decision rule as THREE outcomes, so `Inconclusive` 🤷 is a first-class citizen from the start
-rather than a surprise two-thirds in, as it is in the old draft.]
+Perhaps the best way to understand the HDI+ROPE decision rule is by the following illustration:
 
 <!-- FIGURE E (suggested): accept / reject / inconclusive.
      Three-panel cartoon of HDI vs ROPE. The figure below shows only 2 of 6 scenarios and
      doesn't include the straddler, which is the one a beginner most needs named. -->
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/03-hdi-rope-scenarios.png" alt="Two of six HDI+ROPE scenarios" width="700">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/conclusive_outcomes.png" alt="Three Conclusive HDI+ROPE scenarios" width="700">
 </div>
 
-*Demonstrating 2 of 6 scenarios. The lines are posteriors where the vertical lines in each are the HDI borders. The gray boxes are the ROPEs around the null hypothesis value. In the left the HDI is outside the ROPE so the null hypothesis is rejected. In the right the HDI is completely within the ROPE so the null hypothesis is accepted*
+*The lines are posteriors where the vertical lines in each are the HDI borders.The gray boxes are the ROPEs around the null hypothesis value. In the left/right panels the HDI is outside left/right of the ROPE so the null hypothesis is rejected. In the center the HDI is completely within the ROPE so the null hypothesis is accepted.*
 
-## 🗳️🤥 Calling It Early
+For HDI+ROPE decision rule to reject the null hypothesis the HDI is required to
+be completely **outside** of the ROPE as the left and right panels. To accept the null the HDI is required to be
+completely **inside** the ROPE as in the middle panel.
 
-[The election-night framing: networks call a race on precincts that aren't representative yet. Then
-the same failure shown twice — first in the reader's own language, then in the surprising one.]
+This figure illustrates only three of possible six scenarios where HDI+ROPE decision
+rule results in a conclusive outcome. Let's examine the other three where its
+inconclusive and how to act on indecisive outcomes.
 
-### Your stopping rule, simulated
+### Inconclusive Outcomes
 
-[~250 words. The dashboard rule from the hook, run on fair coins, peeked at every toss, with the
-false-alarm rate climbing without limit. This is the payoff on the recognition beat. Call out what
-to look at: at iteration 100, ~20% of 200 fair-coin experiments have already "found" an effect.
-Then the Kruschke line again as the punchline. The p-value *definition* figure and the formal
-treatment are ⚔️ — resist explaining p-values here.]
+Whereas the three scenarios above may be considered *Conclusive* results the following
+ones where the HDI straddles the ROPE boundaries may be considered *Inconclusive*:
+
+
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/02-pvalue-decision-rates.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/inconclusive_outcomes.png" alt="Three Conclusive HDI+ROPE scenarios" width="700">
 </div>
 
-*Sequential hypothesis decision rates for fair coins using p-values for stopping and deciding.*
+*Similar to above but the posterior straddles the ROPE boundaries.*
 
-### And going Bayesian doesn't fix it
 
-[The worked sequence at N=126: the HDI sits fully outside the ROPE, so the algorithm stops and
+The action following an inconclusive results depends on the experiement budget. If one
+can collect more data points, it might be worth further reducing uncertainty.
+If the experiment budget is drained, one must conduct a risk assessment, which is
+domain specific and beyond the scope of this post. [TK: create footnote to mentioned that the calculator addresses this]
+Below we go further into detail on acting on inconclusive outcomes with extra budget.
+
+### Applying the HDI+ROPE Decision to a Fair Coin Sequence
+
+To further appreciate the point of in/conclusiveness in sequential hypothesis
+let's examine a set of consecutive fair coin tosses. Instead of the M=200 of before
+we will now focuse on a randomly generated but hand picked sequence [TK: footnoe with link to the actual sequence] that is useful
+to explain differences of outcomes as a function of the stop iteration.
+
+For our purposes we will define the ROPE region as [0.45, 0.55] and explore the HDI+ROPE
+decision in three different scenarios.
+
+The PDF at iteration n=126 is shown below where the HDI sits fully outside the ROPE,
+where the HDI region is clearly outside of the ROPE.
+The HDI+ROPE decision 
+
+
+<!-- so the algorithm stops and
 rejects a **fair** coin 🤥. Then the rate — 6.3% over 5,000 simulations, not the 5% intuition
 suggests. Call out in the text what to look at: the HDI is narrow enough to *look* decisive and
-isn't.]
+isn't.] -->
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/04-coupling-problem.png" alt="HDI fully outside the ROPE at iteration 126" width="700">
@@ -409,11 +543,265 @@ isn't.]
 
 *[CAPTION NEEDED — state the claim: at N=126 the HDI is fully outside the ROPE, so a coupled algorithm stops and rejects a coin we know to be fair.]*
 
+That means that the HDI+ROPE decision algorithm will incorrectly reject what we know
+to be a fair coin. We will later discuss false rejection rates, but for now show that
+if ppeked later, say at iteration 598 we obtain the following posterior that straddles
+the ROPE:
+
+<!-- 
 [THE HINGE OF THE PIECE, in one sentence: both of these rules are stopping on the verdict.]
 
-## 🛑 Precision is the Goal
+
+[Working values: ROPE = [0.45, 0.55], so $\Delta_{ROPE} = 0.10$ <!-- medium: ΔROPE = 0.10 --> and
+$\omega_{Goal} = 0.08$ <!-- medium: ωGoal = 0.08 -->, 80% of the ROPE width. Then the same sequence
+now running to 598 rather than stopping at 126.] -->
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/05-pitg-algorithm.png" alt="PitG stopping rule met at iteration 598" width="700">
+</div>
+
+*[CAPTION NEEDED — state the claim: PitG ignores the verdict and keeps collecting until the HDI is narrow enough, reaching ωGoal at iteration 598.]*
+
+Given extra budget the experiment should continue until the HDI is completely within
+or outside of the ROPE. This happens at iteration 804 as seen here:
+<!-- 
+The worked sequence runs to 804 — 34% more than 598 — but say immediately that this hand-picked
+example is on the high side; the median is +4.7%.] -->
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/07-dpitg-stop.png" alt="DPitG stops at iteration 804" width="700">
+</div>
+
+*[CAPTION NEEDED — state the claim: DPitG carries on past 598 and stops at 804, where the HDI is both narrow enough and fully inside the ROPE, accepting the null.]*
+
+These iteration value were not randomly chosen but rather represent stop iterations
+for three different stopping algorithms which is the focus of this post.
+
+## Three Stopping Algorithms
+
+So far we have discussed how to use the relative location information of the HDI and
+ROPE heuristics to determine an out come when looking at the data. Now we focus
+on the key aspect of sequential hypothesis testing which is when to dedice to look.
+
+### 🛑 HDI + ROPE as a Stopping and Decision Criteria
+
+The HDI+ROPE stopping algorithm, similar to that of NHST and Bayes Factor conflates
+both the stopping and decision rules into the same criterion.
+
+That means that once the HDI is fully outside (or inside) the ROPE we will stop collrecting
+data and reject (or accept) the null hypothesis.
+
+In the handpicked fair coin sample we've seen this actually in action stopping at iteration
+126 and incorrectly rejecting the null hypothesis. How representative is this false rejection rate?
+Testing on M=5,000 sequences we find this to happen 6.2% of the time. 
+
+The key problem, as mentioned before, is the dual usage of the heuristic. Next we will
+see how to use the HDI width, regardless of its location, as an independent measure
+to substantially reduce this confirmation bias.
+
+### 🛑 Precision is the Goal
+
+One way to decouple the stopping and decision criteria is by setting the parameter precision
+as the stopping goal. John Kruskche demonstrated that by predetermining a minimum
+width for the HDI as a stopping criterion we can substnatilly reduce the risk of peeking
+too early and hence minimise confirmation bias.
+
+By setting a precision goal of $\omega_{\rm Goal}$ comparing the HDI width $\omega_{\rm HDI}$
+to it the stopping rule becomes:
+* $\omega_{\rm HDI} \le \omega_{\rm Goal}$: stop and decide
+* $\omega_{\rm HDI} \gt \omega_{\rm Goal}$: continue collecting (or conduct risk assessment to decide.)
+
+The key difference in sequential testing is that the standard methods 
+(NHST, Bayes Factor as well as HDI+ROPE) monitor the location information,
+where in this *Precision is the Goal* method the analysts examines the width of the parameter posterior. 
+
+In the fair coin case Kruskche showed that in 1,000 sequences there are zero false
+positives. I verified this by analysing 5,000 sequences. This will be demonstrated below.
+In addition he has shown that the sample parameter at the stop iteration is much more accurate
+for loaded coins as confirmation bias is impacted by extereme results.
+
+One aspect, however, that I found was overlooked by the original Precision is the Goal,
+is the rate of inconclusive outcomes. Reproducing his original expeirmenets I found
+that the original Precision is the Goal resulted in 63% inconclusive outcome in the
+fair coin case.
+
+I managed to resolve this by slightly tweeking to a new variant 
+which reduces this inconclusive rate to about 2%.
+
+### 🛑 Decisive Precision is the Goal
+
+The modification is making the stopping rule a bit more conservative.
+This is done by changing the STOP then DECIDE rule to STOP AND DECIDE where stopping
+is still the original  $\omega_{\rm HDI} \le \omega_{\rm Goal}$ criteria, where in
+the deciding phase we just address the quesetion: if we decide now would the result
+be conclusive?
+
+In other words this variant which I've called *Decisive Precision is the Goal* states:
+
+Collect data until $(\omega_{\rm HDI} \le \omega_{\rm Goal})$ & (HDI Completely Inside/Outside ROPE).
+
+If both criteria are met the standard HDI+ROPE ruling applies.
+
+If both criteria are not met the result is considered "inconclusive" and if the budget
+permits data collection continues. If not one must resort to a risk assessment.
+
+A useful visual of this is below, similar to above but the yellow box around the posterior
+has the width of $\omega_{\rm Goal})$ :
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/06-dpitg-scenarios.png" alt="Two DPitG scenarios" width="700">
+</div>
+
+*[CAPTION NEEDED — in both panels the precision goal is met (HDI well inside the yellow dashed box). Left: a straddler, so keep collecting. Right: HDI fully within the ROPE, so accept.]*
+
+Note that this represents two of 11 scenarios. The 11 count is as follows:
+All six HDI+ROPE scenarios above have two cases: $\omega_{\rm HDI} \le \omega_{\rm Goal}$ and $\omega_{\rm HDI} \gt \omega_{\rm Goal}$,
+except for the middle inconclusive one which has only the $\omega_{\rm HDI} \gt \omega_{\rm Goal}$ case ...
+
+In both panels the precision criteria is met $\omega_{\rm HDI} \le \omega_{\rm Goal}$.
+The original PitG would stop at that point to decide and find that the left panel
+is inconclusive. DPitG simply continues collecting data until the HDI is found to be
+completely within or outside the ROPE as per the right panel.
+
+### Stopping+Decision Algorithm Comparison
+
+The following table summarises the three algorithms
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/08-three-algorithm-comparison.png" alt="Comparison table of the three algorithms" width="750">
+</div>
+
+As mentioned all three use the same HDI+ROPE decision algorithm, but differ in the stopping
+criteria.
+
+Whereas the PitG completely decouples the stopping and decision criteria,
+the DPitG is effectively a hybrid of PitG and the HDI+ROPE by couping them back together
+and by so being more conservative.
+
+We next briefly explore their performance for the fair coin test demonstrating the
+advantages of going from one to another.
+
+## Revisiting the Fair Coin Test
+
+[THE THREE NUMBERS, stated plainly: 2.2% inconclusive (down from 62.1%), zero false positives,
+median +4.7% data. The 11-scenario catalogue goes to ⚔️.]
+
+*[CAPTION NEEDED — DPitG is a hybrid: PitG's precision criterion, then HDI+ROPE's conclusiveness criterion.]*
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/09-three-algorithm-rates.png" alt="Decision statistics for the three algorithms" width="750">
+</div>
+
+*[CAPTION NEEDED — this figure carries the central claim; it needs a caption more than any other.]*
+
+[One scope fence: p-values and Bayes Factors aren't in this comparison because their decision
+heuristic is different — see ⚔️.]
+
+
+Regading the conclusive outcomes, its worth pausing to address the question of 
+what is actually being accept and as imported rejected.
+
+
+
+
+## What do Conclusive Outcomes Accept/Reject?
+
+When rejecting the null hypothesis it is tempting to accept the sample result.
+
+It's worth emphasising that when the  accept or reject decisions are statements about
+the null value, not the sample value.
+
+When rejecting the null hypothesis we are not accpeting the sample value.
+
+When the decsiion is to accept we should quote the null as being accepted, not the sample value. 
+
+about the sample value, but rather th
+, we are accepting the null
+hypothesis, not the sample value (which is likely to differ). This is because of the contruct:
+we are accepting that the true value is effectively similar to the null hypothesis.
+
+<!-- Inside, Outside, or Straddling -->
+
+[The decision rule as THREE outcomes, so `Inconclusive` 🤷 is a first-class citizen from the start
+rather than a surprise two-thirds in, as it is in the old draft. ⚖️ has already shown the reader a
+🤷 straddler on the ±2pp free-throw ROPE, so this section names and formalises an outcome they have
+met rather than introducing one.
+
+Free callback available here (see agentdocs/dpitg-post-outline.md, Epigraph): Wald's 1943 sequential
+test also allowed exactly three decisions — accept, reject, or carry on collecting. Closing the loop
+on the opening epigraph costs one sentence.]
+
+[THE MISCONCEPTION BLOCK — worth its own pull quote. MOVED HERE from ⚖️ on 2026-10-11, because it is
+a correction to the decision rule and in ⚖️ it arrived before the reader had an HDI, an accept, or a
+reject to be wrong about. Source prose: old draft line 227. Paper source: methods.tex
+§sec:accept_reject_meaning, which is the fuller treatment — neither verdict endorses the sample
+estimate; both are statements about the null value, grounded in the pre-specified ROPE.]
+
+> The decision method accepts/rejects the null **value**, not the sample value.
+
+
+## 🗳️🤥 Calling It Early
+
+[The election-night framing: networks call a race on precincts that aren't representative yet. Then
+the same failure shown twice — first in the reader's own language, then in the surprising one.]
+
+### Simulating the NHST Stopping Rule
+
+[⚠️ OPEN THIS SECTION BY HANDING THE EXAMPLE OVER — one sentence, added 2026-10-11. The free
+throws taught the posterior in 🏀 and carried the ROPE in ⚖️; from here on the worked example is
+a simulated fair coin, because counting mistakes requires knowing the true answer and basketball
+never tells us. Make the swap explicit or the reader will think they missed something.]
+
+[~250 words. The dashboard rule from the hook, run on fair coins, peeked at every toss, with the
+false-alarm rate climbing without limit. This is the payoff on the recognition beat. Call out what
+to look at: at iteration 100, ~20% of 200 fair-coin experiments have already "found" an effect.
+Then the Kruschke line again as the punchline. The p-value *definition* figure and the formal
+treatment are ⚔️ — resist explaining p-values here.
+
+PULL QUOTE RELOCATED HERE from ⚖️ on 2026-10-11 — it belongs under the figure that proves it,
+since the chart no longer precedes ⚖️ in the new section order. Source prose: old draft lines
+170–174. It sits below the figure, so the chart is the evidence and the quote is the verdict on it.]
+
+
+What he means is that chance alone keeps producing small deviations from the null, and as data accumulates one of them will eventually be extreme enough to clear that threshold. Wait long enough and every experiment reports a finding, including the ones with nothing to find. In section Simulating the NHST Stopping Rule we'll see this in action with the flipping of a virtual fair coin.
+
+
+
+<!-- TK: for companion paper when we discuss preplanning. This is not only a laboratory concern. It is one of the quieter engines behind the *replication crisis*, where a great many published findings fail to reappear when somebody runs the study again: when the Open Science Collaboration repeated one hundred psychology experiments in 2015, only about a third came back with the original result. -->
+
+Two things are needed to avoid these false alarms. The first is to fix a minimum meaningful effect size in advance and actually hold to it, which is also what lets us accept a null hypothesis rather than merely fail to reject it. The second, which turns out to matter just as much, is to stop collecting data for a reason that has nothing to do with the verdict. 
+
+The second asks us to stop without consulting the result, which sounds like a strange way to run an experiment. Neither, though, can even be stated until we have a way of describing what the data supports at any given moment. 
+
+<!-- THIS SHOULD GO IN THE COMPANION PAPER: A stopping rule that doubles as a verdict is worth sitting with, because it is one of the quieter engines behind the *replication crisis*. The crisis is the discovery, across psychology, medicine and economics, that a great many published findings simply do not reappear when somebody runs the study again. When the Open Science Collaboration repeated one hundred well-known psychology experiments in 2015, only about a third came back with the original result.
+
+The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesising after the results are known), and both sound like accusations of dishonesty. Mostly they are not. Mostly they are a competent person looking at a dashboard, seeing a result, and stopping, which is exactly what the dashboard was built to let them do. -->
+
+
+
+### And going Bayesian doesn't fix it
+
+[
+
+ 
+
+## 🛑 Precision is the Goal as a Stopping Criterion
+
+<!-- TITLE: "Gotta Keep 'em Separated" moved here from 🏀 on 2026-10-11, where it was promising a
+     decoupling three sections before the post could deliver one. Here it is literal — PitG's
+     defining property IS that the stopping rule and the decision rule are separated. Kruschke's
+     "Precision is the Goal" stays, since it is the method's name and it echoes the post title. -->
 
 [THE HERO. The fix, stated as the inversion of the hinge: stop on **width**, not on verdict.
+
+⚠️ THE WORD *PRECISION* IS FIRST DEFINED HERE (relocated from 🏀 on 2026-10-11, where it was
+circular — "narrow enough" has no meaning until Δ_ROPE exists). Define it before using it: precision
+is the width of the posterior's HDI, $\omega_{HDI}$, and nothing else.
+
+🏀's location/width pair is the callback to land, and this is the second half of it: ⚖️ gave
+**location** its yardstick (the ROPE), and this section gives **width** its yardstick (ωGoal). The
+stopping rule / decision rule naming also lives here now, not in 🏀 — "One Heuristic, Two Jobs" made
+the separation, and this is where it is finally enacted and can be named.
 
 Introduce the precision goal $\omega_{Goal}$ <!-- medium: ωGoal -->, the rule
 $\omega_{HDI} \le \omega_{Goal}$ <!-- medium: ωHDI ≤ ωGoal -->, and the constraint below with one
@@ -421,15 +809,6 @@ line of why — a goal wider than the ROPE can never resolve:]
 
 > $\omega_{Goal} \le \Delta_{ROPE}$ <!-- medium: ωGoal ≤ ΔROPE -->
 
-[Working values: ROPE = [0.45, 0.55], so $\Delta_{ROPE} = 0.10$ <!-- medium: ΔROPE = 0.10 --> and
-$\omega_{Goal} = 0.08$ <!-- medium: ωGoal = 0.08 -->, 80% of the ROPE width. Then the same sequence
-now running to 598 rather than stopping at 126.]
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/05-pitg-algorithm.png" alt="PitG stopping rule met at iteration 598" width="700">
-</div>
-
-*[CAPTION NEEDED — state the claim: PitG ignores the verdict and keeps collecting until the HDI is narrow enough, reaching ωGoal at iteration 598.]*
 
 [THE HEADLINE — zero false rejections across 5,000 simulations. Keep your hedge intact; it's
 load-bearing: you believe there's a proof for the fair-coin case and haven't derived it.]
@@ -452,37 +831,10 @@ stops precise and says nothing. Set up the third outcome as a real operational c
 [~400 words. THE FINAL ACT and your contribution — a one-line change: keep collecting until precise
 **and** conclusive. Same 11 scenarios as PitG; what differs is the straddlers.
 
-The worked sequence runs to 804 — 34% more than 598 — but say immediately that this hand-picked
-example is on the high side; the median is +4.7%.]
 
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/07-dpitg-stop.png" alt="DPitG stops at iteration 804" width="700">
-</div>
 
-*[CAPTION NEEDED — state the claim: DPitG carries on past 598 and stops at 804, where the HDI is both narrow enough and fully inside the ROPE, accepting the null.]*
 
-[THE THREE NUMBERS, stated plainly: 2.2% inconclusive (down from 62.1%), zero false positives,
-median +4.7% data. The 11-scenario catalogue goes to ⚔️.]
 
-## Three Methods, Side by Side
-
-[One-sentence reading of each row, then the two figures. Figure D (the lead image) does most of this
-work if you build it.]
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/08-three-algorithm-comparison.png" alt="Comparison table of the three algorithms" width="750">
-</div>
-
-*[CAPTION NEEDED — DPitG is a hybrid: PitG's precision criterion, then HDI+ROPE's conclusiveness criterion.]*
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/09-three-algorithm-rates.png" alt="Decision statistics for the three algorithms" width="750">
-</div>
-
-*[CAPTION NEEDED — this figure carries the central claim; it needs a caption more than any other.]*
-
-[One scope fence: p-values and Bayes Factors aren't in this comparison because their decision
-heuristic is different — see ⚔️.]
 
 ## When This Is Worth Using
 
@@ -564,16 +916,6 @@ limitation.]
 
 [`appendix_bayes_factors.tex`. No explicit effect-size criterion, no direct precision goal.]
 
-## ⚔️ All Eleven Scenarios
-
-[Old draft lines 299–303 and 329–339. HDI+ROPE has 6; adding ωGoal makes 11. The yellow dashed box
-is the precision goal — introduce it properly here, since the main thread never does.]
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/06-dpitg-scenarios.png" alt="Two DPitG scenarios" width="700">
-</div>
-
-*[CAPTION NEEDED — in both panels the precision goal is met (HDI well inside the yellow dashed box). Left: a straddler, so keep collecting. Right: HDI fully within the ROPE, so accept.]*
 
 ## ⚔️ The Planning Formula
 
