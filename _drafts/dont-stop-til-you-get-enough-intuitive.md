@@ -117,18 +117,19 @@ The formal treatment is fenced to ⚔️ — do not argue it here.]
 
 > “How much data is required?”
 
-This is one of the most common questions in hypothesis and A/B testing, and it may be asked at different moments. Before any data is collected, it is a planning question. 
+This is one of the most common questions in hypothesis and A/B testing, and it may be asked at different moments.
 
 <!-- SLOT 5 of 6 — POWER ANALYSIS, as the bridge into the contract. Names the standard answer
      without attacking it; the critique is held back for the 🗳️ section. -->
 
-The standard answer is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, e.g, by clinic cutting short a trial once a treatment shows signs of doing damage?
+Before any data is collected, it is a planning question, where the standard answer is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, e.g, by clinic cutting short a trial once a treatment shows signs of doing damage?
 
-A more flexible option is checking as the data arrives is called *sequential hypothesis testing*, often shortened to sequential testing. This method addresses the question:
+A more flexible option is checking as the data arrives is called *sequential hypothesis testing*, often shortened to sequential testing. This retrospective method addresses the question:
 
 > “Have we collected enough data yet?”
 
-As tempting as sequential hypothesis testing is it also has a well known failure mode. Peek often enough and sooner or later an early, unrepresentative sample meets the stopping rule. In most standard methods that same rule is also what decides the verdict, so the call gets made on exactly the sample that should not have been trusted. This is one route to confirmation bias. The reason it happens is well understood, and it can be corrected for.
+As tempting as sequential hypothesis testing is it also has a well known failure mode. Peek often enough and sooner or later an early, a stastically unrepresentative sample may meet the stopping rule. In most standard methods that same rule is also what decides the verdict. This in turn result in
+*confirmation bias*, when an analyst confirms what they were seeking even if its not true [TK revise this]. The reason sequential confirmation bias happens is well understood, and it may be corrected for.
 
 That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way. In a companion post we'll show that the same machinery works before a study starts, for planning how much data to collect in the first place.
 
@@ -136,7 +137,8 @@ An interesting consequence of this correction is that one can complete an experi
 
 <!-- SLOT 6 of 6 — READER CONTRACT. -->
 
-This post is targeted at anyone who runs experiments and has to decide when to stop them: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
+This post is targeted at anyone who runs experiments and has to decide both when to stop them
+as well an the statistical result interpretation: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
 
 No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning.)
 
@@ -222,7 +224,7 @@ if the p-value went under the threshold one can reject the null hypothesis.
 
 In other words the heuristic that signals when to stop collecting data is the same one
 that delivers the verdict.
-The experimenter stops because the result has turned *statistically significant*
+The experimenter stops because the result has turned *``statistically significant"*
 and many unwittingly will conclude that it is also *meaningful*. 
 
 [TK: add here example of drug tried on males and females]
@@ -230,26 +232,26 @@ and many unwittingly will conclude that it is also *meaningful*.
 
 ### Statistically Significant Does Not Imply Meaningful
 
-A popular misconception is confusing statistical significance with a meaningful outcome.
+A popular misconception is confusing ``statistical significance" with a meaningful outcome.
 
-Think of a researcher asking whether a therapeutic works differently for men and women, and finds it beneficial in 72.1% of one group and 72.3% of the other. They collect enough patients and that 0.2 percentage points will be considered statistically significant,
+Think of a researcher asking whether a therapeutic works differently for men and women, and finds it beneficial in 72.1% of one group and 72.3% of the other. They collect enough patients and that the said 0.2 percentage points will be considered ``statistically significant",
 say in terms of a p-value or Bayes Factor.
 In practice, however, no clinician is going to prescribe differently on it.
 
 They key takeaway is that the deviation from a null hypothesis should be large enough to
 justify to act on it, e.g, by making a decision to change the status-quo.
 
-To further understand why statistically significant does not necessarily mean a meaningful result we next turn to the simplest
+To further understand why ``statistically significant" does not necessarily mean a meaningful result we next turn to the simplest
 sequential hypothesis test in which the NHST framework fails: a fair coin toss.
 
 
 ### NHST Catastrophically Fails the Fair Coin Test
 
-The beauty of tossing a virtual fair coin multipel times is that we know the ground truth
-and hence is a useful testbed for sequential hypothesis testing mechanisms.
+The beauty of tossing a virtual fair coin multiple times is that we know the ground truth
+and hence serves as a useful testbed for hypothesis testing mechanisms, sequential or otherwise.
 
 In the case of the a true fair coin the null hypothesis (of it being a fair coin) should be accepted,
-wherease that of a true loaded coin should rejected.
+wherease that of a true loaded coin the same null hypothesis should rejected.
 
 The first problem of the NHST mechanism is that in the case of a fair coin
 the p-value does not contain acceptence
@@ -257,15 +259,15 @@ information and hence one can only awkwardly use a double-negative and "not reje
 the null hypothesis. We will later discuss Bayesian mechanisms that will be able to
 accept the null hypothesis.
 
-Even if we accept NHST as useful to be limited to rejecting the null hypothesis 
-(or not rejectiong = being inconclusive), it completely fails in the fair coin sequential hypothesis testing.
+Even if we accept NHST as useful to be limited to rejecting the null hypothesis,
+it completely fails in the fair coin sequential hypothesis testing.
 
 To visualise this we've generated M=200 binomial sequences (of values 0, 1) of length N=30,000.
 At each iteration n≥30 we peek at the data.
 
-If p<0.5
+If p<0.05
 
-* The stopping criterai is triggered and we stop collecting data
+* The stopping criteria is triggered and we stop collecting data
 * The decision algorithm rejects the null hypothesis (incorrectly)
 
 If p≥0.05 we do not reject the null hypothesis (which may be considered "inconclusive")
@@ -273,12 +275,12 @@ and move on to the next iteration.
 
 How often do we expect to incorrectly reject the null hypothesis?
 One would naïvely assume only 5% of the time as per the threshold.
-Whereas this may be correct at one peaking point, in the sequential context this error compounds.
+Whereas this may be correct at one peeking point, in the sequential context this error compounds.
 
 The following graph shows the cummulative decision rates 
 as a function of iteration n.  Reject rates are in red or not reject in gray, their sum is 100% at each iteration.
 (Note that when a sequence is rejected at a given iteration, e.g, n=100, that same rejection
-is propagated to all subsequent iterations of that sequence, e.g n≥100, since we have stopped the experiment.)
+is propagated to all subsequent iterations of that sequence, e.g n≥100, since we have stopped that experiment of the 200.)
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/02-pvalue-decision-rates.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
@@ -286,7 +288,8 @@ is propagated to all subsequent iterations of that sequence, e.g n≥100, since 
 
 *Sequential hypothesis decision rates for fair coins using p-values for stopping and deciding.* Python code to recreated this may be found here (TBD).
 
-The figure clearly shows the the incorrect rection rate grows as a function of the iteration.
+The figure clearly shows that the incorrect *rejection rate*
+(otherwise known as the false *positive rate*) grows as a function of the iteration.
 
 John Kruschke, author of *Doing Bayesian Data Analysis*, first demonstrated this limitation of p-value as 
 a stopping in the fair coin case and quipped:
@@ -295,17 +298,21 @@ a stopping in the fair coin case and quipped:
 
 The problem is that with more data the likelihood distribution (upon which the p-value is calculated)
 is narrower and any slight shift from the null value results in a stronger (i.e, lower) p-value,
-and hence is considered more "statistically significant", even though there is no meaningful difference
+and hence is considered more ``statistically significant", even though there is no meaningful difference
 between the likelihood distribution and the null value.
 
-One step to correct for this is using a Bayesian mechism with which one can accept the null hypothesis.
-Bayes Factor is such a mechanism, but it turns out that is not sufficient since it runs
-into similar confirmation bias problem. In his analysis
+[TK: insert image demonstrating this narrowness]
+
+The first step to correct for this is using a Bayesian mechism with which one can accept the null hypothesis.
+Bayes Factor, e.g, is such a heursitic, but it turns out that is not sufficient since it runs
+into similar confirmation bias problem. The details of this metric is beyond the scope
+of this post, but its results are of interest [TK refer to where they can learn more about it]. In his analysis
 John quantified that in the fair coin case it can result in 20% false rejects. 
 He also extend to testing loaded coins showing it incorrectly accepting the null
-hypothesis 40% of the time.
+hypothesis 40% of the time (what is commonly referred to as *false negative* rate).
 
-The root issue is that both these mechanisms use the deciding heuristic as the stopping
+The root issue in sequential hypothesis testing is common mechanissms such as the NHST
+p-value and Bayes Factors use the deciding heuristic as the stopping
 criteria.
 
 <!-- , but as we shall see it is not sufficient for the fair coin test. -->
@@ -334,18 +341,21 @@ Bayes Factor
 
 ### 🛑 Gotta Keep 'em Separated ⚖️
 
-Whereas it is tempting to apply the decision rule as the stopping rule, it is the source
-of cofirmation bias. Given enough looks, a statistical fluke will eventually happen and
+Whereas it is convinient to apply the same heuristic as both the stopping rule and
+the decision rule, this is the source
+of cofirmation bias in sequential hypothesis testing.
+
+Given enough looks, a statistical fluke will eventually happen and
 the decision/stopping line may be crossed, whether or not it is meaningful.
 
-The soltion is that stopping criterion should be based on a different heuristic than the decision one.
-John Kruskche's method puts the posterior width (i.e, the uncertainty in the parameter value) as the stopping critera
-regardless of the decision criteria. 
+The solution, hence, is that the stopping criterion should be based on a different heuristic than the decision one.
+<!-- John Kruskche's method puts the posterior width (i.e, the uncertainty in the parameter value) as the stopping critera
+regardless of the decision criteria.  -->
 
-As we shall see:
+In the mechanism we explore we shall see that:
 
 * The stopping criteria is a function of how un/certain we are about the parameter - regardless of its locaiton relative to the null
-* The decision criteria depends both on the relative location of the parameter value relative to the null and a predetermined effect size.
+* The decision criteria depends both on the location of the parameter posterior relative to a predetermined effect size around the null.
 
 To appreciate these we first need to understand two key properties of a probability posterior:
 quantifying its location and its width.
@@ -675,13 +685,43 @@ As mentioned all three use the same HDI+ROPE decision algorithm, but differ in t
 criteria.
 
 Whereas the PitG completely decouples the stopping and decision criteria,
-the DPitG is effectively a hybrid of PitG and the HDI+ROPE by couping them back together
-and by so being more conservative.
+the DPitG stoping rule is effectively a hybrid by coservatibely coupling those of PitG and the HDI+ROPE
+in an AND relationship.
 
 We next briefly explore their performance for the fair coin test demonstrating the
 advantages of going from one to another.
 
 ## Revisiting the Fair Coin Test
+
+To understand the differences between these stopping algorithms it's instructive to examine
+both a specific case as well as trends in large samples.
+
+We start by reexamining the hand picked sequence from before. The following image
+shows its first 1,500 results where the gray band represents the 95% HDI credible interval
+at each point and we highlight iterations of interest. In particular we highlight with green vertical
+lines when the HDI is conclusively inside the ROPE (horizontal dashed orange lines) or outside of it (red).
+We also highlight with purple dots when the precision goal, set at $\omega_{\rm Goal}=0.08$ is met.
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_stats_dpi350.png" alt="Decision statistics for the three algorithms" width="750">
+</div>
+
+We see at iteration 126 that the HDI is completely outside the ROPE. This is the case
+in which the HDI+ROPE stopping rule decides incorrectly to rejects the null hypothesis
+of a fair coin due to an outlier sampling. 
+If we abide to the Precision is the Goal mechanism we have to wait until iteration 598.
+As previously seen the HDI straddles the ROPE and hence renders inconclusive. DPitG
+continuese sampling until at iteration 824 both conditions are met and correctly accepts
+the null hypothesis.
+
+As mentioned before, this particular sequence, even though randomly generated, has been 
+chosen specifically to demonstrate the possibility of the three algorithms resulting in
+different outcomes.
+
+We next generate at total of M=5,000 sequences of length 1,500 and quantify, as before,
+the decision rates and compare the three algorithms.
+
+
 
 [THE THREE NUMBERS, stated plainly: 2.2% inconclusive (down from 62.1%), zero false positives,
 median +4.7% data. The 11-scenario catalogue goes to ⚔️.]
@@ -698,7 +738,7 @@ median +4.7% data. The 11-scenario catalogue goes to ⚔️.]
 heuristic is different — see ⚔️.]
 
 
-Regading the conclusive outcomes, its worth pausing to address the question of 
+Regarding the conclusive outcomes, its worth pausing to address the question of 
 what is actually being accept and as imported rejected.
 
 
