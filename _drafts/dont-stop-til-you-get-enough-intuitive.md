@@ -520,72 +520,81 @@ Below we go into more detail on acting on inconclusive outcomes when there is bu
 
 [^forced]: The companion calculator offers two such forced decisions, under *Decide Now! 🎲* in its *Let Me Peek! 👀* tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
 
-### Applying the HDI+ROPE Decision to a Fair Coin Sequence
+### One Fair Coin, Three Verdicts
 
-To further appreciate the point of in/conclusiveness in sequential hypothesis
-let's examine a set of consecutive fair coin tosses. Instead of the M=200 of before
-we will now focus on a randomly generated but hand picked sequence [TK: footnoe with link to the actual sequence] that is useful
-to explain differences of outcomes as a function of the stop iteration.
+The cartoons above are idealised. To see the decision rule on real binary data, let's return to the
+virtual fair coin from earlier, where we know the truth: $\theta_{\rm true}=0.5$ <!-- medium: θtrue=0.5 -->.
+We use the same ROPE as for Shaq, [45%, 55%], and follow a single sequence of tosses.
+This sequence was randomly generated but then hand-picked, because it shows all three outcomes.[^handpicked]
+(Claims about how often each outcome happens will come later, from 5,000 sequences.)
 
-For our purposes we will define the ROPE region as [0.45, 0.55] and explore the HDI+ROPE
-decision in three different scenarios.
-
-The PDF at iteration n=126 is shown below where the HDI sits fully outside the ROPE,
-where the HDI region is clearly outside of the ROPE.
-The HDI+ROPE decision 
-
+Here is the posterior at three points along the same sequence:
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/04-coupling-problem.png" alt="HDI fully outside the ROPE at iteration 126" width="700">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_posteriors_dpi350.png" alt="Three stacked posteriors of the same fair coin sequence at iterations 126, 598 and 804, narrowing as data accumulates; vertical dashed lines mark the ROPE at 0.45 and 0.55" width="700">
 </div>
 
-*[CAPTION NEEDED — state the claim: at N=126 the HDI is fully outside the ROPE, so a coupled algorithm stops and rejects a coin we know to be fair.]*
+*Posteriors of one fair coin sequence after 126, 598 and 804 tosses. Shaded areas are the 95% HDIs; vertical dashed lines mark the ROPE boundaries.*
 
-That means that the HDI+ROPE decision algorithm will incorrectly reject what we know
-to be a fair coin. We will later discuss false rejection rates, but for now show that
-if pieked later, say at iteration 598 we obtain the following posterior that straddles
-the ROPE:
+* **After 126 tosses**: $\hat\theta=0.635$ <!-- medium: θ̂=0.635 -->, and the HDI spans 0.551–0.718, entirely above the ROPE. ❌ Reject the null, just like the right-hand conclusive cartoon. Note that this HDI ($\omega_{\rm HDI}=0.167$ <!-- medium: ωHDI=0.167 -->) is wider than the ROPE, yet it still rejects: a wide posterior can reject, it just can never accept.
+* **After 598 tosses**: $\hat\theta=0.525$ <!-- medium: θ̂=0.525 -->, and the narrower HDI ($\omega_{\rm HDI}=0.080$ <!-- medium: ωHDI=0.080 -->) straddles the upper ROPE boundary. 🤷 Inconclusive.
+* **After 804 tosses**: $\hat\theta=0.515$ <!-- medium: θ̂=0.515 -->, and the HDI spans 0.480–0.549, entirely inside the ROPE. ✅ Accept the null, if only by a hair (0.549 against a boundary of 0.55).
 
+Same coin, same tosses, three different verdicts.
+The only thing that differed was *when* we stopped to look.
+Which raises the question this post is really about: when *should* we stop?
+Before we get there, the verdicts above deserve a closer look.
 
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/05-pitg-algorithm.png" alt="PitG stopping rule met at iteration 598" width="700">
-</div>
+[^handpicked]: The sequence is `SEQUENCE_HANDPICKED` in the open-source [dpitg repository](https://github.com/elzurdo/dpitg/blob/main/py/utils_experiments_binomial.py#L33){:target="_blank"}, and these figures can be reproduced with the notebook [fair_coin_handpicked.ipynb](https://github.com/elzurdo/dpitg/blob/main/notebooks/fair_coin_handpicked.ipynb){:target="_blank"}.
 
-*[CAPTION NEEDED — state the claim: PitG ignores the verdict and keeps collecting until the HDI is narrow enough, reaching ωGoal at iteration 598.]*
+### What Exactly Are We Accepting?
 
-Given extra budget the experiment should continue until the HDI is completely within
-or outside of the ROPE. This happens at iteration 804 as seen here:
+When a verdict comes in, it is tempting to read it as a verdict on the sample value. It isn't.
 
+After 804 tosses we accept the null, $\theta_{\rm null}=0.5$ <!-- medium: θnull=0.5 -->, **not** the sample value of 0.515.
+What we are accepting is that the true rate is practically equivalent to 0.5, within the ROPE we committed to.
 
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/07-dpitg-stop.png" alt="DPitG stops at iteration 804" width="700">
-</div>
+After 126 tosses we reject the null, but that is **not** an endorsement of 0.635.
+Here the point is sharper, because we know the true value is 0.5, and it isn't even inside the HDI.
+Rejecting the null says only that the plausible values sit meaningfully away from it.
 
-*[CAPTION NEEDED — state the claim: DPitG carries on past 598 and stops at 804, where the HDI is both narrow enough and fully inside the ROPE, accepting the null.]*
+> The decision rule accepts or rejects the **null value**, not the sample value.
 
-These iteration value were not randomly chosen but rather represent stop iterations
-for three different stopping algorithms which is the focus of this post.
+That 126-toss verdict was also simply wrong, and it shows the two ways a conclusive verdict can be:
+
+* A *false reject* is when we reject the null although the true value lies inside the ROPE: the counterpart of a false positive.
+* A *false accept* is when we accept the null although the true value lies outside the ROPE: the counterpart of a false negative.
+
+<!-- Parked Wald callback, pending the epigraph decision: Wald's 1943 sequential test also allowed
+     exactly three decisions — accept, reject, or carry on collecting. -->
 
 ## Three Stopping Algorithms
 
-So far we have discussed how to use the relative location information of the HDI and
-ROPE heuristics to determine an outcome when looking at the data. Now we focus
-on the key aspect of sequential hypothesis testing which is when to dedice to look.
+So far we have discussed how to use the relative location of the HDI and the ROPE
+to decide on an outcome once we look at the data. Now we turn to the key question of sequential
+hypothesis testing: when to stop looking.
+
+Remember the three snapshots of our fair coin, at 126, 598 and 804 tosses?
+They were not chosen at random. Each is where one of three stopping algorithms stops.
+All three share the HDI+ROPE decision rule above and differ only in *when* they stop.
 
 ### 🛑 HDI + ROPE Coupled as a Stopping and Decision Criteria
 
 The HDI+ROPE stopping algorithm, similar to that of NHST and Bayes Factor, conflates
 both the stopping and decision rules into the same criterion.
 
-That means that once the HDI is fully outside (or inside) the ROPE we will stop collrecting
+That means that once the HDI is fully outside (or inside) the ROPE we will stop collecting
 data and reject (or accept) the null hypothesis.
 
-In the handpicked fair coin sample we've seen this actually in action stopping at iteration
-126 and incorrectly rejecting the null hypothesis 🤥. [TK: Reference to relevant pdf figure]
+We've already seen this in action: on our hand-picked fair coin it stops at toss 126
+(top panel of the three snapshots) and incorrectly rejects the null hypothesis 🤥.
+
+
 
 How representative is this false rejection rate?
-Testing on M=5,000 sequences we find this to happen 6.3% of the time. [TK: footnote mention that this is a function of Nmax=30.
-a lower value will yield higher false rejection rates, where higher limit would yield lower rates]
+Testing on M=5,000 sequences we find this to happen 6.3% of the time.[^nmin]
+
+[^nmin]: In practice this depends on the minimum iteration to stop $N_{\rm min}$ where in our case we set this to be 30. If we were to reduce this value the false reject rate would be higher and vice versa.
 
 The key problem, as mentioned before, is the dual usage of the heuristic. Next we will
 see how to use the HDI width, regardless of its location, as an independent measure
@@ -616,7 +625,10 @@ but may be found ...]
 
 #### 🤷 Precision Isn't Enough
 
-One aspect, however, that I found was overlooked by the original Precision is the Goal,
+Our hand-picked coin already shows the catch. PitG stops at toss 598 (middle panel of the three snapshots),
+where the precision goal is met, but the HDI straddles the ROPE, so the verdict is inconclusive.
+
+One aspect, however, that I found was overlooked [TK: note exactly overlooked but not emphasiesed; it was only briefly mentioned] by the original Precision is the Goal,
 is the rate of inconclusive outcomes. Reproducing his original expeirmenets I found
 that the original Precision is the Goal resulted in 63% inconclusive outcome in the
 fair coin case.
@@ -627,10 +639,8 @@ which reduces this inconclusive rate to about 2%.
 ### 🛑 Decisive Precision is the Goal
 
 The modification is making the stopping rule a bit more conservative.
-This is done by changing the STOP then DECIDE rule to STOP AND DECIDE where stopping
-is still the original  $\omega_{\rm HDI} \le \omega_{\rm Goal}$ criteria, where in
-the deciding phase we just address the quesetion: if we decide now would the result
-be conclusive?
+This is done by changing the STOP **THEN** DECIDE logic to STOP **AND** DECIDE where stopping requires both
+the original  $\omega_{\rm HDI} \le \omega_{\rm Goal}$ criteria as well as a conclusive outcome.
 
 In other words this variant which I've called *Decisive Precision is the Goal* states:
 
@@ -641,8 +651,11 @@ If both criteria are met the standard HDI+ROPE ruling applies.
 If both criteria are not met the result is considered "inconclusive" and if the budget
 permits data collection continues. If not one must resort to a risk assessment.
 
+On our hand-picked coin this means carrying on past toss 598 until toss 804 (bottom panel of the three snapshots),
+where the HDI is both narrow enough and inside the ROPE, and correctly accepting the null.
+
 A useful visual of this is below, similar to above but the yellow box around the posterior
-has the width of $\omega_{\rm Goal})$ :
+has the width of $\omega_{\rm Goal})$, which represents 2 of eleven scenarios[^eleven_scenarios]:
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/06-dpitg-scenarios.png" alt="Two DPitG scenarios" width="700">
@@ -650,9 +663,7 @@ has the width of $\omega_{\rm Goal})$ :
 
 *[CAPTION NEEDED — in both panels the precision goal is met (HDI well inside the yellow dashed box). Left: a straddler, so keep collecting. Right: HDI fully within the ROPE, so accept.]*
 
-Note that this represents two of 11 scenarios. The 11 count is as follows:
-All six HDI+ROPE scenarios above have two cases: $\omega_{\rm HDI} \le \omega_{\rm Goal}$ and $\omega_{\rm HDI} \gt \omega_{\rm Goal}$,
-except for the middle inconclusive one which has only the $\omega_{\rm HDI} \gt \omega_{\rm Goal}$ case ...
+[^eleven_scenarios]: The 11 count is as follows: All six HDI+ROPE scenarios above have two cases: $\omega_{\rm HDI} \le \omega_{\rm Goal}$ and $\omega_{\rm HDI} \gt \omega_{\rm Goal}$, except for the middle inconclusive one which has only the $\omega_{\rm HDI} \gt \omega_{\rm Goal}$ case ...
 
 In both panels the precision criteria is met $\omega_{\rm HDI} \le \omega_{\rm Goal}$.
 The original PitG would stop at that point to decide and find that the left panel
@@ -682,27 +693,27 @@ advantages of going from one to another.
 To understand the differences between these stopping algorithms it's instructive to examine
 both a specific case as well as trends in large samples.
 
-We start by reexamining the hand picked sequence from before. The following image
-shows its first 1,500 results where the gray band represents the 95% HDI credible interval
-at each point and we highlight iterations of interest. In particular we highlight with green vertical
-lines when the HDI is conclusively inside the ROPE (horizontal dashed orange lines) or outside of it (red).
-We also highlight with purple dots when the precision goal, set at $\omega_{\rm Goal}=0.08$ is met.
+We start with our hand-picked sequence one last time, now following it toss by toss rather than at three snapshots.
+The gray band is the 95% HDI after each toss and the orange dashed lines are the ROPE.
+A red line marks where the HDI is conclusively outside the ROPE, a green line where it is conclusively inside,
+and purple dots mark where the precision goal, $\omega_{\rm Goal}=0.08$ <!-- medium: ωGoal=0.08 -->, is met.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_stats_dpi350.png" alt="Decision statistics for the three algorithms" width="750">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_stats_dpi350.png" alt="The HDI of one fair coin sequence over 1,500 tosses: a gray band narrowing around 0.5, a red line at toss 126, purple dots from toss 598, and green bands from toss 804, with orange dashed ROPE lines at 0.45 and 0.55" width="750">
 </div>
 
-We see at iteration 126 that the HDI is completely outside the ROPE. This is the case
-in which the HDI+ROPE stopping rule decides incorrectly to rejects the null hypothesis
-of a fair coin due to an outlier sampling. 
-If we abide to the Precision is the Goal mechanism we have to wait until iteration 598.
-As previously seen the HDI straddles the ROPE and hence renders inconclusive. DPitG
-continuese sampling until at iteration 824 both conditions are met and correctly accepts
-the null hypothesis.
+*The 95% HDI (gray band) of our hand-picked fair coin sequence after each toss. Red: HDI fully outside the ROPE (orange dashed lines). Green: HDI fully inside it. Purple dots: precision goal met.*
 
-As mentioned before, this particular sequence, even though randomly generated, has been 
-chosen specifically to demonstrate the possibility of the three algorithms resulting in
-different outcomes.
+Reading from left to right, all three stops sit on one timeline.
+At toss 126 a run of heads pushes the HDI above the ROPE, and HDI+ROPE stops and wrongly rejects.
+From toss 598 the purple dots appear: the precision goal is met, so PitG stops, but the HDI still straddles the ROPE, so its verdict is inconclusive.
+DPitG keeps going until toss 804, the first point at which the HDI is both narrow enough and inside the ROPE, and correctly accepts.
+
+Notice that the green does not stay on once it appears. Just after 804 the HDI drifts back across the boundary a few times
+before settling inside it. An accept can come and go, and DPitG stops at the first one.
+
+As mentioned before, this particular sequence was chosen to show the three algorithms reaching different outcomes.
+To see how often each outcome happens, we need many sequences.
 
 We next generate at total of M=5,000 sequences of length 1,500 and quantify, as before,
 the decision rates and compare the three algorithms.
@@ -724,44 +735,6 @@ median +4.7% data. The 11-scenario catalogue goes to ⚔️.]
 heuristic is different — see ⚔️.]
 
 
-Regarding the conclusive outcomes, its worth pausing to address the question of 
-what is actually being accept and as imported rejected.
-
-
-
-## What do Conclusive Outcomes Accept/Reject?
-
-When rejecting the null hypothesis it is tempting to accept the sample result.
-
-It's worth emphasising that when the  accept or reject decisions are statements about
-the null value, not the sample value.
-
-When rejecting the null hypothesis we are not accpeting the sample value.
-
-When the decsiion is to accept we should quote the null as being accepted, not the sample value. 
-
-about the sample value, but rather th
-, we are accepting the null
-hypothesis, not the sample value (which is likely to differ). This is because of the contruct:
-we are accepting that the true value is effectively similar to the null hypothesis.
-
-
-[The decision rule as THREE outcomes, so `Inconclusive` 🤷 is a first-class citizen from the start
-rather than a surprise two-thirds in, as it is in the old draft. ⚖️ has already shown the reader a
-🤷 straddler on the ±2pp free-throw ROPE, so this section names and formalises an outcome they have
-met rather than introducing one.
-
-Free callback available here (see agentdocs/dpitg-post-outline.md, Epigraph): Wald's 1943 sequential
-test also allowed exactly three decisions — accept, reject, or carry on collecting. Closing the loop
-on the opening epigraph costs one sentence.]
-
-[THE MISCONCEPTION BLOCK — worth its own pull quote. MOVED HERE from ⚖️ on 2026-10-11, because it is
-a correction to the decision rule and in ⚖️ it arrived before the reader had an HDI, an accept, or a
-reject to be wrong about. Source prose: old draft line 227. Paper source: methods.tex
-§sec:accept_reject_meaning, which is the fuller treatment — neither verdict endorses the sample
-estimate; both are statements about the null value, grounded in the pre-specified ROPE.]
-
-> The decision method accepts/rejects the null **value**, not the sample value.
 
 
 <!-- TK: for companion paper when we discuss preplanning. This is not only a laboratory concern. It is one of the quieter engines behind the *replication crisis*, where a great many published findings fail to reappear when somebody runs the study again: when the Open Science Collaboration repeated one hundred psychology experiments in 2015, only about a third came back with the original result. -->
