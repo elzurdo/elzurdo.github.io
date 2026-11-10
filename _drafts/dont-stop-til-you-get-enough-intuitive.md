@@ -582,9 +582,40 @@ Remember the three snapshots of our fair coin, at 126, 598 and 804 tosses?
 They were not chosen at random. Each is where one of three stopping algorithms stops.
 All three share the HDI+ROPE decision rule above and differ only in *when* they stop:
 
-<div style="text-align:center">
+<!-- <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/08-three-algorithm-comparison.png" alt="Table comparing the three algorithms: HDI+ROPE stops when conclusive; Precision is the Goal stops when the HDI is narrow enough, then decides; Decisive PitG stops when the HDI is narrow enough and conclusive" width="750">
-</div>
+</div> -->
+
+<!-- OPTION B: HTML reproduction of the table above. Keep one of the two.
+     medium: Medium has no tables, use 08-three-algorithm-comparison.png -->
+<table style="width:100%; max-width:750px; margin:0 auto 1.5em; border-collapse:collapse; border:2px solid #000; color:#333; font-size:1.05em;">
+  <tr style="background:#fff2cc;">
+    <th style="background:#fff2cc; border:1px solid #000; padding:8px; text-align:left;">Algorithm</th>
+    <th style="background:#fff2cc; border:1px solid #000; padding:8px; text-align:center;">Steps</th>
+    <th style="background:#fff2cc; border:1px solid #000; padding:8px; text-align:center;">🛑</th>
+    <th style="background:#fff2cc; border:1px solid #000; padding:8px; text-align:center;">⚖️</th>
+    <th style="background:#fff2cc; border:1px solid #000; padding:8px; text-align:center;">Logic</th>
+  </tr>
+  <tr style="background:#fff;">
+    <td style="border:1px solid #000; padding:8px; font-weight:bold;">HDI + ROPE</td>
+    <td style="border:1px solid #000; padding:8px; text-align:center; font-weight:bold;">1</td>
+    <td colspan="2" style="border:1px solid #000; padding:8px; text-align:center; font-weight:bold; color:#1155cc;">Conclusive?</td>
+    <td style="border:1px solid #000; padding:8px; text-align:center;">Location <b><i>only</i></b></td>
+  </tr>
+  <tr style="background:#d9d9d9;">
+    <td style="background:#d9d9d9; border:1px solid #000; padding:8px; font-weight:bold;">Precision is the Goal</td>
+    <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center; font-weight:bold;">2</td>
+    <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center; color:#6aa84f;">$\omega_{\rm HDI} \le \omega_{\rm Goal}$</td>
+    <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center; font-weight:bold; color:#1155cc;">Conclusive?</td>
+    <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center;">Precision <b><i>then</i></b> Location</td>
+  </tr>
+  <tr style="background:#fff;">
+    <td style="background:#fff; border:1px solid #000; padding:8px; font-weight:bold;">Decisive PitG</td>
+    <td style="background:#fff; border:1px solid #000; padding:8px; text-align:center; font-weight:bold;">1</td>
+    <td colspan="2" style="background:#fff; border:1px solid #000; padding:8px; text-align:center;"><span style="color:#6aa84f;">($\omega_{\rm HDI} \le \omega_{\rm Goal}$)</span> &amp; <b style="color:#1155cc;">(Conclusive)</b></td>
+    <td style="background:#fff; border:1px solid #000; padding:8px; text-align:center;">Precision <b><i>and</i></b> Location</td>
+  </tr>
+</table>
 
 *The three stopping algorithms. 🛑 marks the stop criterion and ⚖️ the decision rule. "Conclusive" means the HDI is completely inside or outside the ROPE; $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal --> means the HDI is at least as narrow as a precision goal set in advance.*
 
