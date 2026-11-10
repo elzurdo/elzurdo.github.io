@@ -3,7 +3,7 @@ layout: post
 title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion"
 ---
 
-<!-- Useful unicode: ω, Δ, θ -->
+<!-- Useful unicode: ω, Δ, θ, ≈ -->
 
 <!-- Notes:
 * analysts don't always know what they want at first
@@ -712,13 +712,15 @@ DPitG is thus a hybrid: it takes PitG's precision criterion *and* HDI+ROPE's con
 Because precision must be met first, it never stops on an early lucky streak.
 And because it also requires a conclusive outcome, it rarely ends with nothing to say.
 
-### Revisiting the Fair Coin Test
+## More Lessons from the Fair Coin Test
 
 To understand the differences between these stopping algorithms it's instructive to examine
-both a specific case as well as trends in large samples.
+both a specific case and trends across many.
+
+### One Coin, Toss by Toss
 
 We start with our hand-picked sequence one last time, now following it toss by toss rather than at three snapshots.
-The gray band is the 95% HDI after each toss and the orange dashed lines are the ROPE.
+The gray band is the 95% HDI after each toss and the orange dashed lines are the ROPE boundaries.
 A red line marks where the HDI is conclusively outside the ROPE, a green line where it is conclusively inside,
 and purple dots mark where the precision goal, $\omega_{\rm Goal}=0.08$ <!-- medium: ωGoal=0.08 -->, is met.
 
@@ -739,47 +741,53 @@ before settling inside it. An accept can come and go, and DPitG stops at the fir
 As mentioned before, this particular sequence was chosen to show the three algorithms reaching different outcomes.
 To see how often each outcome happens, we need many sequences.
 
-We next generate at total of M=5,000 sequences of length 1,500 and quantify, as before,
-the decision rates and compare the three algorithms.
+### 5,000 Fair Coin Sequences
 
-
-
-[THE THREE NUMBERS, stated plainly: 2.2% inconclusive (down from 62.1%), zero false positives,
-median +4.7% data. The 11-scenario catalogue goes to ⚔️.]
-
-*[CAPTION NEEDED — DPitG is a hybrid: PitG's precision criterion, then HDI+ROPE's conclusiveness criterion.]*
+We now generate 5,000 fair coin sequences, each with a budget of up to 1,500 tosses, and run all three algorithms on every one of them.
+The figure below shows the resulting decision rates as the tosses accumulate.
+As with the p-value figure earlier, the rates are cumulative: once a sequence stops, its verdict is carried forward to every later toss.
+Since the coin is fair, accepting the null is the correct outcome and every rejection is a false one.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/09-three-algorithm-rates.png" alt="Decision statistics for the three algorithms" width="750">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/09-three-algorithm-rates.png" alt="Three panels of cumulative decision rates over 1,500 tosses for 5,000 fair coins. HDI+ROPE: rejections level off near 6% early on, acceptances rise from about 380 tosses to over 90%. Precision is the Goal: a single step at about 600 tosses to under 40% accepted, the rest inconclusive, no rejections. Decisive Precision is the Goal: no rejections, acceptances jump at about 600 tosses and keep rising to about 98%" width="750">
 </div>
 
-*[CAPTION NEEDED — this figure carries the central claim; it needs a caption more than any other.]*
+*Cumulative decision rates for 5,000 fair coin sequences under each stopping algorithm. At every toss count the shares that have accepted the null (green solid), rejected it (red dashed) or are still inconclusive (gray dot-dashed) sum to 100%. Since the coin is fair, every rejection is a false one.*
 
-[One scope fence: p-values and Bayes Factors aren't in this comparison because their decision
-heuristic is different — see ⚔️.]
+**HDI+ROPE (left).** The red line climbs early, well before 250 tosses, and levels off at about 6% of the sequences,
+fair coins wrongly rejected on an early lucky streak.[^asymptote]
+The green line, meanwhile, only starts at about 380 tosses.
+That is no coincidence: it is roughly when the HDI first becomes narrower than the ROPE,
+and as we saw earlier, an HDI wider than the ROPE can never accept.
+From then on the acceptances climb steadily.
+
+**Precision is the Goal (middle).** Nothing at all happens until about 600 tosses,
+where nearly every sequence meets the precision goal at once.
+That step is no surprise either: since the width of the HDI barely depends on the luck of the draw,
+the toss count at which it reaches $\omega_{\rm Goal}$ <!-- medium: ωGoal --> can be calculated in advance, from a closed-form formula
+(see the ⚔️ planning formula section below, and the focus of the companion post).
+At the step just under 40% of the sequences accept and the rest are left inconclusive, where they stay, since PitG has stopped.[^sensitivity]
+And there are no false rejections at all.[^symmetry]
+
+**Decisive Precision is the Goal (right).** DPitG inherits PitG's zero false rejections and its start at about 600 tosses,
+where again just under 40% accept straight away.
+But rather than stopping inconclusive, the rest keep collecting, and the acceptances keep climbing,
+to about 98% by the end of the budget.[^budget]
+The price is modest: the median DPitG sequence stops after 627 tosses, compared with 599 for PitG, or about 5% more data.
+
+In short, on a fair coin HDI+ROPE is decisive but sometimes wrong, PitG is never wrong but often says nothing,
+and DPitG is both decisive and right, for a little more data.
+
+[^asymptote]: Unlike the p-value's, this false rejection rate levels off. That isn't the ROPE's doing alone: Kruschke shows that stopping on Bayes Factors levels off too, albeit at just over 20% (see the [preprint's appendix on Bayes Factors](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}). What both have, and the p-value lacks, is a way to accept the null: every sequence that is accepted stops, and so leaves the pool of those still at risk of a false rejection.
+
+[^sensitivity]: The exact split depends on the settings, in particular on how narrow the precision goal is relative to the ROPE. At the extreme of $\omega_{\rm Goal}=\omega_{\rm ROPE}$ <!-- medium: ωGoal=ωROPE --> PitG is never conclusive, whereas DPitG stays at about 98%. See the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"}.
+
+[^symmetry]: The zero false rejection rate of the precision-based methods is partly thanks to the perfect symmetry of the fair coin. In the preprint I show that they do make some false rejections when the true value sits close to a ROPE boundary. See the [preprint's general trends section](https://arxiv.org/html/2608.05301v1#S3.SS2){:target="_blank"}.
+
+[^budget]: The inconclusive line is still falling at 1,500 tosses, so a larger budget would leave even fewer sequences inconclusive. In the preprint DPitG's conclusiveness turns out to be more sensitive to the budget than to the precision goal.
 
 
-
-
-<!-- TK: for companion paper when we discuss preplanning. This is not only a laboratory concern. It is one of the quieter engines behind the *replication crisis*, where a great many published findings fail to reappear when somebody runs the study again: when the Open Science Collaboration repeated one hundred psychology experiments in 2015, only about a third came back with the original result. -->
-
-Two things are needed to avoid these false alarms. The first is to fix a minimum meaningful effect size in advance and actually hold to it, which is also what lets us accept a null hypothesis rather than merely fail to reject it. The second, which turns out to matter just as much, is to stop collecting data for a reason that has nothing to do with the verdict. 
-
-The second asks us to stop without consulting the result, which sounds like a strange way to run an experiment. Neither, though, can even be stated until we have a way of describing what the data supports at any given moment. 
-
-<!-- THIS SHOULD GO IN THE COMPANION PAPER: A stopping rule that doubles as a verdict is worth sitting with, because it is one of the quieter engines behind the *replication crisis*. The crisis is the discovery, across psychology, medicine and economics, that a great many published findings simply do not reappear when somebody runs the study again. When the Open Science Collaboration repeated one hundred well-known psychology experiments in 2015, only about a third came back with the original result.
-
-The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesising after the results are known), and both sound like accusations of dishonesty. Mostly they are not. Mostly they are a competent person looking at a dashboard, seeing a result, and stopping, which is exactly what the dashboard was built to let them do. -->
-
-
-
- 
-
-
-
-
-
-## When This Is Worth Using
+## When Precision is Worth Using
 
 [Merges the old draft's two short sections into one. Two roles:
 
@@ -792,6 +800,10 @@ The terms of art for how this happens are *p-hacking* and *HARKing* (hypothesisi
 Then the EPISTEMIC HONESTY argument, which is the strongest thing in the paper's discussion: an
 imprecise posterior is inconclusive whatever method you run on it. PitG just refuses to pretend
 otherwise. One 🗳️ callback to close.]
+
+[Also mention, moved from the fair coin results: beyond single-group binary data, the preprint
+derives continuous and between-group extensions (⚔️ Other Data Types), not yet simulation-validated,
+and the are-we-there-yet calculator demonstrates them in practice.]
 
 ## Summary
 
