@@ -121,6 +121,10 @@ By the end you will be able to:
 
 If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The ⚔️ supplementary sections after the summary are where the detail lives.
 
+If you'd like the full technical treatment, I have also written this up as an arXiv preprint. You won't need it to follow along, but it is there as a reference for the finer details.
+
+[![arXiv](https://img.shields.io/badge/arXiv-2608.05301-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.05301v1){:target="_blank"}
+
 ## How Experiments Actually End
 
 How did your last experiment actually end?
@@ -576,119 +580,108 @@ hypothesis testing: when to stop looking.
 
 Remember the three snapshots of our fair coin, at 126, 598 and 804 tosses?
 They were not chosen at random. Each is where one of three stopping algorithms stops.
-All three share the HDI+ROPE decision rule above and differ only in *when* they stop.
+All three share the HDI+ROPE decision rule above and differ only in *when* they stop:
 
-### 🛑 HDI + ROPE Coupled as a Stopping and Decision Criteria
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/08-three-algorithm-comparison.png" alt="Table comparing the three algorithms: HDI+ROPE stops when conclusive; Precision is the Goal stops when the HDI is narrow enough, then decides; Decisive PitG stops when the HDI is narrow enough and conclusive" width="750">
+</div>
 
-The HDI+ROPE stopping algorithm, similar to that of NHST and Bayes Factor, conflates
-both the stopping and decision rules into the same criterion.
+*The three stopping algorithms. 🛑 marks the stop criterion and ⚖️ the decision rule. "Conclusive" means the HDI is completely inside or outside the ROPE; $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal --> means the HDI is at least as narrow as a precision goal set in advance.*
 
-That means that once the HDI is fully outside (or inside) the ROPE we will stop collecting
-data and reject (or accept) the null hypothesis.
+In short, HDI+ROPE stops on location alone, Precision is the Goal stops on width and only then looks at location,
+and Decisive Precision is the Goal requires both at once.
+Each of the following subsections fills in one row of the table.
 
-We've already seen this in action: on our hand-picked fair coin it stops at toss 126
-(top panel of the three snapshots) and incorrectly rejects the null hypothesis 🤥.
+### 🛑 HDI+ROPE: Stop When Conclusive
 
+The simplest algorithm keeps collecting until the decision rule gives a conclusive outcome,[^nmin] and then stops and reports it.
+That is, once the HDI is fully outside (or inside) the ROPE we stop collecting and reject (or accept) the null.
+Like the p-value and the Bayes Factor, it conflates the stopping and decision rules into a single criterion.
 
+On our hand-picked fair coin it stops at toss 126 (top panel of the three snapshots) and incorrectly rejects the null 🤥.
+An early run of heads was enough to push a still-wide HDI past the ROPE, and the algorithm took the bait.
+This is the same confirmation bias we saw with the p-value, now in Bayesian form:
+the heuristic that signals when to stop is also the one that delivers the verdict.
 
-How representative is this false rejection rate?
-Testing on M=5,000 sequences we find this to happen 6.3% of the time.[^nmin]
+[^nmin]: In practice we also require a minimum number of tosses before the first look, $N_{\rm min}$ <!-- medium: Nmin -->, which we set to 30, so that the very first handful of tosses cannot trigger a verdict. A lower $N_{\rm min}$ makes false rejections more likely, a higher one less so.
 
-[^nmin]: In practice this depends on the minimum iteration to stop $N_{\rm min}$ where in our case we set this to be 30. If we were to reduce this value the false reject rate would be higher and vice versa.
+What we need is a reason to stop that does not consult the verdict. The HDI's width is exactly that.
 
-The key problem, as mentioned before, is the dual usage of the heuristic. Next we will
-see how to use the HDI width, regardless of its location, as an independent measure
-to substantially reduce this confirmation bias.
+### 🛑 Precision is the Goal: Stop When Narrow Enough
 
-### 🛑 Precision is the Goal
+John Kruschke's *Precision is the Goal* (PitG) decouples the two criteria.
+The stopping rule looks only at the width of the HDI, and the decision rule is applied only once stopped.
 
-One way to decouple the stopping and decision criteria is by setting the parameter precision
-as the stopping goal. John Kruskche demonstrated that by predetermining a minimum
-width for the HDI as a stopping criterion we can substnatilly reduce the risk of peeking
-too early and hence minimise confirmation bias as well as obtain more accurate sample values at the stopping iteration.
+We set a precision goal $\omega_{\rm Goal}$ <!-- medium: ωGoal --> in advance and, after each toss, compare the HDI width to it:
 
-By setting a precision goal of $\omega_{\rm Goal}$ comparing the HDI width $\omega_{\rm HDI}$
-to it the stopping rule becomes:
-* $\omega_{\rm HDI} \le \omega_{\rm Goal}$: criterion met - stop and decide
-* $\omega_{\rm HDI} \gt \omega_{\rm Goal}$: not met - continue collecting (or conduct risk assessment to decide.)
+* $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal -->: criterion met. Stop, then apply the decision rule.
+* $\omega_{\rm HDI} > \omega_{\rm Goal}$ <!-- medium: ωHDI > ωGoal -->: not met. Continue collecting (or, if the budget is spent, conduct a risk assessment).
 
-The key difference in sequential hypothesis testing is that in this
-*Precision is the Goal* method the analysts examines the width of the parameter posterior.
-This is in contrast to the standard methods 
-(NHST, Bayes Factor as well as HDI+ROPE) which monitor only the location information. 
+Following Kruschke's original analysis we use $\omega_{\rm Goal}=0.08$, <!-- medium: ωGoal=0.08 -->.
+<!-- TK: look up how Kruschke chose ωGoal=0.08 (Doing Bayesian Data Analysis, §13.6) and add one sentence on the reasoning. -->
+which is, by definition, narrower than the ROPE ($\omega_{\rm ROPE}=0.1$ <!-- medium: ωROPE=0.1 -->).
+As we saw earlier, an HDI wider than the ROPE could never accept the null.
 
-In the fair coin case Kruskche demonstrated that 1,000 experiment sequences resulted
-in zero false rejections. Below I display this by analysing 5,000 sequences.
-In addition he has shown that the sample parameter at the stop iteration is much more accurate
-for loaded coins as confirmation bias is impacted by extereme results. [TK: This is beyond of the scope of this article
-but may be found ...]
+The key difference from HDI+ROPE (and from the p-value and the Bayes Factor) is that PitG monitors
+the *width* of the posterior rather than its location.
+A lucky streak can shift where the posterior sits, but it barely changes how wide it is,
+so there is no early, extreme moment for the stopping rule to pounce on.
+In his fair coin simulations Kruschke found that, across 1,000 sequences (and shown below in a further 5,000 I've conducted), PitG made zero false rejections.
+And because it does not stop on extreme runs, the sample value at the stop is also more accurate, including for loaded coins.[^kruschke]
+
+[^kruschke]: Kruschke (2015), *Doing Bayesian Data Analysis*, 2nd edition, §13.3. For a range of loaded coins see also the [General Trends section of my preprint](https://arxiv.org/html/2608.05301v1#S3.SS2){:target="_blank"}.
 
 #### 🤷 Precision Isn't Enough
 
 Our hand-picked coin already shows the catch. PitG stops at toss 598 (middle panel of the three snapshots),
 where the precision goal is met, but the HDI straddles the ROPE, so the verdict is inconclusive.
 
-One aspect, however, that I found was overlooked [TK: note exactly overlooked but not emphasiesed; it was only briefly mentioned] by the original Precision is the Goal,
-is the rate of inconclusive outcomes. Reproducing his original expeirmenets I found
-that the original Precision is the Goal resulted in 63% inconclusive outcome in the
-fair coin case.
+This is not a quirk of one sequence.
+Kruschke noted in passing that PitG "did remain undecided in some cases".[^undecided]
+Reproducing his experiments I found that for a fair coin this is the most common outcome:
+more often than not, PitG stops with an inconclusive verdict.
+In other words, it rarely says anything wrong, but often says nothing at all.
 
-I managed to resolve this by slightly tweeking to a new variant 
-which reduces this inconclusive rate to about 2%.
+[^undecided]: Kruschke (2015), §13.3.2, page 391.
 
-### 🛑 Decisive Precision is the Goal
+A small tweak, it turns out, resolves most of this, at the cost of a little more data.
 
-The modification is making the stopping rule a bit more conservative.
-This is done by changing the STOP **THEN** DECIDE logic to STOP **AND** DECIDE where stopping requires both
-the original  $\omega_{\rm HDI} \le \omega_{\rm Goal}$ criteria as well as a conclusive outcome.
+### 🛑 Decisive Precision is the Goal: Stop When Narrow Enough *and* Conclusive
 
-In other words this variant which I've called *Decisive Precision is the Goal* states:
+The tweak is to make the stopping rule a bit more conservative.
+Instead of STOP **THEN** DECIDE, it is STOP **AND** DECIDE: stopping requires both the original
+precision criterion, $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal -->, and a conclusive outcome.
 
-Collect data until $(\omega_{\rm HDI} \le \omega_{\rm Goal})$ & (HDI Completely Inside/Outside ROPE).
+In other words, this variant, which I've called *Decisive Precision is the Goal* (DPitG), states:
 
-If both criteria are met the standard HDI+ROPE ruling applies.
+> Collect data until $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal --> **and** the HDI is completely inside or outside the ROPE.
 
-If both criteria are not met the result is considered "inconclusive" and if the budget
-permits data collection continues. If not one must resort to a risk assessment.
+Once both criteria are met, the HDI+ROPE decision rule applies as usual.
+Until then, the result is inconclusive: if the budget permits, data collection continues; otherwise one must resort to a risk assessment.
+
+A useful visual is below. It is similar to the cartoons above, but the yellow box around the posterior
+has the width of $\omega_{\rm Goal}$ <!-- medium: ωGoal -->, so an HDI that fits inside it meets the precision goal.
+The two panels are two of eleven possible scenarios.[^eleven_scenarios]
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/06-dpitg-scenarios.png" alt="Two DPitG scenarios, both with the HDI inside the yellow precision-goal box: left, the HDI straddles the ROPE so a traffic light says continue collecting; right, the HDI is within the ROPE so it says stop collecting" width="700">
+</div>
+
+*Two DPitG scenarios. In both, the HDI fits inside the yellow dashed box of width $\omega_{\rm Goal}$ <!-- medium: ωGoal -->, so the precision goal is met. Left: the HDI straddles the ROPE, so DPitG keeps collecting. Right: the HDI is fully inside the ROPE, so DPitG stops and accepts the null.*
+
+In the left panel, the original PitG would stop with an inconclusive outcome.
+DPitG simply continues collecting data until the HDI is completely within or outside the ROPE, as in the right panel.
+
+[^eleven_scenarios]: Each of the six HDI+ROPE scenarios above (three conclusive, three inconclusive) can occur with the precision goal met, $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal -->, or not, $\omega_{\rm HDI} > \omega_{\rm Goal}$ <!-- medium: ωHDI > ωGoal -->, giving twelve combinations. The exception is the centre inconclusive scenario, where the HDI is wider than the ROPE: since $\omega_{\rm Goal} < \omega_{\rm ROPE}$ <!-- medium: ωGoal < ωROPE -->, such an HDI can never meet the precision goal, which leaves eleven. DPitG stops in only three of them: precision met and conclusive.
 
 On our hand-picked coin this means carrying on past toss 598 until toss 804 (bottom panel of the three snapshots),
 where the HDI is both narrow enough and inside the ROPE, and correctly accepting the null.
 
-A useful visual of this is below, similar to above but the yellow box around the posterior
-has the width of $\omega_{\rm Goal})$, which represents 2 of eleven scenarios[^eleven_scenarios]:
+DPitG is thus a hybrid: it takes PitG's precision criterion *and* HDI+ROPE's conclusiveness criterion.
+Because precision must be met first, it never stops on an early lucky streak.
+And because it also requires a conclusive outcome, it rarely ends with nothing to say.
 
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/06-dpitg-scenarios.png" alt="Two DPitG scenarios" width="700">
-</div>
-
-*[CAPTION NEEDED — in both panels the precision goal is met (HDI well inside the yellow dashed box). Left: a straddler, so keep collecting. Right: HDI fully within the ROPE, so accept.]*
-
-[^eleven_scenarios]: The 11 count is as follows: All six HDI+ROPE scenarios above have two cases: $\omega_{\rm HDI} \le \omega_{\rm Goal}$ and $\omega_{\rm HDI} \gt \omega_{\rm Goal}$, except for the middle inconclusive one which has only the $\omega_{\rm HDI} \gt \omega_{\rm Goal}$ case ...
-
-In both panels the precision criteria is met $\omega_{\rm HDI} \le \omega_{\rm Goal}$.
-The original PitG would stop at that point to decide and find that the left panel
-is inconclusive. DPitG simply continues collecting data until the HDI is found to be
-completely within or outside the ROPE as per the right panel.
-
-### Stopping+Decision Algorithm Comparison
-
-The following table summarises the three algorithms
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/08-three-algorithm-comparison.png" alt="Comparison table of the three algorithms" width="750">
-</div>
-
-As mentioned all three use the same HDI+ROPE decision algorithm, but differ in the stopping
-criteria.
-
-Whereas the PitG completely decouples the stopping and decision criteria,
-the DPitG stoping rule is effectively a hybrid by coservatibely coupling those of PitG and the HDI+ROPE
-in an AND relationship.
-
-We next briefly explore their performance for the fair coin test demonstrating the
-advantages of going from one to another.
-
-## Revisiting the Fair Coin Test
+### Revisiting the Fair Coin Test
 
 To understand the differences between these stopping algorithms it's instructive to examine
 both a specific case as well as trends in large samples.
