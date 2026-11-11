@@ -468,6 +468,10 @@ Let's generalise.
 The *HDI+ROPE decision rule* compares the location of the HDI with that of the ROPE,
 where the outcome decision may be either conclusive or inconclusive.
 
+<!-- TO EXPLORE: slide 4 ("Decision rule explorer") of the DPitG 20-minute talk, as a live
+     companion to the conclusive/inconclusive cartoons below. Same approach as three-rules-sim.html:
+     a standalone page under assets/ embedded with an iframe. -->
+
 ### Conclusive Outcomes
 
 A useful way to understand the conclusive outcomes is by the following illustration:
@@ -738,6 +742,21 @@ DPitG keeps going until toss 804, the first point at which the HDI is both narro
 Notice that the green does not stay on once it appears. Just after 804 the HDI drifts back across the boundary a few times
 before settling inside it. An accept can come and go, and DPitG stops at the first one.
 
+▶️ **Try it yourself.** The simulation below replays the same hand-picked coin, toss by toss.
+Press *Play / pause* to watch it again, *Find a false reject* to search random fair coins until HDI+ROPE wrongly rejects one,
+or *Find a PitG inconclusive* to see PitG's catch.
+Raise the true rate above 0.55 and rejecting becomes the correct answer.
+
+<!-- medium: no live embeds on Medium. Link to {{ site.url }}/assets/dont-stop-til-you-get-enough/three-rules-sim.html instead. -->
+<iframe id="dpitg-sim" src="{{ site.url }}/assets/dont-stop-til-you-get-enough/three-rules-sim.html" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="640" style="border:0;" loading="lazy"></iframe>
+<script>
+  window.addEventListener("message", function (e) {
+    if (e.origin === window.location.origin && e.data && e.data.dpitgSimHeight) {
+      document.getElementById("dpitg-sim").style.height = (e.data.dpitgSimHeight + 4) + "px";
+    }
+  });
+</script>
+
 As mentioned before, this particular sequence was chosen to show the three algorithms reaching different outcomes.
 To see how often each outcome happens, we need many sequences.
 
@@ -784,6 +803,10 @@ and DPitG is both decisive and right, for a little more data.
 
 [^budget]: The inconclusive line is still falling at 1,500 tosses, so a larger budget would leave even fewer sequences inconclusive. In the preprint DPitG's conclusiveness turns out to be more sensitive to the budget than to the precision goal.
 
+
+<!-- TO EXPLORE: slide 14 ("Planning calculator") of the DPitG 20-minute talk, as an in-browser
+     N_goal calculator for this section (no Streamlit, so nothing to fall asleep). Same approach as
+     three-rules-sim.html. May fit the companion post better. -->
 
 ## 💰 The Cost of Precision
 
@@ -908,8 +931,9 @@ or clone [the repository](https://github.com/elzurdo/are-we-there-yet){:target="
 
 <!-- Alternative to the screenshot above: embed the calculator live. Free Streamlit apps sleep
      when idle, so a visitor may land on a wake-up screen rather than the calculator.
-<iframe src="https://r-w-t-y.streamlit.app/?embed=true" width="100%" height="630" frameborder="0" scrolling="no"></iframe>
 -->
+
+<iframe src="https://r-w-t-y.streamlit.app/?embed=true" width="100%" height="630" frameborder="0" scrolling="no"></iframe>
 
 ## Summary
 
