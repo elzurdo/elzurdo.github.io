@@ -787,23 +787,65 @@ and DPitG is both decisive and right, for a little more data.
 [^budget]: The inconclusive line is still falling at 1,500 tosses, so a larger budget would leave even fewer sequences inconclusive. In the preprint DPitG's conclusiveness turns out to be more sensitive to the budget than to the precision goal.
 
 
+## 💰 The Cost of Precision
+
+[PLACEHOLDER — brief introduction of $N_{\rm Goal}$ <!-- medium: NGoal -->, the expected sample size at which
+the precision goal is met. Key implications only, no derivation:
+ • it can be calculated in advance from a closed-form formula (⚔️ planning formula below);
+ • it scales with the inverse square of $\omega_{\rm Goal}$: halving the goal roughly quadruples the data;
+ • for binary data it is largest at a 50/50 split, so planning with the null is conservative;
+ • it explains the step at ≈600 tosses in the PitG panel above.
+Close by saying this function is the focus of the companion post.]
+
 ## When Precision is Worth Using
 
-[Merges the old draft's two short sections into one. Two roles:
+Asking for precision before a verdict costs data. So when is it worth paying for?
 
- • **As a stopping rule** — when data is cheap and the budget comfortably exceeds $N_{Goal}$
-   <!-- medium: NGoal -->: large-scale A/B testing, opinion polling, automated QC pipelines.
- • **As a planning tool** — when $N_{Goal}$ is out of reach: longitudinal studies, clinical trials,
-   expensive policy evaluations. It makes explicit what precision is achievable and what conclusions
-   the data can and cannot support, prospectively and retrospectively.
+### A Stopping Rule, or a Planning Tool
 
-Then the EPISTEMIC HONESTY argument, which is the strongest thing in the paper's discussion: an
-imprecise posterior is inconclusive whatever method you run on it. PitG just refuses to pretend
-otherwise. One 🗳️ callback to close.]
+It depends mostly on how expensive the data is, which gives the method two complementary roles.
 
-[Also mention, moved from the fair coin results: beyond single-group binary data, the preprint
-derives continuous and between-group extensions (⚔️ Other Data Types), not yet simulation-validated,
-and the are-we-there-yet calculator demonstrates them in practice.]
+**As a stopping rule**, it is best suited to settings where data is relatively cheap and the budget comfortably
+exceeds $N_{\rm Goal}$ <!-- medium: NGoal -->, the expected sample size at which the precision goal is met:
+large-scale A/B testing, opinion polling and automated quality-control pipelines are typical examples.
+For A/B testers there is a bonus: unlike frequentist sequential designs, it needs no correction for how often
+you peek, nor for running many tests in parallel (see the ⚔️ section on multiple comparisons below).
+
+**As a planning tool**, it is useful even where data is expensive and $N_{\rm Goal}$ <!-- medium: NGoal --> may be out of reach:
+longitudinal studies, clinical trials, costly policy evaluations.
+Here the precision goal makes explicit what precision the budget can actually buy, and so what conclusions
+the data can and cannot support.
+That works both before collection begins and after it ends, to audit the precision of a completed study.
+This is the focus of the companion post.
+
+### Precision Is Honesty
+
+The most common objection to Precision is the Goal is that it asks for too much data.
+John Kruschke has observed that this is the worry he hears most often,
+and that it usually stems from optimism: people overestimate how precise their measurements are,
+and so are surprised by how much data a given precision takes.
+In his words, "people are often shocked by the amount of noise in their data."[^kruschke_comm]
+His advice is to be realistic about the precision one can hope to achieve, and to set the goal accordingly.
+
+[^kruschke_comm]: Personal communication, 2022.
+
+Arguably, the demand for data is not a flaw of the method but a form of honesty.
+An imprecise posterior is inconclusive whatever algorithm you run on it.
+Precision is the Goal simply refuses to pretend otherwise: rather than masking too little data behind a false rejection,
+or quietly stopping with nothing to say, it holds off on a verdict until the posterior is genuinely informative.
+
+Everything in this post used single-group binary data, but the same logic extends to continuous data
+and to comparisons between groups.
+The preprint derives these extensions, although, unlike the coin, they have not yet been put through
+large-scale simulations (see the ⚔️ section on other data types below).
+The companion calculator below lets you try them on your own numbers.
+
+🗳️ Finally, if the idea of choosing a sample size for its precision still sounds exotic, you have probably met it already.
+A poll reported with a margin of error of ±3 points has a 95% interval about 6 points wide, and pollsters size their samples
+to hit that width, before knowing any of the answers.
+For a question split close to 50/50 that takes roughly 1,070 respondents, which is no coincidence: it is the same number
+that a precision goal of $\omega_{\rm Goal}=0.06$ <!-- medium: ωGoal=0.06 --> requires for our fair coin.
+Pollsters, in other words, have been planning for precision all along.
 
 ## Summary
 
