@@ -867,6 +867,50 @@ For a question split close to 50/50 that takes roughly 1,070 respondents, which 
 that a precision goal of $\omega_{\rm goal}=0.06$ <!-- medium: ωgoal=0.06 --> requires for our fair coin.
 Pollsters, in other words, have been planning for precision all along.
 
+
+## 🚗 Are We There Yet? Test Your Own Data for Precision
+
+Pollsters have their margin-of-error tables. For everyone else, there is still the question this post opened with:
+"Have we collected enough data yet?"
+To help answer it for your own experiments there is a companion calculator that I created
+for my own use which I call ``*Are We There Yet?*".
+
+It has two modes:
+
+* 🔍 **Retrospective, "I have data, is it enough?"** Enter the data collected so far and it tells you whether the precision goal is met and what the decision rule says, or whether to keep collecting, and how much. Re-enter it each time new data arrives and you are running the sequential test described in this post.
+* 📐 **Prospective, "I'm planning a study."** Before any data is collected, it estimates $N_{\rm goal}$ <!-- medium: Ngoal -->, the sample size your precision goal will take. Planning a study this way is the focus of the companion post.
+
+It handles binary and continuous data, for a single group or a comparison between two groups, as well as categorical data in retrospective mode.
+There is no need to upload raw data, only summary numbers: counts of successes and failures for binary data,
+or the mean, standard deviation and sample size for continuous data.
+In return, it assumes that the data follows standard closed-form models.[^calc_models]
+
+What it can't do is decide for you what counts as meaningful.
+Before any verdict, it asks for a ROPE and a precision goal, and choosing them takes some thought.
+That effort is the point: settling what "close enough" means before the result is in is what keeps the verdict honest.
+For help, the 🧭 *Help me choose ROPE & Precision Goal* guide walks through a few short questions,
+with presets for popular domains such as e-commerce conversion, clinical trials and election polling.
+
+<!-- COMPANION POST idea: a subsection "### The Homework: Choosing a ROPE and a Precision Goal",
+     walking through the 🧭 guide step by step (smallest meaningful effect → ROPE; precision as a
+     % of the ROPE width → ωgoal; sample-size preview) with one or two domain presets as examples. -->
+
+You can use it online at [r-w-t-y.streamlit.app](https://r-w-t-y.streamlit.app/){:target="_blank"},
+or clone [the repository](https://github.com/elzurdo/are-we-there-yet){:target="_blank"} and run it locally.
+
+[^calc_models]: Beta posteriors for binary data and Student-t posteriors for continuous data. Comparisons between two groups use a normal (CLT) approximation for binary data and Welch's unequal-variances approach for continuous data. In planning-formula terms, this is $V(\theta)$ <!-- medium: V(θ) --> taking a different form for each data type.
+
+<div style="text-align:center">
+    <a href="https://r-w-t-y.streamlit.app/" target="_blank"><img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/00-streamlit-calculator.png" alt="Home screen of the Are We There Yet? calculator: choose prospective or retrospective mode, binary or continuous data, and single group or between groups" width="560"></a>
+</div>
+
+*Click through to the live calculator at [https://r-w-t-y.streamlit.app/](https://r-w-t-y.streamlit.app/){:target="_blank"}*
+
+<!-- Alternative to the screenshot above: embed the calculator live. Free Streamlit apps sleep
+     when idle, so a visitor may land on a wake-up screen rather than the calculator.
+<iframe src="https://r-w-t-y.streamlit.app/?embed=true" width="100%" height="630" frameborder="0" scrolling="no"></iframe>
+-->
+
 ## Summary
 
 [Thesis in one sentence, then what was covered, then the reader's next step:]
@@ -879,25 +923,6 @@ Pollsters, in other words, have been planning for precision all along.
 - [A closed-form formula makes it work prospectively and retrospectively, not just sequentially]
 
 > My favourite word in English is pROPEr, and you can't spell it without ROPE ...
-
-## 🧮 A Companion: The Calculator
-
-[One short paragraph. The closed-form $N_{\rm goal}$ means this isn't only a sequential method — it also
-plans prospectively and audits retrospectively, and that is what the calculator does. A companion
-post, not a series: no "you are here" marker, no part numbers.
-
-
-
-<div style="text-align:center">
-    <a href="https://r-w-t-y.streamlit.app/" target="_blank"><img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/00-streamlit-calculator.png" alt="Interactive sample size calculator" width="560"></a>
-</div>
-
-*Click through to the live calculator at [https://r-w-t-y.streamlit.app/](https://r-w-t-y.streamlit.app/){:target="_blank"}*
-
-<!-- Alternative to the screenshot above: embed the calculator live. Free Streamlit apps sleep
-     when idle, so a visitor may land on a wake-up screen rather than the calculator.
-<iframe src="https://r-w-t-y.streamlit.app/?embed=true" width="100%" height="630" frameborder="0" scrolling="no"></iframe>
--->
 
 ---
 
