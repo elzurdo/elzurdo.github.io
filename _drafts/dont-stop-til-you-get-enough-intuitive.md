@@ -605,19 +605,19 @@ All three share the HDI+ROPE decision rule above and differ only in *when* they 
   <tr style="background:#d9d9d9;">
     <td style="background:#d9d9d9; border:1px solid #000; padding:8px; font-weight:bold;">Precision is the Goal</td>
     <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center; font-weight:bold;">2</td>
-    <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center; color:#6aa84f;">$\omega_{\rm HDI} \le \omega_{\rm Goal}$</td>
+    <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center; color:#6aa84f;">$\omega_{\rm HDI} \le \omega_{\rm goal}$</td>
     <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center; font-weight:bold; color:#1155cc;">Conclusive?</td>
     <td style="background:#d9d9d9; border:1px solid #000; padding:8px; text-align:center;">Precision <b><i>then</i></b> Location</td>
   </tr>
   <tr style="background:#fff;">
     <td style="background:#fff; border:1px solid #000; padding:8px; font-weight:bold;">Decisive PitG</td>
     <td style="background:#fff; border:1px solid #000; padding:8px; text-align:center; font-weight:bold;">1</td>
-    <td colspan="2" style="background:#fff; border:1px solid #000; padding:8px; text-align:center;"><span style="color:#6aa84f;">($\omega_{\rm HDI} \le \omega_{\rm Goal}$)</span> &amp; <b style="color:#1155cc;">(Conclusive)</b></td>
+    <td colspan="2" style="background:#fff; border:1px solid #000; padding:8px; text-align:center;"><span style="color:#6aa84f;">($\omega_{\rm HDI} \le \omega_{\rm goal}$)</span> &amp; <b style="color:#1155cc;">(Conclusive)</b></td>
     <td style="background:#fff; border:1px solid #000; padding:8px; text-align:center;">Precision <b><i>and</i></b> Location</td>
   </tr>
 </table>
 
-*The three stopping algorithms. 🛑 marks the stop criterion and ⚖️ the decision rule. "Conclusive" means the HDI is completely inside or outside the ROPE; $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal --> means the HDI is at least as narrow as a precision goal set in advance.*
+*The three stopping algorithms. 🛑 marks the stop criterion and ⚖️ the decision rule. "Conclusive" means the HDI is completely inside or outside the ROPE; $\omega_{\rm HDI} \le \omega_{\rm goal}$ <!-- medium: ωHDI ≤ ωgoal --> means the HDI is at least as narrow as a precision goal set in advance.*
 
 In short, HDI+ROPE stops on location alone, Precision is the Goal stops on width and only then looks at location,
 and Decisive Precision is the Goal requires both at once.
@@ -643,13 +643,13 @@ What we need is a reason to stop that does not consult the verdict. The HDI's wi
 John Kruschke's *Precision is the Goal* (PitG) decouples the two criteria.
 The stopping rule looks only at the width of the HDI, and the decision rule is applied only once stopped.
 
-We set a precision goal $\omega_{\rm Goal}$ <!-- medium: ωGoal --> in advance and, after each toss, compare the HDI width to it:
+We set a precision goal $\omega_{\rm goal}$ <!-- medium: ωgoal --> in advance and, after each toss, compare the HDI width to it:
 
-* $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal -->: criterion met. Stop, then apply the decision rule.
-* $\omega_{\rm HDI} > \omega_{\rm Goal}$ <!-- medium: ωHDI > ωGoal -->: not met. Continue collecting (or, if the budget is spent, conduct a risk assessment).
+* $\omega_{\rm HDI} \le \omega_{\rm goal}$ <!-- medium: ωHDI ≤ ωgoal -->: criterion met. Stop, then apply the decision rule.
+* $\omega_{\rm HDI} > \omega_{\rm goal}$ <!-- medium: ωHDI > ωgoal -->: not met. Continue collecting (or, if the budget is spent, conduct a risk assessment).
 
-Following Kruschke's original analysis we use $\omega_{\rm Goal}=0.08$, <!-- medium: ωGoal=0.08 -->.
-<!-- TK: look up how Kruschke chose ωGoal=0.08 (Doing Bayesian Data Analysis, §13.6) and add one sentence on the reasoning. -->
+Following Kruschke's original analysis we use $\omega_{\rm goal}=0.08$, <!-- medium: ωgoal=0.08 -->.
+<!-- TK: look up how Kruschke chose ωgoal=0.08 (Doing Bayesian Data Analysis, §13.6) and add one sentence on the reasoning. -->
 which is, by definition, narrower than the ROPE ($\omega_{\rm ROPE}=0.1$ <!-- medium: ωROPE=0.1 -->).
 As we saw earlier, an HDI wider than the ROPE could never accept the null.
 
@@ -681,29 +681,29 @@ A small tweak, it turns out, resolves most of this, at the cost of a little more
 
 The tweak is to make the stopping rule a bit more conservative.
 Instead of STOP **THEN** DECIDE, it is STOP **AND** DECIDE: stopping requires both the original
-precision criterion, $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal -->, and a conclusive outcome.
+precision criterion, $\omega_{\rm HDI} \le \omega_{\rm goal}$ <!-- medium: ωHDI ≤ ωgoal -->, and a conclusive outcome.
 
 In other words, this variant, which I've called *Decisive Precision is the Goal* (DPitG), states:
 
-> Collect data until $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal --> **and** the HDI is completely inside or outside the ROPE.
+> Collect data until $\omega_{\rm HDI} \le \omega_{\rm goal}$ <!-- medium: ωHDI ≤ ωgoal --> **and** the HDI is completely inside or outside the ROPE.
 
 Once both criteria are met, the HDI+ROPE decision rule applies as usual.
 Until then, the result is inconclusive: if the budget permits, data collection continues; otherwise one must resort to a risk assessment.
 
 A useful visual is below. It is similar to the cartoons above, but the yellow box around the posterior
-has the width of $\omega_{\rm Goal}$ <!-- medium: ωGoal -->, so an HDI that fits inside it meets the precision goal.
+has the width of $\omega_{\rm goal}$ <!-- medium: ωgoal -->, so an HDI that fits inside it meets the precision goal.
 The two panels are two of eleven possible scenarios.[^eleven_scenarios]
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/06-dpitg-scenarios.png" alt="Two DPitG scenarios, both with the HDI inside the yellow precision-goal box: left, the HDI straddles the ROPE so a traffic light says continue collecting; right, the HDI is within the ROPE so it says stop collecting" width="700">
 </div>
 
-*Two DPitG scenarios. In both, the HDI fits inside the yellow dashed box of width $\omega_{\rm Goal}$ <!-- medium: ωGoal -->, so the precision goal is met. Left: the HDI straddles the ROPE, so DPitG keeps collecting. Right: the HDI is fully inside the ROPE, so DPitG stops and accepts the null.*
+*Two DPitG scenarios. In both, the HDI fits inside the yellow dashed box of width $\omega_{\rm goal}$ <!-- medium: ωgoal -->, so the precision goal is met. Left: the HDI straddles the ROPE, so DPitG keeps collecting. Right: the HDI is fully inside the ROPE, so DPitG stops and accepts the null.*
 
 In the left panel, the original PitG would stop with an inconclusive outcome.
 DPitG simply continues collecting data until the HDI is completely within or outside the ROPE, as in the right panel.
 
-[^eleven_scenarios]: Each of the six HDI+ROPE scenarios above (three conclusive, three inconclusive) can occur with the precision goal met, $\omega_{\rm HDI} \le \omega_{\rm Goal}$ <!-- medium: ωHDI ≤ ωGoal -->, or not, $\omega_{\rm HDI} > \omega_{\rm Goal}$ <!-- medium: ωHDI > ωGoal -->, giving twelve combinations. The exception is the centre inconclusive scenario, where the HDI is wider than the ROPE: since $\omega_{\rm Goal} < \omega_{\rm ROPE}$ <!-- medium: ωGoal < ωROPE -->, such an HDI can never meet the precision goal, which leaves eleven. DPitG stops in only three of them: precision met and conclusive.
+[^eleven_scenarios]: Each of the six HDI+ROPE scenarios above (three conclusive, three inconclusive) can occur with the precision goal met, $\omega_{\rm HDI} \le \omega_{\rm goal}$ <!-- medium: ωHDI ≤ ωgoal -->, or not, $\omega_{\rm HDI} > \omega_{\rm goal}$ <!-- medium: ωHDI > ωgoal -->, giving twelve combinations. The exception is the centre inconclusive scenario, where the HDI is wider than the ROPE: since $\omega_{\rm goal} < \omega_{\rm ROPE}$ <!-- medium: ωgoal < ωROPE -->, such an HDI can never meet the precision goal, which leaves eleven. DPitG stops in only three of them: precision met and conclusive.
 
 On our hand-picked coin this means carrying on past toss 598 until toss 804 (bottom panel of the three snapshots),
 where the HDI is both narrow enough and inside the ROPE, and correctly accepting the null.
@@ -722,7 +722,7 @@ both a specific case and trends across many.
 We start with our hand-picked sequence one last time, now following it toss by toss rather than at three snapshots.
 The gray band is the 95% HDI after each toss and the orange dashed lines are the ROPE boundaries.
 A red line marks where the HDI is conclusively outside the ROPE, a green line where it is conclusively inside,
-and purple dots mark where the precision goal, $\omega_{\rm Goal}=0.08$ <!-- medium: ωGoal=0.08 -->, is met.
+and purple dots mark where the precision goal, $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 -->, is met.
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_stats_dpi350.png" alt="The HDI of one fair coin sequence over 1,500 tosses: a gray band narrowing around 0.5, a red line at toss 126, purple dots from toss 598, and green bands from toss 804, with orange dashed ROPE lines at 0.45 and 0.55" width="750">
@@ -763,9 +763,7 @@ From then on the acceptances climb steadily.
 
 **Precision is the Goal (middle).** Nothing at all happens until about 600 tosses,
 where nearly every sequence meets the precision goal at once.
-That step is no surprise either: since the width of the HDI barely depends on the luck of the draw,
-the toss count at which it reaches $\omega_{\rm Goal}$ <!-- medium: ωGoal --> can be calculated in advance, from a closed-form formula
-(see the ⚔️ planning formula section below, and the focus of the companion post).
+As we'll see shortly, where this step falls can be predicted in advance.
 At the step just under 40% of the sequences accept and the rest are left inconclusive, where they stay, since PitG has stopped.[^sensitivity]
 And there are no false rejections at all.[^symmetry]
 
@@ -780,7 +778,7 @@ and DPitG is both decisive and right, for a little more data.
 
 [^asymptote]: Unlike the p-value's, this false rejection rate levels off. That isn't the ROPE's doing alone: Kruschke shows that stopping on Bayes Factors levels off too, albeit at just over 20% (see the [preprint's appendix on Bayes Factors](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}). What both have, and the p-value lacks, is a way to accept the null: every sequence that is accepted stops, and so leaves the pool of those still at risk of a false rejection.
 
-[^sensitivity]: The exact split depends on the settings, in particular on how narrow the precision goal is relative to the ROPE. At the extreme of $\omega_{\rm Goal}=\omega_{\rm ROPE}$ <!-- medium: ωGoal=ωROPE --> PitG is never conclusive, whereas DPitG stays at about 98%. See the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"}.
+[^sensitivity]: The exact split depends on the settings, in particular on how narrow the precision goal is relative to the ROPE. At the extreme of $\omega_{\rm goal}=\omega_{\rm ROPE}$ <!-- medium: ωgoal=ωROPE --> PitG is never conclusive, whereas DPitG stays at about 98%. See the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"}.
 
 [^symmetry]: The zero false rejection rate of the precision-based methods is partly thanks to the perfect symmetry of the fair coin. In the preprint I show that they do make some false rejections when the true value sits close to a ROPE boundary. See the [preprint's general trends section](https://arxiv.org/html/2608.05301v1#S3.SS2){:target="_blank"}.
 
@@ -789,13 +787,39 @@ and DPitG is both decisive and right, for a little more data.
 
 ## 💰 The Cost of Precision
 
-[PLACEHOLDER — brief introduction of $N_{\rm Goal}$ <!-- medium: NGoal -->, the expected sample size at which
-the precision goal is met. Key implications only, no derivation:
- • it can be calculated in advance from a closed-form formula (⚔️ planning formula below);
- • it scales with the inverse square of $\omega_{\rm Goal}$: halving the goal roughly quadruples the data;
- • for binary data it is largest at a 50/50 split, so planning with the null is conservative;
- • it explains the step at ≈600 tosses in the PitG panel above.
-Close by saying this function is the focus of the companion post.]
+Look back at the PitG and DPitG panels: both jump at about 600 tosses.
+That step is no accident.
+Because the width of the HDI barely depends on the luck of the draw, the sample size at which it reaches
+the precision goal, $N_{\rm goal}$ <!-- medium: Ngoal -->, can be predicted before collecting any data:
+
+$$N_{\rm goal} \approx \frac{4 z_*^2}{\omega_{\rm goal}^2} V(\theta)$$
+<!-- medium: use 10-planning-formula.png (Ngoal ≈ 4z*² V(θ) / ωgoal²) -->
+
+Besides the precision goal, it has two ingredients:
+
+* $z_*$ <!-- medium: z* --> sets the credibility level: about 1.96 for a 95% HDI. Asking for more credibility widens the HDI, and so takes more data.
+* $V(\theta)$ <!-- medium: V(θ) --> is the noise of a single observation, the *aleatoric* uncertainty that no amount of data removes. For a coin it is $V(\theta)=\theta(1-\theta)$ <!-- medium: V(θ)=θ(1−θ) -->.
+
+For our fair coin and $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 --> this gives $N_{\rm goal} \approx 600$ <!-- medium: Ngoal ≈ 600 -->, right where the step is.
+Two implications follow:
+
+* **Precision is expensive.** $N_{\rm goal}$ <!-- medium: Ngoal --> grows with the inverse square of the goal, so halving $\omega_{\rm goal}$ <!-- medium: ωgoal --> roughly quadruples the data. This is the same $1/\sqrt{N}$ <!-- medium: 1/√N --> law we met with Shaq's free throws, read in reverse.
+* **The fair coin is the worst case.** For binary data $V(\theta)$ <!-- medium: V(θ) --> is largest at $\theta=0.5$ <!-- medium: θ=0.5 -->, so planning with a 50/50 split gives an upper bound that covers the hardest scenario.
+
+For DPitG, $N_{\rm goal}$ <!-- medium: Ngoal --> is a floor rather than the expected stop.
+It can never stop before the precision goal is met, and the sequences whose HDI still straddles the ROPE keep going.
+On our fair coin the median DPitG sequence stopped about 5% after $N_{\rm goal}$ <!-- medium: Ngoal -->.[^premium]
+
+[^premium]: That 5% holds for our setting of $\omega_{\rm goal}=0.8\,\omega_{\rm ROPE}$ <!-- medium: ωgoal=0.8·ωROPE -->. In the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"} the premium is zero for tighter goals and rises to about 40% when the goal equals the ROPE width, while $N_{\rm goal}$ <!-- medium: Ngoal --> itself changes with the goal.
+
+How $N_{\rm goal}$ <!-- medium: Ngoal --> varies with the goal and with the true value is in the ⚔️ planning formula section below,
+and using it to plan a study before any data is collected is the focus of the companion post.
+
+Everything in this post used single-group binary data, but the same logic extends to continuous data
+and to comparisons between groups, where what changes is mostly $V$ <!-- medium: V -->.
+The preprint derives these extensions, although, unlike the coin, they have not yet been put through
+large-scale simulations (see the ⚔️ section on other data types below).
+The companion calculator below lets you try them on your own numbers.
 
 ## When Precision is Worth Using
 
@@ -806,12 +830,12 @@ Asking for precision before a verdict costs data. So when is it worth paying for
 It depends mostly on how expensive the data is, which gives the method two complementary roles.
 
 **As a stopping rule**, it is best suited to settings where data is relatively cheap and the budget comfortably
-exceeds $N_{\rm Goal}$ <!-- medium: NGoal -->, the expected sample size at which the precision goal is met:
+exceeds $N_{\rm goal}$ <!-- medium: Ngoal -->:
 large-scale A/B testing, opinion polling and automated quality-control pipelines are typical examples.
 For A/B testers there is a bonus: unlike frequentist sequential designs, it needs no correction for how often
 you peek, nor for running many tests in parallel (see the ⚔️ section on multiple comparisons below).
 
-**As a planning tool**, it is useful even where data is expensive and $N_{\rm Goal}$ <!-- medium: NGoal --> may be out of reach:
+**As a planning tool**, it is useful even where data is expensive and $N_{\rm goal}$ <!-- medium: Ngoal --> may be out of reach:
 longitudinal studies, clinical trials, costly policy evaluations.
 Here the precision goal makes explicit what precision the budget can actually buy, and so what conclusions
 the data can and cannot support.
@@ -834,22 +858,19 @@ An imprecise posterior is inconclusive whatever algorithm you run on it.
 Precision is the Goal simply refuses to pretend otherwise: rather than masking too little data behind a false rejection,
 or quietly stopping with nothing to say, it holds off on a verdict until the posterior is genuinely informative.
 
-Everything in this post used single-group binary data, but the same logic extends to continuous data
-and to comparisons between groups.
-The preprint derives these extensions, although, unlike the coin, they have not yet been put through
-large-scale simulations (see the ⚔️ section on other data types below).
-The companion calculator below lets you try them on your own numbers.
+### Precision IRL
 
 🗳️ Finally, if the idea of choosing a sample size for its precision still sounds exotic, you have probably met it already.
 A poll reported with a margin of error of ±3 points has a 95% interval about 6 points wide, and pollsters size their samples
 to hit that width, before knowing any of the answers.
 For a question split close to 50/50 that takes roughly 1,070 respondents, which is no coincidence: it is the same number
-that a precision goal of $\omega_{\rm Goal}=0.06$ <!-- medium: ωGoal=0.06 --> requires for our fair coin.
+that a precision goal of $\omega_{\rm goal}=0.06$ <!-- medium: ωgoal=0.06 --> requires for our fair coin.
 Pollsters, in other words, have been planning for precision all along.
 
 ## Summary
 
 [Thesis in one sentence, then what was covered, then the reader's next step:]
+
 
 - [Bayesian testing lets you accept the null, not just fail to reject it]
 - [PitG keeps effect size in the loop at both stages, and stops on precision rather than on verdict]
@@ -861,7 +882,7 @@ Pollsters, in other words, have been planning for precision all along.
 
 ## 🧮 A Companion: The Calculator
 
-[One short paragraph. The closed-form $N_{Goal}$ means this isn't only a sequential method — it also
+[One short paragraph. The closed-form $N_{\rm goal}$ means this isn't only a sequential method — it also
 plans prospectively and audits retrospectively, and that is what the calculator does. A companion
 post, not a series: no "you are here" marker, no part numbers.
 
@@ -919,33 +940,23 @@ limitation.]
 
 ## ⚔️ The Planning Formula
 
-[Old draft lines 385–415. The closed form, its two inputs, and what it buys you — this is the bridge
-to the companion post.]
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/10-planning-formula.png" alt="Closed form planning formula" width="700">
-</div>
-
-*[CAPTION NEEDED — state the formula in words: the sample size needed scales with the variance and with the inverse square of the precision goal.]*
-
-[Where *V* is the aleatoric uncertainty (irreducible error) and $z^{\*}$ <!-- medium: z* --> is the
-critical value — 1.96 for 95% credibility. For the coin toss,
-$V(\theta) = \theta(1-\theta)$ <!-- medium: V(θ) = θ(1-θ) -->.]
+[The formula, z* and V(θ), the two implications and the DPitG floor now live in 💰 The Cost of
+Precision. What stays here: how $N_{\rm goal}$ <!-- medium: Ngoal --> varies with θ and the goal
+(figure below), the caveat that the normal approximation can underestimate N for small samples or
+skewed likelihoods (exact Binomial result in the preprint's Appendix C), and a pointer to the
+derivation. This is the bridge to the companion post.]
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/11-planning-formula-validation.png" alt="Expected sample size for varying precision goals" width="700">
 </div>
 
-*[CAPTION NEEDED — two things to call out: more precision (smaller ωGoal) needs more data, and the fair coin is the worst case because its variance is highest.]*
-
-[Then the note that for DPitG, $N_{Goal}$ <!-- medium: NGoal --> is a lower bound rather than the
-expected stop.]
+*[CAPTION NEEDED — two things to call out: more precision (smaller ωgoal) needs more data, and the fair coin is the worst case because its variance is highest.]*
 
 ## ⚔️ Sensitivity to the Precision Goal and the Budget
 
 [Old draft lines 417–431 plus `appendix_trends_detail.tex`. The key practical finding: conclusiveness
-is more sensitive to $N_{max}$ <!-- medium: Nmax --> than to ωGoal, so setting the budget generously
-is the main lever. Also: generalising to loaded coins, and how NGoal varies with the true value.]
+is more sensitive to $N_{max}$ <!-- medium: Nmax --> than to ωgoal, so setting the budget generously
+is the main lever. Also: generalising to loaded coins, and how Ngoal varies with the true value.]
 
 ## ⚔️ Other Data Types
 
