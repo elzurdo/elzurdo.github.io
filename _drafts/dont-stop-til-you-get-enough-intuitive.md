@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion"
+title: "🛑⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion, and Making It Decisive"
 ---
 
 <!-- Useful unicode: ω, Δ, θ, ≈ -->
@@ -14,23 +14,18 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 
 <!-- ===========================================================================
-     SCAFFOLD ONLY — every heading below carries one bracketed line of intent
-     and no prose. The prose is yours. Full reasoning behind this structure:
-     agentdocs/dpitg-post-outline.md
+     CONTEXT FOR EDITING (not rendered)
 
-     TARGET READER: someone running A/B tests or hypothesis tests who might or not
-     fully understand the stopping rule they are already using. 
+     TARGET READER: someone running A/B tests or hypothesis tests who may not fully understand the
+     stopping rule they are already using.
 
-     SECOND AUDIENCE: readers already fluent in Bayesian testing. The ⚔️ block
-     after the summary is sized for them. The spine never slows for them.
+     SECOND AUDIENCE: readers already fluent in Bayesian testing. The short appendices after the
+     summary and the preprint links are for them; the main thread never slows for them.
 
-     FINISHED-DRAFT CHECKPOINT: could the target reader write Dirk Nachbar's
-     200-word summary (_from_medium/dont-stop-til-you-get-enough/nachbar_post.md)
-     after reading this?
+     FINISHED-DRAFT CHECKPOINT: could the target reader write Dirk Nachbar's ~200-word summary
+     (linked in Resources) after reading this?
 
-     HERO: PitG. DPitG is a short final act, not a co-hero.
-     
-     LENGTH TARGET: Long form with footnotes. Everything heavy goes to ⚔️.
+     HERO: Kruschke's PitG is the core idea; DPitG is this post's own tweak, presented modestly.
 
      Each LaTeX expression carries its unicode twin in an adjacent
      <!- - medium: … - -> comment, for regenerating the Medium version.
@@ -38,57 +33,28 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zurdo" data-description="Support me on Buy me a coffee!" data-message="Buy me a slice of pizza! 🍕" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
-<!-- #### [SUBTITLE — one line promising a gain, not a summary. What will they be able to *do*? Decide when to stop collecting, and be able to say "no difference" out loud. It has to counterweight the Kruschke epigraph below, which is a negative claim about NHST; if both pull the same way the piece reads as an anti-frequentist polemic it never delivers.] -->
-
-#### Know when you have enough data, and when a null result is a real finding. Interactive calculator provided. 🧮
-
-<!-- Your TK: 
-
-     PARKED QUOTES, for use lower down (you said you're moving both):
-       · Gelman, "N is never enough" — fits the ⚔️ planning-formula or the epistemic-honesty beat
-         in "When This Is Worth Using". -->
-
-<!-- SLOT 3 of 6 — EPIGRAPH.
-
-     This is the 1943 objection that created sequential analysis. Captain Garret L. Schuyler of the
-     US Navy's Bureau of Ordnance was testing anti-aircraft fire; W. Allen Wallis was proposing a
-     fixed-sample design. Schuyler's objection went to Wallis and Milton Friedman, who could not
-     solve it and passed it to Abraham Wald, who produced the Sequential Probability Ratio Test.
-
-     Why this one rather than Kruschke's "100% false alarms": it needs no statistical context to
-     land, it is the post's exact subject stated by a practitioner rather than a statistician, and
-     it is positive — a reason to want to stop early, not an attack on NHST — so it pulls with the
-     subtitle instead of against it.
-
-     Source: Milton & Rose Friedman, "Two Lucky People" (1998), quoting Wallis's account. Verified
-     via https://python.quantecon.org/wald_friedman.html — worth a second check against the book
-     before publishing. The "[rounds]" bracket is in the original. -->
-
-<!-- > *"He would see after the first few thousand or even few hundred [rounds] that the experiment need not be completed, either because the new method is obviously inferior or because it is obviously superior beyond what was hoped for."*
-> — W. Allen Wallis, recalling Captain Garret L. Schuyler's objection, 1943 -->
-
+#### Know when you have enough data, and when a null result is a real finding. Interactive simulations and a calculator included. 🕹️🧮
 
 > “How much data is required?”
 
-This is one of the most common questions in hypothesis and A/B testing, and it may be asked at different moments.
+This is one of the most common questions in hypothesis and A/B testing, and it can be asked at two different moments.
 
-Before any data is collected, it is a planning question, where the standard answer is a *Power Analysis* calculation: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or reduced harm, e.g, by clinic cutting short a trial once a treatment shows signs of doing damage?
+Before any data is collected, it is a planning question. The standard answer is a *power analysis*: supply a minimum effect size and how often you are willing to be wrong in each direction, and out comes a sample size. It is a sensible place to start. But what if the true effect is much stronger than you assumed, and you could have stopped weeks earlier? Or what if, halfway through a clinical trial, a treatment shows signs of doing harm?
 
-A more flexible option is checking as the data arrives is called *sequential hypothesis testing*, often shortened to sequential testing. This retrospective method addresses the question:
+The more flexible alternative is to check as the data arrives, known as *sequential hypothesis testing*, or sequential testing for short. It asks a different question:
 
 > “Have we collected enough data yet?”
 
-As tempting as sequential hypothesis testing is it also has a well known failure mode. Peek often enough and sooner or later an early, a stastically unrepresentative sample may meet the stopping rule. In most standard methods that same rule is also what decides the verdict. This in turn result in
-*confirmation bias*, when an analyst confirms what they were seeking even if its not true [TK revise this]. The reason sequential confirmation bias happens is well understood, and it may be corrected for.
+As tempting as sequential hypothesis testing is, it has a well-known failure mode. Peek often enough, and sooner or later an early, unrepresentative stretch of data will meet the stopping rule. In most standard methods that same rule also decides the verdict, so the experiment stops precisely when the data happen to look most convincing. The result is a form of *confirmation bias*: the data appear to confirm a finding that is really just a lucky fluctuation, and no ill intent is needed for it to happen. Why this happens is well understood, and it can be corrected for.
 
-That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way. In a companion post we'll show that the same machinery works before a study starts, for planning how much data to collect in the first place.
-
-An interesting consequence of this correction is that one can complete an experiment with fairly low false positive/negative rates. In particular we'll see that if the null hypothesis happens to be true, one can accept it with near zero false rejections.
+That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way.
+A welcome side effect is that error rates stay low, and when there truly is no meaningful difference, you can say so,
+accepting the null hypothesis with near-zero false rejections.
+A companion post will show that the same machinery also works before a study starts, to plan how much data to collect in the first place.
 
 <!-- READER CONTRACT. -->
 
-This post is targeted at anyone who runs experiments and has to decide both when to stop them
-as well as how to interpret the result: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
+This post is for anyone who runs experiments and has to decide both when to stop them and how to interpret the result: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
 
 No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning.)
 
@@ -99,13 +65,13 @@ By the end you will be able to:
 - 📏 **Quantify what counts as "close enough"** to the null hypothesis, and hold to it, rather than letting the effect size you planned around be quietly forgotten between the planning meeting and the write-up.
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it, whenever "no meaningful difference" is the finding you actually need.
 - 🎯 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
-- 💰 **See why precision costs data, and predict how much** before you start; the companion post takes this further into full study planning.
+- 💰 **See why precision costs data, and check whether you have enough**, and if not, how much more you need; the companion post takes this further into full study planning.
 
-Along the way, you can play with two interactive simulations 🕹️, and try a calculator on your own data. 🧮
+Along the way you can play with two interactive simulations 🕹️ and try a calculator on your own data 🧮.
 
-If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The short appendices after the summary, and the preprint below, go further.
+If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places, and the short appendices after the summary go a little further.
 
-If you'd like the full technical treatment, I have also written this up as an arXiv preprint. You won't need it to follow along, but it is there as a reference for the finer details.
+For the full technical treatment, I have also written this up as an arXiv preprint. You won't need it to follow along, but it is there as a reference for the finer details.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2608.05301-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.05301v1){:target="_blank"}
 
@@ -1036,7 +1002,7 @@ I first heard this put memorably by a statistician at PyData London 2022:
 It inspired me to test the idea with some code, and I reported the findings at PyData Global 2022. Check out the talk if you're interested:
 
 <div style="position:relative; width:100%; max-width:640px; margin:0 auto; aspect-ratio:16/9;">
-    <iframe src="https://www.youtube.com/embed/QVfgqkTv7b8" title="Eyal Kazin - Everything That You Wanted To Know About P-Values But Were Afraid To Ask" style="width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/QVfgqkTv7b8?start=6" title="Eyal Kazin - Everything That You Wanted To Know About P-Values But Were Afraid To Ask" style="width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 If you'd like a full post on the topic, [drop me a line](https://www.linkedin.com/in/eyal-kazin){:target="_blank"}.
@@ -1111,3 +1077,26 @@ for the 2022 correspondence, if he's content to be named.]
 *Sequential hypothesis testing offers flexibility over fixed-sample designs, but stopping rules coupled to decision…* — arxiv.org
 
 [![arXiv](https://img.shields.io/badge/arXiv-2608.05301-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.05301){:target="_blank"}  [![PDF](https://img.shields.io/badge/PDF-arXiv-b31b1b?logo=adobeacrobatreader&logoColor=white)](https://arxiv.org/pdf/2608.05301){:target="_blank"}
+
+<!-- ===========================================================================
+     MATERIAL CONSIDERED BUT NOT USED
+     =========================================================================== -->
+
+<!-- SLOT 3 of 6 — EPIGRAPH.
+
+     This is the 1943 objection that created sequential analysis. Captain Garret L. Schuyler of the
+     US Navy's Bureau of Ordnance was testing anti-aircraft fire; W. Allen Wallis was proposing a
+     fixed-sample design. Schuyler's objection went to Wallis and Milton Friedman, who could not
+     solve it and passed it to Abraham Wald, who produced the Sequential Probability Ratio Test.
+
+     Why this one rather than Kruschke's "100% false alarms": it needs no statistical context to
+     land, it is the post's exact subject stated by a practitioner rather than a statistician, and
+     it is positive — a reason to want to stop early, not an attack on NHST — so it pulls with the
+     subtitle instead of against it.
+
+     Source: Milton & Rose Friedman, "Two Lucky People" (1998), quoting Wallis's account. Verified
+     via https://python.quantecon.org/wald_friedman.html — worth a second check against the book
+     before publishing. The "[rounds]" bracket is in the original. -->
+
+<!-- > *"He would see after the first few thousand or even few hundred [rounds] that the experiment need not be completed, either because the new method is obviously inferior or because it is obviously superior beyond what was hoped for."*
+> — W. Allen Wallis, recalling Captain Garret L. Schuyler's objection, 1943 -->
