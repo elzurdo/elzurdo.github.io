@@ -135,7 +135,7 @@ function draw(){if(!W)return;const s=state();
   const hs=Math.max(X0,s.lo),he=Math.min(X1,s.hi),m=200;
   for(let i=0;i<=m;i++){const x=hs+(he-hs)*i/m;g.lineTo(xm(x),yp(logPdf(s.a,s.b,x)))}
   g.lineTo(xm(he),base);g.closePath();g.fill();
-  g.strokeStyle=C.line;g.lineWidth=2.5;g.beginPath();
+  g.strokeStyle=C[s.d+"S"];g.lineWidth=2.5;g.beginPath();
   const pts=[];for(let i=0;i<n;i++)pts.push([xs[i],ys[i]]);
   if(mode>X0&&mode<X1)pts.push([mode,logPdf(s.a,s.b,mode)]);
   pts.sort((u,v)=>u[0]-v[0]).forEach(([x,y],i)=>i?g.lineTo(xm(x),yp(y)):g.moveTo(xm(x),yp(y)));g.stroke();
