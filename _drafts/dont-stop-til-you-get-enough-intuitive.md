@@ -67,24 +67,6 @@ title: "🛑️⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Pr
 <!-- > *"He would see after the first few thousand or even few hundred [rounds] that the experiment need not be completed, either because the new method is obviously inferior or because it is obviously superior beyond what was hoped for."*
 > — W. Allen Wallis, recalling Captain Garret L. Schuyler's objection, 1943 -->
 
----
-
-### What I'm Talking About When I Talk About Accepting the Null
-
-TK: where would be best to place this?
-
-[Three bullets, one line each — replaces the three `[some details tbd]` stubs in the old draft:]
-
-💊 [bioequivalence trials for generic drugs]
-
-💻 [do-no-harm regression testing in software deployment]
-
-📋 [futility stopping in programme evaluations]
-
-[Then the frequentist limitation in ONE sentence: NHST can only reject, or awkwardly "not reject".
-The formal treatment is fenced to ⚔️ — do not argue it here.]
-
----
 
 > “How much data is required?”
 
@@ -124,6 +106,25 @@ If you are already comfortable with posteriors, HDIs and ROPEs, the main thread 
 If you'd like the full technical treatment, I have also written this up as an arXiv preprint. You won't need it to follow along, but it is there as a reference for the finer details.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2608.05301-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.05301v1){:target="_blank"}
+
+### 🎬 Prelude: What I'm Talking About When I Talk About Accepting the Null
+
+Most of us learned hypothesis testing as a hunt for differences.
+Before we look at how experiments end in practice, let's add a tool that's often missing from the kit:
+a way to conclude that there is no difference worth acting on.
+Sometimes that is exactly the finding you need:
+
+* 💻 **Do no harm.** A new release, a refactor, cheaper infrastructure or an updated model should not hurt a key metric such as conversion, latency or accuracy.
+* 💊 **Generic drugs.** A generic must be shown to work like the brand-name drug, within margins set by regulators.
+* 📋 **Futility.** A programme or trial is stopped once it is clear that its effect, if any, is too small to be worth pursuing.
+
+A standard significance test cannot deliver this.
+It can only reject the null hypothesis or, awkwardly, "not reject" it, and not rejecting may simply mean too little data:
+absence of evidence is not evidence of absence.[^tost]
+What makes accepting possible is deciding in advance what counts as "close enough".
+And as we'll see, that same decision also changes when you can safely stop collecting data.
+
+[^tost]: Frequentist statistics does have a way to show equivalence, the Two One-Sided Tests (TOST) procedure, which, like the approach in this post, needs an equivalence margin fixed in advance. What the precision-based approach in this post adds is a design built for looking as the data arrives: its stopping rule never consults the verdict, so there is no need to correct for the number of looks, as sequential frequentist designs must. It also delivers accept, reject or inconclusive within one framework, as a direct probability statement about the parameter. See the [preprint's practical guidance appendix](https://arxiv.org/html/2608.05301v1#A7){:target="_blank"}.
 
 ## How Experiments Actually End
 
