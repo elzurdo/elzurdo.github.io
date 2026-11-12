@@ -348,7 +348,7 @@ There are several ways of choosing *which* 95%, and we use the *Highest Density 
 Picture a horizontal waterline slowly lowered from the peak of the curve. The HDI is the stretch between the two points
 where the line crosses the curve, at the moment the area enclosed beneath it first reaches 95%.
 Every value inside the HDI is therefore more plausible than any value outside it.
-(See the appendix below for a formal definition.)
+(See the [preprint's Appendix A](https://arxiv.org/html/2608.05301v1#A1){:target="_blank"} for a formal definition.)
 
 An HDI is summarised by its two boundaries $\rm HDI_{min}$ and $\rm HDI_{max}$ <!-- medium: HDImin and HDImax -->,
 which give its location, and by the distance between them, which gives its width:
@@ -860,13 +860,13 @@ On our fair coin the median DPitG sequence stopped about 5% after $N_{\rm goal}$
 
 [^premium]: That 5% holds for our setting of $\omega_{\rm goal}=0.8\,\omega_{\rm ROPE}$ <!-- medium: ωgoal=0.8·ωROPE -->. In the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"} the premium is zero for tighter goals and rises to about 40% when the goal equals the ROPE width, while $N_{\rm goal}$ <!-- medium: Ngoal --> itself changes with the goal.
 
-How $N_{\rm goal}$ <!-- medium: Ngoal --> varies with the goal and with the true value is in the planning formula appendix below,
+How $N_{\rm goal}$ <!-- medium: Ngoal --> varies with the goal and with the true value is in the preprint's [Section 2.3](https://arxiv.org/html/2608.05301v1#S2.SS3){:target="_blank"} and [Appendix C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"},
 and using it to plan a study before any data is collected is the focus of the companion post.
 
 Everything in this post used single-group binary data, but the same logic extends to continuous data
 and to comparisons between groups, where what changes is mostly $V$ <!-- medium: V -->.
 The preprint derives these extensions, although, unlike the coin, they have not yet been put through
-large-scale simulations (see the appendix on other data types below).
+large-scale simulations (see the preprint's Appendices [C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"} and [D](https://arxiv.org/html/2608.05301v1#A4){:target="_blank"}).
 The companion calculator below lets you try them on your own numbers.
 
 ## When Precision is Worth Using
@@ -881,7 +881,7 @@ It depends mostly on how expensive the data is, which gives the method two compl
 exceeds $N_{\rm goal}$ <!-- medium: Ngoal -->:
 large-scale A/B testing, opinion polling and automated quality-control pipelines are typical examples.
 For A/B testers there is a bonus: unlike frequentist sequential designs, it needs no correction for how often
-you peek, nor for running many tests in parallel (see the appendix on multiple comparisons below).
+you peek, nor for running many tests in parallel (see the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}).
 
 **As a planning tool**, it is useful even where data is expensive and $N_{\rm goal}$ <!-- medium: Ngoal --> may be out of reach:
 longitudinal studies, clinical trials, costly policy evaluations.
@@ -967,7 +967,7 @@ That doesn't mean the harder questions were ignored. For those keen to dig deepe
 (If you're not keen, feel free to skip this section.)
 
 * **Priors**: flat versus informative priors, and the risk of a wrong prior. See the [preprint's discussion](https://arxiv.org/html/2608.05301v1#S4){:target="_blank"}.
-* **Multiple hypothesis testing**: why no correction is needed when running many tests at once. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"} and the [appendix below](#appendix-why-no-multiple-comparisons-correction).
+* **Multiple hypothesis testing**: why no correction is needed when running many tests at once. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}.
 * **Comparisons with NHST and Bayes Factors**: see the preprint's Appendices [B](https://arxiv.org/html/2608.05301v1#A2){:target="_blank"} and [F](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}, and the appendices below on [p-values](#appendix-why-p-values-cannot-accept-the-null-hypothesis) and [Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison).
 * **Relating to power analysis**: prospective, retrospective and replication power. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}, and the companion post.
 * **Choosing the ROPE and ω<sub>goal</sub>** (🧠 cognitive effort warning ⚠️): see the [preprint's Appendix G](https://arxiv.org/html/2608.05301v1#A7){:target="_blank"}, the [appendix below](#appendix-choosing-a-rope-in-practice), and the calculator's 🧭 guide.
@@ -1012,19 +1012,7 @@ To catch it when it's out, follow me on [LinkedIn](https://www.linkedin.com/in/e
 
 # Supplementary Sections
 
-[TK: For the mathematically inclined ⚔️ I also provide supplementary sections
-with short deep dives after the summary. (Note: These are not required to appreciate the main points
-of the article.) Everything below exists already in the preprint; this is
-relocation, not new writing.]
-
-## Appendix: What the HDI Actually Is
-
-[Old draft lines 190–204, plus `appendix_hdi.tex` from the preprint. Formal definition — the smallest
-region where most of the posterior resides; every point inside has higher density than any point
-outside — and a pointer to a Python implementation.]
-
-<!-- FIGURE C (suggested, only if Figure A doesn't absorb it): a single posterior with the
-     HDI shaded, showing "smallest region containing 95%". Fills the old draft's [Insert Visual]. -->
+A few short asides for the curious. None are needed for the main points, and everything else lives in the [preprint](https://arxiv.org/html/2608.05301v1){:target="_blank"}.
 
 ## Appendix: Why P-Values Cannot Accept the Null Hypothesis
 
@@ -1048,44 +1036,24 @@ If you'd like a full post on the topic, [drop me a line](https://www.linkedin.co
 
 ## Appendix: Bayes Factors, and Why They're Not in the Comparison
 
-[`appendix_bayes_factors.tex`. No explicit effect-size criterion, no direct precision goal.]
-
+A Bayes Factor measures how much better one hypothesis predicts the data than another.
+Unlike the p-value, it *can* favour the null hypothesis.
+As a stopping rule, though, it shares the coupling problem: in Kruschke's fair-coin simulations, stopping on a Bayes Factor settles at just over 20% false alarms.
+That is far better than the p-value's climb towards 100%, but well short of the zero achieved by the precision-based rules.
+It also has no explicit "close enough" and no precision goal, so it can accept the null on precise and imprecise data alike.
+That is why it is not part of the comparison here; see the [preprint's Appendix F](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"} for more.
 
 ## Appendix: Choosing a ROPE in Practice
 
-[`appendix_practical_guidance.tex`. Domain standards first: the minimal clinically important difference (MCID) in medicine, the 80–125% bioequivalence margins for generic drugs. When no standard exists, robustness checks across a range of ROPE widths.]
-
-
-## Appendix: The Planning Formula
-
-[The formula, z* and V(θ), the two implications and the DPitG floor now live in 💰 The Cost of
-Precision. What stays here: how $N_{\rm goal}$ <!-- medium: Ngoal --> varies with θ and the goal
-(figure below), the caveat that the normal approximation can underestimate N for small samples or
-skewed likelihoods (exact Binomial result in the preprint's Appendix C), and a pointer to the
-derivation. This is the bridge to the companion post.]
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/11-planning-formula-validation.png" alt="Expected sample size for varying precision goals" width="700">
-</div>
-
-*[CAPTION NEEDED — two things to call out: more precision (smaller ωgoal) needs more data, and the fair coin is the worst case because its variance is highest.]*
-
-## Appendix: Sensitivity to the Precision Goal and the Budget
-
-[Old draft lines 417–431 plus `appendix_trends_detail.tex`. The key practical finding: conclusiveness
-is more sensitive to $N_{max}$ <!-- medium: Nmax --> than to ωgoal, so setting the budget generously
-is the main lever. Also: generalising to loaded coins, and how Ngoal varies with the true value.]
-
-## Appendix: Other Data Types
-
-[Old draft line 470 plus `appendix_extensions.tex`. Single-group continuous, and between-group for
-both binomial and continuous. Carry the preprint's honest caveat: these are derivations, not yet
-simulation-validated.]
-
-## Appendix: Why No Multiple-Comparisons Correction
-
-[`appendix_multiple_comparisons.tex`. The Bayesian posterior is unaffected by how many parallel tests
-you run — a structural advantage over NHST worth stating plainly.]
+Where a domain standard exists, start from it.
+Medicine has the *minimal clinically important difference* (MCID), the smallest change a patient or clinician would consider meaningful;
+regulators judge generic drugs bioequivalent when the ratio to the brand-name drug sits within 80–125%;
+and quality control has its engineering tolerances.
+Where no standard exists, check how robust the verdict is across a range of ROPE widths.
+The precision goal is then set as a fraction of the ROPE width: this post used $\omega_{\rm goal}=0.8\,\omega_{\rm ROPE}$ <!-- medium: ωgoal = 0.8·ωROPE -->,
+and the preprint's sensitivity analysis shows that at or below about $0.7\,\omega_{\rm ROPE}$ <!-- medium: 0.7·ωROPE --> DPitG needs little data beyond $N_{\rm goal}$ <!-- medium: Ngoal -->.
+The calculator's 🧭 guide walks through both choices, with presets for popular domains.
+For more, see the [preprint's Appendix G](https://arxiv.org/html/2608.05301v1#A7){:target="_blank"}.
 
 ---
 
