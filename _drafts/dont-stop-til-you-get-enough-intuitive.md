@@ -468,10 +468,6 @@ Let's generalise.
 The *HDI+ROPE decision rule* compares the location of the HDI with that of the ROPE,
 where the outcome decision may be either conclusive or inconclusive.
 
-<!-- TO EXPLORE: slide 4 ("Decision rule explorer") of the DPitG 20-minute talk, as a live
-     companion to the conclusive/inconclusive cartoons below. Same approach as three-rules-sim.html:
-     a standalone page under assets/ embedded with an iframe. -->
-
 ### Conclusive Outcomes
 
 A useful way to understand the conclusive outcomes is by the following illustration:
@@ -716,6 +712,41 @@ DPitG is thus a hybrid: it takes PitG's precision criterion *and* HDI+ROPE's con
 Because precision must be met first, it never stops on an early lucky streak.
 And because it also requires a conclusive outcome, it rarely ends with nothing to say.
 
+▶️ **Try it yourself.** The explorer below shows a single look at a coin's tosses.
+Drag the number of tosses and the share of heads, and watch the posterior, its HDI and the decision rule respond,
+together with what each stopping rule would do if this were the moment you looked.
+The p-value's verdict is included for comparison.
+The buttons jump to the three snapshots of our hand-picked coin, and to a few extreme cases worth a look.
+
+<!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/dont-stop-til-you-get-enough/decision-explorer.html instead. -->
+<iframe class="dpitg-widget" src="{{ "/assets/dont-stop-til-you-get-enough/decision-explorer.html" | relative_url }}" title="Interactive explorer: where the HDI sits relative to the ROPE, and what each rule decides" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
+<script>
+  // Size each embedded widget to its content. They are served from this site, so their documents
+  // can be read directly.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("iframe.dpitg-widget").forEach(function (f) {
+      function fit() {
+        try {
+          var w = f.contentDocument && f.contentDocument.querySelector(".wrap");
+          if (w) f.style.height = Math.ceil(w.getBoundingClientRect().bottom) + 14 + "px";
+        } catch (e) {}
+      }
+      function init() {
+        fit();
+        try {
+          new f.contentWindow.ResizeObserver(fit).observe(f.contentDocument.querySelector(".wrap"));
+        } catch (e) {}
+      }
+      f.addEventListener("load", init);
+      if (f.contentDocument && f.contentDocument.readyState === "complete" && f.contentDocument.querySelector(".wrap")) init();
+      window.addEventListener("resize", fit);
+    });
+  });
+</script>
+
+<!-- LATER: a Bayes Factor row in the explorer (add an entry to RULES in decision-explorer.html),
+     and possibly a ROPE-width slider. -->
+
 ## More Lessons from the Fair Coin Test
 
 To understand the differences between these stopping algorithms it's instructive to examine
@@ -748,28 +779,7 @@ or *Find a PitG inconclusive* to see PitG's catch.
 Raise the true rate above 0.55 and rejecting becomes the correct answer.
 
 <!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/dont-stop-til-you-get-enough/three-rules-sim.html instead. -->
-<iframe id="dpitg-sim" src="{{ "/assets/dont-stop-til-you-get-enough/three-rules-sim.html" | relative_url }}" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
-<script>
-  // Size the iframe to its content. It is served from this site, so its document can be read directly.
-  (function () {
-    var f = document.getElementById("dpitg-sim");
-    function fit() {
-      try {
-        var w = f.contentDocument && f.contentDocument.querySelector(".wrap");
-        if (w) f.style.height = Math.ceil(w.getBoundingClientRect().bottom) + 14 + "px";
-      } catch (e) {}
-    }
-    function init() {
-      fit();
-      try {
-        new f.contentWindow.ResizeObserver(fit).observe(f.contentDocument.querySelector(".wrap"));
-      } catch (e) {}
-    }
-    f.addEventListener("load", init);
-    if (f.contentDocument && f.contentDocument.readyState === "complete" && f.contentDocument.querySelector(".wrap")) init();
-    window.addEventListener("resize", fit);
-  })();
-</script>
+<iframe class="dpitg-widget" id="dpitg-sim" src="{{ "/assets/dont-stop-til-you-get-enough/three-rules-sim.html" | relative_url }}" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
 
 As mentioned before, this particular sequence was chosen to show the three algorithms reaching different outcomes.
 To see how often each outcome happens, we need many sequences.
