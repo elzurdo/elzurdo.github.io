@@ -101,7 +101,7 @@ By the end you will be able to:
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it. This matters whenever "no meaningful difference" is the finding you actually need.
 - 🧮 **Estimate how much data you'll need** before collecting any of it, from a closed-form formula.
 
-If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The ⚔️ supplementary sections after the summary are where the detail lives.
+If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The supplementary sections after the summary are where the detail lives.
 
 If you'd like the full technical treatment, I have also written this up as an arXiv preprint. You won't need it to follow along, but it is there as a reference for the finer details.
 
@@ -348,7 +348,7 @@ There are several ways of choosing *which* 95%, and we use the *Highest Density 
 Picture a horizontal waterline slowly lowered from the peak of the curve. The HDI is the stretch between the two points
 where the line crosses the curve, at the moment the area enclosed beneath it first reaches 95%.
 Every value inside the HDI is therefore more plausible than any value outside it.
-(See the ⚔️ section below for a formal definition.)
+(See the appendix below for a formal definition.)
 
 An HDI is summarised by its two boundaries $\rm HDI_{min}$ and $\rm HDI_{max}$ <!-- medium: HDImin and HDImax -->,
 which give its location, and by the distance between them, which gives its width:
@@ -454,7 +454,7 @@ and a batch may be practically fair for one client and not for the other.
 This means that the ROPE boundaries are not computed but rather chosen, before any data arrives, out of what we already know about the domain.
 That is the discipline of it. We commit to what counts as a meaningful change while the result is still unknown,
 so that the commitment cannot later be shaped by the result it is meant to judge.
-(For established ways of choosing a ROPE, see the ⚔️ section on choosing a ROPE in practice.)
+(For established ways of choosing a ROPE, see the appendix on choosing a ROPE in practice.)
 
 Now that we have both the HDI and the ROPE, we are ready to put them together.
 We'll start with how their locations combine into a decision rule.
@@ -860,13 +860,13 @@ On our fair coin the median DPitG sequence stopped about 5% after $N_{\rm goal}$
 
 [^premium]: That 5% holds for our setting of $\omega_{\rm goal}=0.8\,\omega_{\rm ROPE}$ <!-- medium: ωgoal=0.8·ωROPE -->. In the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"} the premium is zero for tighter goals and rises to about 40% when the goal equals the ROPE width, while $N_{\rm goal}$ <!-- medium: Ngoal --> itself changes with the goal.
 
-How $N_{\rm goal}$ <!-- medium: Ngoal --> varies with the goal and with the true value is in the ⚔️ planning formula section below,
+How $N_{\rm goal}$ <!-- medium: Ngoal --> varies with the goal and with the true value is in the planning formula appendix below,
 and using it to plan a study before any data is collected is the focus of the companion post.
 
 Everything in this post used single-group binary data, but the same logic extends to continuous data
 and to comparisons between groups, where what changes is mostly $V$ <!-- medium: V -->.
 The preprint derives these extensions, although, unlike the coin, they have not yet been put through
-large-scale simulations (see the ⚔️ section on other data types below).
+large-scale simulations (see the appendix on other data types below).
 The companion calculator below lets you try them on your own numbers.
 
 ## When Precision is Worth Using
@@ -881,7 +881,7 @@ It depends mostly on how expensive the data is, which gives the method two compl
 exceeds $N_{\rm goal}$ <!-- medium: Ngoal -->:
 large-scale A/B testing, opinion polling and automated quality-control pipelines are typical examples.
 For A/B testers there is a bonus: unlike frequentist sequential designs, it needs no correction for how often
-you peek, nor for running many tests in parallel (see the ⚔️ section on multiple comparisons below).
+you peek, nor for running many tests in parallel (see the appendix on multiple comparisons below).
 
 **As a planning tool**, it is useful even where data is expensive and $N_{\rm goal}$ <!-- medium: Ngoal --> may be out of reach:
 longitudinal studies, clinical trials, costly policy evaluations.
@@ -960,6 +960,26 @@ or clone [the repository](https://github.com/elzurdo/are-we-there-yet){:target="
 
 <iframe src="https://r-w-t-y.streamlit.app/?embed=true" width="100%" height="630" frameborder="0" scrolling="no"></iframe>
 
+## Simplified, Not Simplistic: What This Post Leaves Out
+
+This post kept things deliberately simple, a single coin and a handful of ideas, to make the concepts stick.
+That doesn't mean the harder questions were ignored. For those keen to dig deeper is where they are addressed.🪏
+(If you're not keen, feel free to skip this section.)
+
+* **Priors**: flat versus informative priors, and the risk of a wrong prior. See the [preprint's discussion](https://arxiv.org/html/2608.05301v1#S4){:target="_blank"}.
+* **Multiple hypothesis testing**: why no correction is needed when running many tests at once. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"} and the [appendix below](#appendix-why-no-multiple-comparisons-correction).
+* **Comparisons with NHST and Bayes Factors**: see the preprint's Appendices [B](https://arxiv.org/html/2608.05301v1#A2){:target="_blank"} and [F](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}, and the appendices below on [p-values](#appendix-why-p-values-cannot-accept-the-null-hypothesis) and [Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison).
+* **Relating to power analysis**: prospective, retrospective and replication power. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}, and the companion post.
+* **Choosing the ROPE and ω<sub>goal</sub>** (🧠 cognitive effort warning ⚠️): see the [preprint's Appendix G](https://arxiv.org/html/2608.05301v1#A7){:target="_blank"}, the [appendix below](#appendix-choosing-a-rope-in-practice), and the calculator's 🧭 guide.
+* **Non-analytical posteriors (e.g. MCMC)**: when the HDI itself has to be estimated from samples. See the [preprint's discussion](https://arxiv.org/html/2608.05301v1#S4){:target="_blank"} and its [note on the HDI](https://arxiv.org/html/2608.05301v1#S2.SS1.SSS2){:target="_blank"}.
+* **Risk assessment for ROPE straddlers**: what to do when the budget runs out on an inconclusive result. The calculator's *Decide Now!*🎲 offers a posterior tail probability and a Bayesian expected loss.
+
+And while the coin made a handy example, the method reaches well beyond it.
+It is a way of thinking about evidence that applies wherever statistics informs a decision,
+and in particular anywhere p-values and Bayes Factors are used today.
+In their place it offers something more reliable, a stopping rule that never consults the verdict,
+and more informative: accept, reject or inconclusive, judged against a "close enough" agreed in advance.
+
 ## Summary
 
 > You can't spell proper without ROPE ...
@@ -990,14 +1010,14 @@ To catch it when it's out, follow me on [LinkedIn](https://www.linkedin.com/in/e
 
 ---
 
-# ⚔️ Supplementary Sections
+# Supplementary Sections
 
 [TK: For the mathematically inclined ⚔️ I also provide supplementary sections
 with short deep dives after the summary. (Note: These are not required to appreciate the main points
 of the article.) Everything below exists already in the preprint; this is
 relocation, not new writing.]
 
-## ⚔️ What the HDI Actually Is
+## Appendix: What the HDI Actually Is
 
 [Old draft lines 190–204, plus `appendix_hdi.tex` from the preprint. Formal definition — the smallest
 region where most of the posterior resides; every point inside has higher density than any point
@@ -1006,28 +1026,37 @@ outside — and a pointer to a Python implementation.]
 <!-- FIGURE C (suggested, only if Figure A doesn't absorb it): a single posterior with the
      HDI shaded, showing "smallest region containing 95%". Fills the old draft's [Insert Visual]. -->
 
-## ⚔️ What a p-value Actually Is, and Why It Can't Accept the Null
+## Appendix: Why P-Values Cannot Accept the Null Hypothesis
 
-[Old draft lines 129–144, plus `appendix_nhst.tex`. The definition, the figure, and the structural
-limitation.]
+The short answer is that a p-value does not carry that information.
 
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/01-pvalue-binomial.png" alt="Visualising the p-value for a binomial test" width="636">
+A p-value is calculated by assuming that the null hypothesis is true, and asks how surprising the data would be if it were.
+But if the null hypothesis really is true, p-values are spread evenly between 0 and 1: a p-value near 0.9 is about as likely as one near 0.05.
+A large p-value is therefore not evidence that the null holds. It is simply what a true null, or too little data, tends to produce.
+
+I first heard this put memorably by a statistician at PyData London 2022:
+
+> [In the fair coin case] the probability of a p-value < 0.1 is similar to that of a p-value > 0.9.
+
+It inspired me to test the idea with some code, and I reported the findings at PyData Global 2022. Check out the talk if you're interested:
+
+<div style="position:relative; width:100%; max-width:640px; margin:0 auto; aspect-ratio:16/9;">
+    <iframe src="https://www.youtube.com/embed/QVfgqkTv7b8" title="Eyal Kazin - Everything That You Wanted To Know About P-Values But Were Afraid To Ask" style="width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-*Visualising the p-value for a binomial test: One tosses a coin n=30 times in which k=24 of them result in HEADS. Assuming a fair coin, the p-value of a two sided test is 0.14%. (note that the y axis is in a logarithmic scale)*
+If you'd like a full post on the topic, [drop me a line](https://www.linkedin.com/in/eyal-kazin){:target="_blank"}.
 
-## ⚔️ Bayes Factors, and Why They're Not in the Comparison
+## Appendix: Bayes Factors, and Why They're Not in the Comparison
 
 [`appendix_bayes_factors.tex`. No explicit effect-size criterion, no direct precision goal.]
 
 
-## ⚔️ Choosing a ROPE in Practice
+## Appendix: Choosing a ROPE in Practice
 
 [`appendix_practical_guidance.tex`. Domain standards first: the minimal clinically important difference (MCID) in medicine, the 80–125% bioequivalence margins for generic drugs. When no standard exists, robustness checks across a range of ROPE widths.]
 
 
-## ⚔️ The Planning Formula
+## Appendix: The Planning Formula
 
 [The formula, z* and V(θ), the two implications and the DPitG floor now live in 💰 The Cost of
 Precision. What stays here: how $N_{\rm goal}$ <!-- medium: Ngoal --> varies with θ and the goal
@@ -1041,19 +1070,19 @@ derivation. This is the bridge to the companion post.]
 
 *[CAPTION NEEDED — two things to call out: more precision (smaller ωgoal) needs more data, and the fair coin is the worst case because its variance is highest.]*
 
-## ⚔️ Sensitivity to the Precision Goal and the Budget
+## Appendix: Sensitivity to the Precision Goal and the Budget
 
 [Old draft lines 417–431 plus `appendix_trends_detail.tex`. The key practical finding: conclusiveness
 is more sensitive to $N_{max}$ <!-- medium: Nmax --> than to ωgoal, so setting the budget generously
 is the main lever. Also: generalising to loaded coins, and how Ngoal varies with the true value.]
 
-## ⚔️ Other Data Types
+## Appendix: Other Data Types
 
 [Old draft line 470 plus `appendix_extensions.tex`. Single-group continuous, and between-group for
 both binomial and continuous. Carry the preprint's honest caveat: these are derivations, not yet
 simulation-validated.]
 
-## ⚔️ Why No Multiple-Comparisons Correction
+## Appendix: Why No Multiple-Comparisons Correction
 
 [`appendix_multiple_comparisons.tex`. The Bayesian posterior is unaffected by how many parallel tests
 you run — a structural advantage over NHST worth stating plainly.]
