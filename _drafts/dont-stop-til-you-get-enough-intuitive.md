@@ -89,86 +89,54 @@ Sometimes that is exactly the finding you need:
 A standard significance test cannot deliver this.
 It can only reject the null hypothesis or, awkwardly, "not reject" it, and not rejecting may simply mean too little data:
 absence of evidence is not evidence of absence.[^tost]
-What makes accepting possible is deciding in advance what counts as "close enough".
+To conclude that there is no difference *worth acting on*, rather than none at all, you first need to decide what counts as "close enough".
 And as we'll see, that same decision also changes when you can safely stop collecting data.
 
-[^tost]: Frequentist statistics does have a way to show equivalence, the Two One-Sided Tests (TOST) procedure, which, like the approach in this post, needs an equivalence margin fixed in advance. What the precision-based approach in this post adds is a design built for looking as the data arrives: its stopping rule never consults the verdict, so there is no need to correct for the number of looks, as sequential frequentist designs must. It also delivers accept, reject or inconclusive within one framework, as a direct probability statement about the parameter. See the [preprint's practical guidance appendix](https://arxiv.org/html/2608.05301v1#A7){:target="_blank"}.
+[^tost]: Frequentist statistics does have a way to show equivalence, the Two One-Sided Tests (TOST) procedure, which, like the approach in this post, needs an equivalence margin fixed in advance. Bayes Factors can also favour the null, but usually a point null of no effect at all, weighed against a specific alternative, rather than a practical margin (see the [appendix on Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison)). What the precision-based approach in this post adds is a design built for looking as the data arrives: its stopping rule never consults the verdict, so there is no need to correct for the number of looks, as sequential frequentist designs must. It also delivers accept, reject or inconclusive within one framework, as a direct probability statement about the parameter. See the [preprint's practical guidance appendix](https://arxiv.org/html/2608.05301v1#A7){:target="_blank"}.
 
 ## How Experiments Actually End
 
 How did your last experiment actually end?
 
-In large-scale A/B testing results are watched, and they get stopped once a *heuristic*,
-such as a p-value, confidence interval or Bayes Factor, passed a predetermined threshold. 
+In large-scale A/B testing, results are typically watched as they come in, and a test is stopped once a *heuristic*,
+such as a p-value, a confidence interval or a Bayes Factor, crosses a predetermined threshold.[^johari]
 
-<!-- CITE: Johari, Koomen, Pekelis & Walsh (2022), "Always Valid Inference: Continuous
-     Monitoring of A/B Tests", Operations Research. In references.bib as `johari2022`.
+[^johari]: Continuous monitoring is standard practice in industry A/B testing. Johari, Koomen, Pekelis and Walsh build their method around it in [*Always Valid Inference: Continuous Monitoring of A/B Tests*](https://doi.org/10.1287/opre.2021.2135){:target="_blank"} (Operations Research, 2022), noting that A/B tests are typically analysed with p-values and confidence intervals, yet "these inferences are wholly unreliable if users endogenously choose sample sizes by continuously monitoring their tests".
 
-     WHY IT JUSTIFIES THE CLAIM (for your reference): the paper's own framing is that
-     "A/B tests are typically analyzed via frequentist p-values and confidence intervals,
-     but these inferences are wholly unreliable if users endogenously choose sample sizes
-     by continuously monitoring their tests." Two things we need are in that sentence:
-     (a) continuous monitoring is the normal practice in industry A/B testing, not an
-     abuse — it is the premise the authors build a method for; (b) choosing the sample
-     size by watching is what breaks the inference. So you are reporting documented
-     practice rather than claiming personal experience, which was the concern.
-     Their fix (always-valid inference) is a frequentist cousin of the decoupling this
-     post argues for — worth one line in ⚔️ or the resources ladder. -->
+Scientific research mostly runs the other way round.[^simmons] The sample size is fixed in advance, usually by a power analysis, and the study runs to the end. Its characteristic failure arrives later, once the data is in: the minimum effect size that went into the planning calculation appears nowhere in the heuristics that are reported, so it quietly drops out of the conclusion.[^asa] That second failure is the subject of the companion post. This one is about the first: continuous monitoring.
 
-Scientific research mostly runs the other way round. The sample size is fixed in advance, usually by a power analysis, and the study runs to the end. Its characteristic failure arrives later, once the data is in: the minimum effect size that went into the planning calculation appears nowhere in the heuristics that are reported, so it quietly drops out of the conclusion. That second failure is the subject of the companion post. This one is about the first: continuous monitoring.
+[^simmons]: Mostly, but not always: researchers peek too. Simmons, Nelson and Simonsohn showed in [*False-Positive Psychology*](https://doi.org/10.1177/0956797611417632){:target="_blank"} (Psychological Science, 2011) that starting with 10 observations per condition and testing after every new one finds a "significant" effect 22% of the time when there is nothing there.
 
-<!-- CITE: Wasserstein & Lazar (2016), "The ASA Statement on p-Values: Context, Process,
-     and Purpose", The American Statistician 70(2):129–133. In references.bib as
-     `wasserstein2016`.
-
-     WHY IT JUSTIFIES THE CLAIM (for your reference): this is the American Statistical
-     Association's official position, which is why it carries institutional weight rather
-     than being one methodologist's opinion. Its Principle 5 states that a p-value does
-     not measure the size of an effect or the importance of a result. That is exactly the
-     claim being made here — the planned effect size cannot survive into a conclusion
-     reported as a p-value, because the p-value does not carry that information. You are
-     citing the statistic's acknowledged limits, not accusing researchers of anything.
-
-     HEDGE YOU MAY WANT: "research mostly preplans" is true as a norm but not universal.
-     Simmons, Nelson & Simonsohn (2011), `simmons2011`, showed that a researcher starting
-     with 10 observations per condition and testing after every new observation finds a
-     "significant" effect 22% of the time when nothing is there. So researchers peek too.
-     Left out of the body deliberately, because naming it blurs the two-failure split you
-     asked for — but it is the honest qualifier if you want one, and it is a strong number. -->
+[^asa]: The American Statistical Association's [statement on p-values](https://doi.org/10.1080/00031305.2016.1154108){:target="_blank"} (Wasserstein and Lazar, The American Statistician, 2016) is explicit on this: a p-value does not measure the size of an effect or the importance of a result.
 
 ### One Heuristic, Two Jobs
 
-The most popular heuristic by far is the *p-value* in the 
-*Null Hypothesis Significance Testing* framework (*NHST*). 
-Briefly, the p-value quantifies how surprising the data would be if the null hypothesis were true. 
+The most popular heuristic by far is the *p-value*, from the *Null Hypothesis Significance Testing* framework (*NHST*).
+Briefly, the p-value quantifies how surprising the data would be if the null hypothesis were true.
 
-As a stopping rule in sequential hypothesis testing it means continuously examining the data p-value while data is being collected
-until it falls below an agreed threshold, usually 0.05, sometimes stricter. This coincides with the *decision rule*:
-if the p-value went under the threshold one can reject the null hypothesis. 
-[TKA: this should be a footnote] Other heuristics like Bayes Factors have different interpretations and thersholds, but the stopping mechanisms is quite similar.
+Used as a stopping rule in sequential testing, it means recalculating the p-value as the data comes in,
+until it falls below an agreed threshold, usually 0.05 and sometimes stricter.
+That same threshold is also the *decision rule*: once the p-value is below it, the null hypothesis is rejected.
+The same is true of other heuristics, such as Bayes Factors: the thresholds differ, but stopping and deciding remain one and the same.
 
-In other words the heuristic that signals when to stop collecting data is the same one
-that delivers the verdict.
-The experimenter stops because the result has turned *``statistically significant"*
-and many unwittingly will conclude that it is also *meaningful*. 
+In other words, the heuristic that signals when to stop collecting data is the same one that delivers the verdict.
+The experimenter stops because the result has turned "statistically significant",
+and many will unwittingly conclude that it is also *meaningful*.
 
-[TK: add here example of drug tried on males and females]
+### "Statistically Significant" Does Not Imply Meaningful
 
+A common misconception is to confuse "statistical significance" with a meaningful outcome.
+A p-value below the threshold says only that the data would be unlikely if the null hypothesis were true.
+It says nothing about whether the difference is large enough to matter.
 
-### Statistically Significant Does Not Imply Meaningful
+Think of a researcher asking whether a therapeutic works differently for men and women, who finds it beneficial in 72.1% of one group and 72.3% of the other.
+With enough patients, even that 0.2 percentage point gap will become "statistically significant", whether judged by a p-value or a Bayes Factor.
+In practice, however, no clinician would prescribe differently because of it.
 
-A popular misconception is confusing ``statistical significance" with a meaningful outcome.
+The key takeaway is that a deviation from the null hypothesis should be large enough to justify acting on it, for example by changing the status quo.
 
-Think of a researcher asking whether a therapeutic works differently for men and women, and finds it beneficial in 72.1% of one group and 72.3% of the other. They collect enough patients and that the said 0.2 percentage points will be considered ``statistically significant",
-say in terms of a p-value or Bayes Factor.
-In practice, however, no clinician is going to prescribe differently on it.
-
-They key takeaway is that the deviation from a null hypothesis should be large enough to
-justify to act on it, e.g, by making a decision to change the status-quo.
-
-To further understand why ``statistically significant" does not necessarily mean a meaningful result we next turn to the simplest
-sequential hypothesis test in which the NHST framework fails: a fair coin toss.
-
+To see further why "statistically significant" does not necessarily mean meaningful, we next turn to the simplest
+sequential hypothesis test, and one in which the NHST framework fails: a fair coin toss.
 
 ### NHST Catastrophically Fails the Fair Coin Test
 
