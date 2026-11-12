@@ -51,9 +51,9 @@ input[type=range]{width:100%;accent-color:var(--acc)}
   <div class="main">
     <canvas id="cs"></canvas>
     <div class="ctrls">
-      <div class="ctrl"><label>True rate θ <b id="sT"></b></label><input type="range" id="rTT" min="0.50" max="0.65" step="0.005" value="0.5"></div>
-      <div class="ctrl"><label>Precision goal ω<sub>goal</sub> <b id="sW"></b></label><input type="range" id="rW" min="0.06" max="0.10" step="0.005" value="0.08"></div>
-      <div class="ctrl" style="flex:0 1 110px"><label>Speed <b id="sS"></b></label><input type="range" id="rS" min="1" max="8" step="1" value="5"></div>
+      <div class="ctrl"><label><span>True rate θ</span> <b id="sT"></b></label><input type="range" id="rTT" min="0.50" max="0.65" step="0.005" value="0.5"></div>
+      <div class="ctrl"><label><span>Precision goal ω<sub>goal</sub></span> <b id="sW"></b></label><input type="range" id="rW" min="0.06" max="0.10" step="0.005" value="0.08"></div>
+      <div class="ctrl" style="flex:0 1 110px"><label><span>Speed</span> <b id="sS"></b></label><input type="range" id="rS" min="1" max="8" step="1" value="5"></div>
     </div>
     <div class="btns">
       <button class="btn primary" id="bPlay">▶ Play / pause</button>
@@ -61,7 +61,6 @@ input[type=range]{width:100%;accent-color:var(--acc)}
       <button class="btn" id="bNew">New random run</button>
       <button class="btn" id="bFalse">Find a false reject</button>
       <button class="btn" id="bInc">Find a PitG inconclusive</button>
-      <button class="btn" id="bSkip">Skip to end</button>
     </div>
   </div>
   <div class="side">
@@ -116,7 +115,7 @@ const L=44,Rr=10,T=12,B=30,Y0=.2,Y1=.8;
 const xm=n=>L+n/NM*(W-L-Rr),ym=t=>T+(Y1-Math.max(Y0,Math.min(Y1,t)))/(Y1-Y0)*(H-T-B);
 function resize(){const r=window.devicePixelRatio||1;W=cv.clientWidth;H=Math.max(220,Math.round(W*.46));
   cv.style.height=H+"px";cv.width=Math.round(W*r);cv.height=Math.round(H*r);g.setTransform(r,0,0,r,0,0);if(S)draw();postHeight()}
-function postHeight(){try{parent.postMessage({dpitgSimHeight:document.documentElement.scrollHeight},"*")}catch(e){}}
+function postHeight(){try{const h=Math.ceil(document.querySelector(".wrap").getBoundingClientRect().bottom+window.scrollY)+10;parent.postMessage({dpitgSimHeight:h},"*")}catch(e){}}
 
 const params=()=>({theta:+$("rTT").value,wg:+$("rW").value});
 function labels(){const{theta,wg}=params();$("sT").textContent=theta.toFixed(3);$("sW").textContent=wg.toFixed(3)}
@@ -139,7 +138,7 @@ function draw(){
   g.strokeStyle=C.rope;g.lineWidth=1.5;g.setLineDash([7,5]);[R0,R1].forEach(v=>{g.beginPath();g.moveTo(L,ym(v));g.lineTo(W-Rr,ym(v));g.stroke()});
   g.setLineDash([]);g.fillStyle=C.axis;g.font="11px "+getComputedStyle(document.body).fontFamily;g.textAlign="right";
   [.2,.3,.4,.5,.6,.7,.8].forEach(v=>g.fillText(v.toFixed(1),L-6,ym(v)+4));g.textAlign="center";
-  for(let v=0;v<=NM;v+=300)g.fillText(v,xm(v),H-12);
+  for(let v=0;v<=NM;v+=300){g.textAlign=v===NM?"right":"center";g.fillText(v,v===NM?W-Rr:xm(v),H-12)}g.textAlign="center";
   g.fillText("toss N",(L+W-Rr)/2,H-1);
   if(Math.abs(S.theta-.5)>1e-9){g.strokeStyle=C.truth;g.setLineDash([3,4]);g.beginPath();g.moveTo(L,ym(S.theta));g.lineTo(W-Rr,ym(S.theta));g.stroke();g.setLineDash([]);
     g.fillStyle=C.truth;g.textAlign="left";g.fillText("true θ",L+4,ym(S.theta)-4)}
@@ -164,7 +163,6 @@ $("rS").oninput=()=>loop();
 $("bPlay").onclick=()=>{playing=!playing;if(playing&&shown>=S.len)shown=1;loop()};
 $("bHand").onclick=()=>{mode="hand";$("rTT").value=0.5;regen(true)};
 $("bNew").onclick=()=>{mode="random";seed=Math.floor(Math.random()*1e9);regen(true)};
-$("bSkip").onclick=()=>{shown=S.len;playing=false;draw()};
 $("bFalse").onclick=()=>find(r=>r.hr&&r.hr.d==="rej");
 $("bInc").onclick=()=>find(r=>r.pg&&r.pg.d==="inc");
 
@@ -172,6 +170,7 @@ $("bInc").onclick=()=>find(r=>r.pg&&r.pg.d==="inc");
 let started=false;
 new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!started){started=true;playing=true}loop()},{threshold:.3}).observe(cv);
 addEventListener("resize",resize);
+if(window.ResizeObserver)new ResizeObserver(postHeight).observe(document.querySelector(".wrap"));
 resize();regen(false);postHeight();
 })();
 </script>

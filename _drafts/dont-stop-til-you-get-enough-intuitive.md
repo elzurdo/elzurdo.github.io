@@ -747,14 +747,28 @@ Press *Play / pause* to watch it again, *Find a false reject* to search random f
 or *Find a PitG inconclusive* to see PitG's catch.
 Raise the true rate above 0.55 and rejecting becomes the correct answer.
 
-<!-- medium: no live embeds on Medium. Link to {{ site.url }}/assets/dont-stop-til-you-get-enough/three-rules-sim.html instead. -->
-<iframe id="dpitg-sim" src="{{ site.url }}/assets/dont-stop-til-you-get-enough/three-rules-sim.html" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="640" style="border:0;" loading="lazy"></iframe>
+<!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/dont-stop-til-you-get-enough/three-rules-sim.html instead. -->
+<iframe id="dpitg-sim" src="{{ "/assets/dont-stop-til-you-get-enough/three-rules-sim.html" | relative_url }}" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
 <script>
-  window.addEventListener("message", function (e) {
-    if (e.origin === window.location.origin && e.data && e.data.dpitgSimHeight) {
-      document.getElementById("dpitg-sim").style.height = (e.data.dpitgSimHeight + 4) + "px";
+  // Size the iframe to its content. It is served from this site, so its document can be read directly.
+  (function () {
+    var f = document.getElementById("dpitg-sim");
+    function fit() {
+      try {
+        var w = f.contentDocument && f.contentDocument.querySelector(".wrap");
+        if (w) f.style.height = Math.ceil(w.getBoundingClientRect().bottom) + 14 + "px";
+      } catch (e) {}
     }
-  });
+    function init() {
+      fit();
+      try {
+        new f.contentWindow.ResizeObserver(fit).observe(f.contentDocument.querySelector(".wrap"));
+      } catch (e) {}
+    }
+    f.addEventListener("load", init);
+    if (f.contentDocument && f.contentDocument.readyState === "complete" && f.contentDocument.querySelector(".wrap")) init();
+    window.addEventListener("resize", fit);
+  })();
 </script>
 
 As mentioned before, this particular sequence was chosen to show the three algorithms reaching different outcomes.
