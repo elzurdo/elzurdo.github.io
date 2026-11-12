@@ -88,20 +88,22 @@ An interesting consequence of this correction is that one can complete an experi
 <!-- READER CONTRACT. -->
 
 This post is targeted at anyone who runs experiments and has to decide both when to stop them
-as well an the statistical result interpretation: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
+as well as how to interpret the result: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
 
 No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning.)
 
 
 By the end you will be able to:
 
-- **Read a posterior**: the two things it tells you, where your estimate sits and how uncertain it still is.
-- ⚖️ **Quantify what counts as "close enough"** (the ROPE), and hold to it, rather than letting the effect size you planned around be quietly forgotten between the planning meeting and the write-up.
-- 🛑 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*. That one change removes a bias you probably didn't know you had.
-- ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it. This matters whenever "no meaningful difference" is the finding you actually need.
-- 🧮 **Estimate how much data you'll need** before collecting any of it, from a closed-form formula.
+- 🛑⚖️ **Tell stopping apart from deciding**, and see why using one rule for both turns lucky streaks into false verdicts, even with Bayesian tools.
+- 📏 **Quantify what counts as "close enough"** to the null hypothesis, and hold to it, rather than letting the effect size you planned around be quietly forgotten between the planning meeting and the write-up.
+- ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it, whenever "no meaningful difference" is the finding you actually need.
+- 🎯 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
+- 💰 **See why precision costs data, and predict how much** before you start; the companion post takes this further into full study planning.
 
-If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The supplementary sections after the summary are where the detail lives.
+Along the way, you can play with two interactive simulations 🕹️, and try a calculator on your own data. 🧮
+
+If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places. The short appendices after the summary, and the preprint below, go further.
 
 If you'd like the full technical treatment, I have also written this up as an arXiv preprint. You won't need it to follow along, but it is there as a reference for the finer details.
 
@@ -982,30 +984,35 @@ and more informative: accept, reject or inconclusive, judged against a "close en
 
 ## Summary
 
-> You can't spell proper without ROPE ...
-
 <!-- Thesis alternatives:
      · Commit to what matters before you look, and let precision, not the verdict, tell you when to stop.
      · Stop when you know enough, not when you like the answer.
      · A verdict is only as good as the reason you stopped collecting data. -->
 
-Decide what counts as meaningful before you look, and stop for precision, not for the verdict.
+Precision is the Goal is about deciding what counts as meaningful before you look,
+and stop for precision, not for the verdict.
 
-<!-- TODO: revisit the reader contract ("By the end you will be able to…") against these takeaways. -->
 
 The five takeaways:
 
-* 🛑⚖️ **Stopping and deciding are two different jobs.** When one heuristic does both, peeking turns lucky streaks into verdicts. That is the confirmation bias behind the p-value's false alarms, and a Bayesian HDI+ROPE rule is not immune to it either.
-* ⚖️ **Falling below a p-value threshold is not the same as meaningful.** Decide what counts as "close enough", the ROPE, before the data arrives, and hold to it.
-* ✅ **You can accept the null.** With a ROPE, "no meaningful difference" is a finding in its own right. Both verdicts are statements about the null value, not the sample value, and "inconclusive" is an honest third outcome.
-* 🎯 **Stop on precision, then insist on a conclusion.** Precision is the Goal stops once the HDI is narrow enough, wherever it sits; Decisive Precision is the Goal also waits for a conclusive verdict. On a fair coin that meant zero false rejections, and rarely a verdict with nothing to say, for a little more data.
-* 💰 **Precision costs data, but the cost is predictable.** The sample size a precision goal requires can be calculated in advance, and refusing to rule on an imprecise posterior is not a flaw but a form of honesty.
+🛑⚖️ **Stopping and deciding are two different jobs.** When one heuristic does both, peeking turns lucky streaks into verdicts. That is the confirmation bias behind the p-value's false alarms, and a Bayesian HDI+ROPE rule is not immune to it either.  
 
-This post opened with two questions, and answered the second: "Have we collected enough data yet?"
+📏 **Falling below a p-value threshold is not the same as meaningful.** Decide what counts as "close enough", the ROPE, before the data arrives, and hold to it.  
+
+✅ **You can accept the null.** With a ROPE, "no meaningful difference" is a finding in its own right. Both verdicts are statements about the null value, not the sample value, and "inconclusive" is an honest third outcome.  
+
+🎯 **Stop on precision, then insist on a conclusion.** Precision is the Goal stops once the HDI is narrow enough, wherever it sits; Decisive Precision is the Goal also waits for a conclusive verdict. On a fair coin that meant zero false rejections, and rarely a verdict with nothing to say, for a little more data.  
+
+💰 **Precision costs data, but the cost is predictable.** The sample size a precision goal requires can be calculated in advance, and refusing to rule on an imprecise posterior is not a flaw but a form of honesty.  
+
+> You can't spell proper without ROPE ...
+
+We opened with two questions, and answered the second: *"Have we collected enough data yet?"*
 That is the sequential, retrospective view, for an experiment already under way.
-The first, "How much data is required?", is about planning before a single data point is collected,
+The first, *"How much data is required?"*, is about planning before a single data point is collected,
 and it is the subject of a companion post: how to use $N_{\rm goal}$ <!-- medium: Ngoal --> and the calculator's prospective mode
 to plan a study around the precision you need.
+
 To catch it when it's out, follow me on [LinkedIn](https://www.linkedin.com/in/eyal-kazin){:target="_blank"} or [Medium](https://medium.com/@eyal-kazin){:target="_blank"}.
 
 ---
