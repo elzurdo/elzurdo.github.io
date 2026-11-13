@@ -134,7 +134,7 @@ With enough patients, even that 0.2 percentage point gap will become "statistica
 In practice, however, no clinician would prescribe differently because of it.
 Why does a gap that small cross the threshold? With more data the estimate becomes ever more precise,
 so even a tiny but real departure from the null eventually produces a p-value below the threshold.
-You'll be able to see this for yourself in the explorer further down, with its *p-value rejects, ROPE accepts* button.
+You'll be able to see this for yourself in the Snapshot Explorer further down, with its *p-value rejects, ROPE accepts* button.
 
 The key takeaway is that a deviation from the null hypothesis should be large enough to justify acting on it, for example by changing the status quo.
 
@@ -599,9 +599,9 @@ This is the careful recombination promised earlier, since the stopping rule stil
 Because precision must be met first, it never stops on an early lucky streak;
 and because it also requires a conclusive outcome, it rarely ends with nothing to say.
 
-### 🕹️ Stopping Algorithm Interactive Simulator
+### 🕹️ Snapshot Explorer
 
-▶️ **Try it yourself.** The explorer below shows a single look at a coin's tosses.
+▶️ **Try it yourself.** The Snapshot Explorer below shows a single look at a coin's tosses.
 Drag the number of tosses and the share of heads, and watch the posterior, its HDI and the decision rule respond,
 together with what each stopping rule would do if this were the moment you looked.
 The p-value's verdict is included for comparison.
@@ -638,42 +638,46 @@ The buttons jump to the three snapshots of our hand-picked coin, and to a few ex
 
 ## More Lessons from the Fair Coin Test
 
-To understand the differences between these stopping algorithms it's instructive to examine
-both a specific case and trends across many.
+The Snapshot Explorer shows a single look at the data.
+To see how the three algorithms actually behave as the data accumulates, let's follow coins through time:
+first our hand-picked one, toss by toss, and then 5,000 of them.
 
 ### One Coin, Toss by Toss
 
-We start with our hand-picked sequence one last time, now following it toss by toss rather than at three snapshots.
-The gray band is the 95% HDI after each toss and the orange dashed lines are the ROPE boundaries.
-A red line marks where the HDI is conclusively outside the ROPE, a green line where it is conclusively inside,
-and purple dots mark where the precision goal, $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 -->, is met.
+We start with our hand-picked sequence, now following it toss by toss rather than at three snapshots,
+with the precision goal at $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 --> as before.
+
+<!-- FUTURE OPTION (b): on the site, let the Sequence Simulator below replace this static figure, and keep the
+     figure for Medium only, as a hidden "Medium option" like the comparison table. That shortens the post and
+     avoids showing the same timeline twice; the walkthrough text would then point at the simulator. -->
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_stats_dpi350.png" alt="The HDI of one fair coin sequence over 1,500 tosses: a gray band narrowing around 0.5, a red line at toss 126, purple dots from toss 598, and green bands from toss 804, with orange dashed ROPE lines at 0.45 and 0.55" width="750">
 </div>
 
-*The 95% HDI (gray band) of our hand-picked fair coin sequence after each toss. Red: HDI fully outside the ROPE (orange dashed lines). Green: HDI fully inside it. Purple dots: precision goal met.*
+*The 95% HDI (gray band) of our hand-picked fair coin sequence after each toss. Orange dashed lines: the ROPE boundaries. Red line: the HDI is fully outside the ROPE. Green: fully inside it. Purple dots: the precision goal is met.*
 
 Reading from left to right, all three stops sit on one timeline.
-At toss 126 a run of heads pushes the HDI above the ROPE, and HDI+ROPE stops and wrongly rejects.
-From toss 598 the purple dots appear: the precision goal is met, so PitG stops, but the HDI still straddles the ROPE, so its verdict is inconclusive.
-DPitG keeps going until toss 804, the first point at which the HDI is both narrow enough and inside the ROPE, and correctly accepts.
+At toss 126 an early run of heads pushes the HDI above the ROPE, and HDI+ROPE stops and wrongly rejects.
+At toss 598 the purple dots appear: the precision goal is met, so PitG stops, but the HDI still straddles the ROPE and its verdict is inconclusive.
+DPitG carries on until toss 804, the first point at which the HDI is both narrow enough and inside the ROPE, and correctly accepts.
 
-Notice that the green does not stay on once it appears. Just after 804 the HDI drifts back across the boundary a few times
+Notice that the green does not stay on once it appears: just after 804 the HDI drifts back across the boundary a few times
 before settling inside it. An accept can come and go, and DPitG stops at the first one.
 
-### 🕹️ [TK: Name] Interactive Simulator
+### 🕹️ Sequence Simulator
 
-▶️ **Try it yourself.** The simulation below replays the same hand-picked coin, toss by toss.
-Press *Play / pause* to watch it again, *Find a false reject* to search random fair coins until HDI+ROPE wrongly rejects one,
-or *Find a PitG inconclusive* to see PitG's catch.
-Raise the true rate above 0.55 and rejecting becomes the correct answer.
+▶️ **Try it yourself.** The Sequence Simulator below replays the same hand-picked coin, toss by toss.
+Press *Play / pause* to watch it again, *New random run* for a fresh coin, *Find a false reject* to search random fair coins until HDI+ROPE wrongly rejects one,
+or *Find a PitG inconclusive* to see PitG's catch; *Our hand-picked coin* brings you back.
+Narrow the precision goal and both precision-based rules wait longer; widen it towards the ROPE's width and PitG ends inconclusive more often.
+And raise the true rate above 0.55, and rejecting becomes the correct answer.
 
 <!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/dont-stop-til-you-get-enough/three-rules-sim.html instead. -->
 <iframe class="dpitg-widget" id="dpitg-sim" src="{{ "/assets/dont-stop-til-you-get-enough/three-rules-sim.html" | relative_url }}" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
 
-As mentioned before, this particular sequence was chosen to show the three algorithms reaching different outcomes.
-To see how often each outcome happens, we need many sequences.
+As mentioned before, the hand-picked sequence was chosen because it shows the three algorithms reaching different outcomes.
+To see how often each outcome actually happens, we need many sequences.
 
 ### 5,000 Fair Coin Sequences
 
