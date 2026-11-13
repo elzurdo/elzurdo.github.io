@@ -303,7 +303,7 @@ To answer it, we first have to decide what "meaningful" means.
 
 [^seasons]: Curiously, the two intervals sit on opposite sides of 50%. This is not a contradiction: a single season is not a random sample of a career, and his shooting varied over the years.
 
-## ⚖️ Quantifying "Close Enough"
+## 📏 Quantifying "Close Enough"
 
 If Shaq's underlying rate was $\theta=0.501$ <!-- medium: θ=0.501 -->,
 would you consider it **practically** a fair coin toss? How about 0.51? Or 0.53?
@@ -362,11 +362,11 @@ We have already seen one decision in action: Shaq's career HDI sat entirely with
 so we concluded that his free throws were, for all practical purposes, a fair coin toss.
 Let's generalise.
 The *HDI+ROPE decision rule* compares the location of the HDI with that of the ROPE,
-where the outcome decision may be either conclusive or inconclusive.
+and the outcome is either conclusive or inconclusive.
 
 ### Conclusive Outcomes
 
-A useful way to understand the conclusive outcomes is by the following illustration:
+The conclusive outcomes are easiest to see in an illustration:
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/conclusive_outcomes.png" alt="Three conclusive HDI+ROPE scenarios: HDI fully left of the ROPE, fully inside it, and fully right of it" width="700">
@@ -374,25 +374,19 @@ A useful way to understand the conclusive outcomes is by the following illustrat
 
 *The three conclusive outcomes. Curves are posteriors, with ticks marking the HDI boundaries; gray boxes are the ROPEs around the null value. Left and right: the HDI is entirely outside the ROPE, so the null is rejected. Centre: the HDI is entirely inside the ROPE, so the null is accepted.*
 
-We see that two of these outcome reject the null hypothesis and one accepts:
+Two of these outcomes reject the null hypothesis and one accepts it:
 
 * ✅ **Accept the null**: the HDI is completely **inside** the ROPE,
   ${\rm ROPE_{min}} \le {\rm HDI_{min}} \lt {\rm HDI_{max}} \le {\rm ROPE_{max}}$ <!-- medium: ROPEmin ≤ HDImin < HDImax ≤ ROPEmax -->.
-  
 * ❌ **Reject the null**: the HDI is completely **outside** the ROPE, on either side,
   ${\rm HDI_{max}} < {\rm ROPE_{min}}$ or ${\rm ROPE_{max}} < {\rm HDI_{min}}$ <!-- medium: HDImax < ROPEmin or ROPEmax < HDImin -->.
 
-
-Note that accepting the null may be a finding in its own right, rather than a failure to detect something.
+Note that accepting the null can be a finding in its own right, rather than a failure to detect something.
 This is exactly what the p-value could not offer.
 
 ### Inconclusive Outcomes
 
-
-
-
-The following illustration demonstrates the three remaining outcomes, all of which
-result in an inconclusive outcome:
+The three remaining outcomes are all inconclusive:
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/inconclusive_outcomes.png" alt="Three inconclusive HDI+ROPE scenarios where the HDI straddles the ROPE boundaries" width="700">
@@ -400,25 +394,25 @@ result in an inconclusive outcome:
 
 *The three inconclusive outcomes. Left and right: the HDI crosses one ROPE boundary. Centre: the HDI is wider than the ROPE and spills over both boundaries.*
 
-They all follow the general trend:
+They share one feature:
 
-* 🤷 **Inconclusive**: the HDI **straddles** a ROPE boundary, sitting partly inside and partly outside.
-
+* 🤷 **Inconclusive**: the HDI **straddles** at least one ROPE boundary, sitting partly inside and partly outside.
 
 The centre panel is worth a closer look.
 Its HDI is wider than the ROPE, $\omega_{\rm HDI} > \omega_{\rm ROPE}$ <!-- medium: ωHDI > ωROPE -->,
 so wherever it sits it can never fit inside it.
-According to the HDI+ROPE decision rule a posterior this wide may still reject the null, but it can never accept it.
-In other words, being able to say "no meaningful difference" requires a HDI narrower than the ROPE,
+Where it is now, it can neither accept nor reject.
+Shifted well away from the null, a posterior this wide could still reject, but it can never accept.
+In other words, being able to say "no meaningful difference" requires an HDI narrower than the ROPE,
 a point we'll return to when deciding when to stop.
 
 What to do with an inconclusive result depends on the experiment's budget.
-If more data may be collected, it narrows the HDI and may well resolve the straddle.
+If more data can be collected, it narrows the HDI and may well resolve the straddle.
 If the budget is spent, a decision can still be forced, but it then becomes a risk assessment
 that weighs the cost of being wrong in each direction, which is domain specific and beyond the scope of this post.[^forced]
-Below we go into more detail on acting on inconclusive outcomes when there is budget to spare.
+Much of the rest of this post is about the first option: when to keep collecting, and when it is safe to stop.
 
-[^forced]: The companion calculator offers two such forced decisions, under *Decide Now! 🎲* in its *Let Me Peek! 👀* tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
+[^forced]: The companion calculator offers two such forced decisions, under *Decide Now!*🎲 in its *Let Me Peek!*👀 tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$ <!-- medium: P(θ > θnull | data) -->, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
 
 ### One Fair Coin, Three Verdicts
 
