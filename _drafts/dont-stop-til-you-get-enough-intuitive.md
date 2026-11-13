@@ -881,8 +881,8 @@ or clone <a href="https://github.com/elzurdo/are-we-there-yet" target="_blank">t
 ## Simplified, Not Simplistic: What This Post Leaves Out
 
 This post kept things deliberately simple, a single coin and a handful of ideas, to make the concepts stick.
-That doesn't mean the harder questions were ignored. For those keen to dig deeper, here is where they are addressed: 🪏
-(If you're not keen, feel free to skip this section.)
+That doesn't mean the harder questions were ignored.
+If you'd rather skip ahead to the summary, go ahead; for those keen to dig deeper, here is where they are addressed: 🪏
 
 * **Priors**: flat versus informative priors, and the risk of a wrong prior. See the [preprint's discussion](https://arxiv.org/html/2608.05301v1#S4){:target="_blank"}.
 * **Multiple hypothesis testing**: why no correction is needed when running many tests at once. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}.
@@ -895,7 +895,7 @@ That doesn't mean the harder questions were ignored. For those keen to dig deepe
 And while the coin made a handy example, the method reaches well beyond it.
 It is a way of thinking about evidence that applies wherever statistics informs a decision,
 and in particular anywhere p-values and Bayes Factors are used today.
-In their place it offers something more reliable, a stopping rule that never consults the verdict,
+In their place it offers something more reliable, a stopping rule that never depends on which way the verdict goes,
 and more informative: accept, reject or inconclusive, judged against a "close enough" agreed in advance.
 
 ## Summary
@@ -906,7 +906,7 @@ and more informative: accept, reject or inconclusive, judged against a "close en
      · A verdict is only as good as the reason you stopped collecting data. -->
 
 Precision is the Goal is about deciding what counts as meaningful before you look,
-and stop for precision, not for the verdict.
+and stopping for precision, not for the verdict.
 
 
 The five takeaways:
