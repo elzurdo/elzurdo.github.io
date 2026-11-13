@@ -165,7 +165,7 @@ To see this, we simulated 200 fair coin sequences of 30,000 tosses each, and pee
 * If p < 0.05, we stop collecting data and reject the null hypothesis, incorrectly, since the coin is fair.
 * If p ≥ 0.05, we do not reject it (an inconclusive outcome) and toss again.
 
-<!-- TODO (Eyal): consider regenerating 02-pvalue-decision-rates.png with peeking only from N_min = 30, to match the HDI+ROPE setup later in the post. The current figure peeks from the first toss. -->
+<!-- TODO (Eyal): consider regenerating pvalue-decision-rates.png with peeking only from N_min = 30, to match the HDI+ROPE setup later in the post. The current figure peeks from the first toss. -->
 
 How often should we expect to wrongly reject a fair coin?
 Naïvely, 5% of the time, as per the threshold.
@@ -175,7 +175,7 @@ The figure below shows the cumulative decision rates as the tosses accumulate: r
 Once a sequence is rejected it stops, so its rejection is carried forward to every later toss.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/02-pvalue-decision-rates.png" alt="Cumulative decision rates for 200 fair coin sequences using p-values: false rejections climb from near zero to over 60% by 30,000 tosses, far above the 5% threshold line" width="700">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/pvalue-decision-rates.png" alt="Cumulative decision rates for 200 fair coin sequences using p-values: false rejections climb from near zero to over 60% by 30,000 tosses, far above the 5% threshold line" width="700">
 </div>
 
 *Cumulative decision rates for 200 fair coin sequences when the p-value is used both to stop and to decide (note the logarithmic x-axis). The dash-dotted line marks the nominal 5% false positive rate. The code is in [this notebook](https://github.com/elzurdo/dpitg/blob/main/notebooks/nhst_fair_coin_experiments.ipynb){:target="_blank"}.*
@@ -241,7 +241,7 @@ A free throw either goes in or it doesn't, so it behaves like the toss of a (pos
 the same binomial data as a conversion in an A/B test, or a defective item coming off a production line.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/lipofsky_shaquille_oneal.jpg" alt="Shaquille O'Neal shooting a free throw for the Los Angeles Lakers" width="200">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/lipofsky-shaquille-oneal.jpg" alt="Shaquille O'Neal shooting a free throw for the Los Angeles Lakers" width="200">
 </div>
 
 *Shaq at the free throw line for the Los Angeles Lakers, 1999. Photo: Steve Lipofsky, [Basketballphoto.com](https://commons.wikimedia.org/wiki/File:Lipofsky_Shaquille_O%27Neal.jpg){:target="_blank"}, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/){:target="_blank"}.*
@@ -250,7 +250,7 @@ The figure below shows the posterior of his free throw success rate $\theta$ <!-
 the 2004/5 season, with 765 attempts in 73 games (left), and his full career, with 11,252 attempts in 1,207 games (right).
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/oneal_freethrows_pdfs.png" alt="Two posteriors of Shaq's free throw rate: a wide one for the 2004/5 season and a narrow one for his career" width="700">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/oneal-freethrows-pdfs.png" alt="Two posteriors of Shaq's free throw rate: a wide one for the 2004/5 season and a narrow one for his career" width="700">
 </div>
 
 *Posteriors of Shaq's free throw success rate. Shaded areas are the 95% HDIs and the dashed line marks 50%. Left: the 2004/5 season (765 attempts). Right: his full career (11,252 attempts). About fifteen times the data gives a posterior about four times narrower.*
@@ -319,7 +319,7 @@ For argument's sake, let's say that any success rate between 45% and 55% is prac
 and redraw Shaq's career posterior with these boundaries as a gray band.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/oneal_career_freethrows_pdf_rope.png" alt="Shaq's career posterior with its HDI sitting entirely inside a gray band from 45% to 55%" width="700">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/oneal-career-freethrows-pdf-rope.png" alt="Shaq's career posterior with its HDI sitting entirely inside a gray band from 45% to 55%" width="700">
 </div>
 
 *Shaq's career posterior. The gray band marks 45%–55%, the success rates we consider practically a fair coin toss. The HDI (shaded) sits entirely inside it.*
@@ -375,7 +375,7 @@ and the outcome is either conclusive or inconclusive.
 The conclusive outcomes are easiest to see in an illustration:
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/conclusive_outcomes.png" alt="Three conclusive HDI+ROPE scenarios: HDI fully left of the ROPE, fully inside it, and fully right of it" width="700">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/conclusive-outcomes.png" alt="Three conclusive HDI+ROPE scenarios: HDI fully left of the ROPE, fully inside it, and fully right of it" width="700">
 </div>
 
 *The three conclusive outcomes. Curves are posteriors, with ticks marking the HDI boundaries; gray boxes are the ROPEs around the null value. Left and right: the HDI is entirely outside the ROPE, so the null is rejected. Centre: the HDI is entirely inside the ROPE, so the null is accepted.*
@@ -395,7 +395,7 @@ This is exactly what the p-value could not offer.
 The three remaining outcomes are all inconclusive:
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/inconclusive_outcomes.png" alt="Three inconclusive HDI+ROPE scenarios where the HDI straddles the ROPE boundaries" width="700">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/inconclusive-outcomes.png" alt="Three inconclusive HDI+ROPE scenarios where the HDI straddles the ROPE boundaries" width="700">
 </div>
 
 *The three inconclusive outcomes. Left and right: the HDI crosses one ROPE boundary. Centre: the HDI is wider than the ROPE and spills over both boundaries.*
@@ -432,7 +432,7 @@ This sequence was randomly generated but then hand-picked, because it shows all 
 Here is the posterior at three points along the same sequence:
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_posteriors_dpi350.png" alt="Three stacked posteriors of the same fair coin sequence at iterations 126, 598 and 804, narrowing as data accumulates; vertical dashed lines mark the ROPE at 0.45 and 0.55" width="700">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/handpicked-sequence-posteriors.png" alt="Three stacked posteriors of the same fair coin sequence at iterations 126, 598 and 804, narrowing as data accumulates; vertical dashed lines mark the ROPE at 0.45 and 0.55" width="700">
 </div>
 
 *Posteriors of one fair coin sequence after 126, 598 and 804 tosses. Shaded areas are the 95% HDIs; vertical dashed lines mark the ROPE boundaries.*
@@ -482,7 +482,7 @@ All three share the HDI+ROPE decision rule above and differ only in *when* they 
 
 <!-- Medium option: Medium has no tables, so use this image there.
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/08-three-algorithm-comparison.png" alt="Table comparing the three algorithms: HDI+ROPE stops when conclusive; Precision is the Goal stops when the HDI is narrow enough, then decides; Decisive PitG stops when the HDI is narrow enough and conclusive" width="750">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/three-algorithm-comparison.png" alt="Table comparing the three algorithms: HDI+ROPE stops when conclusive; Precision is the Goal stops when the HDI is narrow enough, then decides; Decisive PitG stops when the HDI is narrow enough and conclusive" width="750">
 </div> -->
 
 <!-- github.io option: HTML version of the table (use the Medium option above on Medium). -->
@@ -585,7 +585,7 @@ The figure below shows the difference. It is similar to the cartoons above, but 
 has the width of $\omega_{\rm goal}$ <!-- medium: ωgoal -->, so an HDI that fits inside it meets the precision goal.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/06-dpitg-scenarios.png" alt="Two DPitG scenarios, both with the HDI inside the yellow precision-goal box: left, the HDI straddles the ROPE so a traffic light says continue collecting; right, the HDI is within the ROPE so it says stop collecting" width="700">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/dpitg-scenarios.png" alt="Two DPitG scenarios, both with the HDI inside the yellow precision-goal box: left, the HDI straddles the ROPE so a traffic light says continue collecting; right, the HDI is within the ROPE so it says stop collecting" width="700">
 </div>
 
 *Two DPitG scenarios. In both, the HDI fits inside the yellow dashed box of width $\omega_{\rm goal}$ <!-- medium: ωgoal -->, so the precision goal is met. Left: the HDI straddles the ROPE, so DPitG keeps collecting. Right: the HDI is fully inside the ROPE, so DPitG stops and accepts the null.*
@@ -613,8 +613,8 @@ together with what each stopping rule would do if this were the moment you looke
 The p-value's verdict is included for comparison.
 The buttons jump to the three snapshots of our hand-picked coin, and to a few extreme cases worth a look.
 
-<!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/dont-stop-til-you-get-enough/decision-explorer.html instead. -->
-<iframe class="dpitg-widget" src="{{ "/assets/dont-stop-til-you-get-enough/decision-explorer.html" | relative_url }}" title="Interactive explorer: where the HDI sits relative to the ROPE, and what each rule decides" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
+<!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/precision-is-the-goal/decision-explorer.html instead. -->
+<iframe class="dpitg-widget" src="{{ "/assets/precision-is-the-goal/decision-explorer.html" | relative_url }}" title="Interactive explorer: where the HDI sits relative to the ROPE, and what each rule decides" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
 <script>
   // Size each embedded widget to its content. They are served from this site, so their documents
   // can be read directly.
@@ -658,7 +658,7 @@ with the precision goal at $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 -->
      avoids showing the same timeline twice; the walkthrough text would then point at the simulator. -->
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/handpicked_sequence_stats_dpi350.png" alt="The HDI of one fair coin sequence over 1,500 tosses: a gray band narrowing around 0.5, a red line at toss 126, purple dots from toss 598, and green bands from toss 804, with orange dashed ROPE lines at 0.45 and 0.55" width="750">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/handpicked-sequence-stats.png" alt="The HDI of one fair coin sequence over 1,500 tosses: a gray band narrowing around 0.5, a red line at toss 126, purple dots from toss 598, and green bands from toss 804, with orange dashed ROPE lines at 0.45 and 0.55" width="750">
 </div>
 
 *The 95% HDI (gray band) of our hand-picked fair coin sequence after each toss. Orange dashed lines: the ROPE boundaries. Red line: the HDI is fully outside the ROPE. Green: fully inside it. Purple dots: the precision goal is met.*
@@ -679,8 +679,8 @@ or *Find a PitG inconclusive* to see PitG's catch; *Our hand-picked coin* brings
 Narrow the precision goal and both precision-based rules wait longer; widen it towards the ROPE's width and PitG ends inconclusive more often.
 And raise the true rate above 0.55, and rejecting becomes the correct answer.
 
-<!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/dont-stop-til-you-get-enough/three-rules-sim.html instead. -->
-<iframe class="dpitg-widget" id="dpitg-sim" src="{{ "/assets/dont-stop-til-you-get-enough/three-rules-sim.html" | relative_url }}" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
+<!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/precision-is-the-goal/three-rules-sim.html instead. -->
+<iframe class="dpitg-widget" id="dpitg-sim" src="{{ "/assets/precision-is-the-goal/three-rules-sim.html" | relative_url }}" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
 
 As mentioned before, the hand-picked sequence was chosen because it shows the three algorithms reaching different outcomes.
 To see how often each outcome actually happens, we need many sequences.
@@ -693,7 +693,7 @@ As with the p-value figure earlier, the rates are cumulative: once a sequence st
 Since the coin is fair, accepting the null is the correct outcome and every rejection is a false one.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/09-three-algorithm-rates.png" alt="Three panels of cumulative decision rates over 1,500 tosses for 5,000 fair coins. HDI+ROPE: rejections level off near 6% early on, acceptances rise from about 380 tosses to over 90%. Precision is the Goal: a single step at about 600 tosses to under 40% accepted, the rest inconclusive, no rejections. Decisive Precision is the Goal: no rejections, acceptances jump at about 600 tosses and keep rising to about 98%" width="750">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/three-algorithm-rates.png" alt="Three panels of cumulative decision rates over 1,500 tosses for 5,000 fair coins. HDI+ROPE: rejections level off near 6% early on, acceptances rise from about 380 tosses to over 90%. Precision is the Goal: a single step at about 600 tosses to under 40% accepted, the rest inconclusive, no rejections. Decisive Precision is the Goal: no rejections, acceptances jump at about 600 tosses and keep rising to about 98%" width="750">
 </div>
 
 *Cumulative decision rates for 5,000 fair coin sequences under each stopping algorithm. At every toss count the shares that have accepted the null (green solid), rejected it (red dashed) or are still inconclusive (gray dot-dashed) sum to 100%. Since the coin is fair, every rejection is a false one.*
@@ -743,7 +743,7 @@ Because the width of the HDI barely depends on the luck of the draw, the sample 
 the precision goal, $N_{\rm goal}$ <!-- medium: Ngoal -->, can be predicted before collecting any data:
 
 $$N_{\rm goal} \approx \frac{4 z_*^2}{\omega_{\rm goal}^2} V(\theta)$$
-<!-- medium: use 10-planning-formula.png (Ngoal ≈ 4z*² V(θ) / ωgoal²) -->
+<!-- medium: use planning-formula.png (Ngoal ≈ 4z*² V(θ) / ωgoal²) -->
 
 Besides the precision goal, it has two ingredients:
 
@@ -880,7 +880,7 @@ or clone <a href="https://github.com/elzurdo/are-we-there-yet" target="_blank">t
 
 <!-- Medium option: the live embed doesn't work on Medium, so use this linked screenshot there.
 <div style="text-align:center">
-    <a href="https://r-w-t-y.streamlit.app/" target="_blank"><img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/00-streamlit-calculator.png" alt="Home screen of the Are We There Yet? calculator: choose prospective or retrospective mode, binary or continuous data, and single group or between groups" width="560"></a>
+    <a href="https://r-w-t-y.streamlit.app/" target="_blank"><img src="{{ site.url }}/assets/precision-is-the-goal/streamlit-calculator.png" alt="Home screen of the Are We There Yet? calculator: choose prospective or retrospective mode, binary or continuous data, and single group or between groups" width="560"></a>
 </div>
 *Click through to the live calculator at [r-w-t-y.streamlit.app](https://r-w-t-y.streamlit.app/), or clone [the repository](https://github.com/elzurdo/are-we-there-yet) and run it locally.* -->
 
