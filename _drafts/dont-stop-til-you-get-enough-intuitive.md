@@ -132,117 +132,93 @@ It says nothing about whether the difference is large enough to matter.
 Think of a researcher asking whether a therapeutic works differently for men and women, who finds it beneficial in 72.1% of one group and 72.3% of the other.
 With enough patients, even that 0.2 percentage point gap will become "statistically significant", whether judged by a p-value or a Bayes Factor.
 In practice, however, no clinician would prescribe differently because of it.
+Why does a gap that small cross the threshold? With more data the estimate becomes ever more precise,
+so even a tiny but real departure from the null eventually produces a p-value below the threshold.
+You'll be able to see this for yourself in the explorer further down, with its *p-value rejects, ROPE accepts* button.
 
 The key takeaway is that a deviation from the null hypothesis should be large enough to justify acting on it, for example by changing the status quo.
 
-To see further why "statistically significant" does not necessarily mean meaningful, we next turn to the simplest
-sequential hypothesis test, and one in which the NHST framework fails: a fair coin toss.
+Tiny real effects are one way a p-value can mislead. Repeated looking is another, and it misleads even when there is no effect at all,
+as the simplest sequential hypothesis test shows: a fair coin toss.
 
 ### NHST Catastrophically Fails the Fair Coin Test
 
-The beauty of tossing a virtual fair coin multiple times is that we know the ground truth
-and hence serves as a useful testbed for hypothesis testing mechanisms, sequential or otherwise.
+*[Title options to choose from: "Peeking at P-Values: The Fair Coin Test" · "The Fair Coin Test: Where Peeking Goes Wrong" · "Peek Long Enough, and a Fair Coin Looks Loaded" · "A Fair Coin, an Impatient Analyst, and the P-Value"]*
 
-In the case of the a true fair coin the null hypothesis (of it being a fair coin) should be accepted,
-wherease that of a true loaded coin the same null hypothesis should rejected.
+The beauty of tossing a virtual fair coin is that we know the ground truth, which makes it a useful testbed for any hypothesis-testing mechanism, sequential or otherwise.
+For a fair coin, the null hypothesis that it is fair should be accepted; for a heavily loaded coin, the same null hypothesis should be rejected.
 
-The first problem of the NHST mechanism is that in the case of a fair coin
-the p-value does not contain acceptence
-information and hence one can only awkwardly use a double-negative and "not reject"
-the null hypothesis. We will later discuss Bayesian mechanisms that will be able to
-accept the null hypothesis.
+The first limitation of NHST shows up straight away: the p-value carries no information for accepting the null
+(for details see the [appendix on why p-values cannot accept the null](#appendix-why-p-values-cannot-accept-the-null-hypothesis)).
+For a fair coin, the best it can offer is the awkward double negative of "not rejecting" it.
+We will later meet Bayesian mechanisms that can accept the null.
 
-Even if we accept NHST as useful to be limited to rejecting the null hypothesis,
-it completely fails in the fair coin sequential hypothesis testing.
+But even if we settle for NHST's ability to reject, it fails the sequential fair coin test badly.
+To see this, we simulated 200 fair coin sequences of 30,000 tosses each, and peeked at the p-value after every toss:
 
-To visualise this we've generated M=200 binomial sequences (of values 0, 1) of length N=30,000.
-At each iteration n≥30 we peek at the data.
+* If p < 0.05, we stop collecting data and reject the null hypothesis, incorrectly, since the coin is fair.
+* If p ≥ 0.05, we do not reject it (an inconclusive outcome) and toss again.
 
-If p<0.05
+<!-- TODO (Eyal): consider regenerating 02-pvalue-decision-rates.png with peeking only from N_min = 30, to match the HDI+ROPE setup later in the post. The current figure peeks from the first toss. -->
 
-* The stopping criteria is triggered and we stop collecting data
-* The decision algorithm rejects the null hypothesis (incorrectly)
+How often should we expect to wrongly reject a fair coin?
+Naïvely, 5% of the time, as per the threshold.
+That is true for a single look. But every look is another chance for a random fluctuation to dip below 0.05, and over many looks those chances add up.
 
-If p≥0.05 we do not reject the null hypothesis (which may be considered "inconclusive")
-and move on to the next iteration.
-
-How often do we expect to incorrectly reject the null hypothesis?
-One would naïvely assume only 5% of the time as per the threshold.
-Whereas this may be correct at one peeking point, in the sequential context this error compounds.
-
-The following graph shows the cummulative decision rates 
-as a function of iteration n.  Reject rates are in red or not reject in gray, their sum is 100% at each iteration.
-(Note that when a sequence is rejected at a given iteration, e.g, n=100, that same rejection
-is propagated to all subsequent iterations of that sequence, e.g n≥100, since we have stopped that experiment of the 200.)
+The figure below shows the cumulative decision rates as the tosses accumulate: rejections in red and non-rejections in gray, summing to 100% at every point.
+Once a sequence is rejected it stops, so its rejection is carried forward to every later toss.
 
 <div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/02-pvalue-decision-rates.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
+    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/02-pvalue-decision-rates.png" alt="Cumulative decision rates for 200 fair coin sequences using p-values: false rejections climb from near zero to over 60% by 30,000 tosses, far above the 5% threshold line" width="700">
 </div>
 
-*Sequential hypothesis decision rates for fair coins using p-values for stopping and deciding.* Python code to recreated this may be found here (TBD).
+*Cumulative decision rates for 200 fair coin sequences when the p-value is used both to stop and to decide (note the logarithmic x-axis). The dash-dotted line marks the nominal 5% false positive rate. The code is in [this notebook](https://github.com/elzurdo/dpitg/blob/main/notebooks/nhst_fair_coin_experiments.ipynb){:target="_blank"}.*
 
-The figure clearly shows that the incorrect *rejection rate*
-(otherwise known as the false *positive rate*) grows as a function of the iteration.
+The false rejection rate, otherwise known as the *false positive rate*, climbs far past the nominal 5%:
+to about 20% within the first hundred tosses, and to over 60% by 30,000. And it keeps climbing.
+Under a true null hypothesis the p-value wanders between 0 and 1 as tosses accumulate, and given enough looks it eventually wanders below any threshold.
 
-John Kruschke, author of *Doing Bayesian Data Analysis*, first demonstrated this limitation of p-value as 
-a stopping in the fair coin case and quipped:
+John Kruschke, author of *Doing Bayesian Data Analysis*, demonstrated this vividly for the fair coin, and summed it up with a quip:
 
 > *"With infinite patience, NHST results in 100% false alarms."*
 
-The problem is that with more data the likelihood distribution (upon which the p-value is calculated)
-is narrower and any slight shift from the null value results in a stronger (i.e, lower) p-value,
-and hence is considered more ``statistically significant", even though there is no meaningful difference
-between the likelihood distribution and the null value.
+<!-- NOTE (Eyal): the problem long predates Kruschke. Early treatments:
+     · Anscombe (1954), "Fixed-Sample-Size Analysis of Sequential Observations", Biometrics, doi:10.2307/3001665
+     · Armitage, McPherson & Rowe (1969), "Repeated Significance Tests on Accumulating Data",
+       Journal of the Royal Statistical Society Series A, doi:10.2307/2343787, the classic quantification
+       of how repeated looks inflate the false positive rate. -->
 
-[TK: insert image demonstrating this narrowness]
+A natural first fix is a Bayesian heuristic that can accept the null hypothesis, such as the Bayes Factor.
+It turns out not to be enough: used both to stop and to decide, it runs into the same confirmation bias.
+In Kruschke's fair coin simulations it falsely rejected the null about 20% of the time,
+and for a loaded coin with a true rate of 0.65 it falsely accepted the null about 40% of the time, what is known as a *false negative*
+(see the [appendix on Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison)).
 
-The first step to correct for this is using a Bayesian mechism with which one can accept the null hypothesis.
-Bayes Factor, e.g, is such a heursitic, but it turns out that is not sufficient since it runs
-into similar confirmation bias problem. The details of this metric is beyond the scope
-of this post, but its results are of interest [TK refer to where they can learn more about it]. In his analysis
-John quantified that in the fair coin case it can result in 20% false rejects. 
-He also extend to testing loaded coins showing it incorrectly accepting the null
-hypothesis 40% of the time (what is commonly referred to as *false negative* rate).
-
-The root issue in sequential hypothesis testing is common mechanissms such as the NHST
-p-value and Bayes Factors use the deciding heuristic as the stopping
-criteria.
-
-<!-- 
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/pvalue-bayesfactor-decision_rates_fair.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
-</div>
-
-
-<div style="text-align:center">
-    <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/pvalue-bayesfactor-decision_rates_loaded.png" alt="Sequential hypothesis decision rates for fair coins using p-values" width="700">
-</div> -->
-
+The root issue is shared by the p-value and the Bayes Factor alike: the heuristic that decides is also the one that stops.
 
 ### 🛑 Gotta Keep 'em Separated ⚖️
 
-Whereas it is convinient to apply the same heuristic as both the stopping rule and
-the decision rule, this is the source
-of cofirmation bias in sequential hypothesis testing.
+The fix is to keep the two jobs apart, by giving each its own heuristic.
+Using one heuristic for both is convenient, but it is exactly what lets a statistical fluke through:
+given enough looks, a chance fluctuation will eventually cross the line, and the experiment stops right there, with a verdict to match.
 
-Given enough looks, a statistical fluke will eventually happen and
-the decision/stopping line may be crossed, whether or not it is meaningful.
+It's like letting whichever team happens to be ahead decide when the game ends.
+In sport, the end is set by a rule agreed before the game starts, such as the clock in basketball or the target score in volleyball,
+however the game happens to be going at any given moment.
 
-The solution, hence, is that the stopping criterion should be based on a different heuristic than the decision one.
+The principle, then, is that the stopping rule must never be the verdict alone.
+(We'll see later that the two can be recombined, carefully.)
+In the approach we'll explore:
 
-In the mechanism we explore we shall see that:
+* 🛑 **Stopping** depends on how certain we are about the parameter, regardless of where its estimate sits relative to the null.
+* ⚖️ **Deciding** depends on where the estimate sits relative to a "close enough" region around the null, agreed in advance.
 
-* The stopping criteria is a function of how un/certain we are about the parameter - regardless of its locaiton relative to the null
-* The decision criteria depends both on the location of the parameter posterior relative to a predetermined effect size around the null.
-
-To appreciate these we first need to understand two key properties of a probability posterior:
-quantifying its location and its width.
-
+To make both precise, we first need two key properties of a posterior: its width and its location.
 
 ## The HDI: A Posterior's Width and Location
 
 Everything the data tells us about a parameter is held in its
-A *posterior distribution* $p(\theta \mid {\rm data})$ <!-- medium: p(θ|data) -->: how plausible
+*posterior distribution* $p(\theta \mid {\rm data})$ <!-- medium: p(θ|data) -->: how plausible
 each possible value is, given what we have observed so far.
 For hypothesis testing two of its properties do most of the work:
 
