@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Same coin tosses, three stopping rules</title>
+<!-- Adapted from slide 9 of the DPitG 20-minute talk. Maths shared in dpitg-core.js. -->
+<style>
+:root{
+  --txt:#111; --mut:#555; --dim:#828282; --line:#e3e3e3; --panel:#fafafa;
+  --cR:#d62728; --cP:#7b2d8e; --cD:#2ca02c; --cA:#c98a00; --rope:#f5a623; --acc:#2a7ae2;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:var(--txt);font-family:var(--font);font-size:15px}
+body{padding:4px 2px 8px}
+button{font-family:inherit;cursor:pointer}
+.wrap{display:flex;flex-wrap:wrap;gap:16px}
+.main{flex:1 1 440px;min-width:0}
+.side{flex:1 1 200px;max-width:100%}
+canvas{width:100%;display:block;border:1px solid var(--line);border-radius:8px;background:#fff}
+.ctrls{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
+.ctrl{flex:1 1 140px;display:flex;flex-direction:column;gap:4px}
+.ctrl label{display:flex;justify-content:space-between;color:var(--mut);font-size:13px}
+.ctrl label b{font:600 13px var(--mono);color:var(--txt)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{padding:6px 12px;border-radius:20px;border:1px solid #ccc;background:#f5f5f5;font-size:13px;color:var(--txt)}
+.btn:hover{border-color:var(--acc);background:#eef4fc}
+.btn.primary{border-color:var(--acc);color:var(--acc);font-weight:600}
+.algo{padding:8px 12px 8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--panel);margin-bottom:8px;position:relative;overflow:hidden}
+.algo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+.algo .nm{font-weight:700;color:var(--c)}
+.algo .st{color:var(--mut);margin-top:2px;min-height:38px;line-height:1.35;font-size:14px}
+.algo .st b{color:var(--txt)}
+.chip{display:inline-block;padding:0 8px;border-radius:12px;font-weight:700;font-size:12px;letter-spacing:.02em}
+.chip.acc{background:rgba(44,160,44,.12);color:var(--cD);border:1px solid var(--cD)}
+.chip.rej{background:rgba(214,39,40,.1);color:var(--cR);border:1px solid var(--cR)}
+.chip.inc{background:rgba(201,138,0,.1);color:var(--cA);border:1px solid var(--cA)}
+.ok{color:var(--cD)} .bad{color:var(--cR)}
+.note{color:var(--dim);font-size:12.5px;line-height:1.45;margin-top:6px}
+.runlbl{color:var(--mut);font-size:13px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="main">
+    <canvas id="cs"></canvas>
+    <div class="ctrls">
+      <div class="ctrl"><label><span>True rate θ</span> <b id="sT"></b></label><input type="range" id="rTT" min="0.50" max="0.65" step="0.005" value="0.5"></div>
+      <div class="ctrl"><label><span>Precision goal ω<sub>goal</sub></span> <b id="sW"></b></label><input type="range" id="rW" min="0.06" max="0.10" step="0.005" value="0.08"></div>
+      <div class="ctrl" style="flex:0 1 110px"><label><span>Speed</span> <b id="sS"></b></label><input type="range" id="rS" min="1" max="8" step="1" value="5"></div>
+    </div>
+    <div class="btns">
+      <button class="btn primary" id="bPlay">▶ Play / pause</button>
+      <button class="btn" id="bHand">Our hand-picked coin</button>
+      <button class="btn" id="bNew">New random run</button>
+      <button class="btn" id="bFalse">Find a false reject</button>
+      <button class="btn" id="bInc">Find a PitG inconclusive</button>
+    </div>
+  </div>
+  <div class="side">
+    <div class="runlbl" id="runlbl"></div>
+    <div class="algo" style="--c:var(--cR)"><div class="nm">HDI+ROPE</div><div class="st" id="s1"></div></div>
+    <div class="algo" style="--c:var(--cP)"><div class="nm">PitG</div><div class="st" id="s2"></div></div>
+    <div class="algo" style="--c:var(--cD)"><div class="nm">DPitG</div><div class="st" id="s3"></div></div>
+    <div class="note">Line: share of heads so far, θ̂(N). Gray band: 95% HDI. Orange dashed: ROPE [0.45, 0.55]. Vertical lines: where each rule stops. N<sub>min</sub> = 30, N<sub>max</sub> = 1,500.</div>
+  </div>
+</div>
+<script src="dpitg-core.js"></script>
+<script>
+(function(){
+"use strict";
+// SEQUENCE_HANDPICKED from github.com/elzurdo/dpitg (py/utils_experiments_binomial.py); 1 = heads.
+const HAND="101101000110010000101111111110010101101110001111110010100110111111110111001111001110011110001010001011110101111110001111111111100000101001001100000001101000100010000000010010111001110100111000010010110011010000101011110011111111011100101011011100100101010011110101001111011100101110010011001010010001001011010101010100111100110011011011101110010100010110011001100101111001111101110101010001101110111100010110101010101010111100001000111011001010101100100110010001101101111100111000010011001000001010110010101101000001100101000110101110010101101000100110100100100110110100101011100001101000111111001001111100100011100011000101001010101110010000110111101111011100111011010010001001001111011100100000100011100000010010111111011110101000110110010001100101011110000001001101111100000001010011001001110001010100000101111100101110011011010111001000011110010011111110011111111100111011010000101110110001100111001000010011101100111000110010100000001101110000110011100111011100101001101010011001010100011000000011001100101100101000001101100111000000101010000110100100111110101101110010000100011101011011001110011100111011101010100101100001101100010111010010101000011000100111111010010111001100001001000110111011001011100100001001011111010011111101111001010000110011010101111001011110100001000100000010000011001110100110100100101000001100110111011011111010100111101111101010001010110010001000110111000101000010001011000100001101111011000000111010011000101001011110111101111010011101010111001111010101111011000110";
+const{R0,R1,NMIN,hdi,dec,mulberry,DN}=window.DPITG;const NM=1500;
+const C={R:"#d62728",P:"#7b2d8e",D:"#2ca02c",rope:"#f5a623",band:"rgba(0,0,0,.13)",line:"#333",axis:"#828282",truth:"#c98a00"};
+const $=id=>document.getElementById(id);
+const chip=d=>`<span class="chip ${d}">${DN[d]}</span>`;
+
+
+// toss(n) returns 1 for heads on toss n (1-based).
+function run(toss,theta,wg,label){let s=0;const lo=[],hi=[],th=[],res={hr:null,pg:null,dp:null};
+  for(let n=1;n<=NM;n++){s+=toss(n);const[l,h]=hdi(Math.max(s,.01),Math.max(n-s,.01));lo.push(l);hi.push(h);th.push(s/n);
+    const d=dec(l,h),w=h-l;
+    if(!res.hr&&n>=NMIN&&d!=="inc")res.hr={n,d};
+    if(!res.pg&&w<=wg)res.pg={n,d};
+    if(!res.dp&&w<=wg&&d!=="inc")res.dp={n,d};
+    if(res.hr&&res.pg&&res.dp)break}
+  return{lo,hi,th,res,theta,wg,label,len:lo.length}}
+const randomToss=(seed,theta)=>{const r=mulberry(seed);return()=>r()<theta?1:0};
+const handToss=n=>+HAND[n-1];
+
+const cv=$("cs"),g=cv.getContext("2d");
+let W=0,H=0,S=null,shown=1,playing=false,raf=null,visible=false,mode="hand",seed=20261016;
+const L=44,Rr=10,T=12,B=30,Y0=.2,Y1=.8;
+const xm=n=>L+n/NM*(W-L-Rr),ym=t=>T+(Y1-Math.max(Y0,Math.min(Y1,t)))/(Y1-Y0)*(H-T-B);
+function resize(){const r=window.devicePixelRatio||1;W=cv.clientWidth;H=Math.max(220,Math.round(W*.46));
+  cv.style.height=H+"px";cv.width=Math.round(W*r);cv.height=Math.round(H*r);g.setTransform(r,0,0,r,0,0);if(S)draw();postHeight()}
+function postHeight(){try{const h=Math.ceil(document.querySelector(".wrap").getBoundingClientRect().bottom+window.scrollY)+10;parent.postMessage({dpitgSimHeight:h},"*")}catch(e){}}
+
+const params=()=>({theta:+$("rTT").value,wg:+$("rW").value});
+function labels(){const{theta,wg}=params();$("sT").textContent=theta.toFixed(3);$("sW").textContent=wg.toFixed(3)}
+function regen(play){labels();const{theta,wg}=params();
+  S=mode==="hand"?run(handToss,.5,wg,"Our hand-picked fair coin (the one in the text)")
+                 :run(randomToss(seed,theta),theta,wg,`Random run, true rate θ = ${theta.toFixed(3)}`);
+  shown=1;if(play)playing=true;loop()}
+
+function verdictTag(d,theta){const inside=theta<=R1+1e-9&&theta>=R0-1e-9;
+  if(Math.abs(theta-R1)<1e-9||Math.abs(theta-R0)<1e-9)return'<span class="note">(true rate on the ROPE edge)</span>';
+  if(d==="acc")return inside?'<b class="ok">correct</b>':'<b class="bad">false accept</b>';
+  if(d==="rej")return inside?'<b class="bad">false reject</b>':'<b class="ok">correct</b>';return""}
+function status(){const r=S.res,n=shown;$("runlbl").textContent=S.label;
+  [["s1","hr"],["s2","pg"],["s3","dp"]].forEach(([id,k])=>{const a=r[k],e=$(id);
+    if(a&&n>=a.n)e.innerHTML=`<b>Stops at N = ${a.n}</b> → ${chip(a.d)} ${verdictTag(a.d,S.theta)}`;
+    else if(!a&&n>=S.len)e.innerHTML=`Budget N<sub>max</sub> = ${NM} reached → ${chip("inc")}`;
+    else e.innerHTML=`collecting… N = ${Math.floor(n)}`})}
+function draw(){
+  g.clearRect(0,0,W,H);const n=Math.min(Math.floor(shown),S.len);
+  g.strokeStyle=C.rope;g.lineWidth=1.5;g.setLineDash([7,5]);[R0,R1].forEach(v=>{g.beginPath();g.moveTo(L,ym(v));g.lineTo(W-Rr,ym(v));g.stroke()});
+  g.setLineDash([]);g.fillStyle=C.axis;g.font="11px "+getComputedStyle(document.body).fontFamily;g.textAlign="right";
+  [.2,.3,.4,.5,.6,.7,.8].forEach(v=>g.fillText(v.toFixed(1),L-6,ym(v)+4));g.textAlign="center";
+  for(let v=0;v<=NM;v+=300){g.textAlign=v===NM?"right":"center";g.fillText(v,v===NM?W-Rr:xm(v),H-12)}g.textAlign="center";
+  g.fillText("toss N",(L+W-Rr)/2,H-1);
+  if(Math.abs(S.theta-.5)>1e-9){g.strokeStyle=C.truth;g.setLineDash([3,4]);g.beginPath();g.moveTo(L,ym(S.theta));g.lineTo(W-Rr,ym(S.theta));g.stroke();g.setLineDash([]);
+    g.fillStyle=C.truth;g.textAlign="left";g.fillText("true θ",L+4,ym(S.theta)-4)}
+  if(n>=1){g.fillStyle=C.band;g.beginPath();g.moveTo(xm(1),ym(S.hi[0]));for(let i=1;i<n;i++)g.lineTo(xm(i+1),ym(S.hi[i]));
+    for(let i=n-1;i>=0;i--)g.lineTo(xm(i+1),ym(S.lo[i]));g.closePath();g.fill();
+    g.strokeStyle=C.line;g.lineWidth=1.3;g.beginPath();g.moveTo(xm(1),ym(S.th[0]));for(let i=1;i<n;i++)g.lineTo(xm(i+1),ym(S.th[i]));g.stroke()}
+  [["hr",C.R,"HDI+ROPE",0],["pg",C.P,"PitG",1],["dp",C.D,"DPitG",2]].forEach(([k,c,nm,o])=>{const a=S.res[k];if(a&&n>=a.n){
+    const xx=xm(a.n)+o*2;g.strokeStyle=c;g.lineWidth=2;g.beginPath();g.moveTo(xx,T);g.lineTo(xx,H-B);g.stroke();
+    g.fillStyle=c;g.font="600 12px "+getComputedStyle(document.body).fontFamily;const right=a.n>1100;g.textAlign=right?"right":"left";
+    g.fillText(nm+" "+a.n,xx+(right?-5:5),T+12+o*15)}});
+  status()}
+function loop(){cancelAnimationFrame(raf);const step=[.5,1,2,3,5,8,14,30][+$("rS").value-1];$("sS").textContent=step+"/frame";
+  const f=()=>{draw();if(playing&&visible&&shown<S.len){shown=Math.min(S.len,shown+step);raf=requestAnimationFrame(f)}};f()}
+function find(pred){mode="random";$("rTT").value=0.5;labels();const{theta,wg}=params();let tries=0;
+  const go=()=>{for(let k=0;k<6&&tries<400;k++,tries++){const sd=Math.floor(Math.random()*1e9);const r=run(randomToss(sd,theta),theta,wg,"");
+      if(pred(r.res)){seed=sd;r.label=`Random fair coin, found after ${tries+1} tries`;S=r;shown=1;playing=true;loop();return}}
+    if(tries<400)setTimeout(go,0);else regen(true)};go()}
+
+$("rTT").oninput=()=>{mode="random";regen(true)};
+$("rW").oninput=()=>regen(true);
+$("rS").oninput=()=>loop();
+$("bPlay").onclick=()=>{playing=!playing;if(playing&&shown>=S.len)shown=1;loop()};
+$("bHand").onclick=()=>{mode="hand";$("rTT").value=0.5;regen(true)};
+$("bNew").onclick=()=>{mode="random";seed=Math.floor(Math.random()*1e9);regen(true)};
+$("bFalse").onclick=()=>find(r=>r.hr&&r.hr.d==="rej");
+$("bInc").onclick=()=>find(r=>r.pg&&r.pg.d==="inc");
+
+// Play only while the widget is on screen, starting the first time a reader scrolls to it.
+let started=false;
+new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!started){started=true;playing=true}loop()},{threshold:.3}).observe(cv);
+addEventListener("resize",resize);
+if(window.ResizeObserver)new ResizeObserver(postHeight).observe(document.querySelector(".wrap"));
+resize();regen(false);postHeight();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where does the HDI sit relative to the ROPE?</title>
+<!-- Adapted from slide 4 of the DPitG 20-minute talk. Maths shared in dpitg-core.js.
+     Rules are listed in RULES below, so further ones (e.g. a Bayes Factor) can be added as rows. -->
+<style>
+:root{
+  --txt:#111; --mut:#555; --dim:#828282; --line:#e3e3e3; --panel:#fafafa;
+  --cR:#d62728; --cP:#7b2d8e; --cD:#2ca02c; --cA:#c98a00; --cN:#555; --acc:#2a7ae2;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:var(--txt);font-family:var(--font);font-size:15px}
+body{padding:4px 2px 8px}
+button{font-family:inherit;cursor:pointer}
+.wrap{display:flex;flex-wrap:wrap;gap:16px}
+.main{flex:1 1 440px;min-width:0}
+.side{flex:1 1 220px;max-width:100%}
+canvas{width:100%;display:block;border:1px solid var(--line);border-radius:8px;background:#fff}
+.ctrls{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
+.ctrl{flex:1 1 175px;display:flex;flex-direction:column;gap:4px}
+.ctrl label{display:flex;justify-content:space-between;gap:6px;color:var(--mut);font-size:13px;white-space:nowrap}
+.ctrl label b{font:600 13px var(--mono);color:var(--txt)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.grp{margin-top:10px;font-size:12.5px;color:var(--mut)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.btn{padding:6px 12px;border-radius:20px;border:1px solid #ccc;background:#f5f5f5;font-size:13px;color:var(--txt)}
+.btn:hover{border-color:var(--acc);background:#eef4fc}
+.data{font-size:13.5px;color:var(--mut);margin-bottom:8px;line-height:1.5}
+.data b{font-family:var(--mono);color:var(--txt);font-weight:600}
+.big{margin:4px 0 12px}
+.hd{font-size:12.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin:4px 0 6px}
+.rule{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px 6px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);margin-bottom:6px;position:relative;overflow:hidden}
+.rule::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+.rule .nm{font-weight:700;color:var(--c);font-size:14px}
+.rule .sub{font-size:12px;color:var(--mut);font-weight:400}
+.rule>div:first-child{flex:1;min-width:0}
+.rule .chip{flex-shrink:0}
+.chip{display:inline-block;padding:0 8px;border-radius:12px;font-weight:700;font-size:12px;letter-spacing:.02em;white-space:nowrap}
+.chip.acc{background:rgba(44,160,44,.12);color:var(--cD);border:1px solid var(--cD)}
+.chip.rej{background:rgba(214,39,40,.1);color:var(--cR);border:1px solid var(--cR)}
+.chip.inc{background:rgba(201,138,0,.1);color:var(--cA);border:1px solid var(--cA)}
+.chip.go{background:#fff;color:var(--mut);border:1px solid #ccc;font-weight:600}
+.chip.lg{font-size:15px;padding:2px 14px}
+.note{color:var(--dim);font-size:12.5px;line-height:1.45;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="main">
+    <canvas id="cx"></canvas>
+    <div class="ctrls">
+      <div class="ctrl"><label><span>Tosses so far, N</span> <b id="vN"></b></label><input type="range" id="rN" min="0" max="1000" step="1"></div>
+      <div class="ctrl"><label><span>Share of heads, θ̂</span> <b id="vT"></b></label><input type="range" id="rT" min="0.30" max="0.80" step="0.001"></div>
+      <div class="ctrl"><label><span>Precision goal ω<sub>goal</sub></span> <b id="vW"></b></label><input type="range" id="rW" min="0.06" max="0.10" step="0.005" value="0.08"></div>
+    </div>
+    <div class="grp">Our hand-picked coin:</div>
+    <div class="btns">
+      <button class="btn" data-n="126" data-k="80">After 126 tosses</button>
+      <button class="btn" data-n="598" data-k="314">After 598 tosses</button>
+      <button class="btn" data-n="804" data-k="414">After 804 tosses</button>
+    </div>
+    <div class="grp">Extreme cases:</div>
+    <div class="btns">
+      <button class="btn" data-n="40" data-k="28">An early lucky streak</button>
+      <button class="btn" data-n="200" data-k="100">Too few tosses to accept</button>
+      <button class="btn" data-n="10000" data-k="5200">p-value rejects, ROPE accepts</button>
+    </div>
+  </div>
+  <div class="side">
+    <div class="data" id="data"></div>
+    <div class="hd">Decision rule (HDI vs ROPE)</div>
+    <div class="big" id="verdict"></div>
+    <div class="hd">If you looked now</div>
+    <div id="rules"></div>
+    <div class="note">A single look at the data, not a history: a rule that says STOP here may already have stopped earlier. ROPE [0.45, 0.55]; HDI+ROPE and the p-value look from N<sub>min</sub> = 30 onwards; p-value threshold 0.05.</div>
+  </div>
+</div>
+<script src="dpitg-core.js"></script>
+<script>
+(function(){
+"use strict";
+const{R0,R1,NMIN,hdi,logPdf,dec,pValue,DN}=window.DPITG;
+const C={line:"#333",axis:"#828282",ropeFill:"#d9d9d9",ropeEdge:"#999",goal:"#111",met:"#7b2d8e",notMet:"#111",
+         acc:"rgba(44,160,44,.30)",rej:"rgba(214,39,40,.25)",inc:"rgba(201,138,0,.28)",accS:"#2ca02c",rejS:"#d62728",incS:"#c98a00"};
+const $=id=>document.getElementById(id);
+const chip=(d,txt,cls)=>`<span class="chip ${d}${cls?" "+cls:""}">${txt||DN[d]}</span>`;
+const NLO=10,NHI=20000,nFromT=t=>Math.round(NLO*Math.pow(NHI/NLO,t/1000)),tFromN=n=>Math.round(1000*Math.log(n/NLO)/Math.log(NHI/NLO));
+let N=126,K=80;
+
+// Each rule: name, colour, sub-label, and what it would do at this single look.
+const RULES=[
+  {nm:"HDI+ROPE",c:"#d62728",sub:"stop when conclusive",act:s=>s.N>=NMIN&&s.d!=="inc"?["stop",s.d]:["go"]},
+  {nm:"PitG",c:"#7b2d8e",sub:"stop when narrow enough",act:s=>s.met?["stop",s.d]:["go"]},
+  {nm:"DPitG",c:"#2ca02c",sub:"stop when narrow enough and conclusive",act:s=>s.met&&s.d!=="inc"?["stop",s.d]:["go"]},
+  {nm:"p-value",c:"#555",sub:s=>"p = "+fmtP(s.p)+(s.p<0.05?" · reject":" · not reject"),act:s=>s.N>=NMIN&&s.p<0.05?["stop","rej"]:["go"]}
+];
+function fmtP(p){return p<1e-4?p.toExponential(1):p<0.01?p.toFixed(4):p.toFixed(3)}
+
+const cv=$("cx"),g=cv.getContext("2d");
+let W=0,H=0;
+const X0=.25,X1=.85,L=14,Rr=14,T=22;
+function resize(){const r=window.devicePixelRatio||1;W=cv.clientWidth;H=Math.max(260,Math.round(W*.56));
+  cv.style.height=H+"px";cv.width=Math.round(W*r);cv.height=Math.round(H*r);g.setTransform(r,0,0,r,0,0);draw()}
+const xm=t=>L+(t-X0)/(X1-X0)*(W-L-Rr);
+
+function state(){const wg=+$("rW").value,a=Math.max(K,.01),b=Math.max(N-K,.01),[lo,hi]=hdi(a,b),w=hi-lo;
+  return{N,K,a,b,lo,hi,w,wg,met:w<=wg,d:dec(lo,hi),p:pValue(K,N)}}
+
+function draw(){if(!W)return;const s=state();
+  $("vN").textContent=N.toLocaleString("en");$("vT").textContent=(K/N).toFixed(3);$("vW").textContent=s.wg.toFixed(3);
+  $("data").innerHTML=`<b>${K.toLocaleString("en")}</b> heads in <b>${N.toLocaleString("en")}</b> tosses<br>95% HDI <b>[${s.lo.toFixed(3)}, ${s.hi.toFixed(3)}]</b>`;
+  $("verdict").innerHTML=chip(s.d,null,"lg");
+  $("rules").innerHTML=RULES.map(r=>{const[a,dd]=r.act(s),sub=typeof r.sub==="function"?r.sub(s):r.sub;
+    const tag=a==="stop"?chip(dd,"STOP · "+DN[dd]):chip("go","keep collecting"+(dd?" ("+dd+")":""));
+    return`<div class="rule" style="--c:${r.c}"><div><div class="nm">${r.nm}</div><div class="sub">${sub}</div></div>${tag}</div>`}).join("");
+
+  g.clearRect(0,0,W,H);
+  const barsH=56,base=H-barsH-34,top=T+14;
+  // ROPE box and null value, as in the post's cartoons
+  g.fillStyle=C.ropeFill;g.strokeStyle=C.ropeEdge;g.lineWidth=1;g.fillRect(xm(R0),top-6,xm(R1)-xm(R0),base-top+6);g.strokeRect(xm(R0),top-6,xm(R1)-xm(R0),base-top+6);
+  const font=getComputedStyle(document.body).fontFamily;
+  g.fillStyle="#666";g.font="italic 13px "+font;g.textAlign="center";g.fillText("ROPE",(xm(R0)+xm(R1))/2,top-10);
+  // posterior curve, HDI shaded in its verdict colour
+  const n=600;let mx=-Infinity;const ys=new Float64Array(n),xs=new Float64Array(n);
+  for(let i=0;i<n;i++){const x=X0+(i+.5)/n*(X1-X0);xs[i]=x;ys[i]=logPdf(s.a,s.b,x);if(ys[i]>mx)mx=ys[i]}
+  // a very narrow posterior can fall between plot samples; use its exact mode for the peak height
+  const mode=Math.min(X1,Math.max(X0,(s.a-1)/(s.a+s.b-2)||K/N));mx=Math.max(mx,logPdf(s.a,s.b,mode));
+  const yp=v=>base-Math.exp(v-mx)*(base-top-4);
+  g.fillStyle=C[s.d];g.beginPath();g.moveTo(xm(Math.max(X0,s.lo)),base);
+  const hs=Math.max(X0,s.lo),he=Math.min(X1,s.hi),m=200;
+  for(let i=0;i<=m;i++){const x=hs+(he-hs)*i/m;g.lineTo(xm(x),yp(logPdf(s.a,s.b,x)))}
+  g.lineTo(xm(he),base);g.closePath();g.fill();
+  g.strokeStyle=C[s.d+"S"];g.lineWidth=2.5;g.beginPath();
+  const pts=[];for(let i=0;i<n;i++)pts.push([xs[i],ys[i]]);
+  if(mode>X0&&mode<X1)pts.push([mode,logPdf(s.a,s.b,mode)]);
+  pts.sort((u,v)=>u[0]-v[0]).forEach(([x,y],i)=>i?g.lineTo(xm(x),yp(y)):g.moveTo(xm(x),yp(y)));g.stroke();
+  // axis, null value and HDI ticks
+  g.strokeStyle="#444";g.lineWidth=1.5;g.beginPath();g.moveTo(L,base);g.lineTo(W-Rr,base);g.stroke();
+  g.beginPath();g.moveTo(xm(.5),base);g.lineTo(xm(.5),base+12);g.stroke();
+  g.fillStyle="#444";g.font="12px "+font;g.fillText("θ null = 0.5",xm(.5),base+24);
+  g.fillStyle=C.axis;g.font="11px "+font;[.3,.4,.6,.7,.8].forEach(v=>g.fillText(v.toFixed(1),xm(v),base+24));
+  g.strokeStyle=C[s.d+"S"];g.lineWidth=2.5;[s.lo,s.hi].forEach(v=>{if(v>X0&&v<X1){g.beginPath();g.moveTo(xm(v),base-14);g.lineTo(xm(v),base);g.stroke()}});
+  // precision comparison: ω_goal (black) vs ω_HDI (purple when the goal is met, black when not)
+  const by=H-barsH+4,px=(W-L-Rr)/(X1-X0),bx=L+92,maxW=W-Rr-bx;
+  g.textAlign="left";g.font="12px "+font;
+  const bar=(y,w,col,label,val)=>{g.fillStyle=col;g.fillText(label,L,y+5);const len=Math.min(maxW,w*px);
+    g.fillRect(bx,y,len,6);if(w*px>maxW){g.beginPath();g.moveTo(bx+len,y-3);g.lineTo(bx+len+7,y+3);g.lineTo(bx+len,y+9);g.fill()}
+    g.font="600 12px "+getComputedStyle(document.documentElement).getPropertyValue("--mono");g.fillText(val,Math.min(bx+len+10,W-Rr-120),y+6);g.font="12px "+font};
+  bar(by,s.wg,C.goal,"ω goal",s.wg.toFixed(3));
+  bar(by+22,s.w,s.met?C.met:C.notMet,"ω HDI",s.w.toFixed(3)+(s.met?"  ✓ met":"  not met"));
+}
+
+function setFromSliders(){N=nFromT(+$("rN").value);K=Math.round(N*+$("rT").value);draw()}
+function setPreset(n,k){N=n;K=k;$("rN").value=tFromN(n);$("rT").value=(k/n).toFixed(3);draw()}
+$("rN").oninput=setFromSliders;$("rT").oninput=setFromSliders;$("rW").oninput=draw;
+document.querySelectorAll("[data-n]").forEach(b=>b.onclick=()=>setPreset(+b.dataset.n,+b.dataset.k));
+addEventListener("resize",resize);
+const q=new URLSearchParams(location.search),qn=+q.get("n"),qk=+q.get("k");
+setPreset(qn>=1&&qk>=0&&qk<=qn?qn:126,qn>=1&&qk>=0&&qk<=qn?qk:80);resize();
+})();
+</script>
+</body>
+</html>
