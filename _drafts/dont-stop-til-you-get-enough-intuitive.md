@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🛑⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion, and Making It Decisive"
+title: "🛑 Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion, and Making It Decisive ⚖️"
 ---
 
 <!-- Useful unicode: ω, Δ, θ, ≈ -->
@@ -61,7 +61,7 @@ No prior knowledge of Bayesian statistics is required, just a basic understandin
 
 By the end you will be able to:
 
-- 🛑⚖️ **Tell stopping apart from deciding**, and see why using one rule for both turns lucky streaks into false verdicts, even with the Bayesian tools often pitched as the fix.
+- 🛑 **Tell stopping apart from deciding** ⚖️, and see why using one rule for both turns lucky streaks into false verdicts, even with the Bayesian tools often pitched as the fix.
 - 📏 **Quantify what counts as "close enough"** to the null hypothesis (the "no effect" baseline), and hold to it, rather than letting the effect size you planned around (in A/B testing, your minimum detectable effect, or MDE) be quietly forgotten between the planning meeting and the write-up.
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it, whenever "no meaningful difference" is the finding you actually need.
 - 🎯 **Stop on precision** (how narrow your uncertainty has become) **rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
@@ -918,7 +918,7 @@ and stop for precision, not for the verdict.
 
 The five takeaways:
 
-🛑⚖️ **Stopping and deciding are two different jobs.** When one heuristic does both, peeking turns lucky streaks into verdicts. That is the confirmation bias behind the p-value's false alarms, and a Bayesian HDI+ROPE rule is not immune to it either.  
+🛑 **Stopping and deciding are two different jobs.** ⚖️ When one heuristic does both, peeking turns lucky streaks into verdicts. That is the confirmation bias behind the p-value's false alarms, and a Bayesian HDI+ROPE rule is not immune to it either.  
 
 📏 **Falling below a p-value threshold is not the same as meaningful.** Decide what counts as "close enough", the ROPE, before the data arrives, and hold to it.  
 
