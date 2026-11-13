@@ -75,6 +75,12 @@ For the full technical treatment, I have also written this up as an arXiv prepri
 
 [![arXiv](https://img.shields.io/badge/arXiv-2608.05301-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.05301v1){:target="_blank"}
 
+<!-- **📑 Contents** -->
+<!-- medium: Medium builds no table of contents from this; drop it there or write one by hand. -->
+
+<!-- * TOC
+{:toc} -->
+
 ### 🎬 Prelude: What I'm Talking About When I Talk About Accepting the Null
 
 Most of us learned hypothesis testing as a hunt for differences.
