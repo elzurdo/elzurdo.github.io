@@ -681,7 +681,7 @@ To see how often each outcome actually happens, we need many sequences.
 
 ### 5,000 Fair Coin Sequences
 
-We now generate 5,000 fair coin sequences, each with a budget of up to 1,500 tosses, and run all three algorithms on every one of them.
+We now generate 5,000 fair coin sequences, each with a budget of up to $N_{\rm max}=1{,}500$ <!-- medium: Nmax=1,500 --> tosses, and run all three algorithms on every one of them.
 The figure below shows the resulting decision rates as the tosses accumulate.
 As with the p-value figure earlier, the rates are cumulative: once a sequence stops, its verdict is carried forward to every later toss.
 Since the coin is fair, accepting the null is the correct outcome and every rejection is a false one.
@@ -696,11 +696,12 @@ Since the coin is fair, accepting the null is the correct outcome and every reje
 fair coins wrongly rejected on an early lucky streak.[^asymptote]
 The green line, meanwhile, only starts at about 380 tosses.
 That is no coincidence: it is roughly when the HDI first becomes narrower than the ROPE,
+$\omega_{\rm HDI} \le \omega_{\rm ROPE}$ <!-- medium: ωHDI ≤ ωROPE -->,
 and as we saw earlier, an HDI wider than the ROPE can never accept.
 From then on the acceptances climb steadily.
 
 **Precision is the Goal (middle).** Nothing at all happens until about 600 tosses,
-where nearly every sequence meets the precision goal at once.
+where nearly every sequence meets the precision goal, $\omega_{\rm HDI} \le \omega_{\rm goal}$ <!-- medium: ωHDI ≤ ωgoal -->, at once.
 As we'll see shortly, where this step falls can be predicted in advance.
 At the step just under 40% of the sequences accept and the rest are left inconclusive, where they stay, since PitG has stopped.[^sensitivity]
 And there are no false rejections at all.[^symmetry]
@@ -709,16 +710,18 @@ And there are no false rejections at all.[^symmetry]
 where again just under 40% accept straight away.
 But rather than stopping inconclusive, the rest keep collecting, and the acceptances keep climbing,
 to about 98% by the end of the budget.[^budget]
-The price is modest: the median DPitG sequence stops after 627 tosses, compared with 599 for PitG, or about 5% more data.
+The price is modest: the median DPitG sequence stops after 627 tosses, compared with 599 for PitG, or about 5% more data.[^premium]
 
 In short, on a fair coin HDI+ROPE is decisive but sometimes wrong, PitG is never wrong but often says nothing,
 and DPitG is both decisive and right, for a little more data.
 
-[^asymptote]: Unlike the p-value's, this false rejection rate levels off. That isn't the ROPE's doing alone: Kruschke shows that stopping on Bayes Factors levels off too, albeit at just over 20% (see the [preprint's appendix on Bayes Factors](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}). What both have, and the p-value lacks, is a way to accept the null: every sequence that is accepted stops, and so leaves the pool of those still at risk of a false rejection.
+[^asymptote]: Unlike the p-value's, this false rejection rate levels off. That isn't the ROPE's doing alone: Kruschke shows that stopping on Bayes Factors levels off too, albeit at just over 20% (see the [appendix on Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison) below, and the [preprint's Appendix F](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}). What both have, and the p-value lacks, is a way to accept the null: every sequence that is accepted stops, and so leaves the pool of those still at risk of a false rejection.
 
-[^sensitivity]: The exact split depends on the settings, in particular on how narrow the precision goal is relative to the ROPE. At the extreme of $\omega_{\rm goal}=\omega_{\rm ROPE}$ <!-- medium: ωgoal=ωROPE --> PitG is never conclusive, whereas DPitG stays at about 98%. See the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"}.
+[^sensitivity]: The exact split between conclusive and inconclusive outcomes depends on the settings, in particular on how narrow the precision goal is relative to the ROPE. At the extreme of $\omega_{\rm goal}=\omega_{\rm ROPE}$ <!-- medium: ωgoal=ωROPE --> PitG is never conclusive, whereas DPitG stays at about 98%. See the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"}.
 
 [^symmetry]: The zero false rejection rate of the precision-based methods is partly thanks to the perfect symmetry of the fair coin. In the preprint I show that they do make some false rejections when the true value sits close to a ROPE boundary. See the [preprint's general trends section](https://arxiv.org/html/2608.05301v1#S3.SS2){:target="_blank"}.
+
+[^premium]: That 5% holds for our setting of $\omega_{\rm goal}=0.8\,\omega_{\rm ROPE}$ <!-- medium: ωgoal=0.8·ωROPE -->. In the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"} the premium is zero for tighter goals and rises to about 40% when the goal equals the ROPE width, while $N_{\rm goal}$ <!-- medium: Ngoal --> itself changes with the goal.
 
 [^budget]: The inconclusive line is still falling at 1,500 tosses, so a larger budget would leave even fewer sequences inconclusive. In the preprint DPitG's conclusiveness turns out to be more sensitive to the budget than to the precision goal.
 
@@ -750,9 +753,7 @@ Two implications follow:
 
 For DPitG, $N_{\rm goal}$ <!-- medium: Ngoal --> is a floor rather than the expected stop.
 It can never stop before the precision goal is met, and the sequences whose HDI still straddles the ROPE keep going.
-On our fair coin the median DPitG sequence stopped about 5% after $N_{\rm goal}$ <!-- medium: Ngoal -->.[^premium]
-
-[^premium]: That 5% holds for our setting of $\omega_{\rm goal}=0.8\,\omega_{\rm ROPE}$ <!-- medium: ωgoal=0.8·ωROPE -->. In the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"} the premium is zero for tighter goals and rises to about 40% when the goal equals the ROPE width, while $N_{\rm goal}$ <!-- medium: Ngoal --> itself changes with the goal.
+As we saw with the 5,000 fair coins, at our settings that meant a median of only about 5% more data.
 
 How $N_{\rm goal}$ <!-- medium: Ngoal --> varies with the goal and with the true value is in the preprint's [Section 2.3](https://arxiv.org/html/2608.05301v1#S2.SS3){:target="_blank"} and [Appendix C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"},
 and using it to plan a study before any data is collected is the focus of the companion post.
