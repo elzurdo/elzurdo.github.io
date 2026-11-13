@@ -412,7 +412,8 @@ If the budget is spent, a decision can still be forced, but it then becomes a ri
 that weighs the cost of being wrong in each direction, which is domain specific and beyond the scope of this post.[^forced]
 Much of the rest of this post is about the first option: when to keep collecting, and when it is safe to stop.
 
-[^forced]: The companion calculator offers two such forced decisions, under *Decide Now!*🎲 in its *Let Me Peek!*👀 tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$ <!-- medium: P(θ > θnull | data) -->, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
+[^forced]: The companion calculator offers two such forced decisions, under *Decide Now!*🎲 in its *Let Me Peek!*👀 tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
+ <!-- medium: P(θ > θnull | data) -->
 
 ### One Fair Coin, Three Verdicts
 
@@ -430,7 +431,7 @@ Here is the posterior at three points along the same sequence:
 
 *Posteriors of one fair coin sequence after 126, 598 and 804 tosses. Shaded areas are the 95% HDIs; vertical dashed lines mark the ROPE boundaries.*
 
-* **After 126 tosses**: $\hat\theta=0.635$ <!-- medium: θ̂=0.635 -->, and the HDI spans 0.551–0.718, entirely above the ROPE. ❌ Reject the null, just like the right-hand conclusive cartoon. Note that this HDI ($\omega_{\rm HDI}=0.167$ <!-- medium: ωHDI=0.167 -->) is wider than the ROPE, yet it still rejects: a wide posterior can reject, it just can never accept.
+* **After 126 tosses**: $\hat\theta=0.635$ <!-- medium: θ̂=0.635 -->, and the HDI spans 0.551–0.718, entirely above the ROPE. ❌ Reject the null, just like the right-hand conclusive cartoon, even though this HDI ($\omega_{\rm HDI}=0.167$ <!-- medium: ωHDI=0.167 -->) is wider than the ROPE.
 * **After 598 tosses**: $\hat\theta=0.525$ <!-- medium: θ̂=0.525 -->, and the narrower HDI ($\omega_{\rm HDI}=0.080$ <!-- medium: ωHDI=0.080 -->) straddles the upper ROPE boundary. 🤷 Inconclusive.
 * **After 804 tosses**: $\hat\theta=0.515$ <!-- medium: θ̂=0.515 -->, and the HDI spans 0.480–0.549, entirely inside the ROPE. ✅ Accept the null, if only by a hair (0.549 against a boundary of 0.55).
 
@@ -441,7 +442,7 @@ Before we get there, the verdicts above deserve a closer look.
 
 [^handpicked]: The sequence is `SEQUENCE_HANDPICKED` in the open-source [dpitg repository](https://github.com/elzurdo/dpitg/blob/main/py/utils_experiments_binomial.py#L33){:target="_blank"}, and these figures can be reproduced with the notebook [fair_coin_handpicked.ipynb](https://github.com/elzurdo/dpitg/blob/main/notebooks/fair_coin_handpicked.ipynb){:target="_blank"}.
 
-### What Exactly Are We Accepting?
+### What Exactly Are We Accepting/Rejecting?
 
 When a verdict comes in, it is tempting to read it as a verdict on the sample value. It isn't.
 
@@ -454,13 +455,14 @@ Rejecting the null says only that the plausible values sit meaningfully away fro
 
 > The decision rule accepts or rejects the **null value**, not the sample value.
 
-That 126-toss verdict was also simply wrong, and it shows the two ways a conclusive verdict can be:
+That 126-toss verdict was also simply wrong, which brings us to the two ways a conclusive verdict can be incorrect:
 
-* A *false reject* is when we reject the null although the true value lies inside the ROPE: the counterpart of a false positive.
-* A *false accept* is when we accept the null although the true value lies outside the ROPE: the counterpart of a false negative.
+* A *false reject*: we reject the null although the true value lies inside the ROPE.
+  This is what is usually called a *false positive* (or Type I error), just named more literally, with the null now a region rather than a single point.
+* A *false accept*: we accept the null although the true value lies outside the ROPE.
+  This is the *false negative* (or Type II error) idea, with one difference: a classic false negative merely fails to reject a false null, whereas a false accept actively accepts it.
 
-<!-- Parked Wald callback, pending the epigraph decision: Wald's 1943 sequential test also allowed
-     exactly three decisions — accept, reject, or carry on collecting. -->
+An inconclusive verdict, by contrast, is never wrong. It just isn't a verdict yet.
 
 ## Three Stopping Algorithms
 
@@ -1021,3 +1023,6 @@ for the 2022 correspondence, if he's content to be named.]
 
 <!-- > *"He would see after the first few thousand or even few hundred [rounds] that the experiment need not be completed, either because the new method is obviously inferior or because it is obviously superior beyond what was hoped for."*
 > — W. Allen Wallis, recalling Captain Garret L. Schuyler's objection, 1943 -->
+
+<!-- Parked Wald callback, goes with the epigraph above: Wald's 1943 sequential test also allowed
+     exactly three decisions — accept, reject, or carry on collecting. -->
