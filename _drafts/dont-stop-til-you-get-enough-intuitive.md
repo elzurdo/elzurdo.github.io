@@ -764,11 +764,23 @@ and the [calculator](#-are-we-there-yet-test-your-own-data-for-precision) lets y
 
 ## When Precision is Worth Using
 
-Asking for precision before a verdict costs data. So when is it worth paying for?
+Asking for precision before a verdict costs data and time. So when is it worth paying and waiting for?
 
 ### A Stopping Rule, or a Planning Tool
 
-It depends mostly on how expensive the data is, which gives the method two complementary roles.
+It depends mostly on how expensive the data is and how time-sensitive the decision is, which gives the method two complementary roles.
+
+Time enters through the rate at which data arrives, which turns $N_{\rm goal}$ <!-- medium: Ngoal --> into a duration.
+An A/B test that sees 2,000 visitors a day and needs $N_{\rm goal}=20{,}000$ <!-- medium: Ngoal = 20,000 --> will take about 10 days,
+so a precision goal is a calendar commitment as well as a data one.
+
+<!-- COMPANION POST, more on time (not used here):
+     · Deadlines: if a decision is due before Ngoal can be reached, either loosen the goal deliberately
+       (a wider ωgoal, or a reconsidered ROPE) or make a forced, risk-assessed decision (the calculator's Decide Now! 🎲).
+     · The cost of waiting: opportunity cost in A/B tests (traffic spent on the worse variant) and ethical cost
+       in trials (patients kept on an inferior or harmful treatment), echoing the intro's clinical-trial example.
+     · Drift: the longer collection runs, the less likely the data comes from one unchanging θ (seasonality,
+       novelty effects), as with Shaq's season versus career. -->
 
 **As a stopping rule**, it is best suited to settings where data is relatively cheap and the budget comfortably
 exceeds $N_{\rm goal}$ <!-- medium: Ngoal -->:
@@ -799,14 +811,22 @@ An imprecise posterior is inconclusive whatever algorithm you run on it.
 Precision is the Goal simply refuses to pretend otherwise: rather than masking too little data behind a false rejection,
 or quietly stopping with nothing to say, it holds off on a verdict until the posterior is genuinely informative.
 
-### Precision IRL
+### 🗳️ Precision IRL: Polling
 
-🗳️ Finally, if the idea of choosing a sample size for its precision still sounds exotic, you have probably met it already.
+Finally, if the idea of choosing a sample size for its precision still sounds exotic, you have probably met it already.
 A poll reported with a margin of error of ±3 points has a 95% interval about 6 points wide, and pollsters size their samples
 to hit that width, before knowing any of the answers.
 For a question split close to 50/50 that takes roughly 1,070 respondents, which is no coincidence: it is the same number
 that a precision goal of $\omega_{\rm goal}=0.06$ <!-- medium: ωgoal=0.06 --> requires for our fair coin.
 Pollsters, in other words, have been planning for precision all along.
+
+One caveat, since polls are famous for getting elections wrong: precision is not the same as accuracy.
+The margin of error covers only random sampling error.
+When polls miss, it is mostly because the sample itself is skewed, by who answers and who turns out to vote,
+and no sample size or stopping rule can fix that.[^polls]
+Precision guards against noise, not against bias.
+
+[^polls]: Two widely analysed misses: the 2016 US presidential election, reviewed by Kennedy and colleagues in [*An Evaluation of the 2016 Election Polls in the United States*](https://doi.org/10.1093/poq/nfx047){:target="_blank"} (Public Opinion Quarterly, 2018), and the 2015 UK general election, where Sturgis and colleagues concluded in [*An Assessment of the Causes of the Errors in the 2015 UK General Election Opinion Polls*](https://doi.org/10.1111/rssa.12329){:target="_blank"} (Journal of the Royal Statistical Society Series A, 2017) that unrepresentative samples were the primary cause.
 
 
 ## 🚗 Are We There Yet? Test Your Own Data for Precision
