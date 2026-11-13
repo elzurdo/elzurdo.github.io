@@ -220,19 +220,19 @@ To make both precise, we first need two key properties of a posterior: its width
 Everything the data tells us about a parameter is held in its
 *posterior distribution* $p(\theta \mid {\rm data})$ <!-- medium: p(θ|data) -->: how plausible
 each possible value is, given what we have observed so far.
-For hypothesis testing two of its properties do most of the work:
+Two of its properties do most of the work in hypothesis testing:
 
 * **Width**: how uncertain we still are. A wide posterior means many values remain plausible, a sign we may not have collected enough data.
 * **Location**: where the plausible values sit, which we can compare to the null value.
 
-These map neatly onto the discussed separation: as we'll see, width drives the stopping rule and location the decision rule.
+These map neatly onto the separation above: width will drive the stopping rule, and location the decision rule.
 
 To get a feel for both, let's watch a posterior narrow as data piles up, using one of the
 most famous weaknesses in basketball: the free throws of Shaquille O'Neal.
 Shaq dominated play close to the basket for nearly 20 years,
 but was so unreliable from the line that opposing teams fouled him on purpose, a tactic known as *Hack-a-Shaq*.[^hack]
-A free throw either goes in or it doesn't, so it behaves like the toss of a (possibly loaded) coin.
-This is the same binomial data as a conversion in an A/B test, or a defective item coming off a production line.
+A free throw either goes in or it doesn't, so it behaves like the toss of a (possibly loaded) coin:
+the same binomial data as a conversion in an A/B test, or a defective item coming off a production line.
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/lipofsky_shaquille_oneal.jpg" alt="Shaquille O'Neal shooting a free throw for the Los Angeles Lakers" width="200">
@@ -249,51 +249,43 @@ the 2004/5 season, with 765 attempts in 73 games (left), and his full career, wi
 
 *Posteriors of Shaq's free throw success rate. Shaded areas are the 95% HDIs and the dashed line marks 50%. Left: the 2004/5 season (765 attempts). Right: his full career (11,252 attempts). About fifteen times the data gives a posterior about four times narrower.*
 
-Each curve is the posterior: the higher the curve at a given value,
-the more plausible that value is as Shaq's true, underlying success rate.
+The higher a curve at a given value, the more plausible that value is as Shaq's true, underlying success rate.
 <!-- Parked prior footnote, for readers wondering about priors:
-[^prior]: We use a flat prior, which treats every success rate between 0% and 100% as equally plausible before any shot is taken. With hundreds of attempts the data dominates, so the choice of prior has little effect here. -->
+[^prior]: The posteriors in this post are Beta(s, f), for s successes and f failures. That corresponds to the improper Haldane prior Beta(0, 0); a flat Beta(1, 1) prior would give Beta(s + 1, f + 1) instead. With hundreds of attempts the difference is negligible. -->
 
-The shaded region is a *credible interval*, the Bayesian counterpart of the frequentist confidence interval,
-flagging where most of the posterior mass lies. Throughout this post we use 95% of the mass.
+The shaded region is a *credible interval*, the Bayesian counterpart of the frequentist confidence interval,[^ci]
+marking where most of the posterior lies. Throughout this post we use 95% of it.
 There are several ways of choosing *which* 95%, and we use the *Highest Density Interval* (HDI).
-Picture a horizontal waterline slowly lowered from the peak of the curve. The HDI is the stretch between the two points
-where the line crosses the curve, at the moment the area enclosed beneath it first reaches 95%.
+Picture a horizontal waterline slowly lowered from the peak of the curve: the HDI is the stretch between the two points
+where the line crosses the curve, at the moment the area beneath it first reaches 95%.
 Every value inside the HDI is therefore more plausible than any value outside it.
 (See the [preprint's Appendix A](https://arxiv.org/html/2608.05301v1#A1){:target="_blank"} for a formal definition.)
 
-An HDI is summarised by its two boundaries $\rm HDI_{min}$ and $\rm HDI_{max}$ <!-- medium: HDImin and HDImax -->,
+An HDI is summarised by its two boundaries, $\rm HDI_{min}$ and $\rm HDI_{max}$ <!-- medium: HDImin and HDImax -->,
 which give its location, and by the distance between them, which gives its width:
 
 $$\omega_{\rm HDI} \equiv {\rm HDI_{max}} - {\rm HDI_{min}}$$ <!-- medium: ωHDI ≡ HDImax − HDImin -->
 
 ### Width: More Data, More Certainty
 
-The most striking difference between the two panels is their width.
-The single season gives $\omega_{\rm HDI}^{\rm 2004/5}=7.1\%$ <!-- medium: ωHDI(2004/5) = 7.1% -->,
-whereas the full career gives $\omega_{\rm HDI}^{\rm career}=1.8\%$ <!-- medium: ωHDI(career) = 1.8% -->.
+The most striking difference between the two panels is their width:
+$\omega_{\rm HDI}=7.1\%$ <!-- medium: ωHDI = 7.1% --> for the single season, against $1.8\%$ <!-- medium: 1.8% --> for the full career.
 Roughly fifteen times as many attempts produced a posterior roughly four times narrower.
 
 That is no coincidence: the width shrinks in proportion to $1/\sqrt{N}$ <!-- medium: 1/√N -->, where $N$ is the sample size, and $\sqrt{15} \approx 3.9$ <!-- medium: √15 ≈ 3.9 -->.
 This is the precise sense in which more data means more certainty, and it comes with a price tag:
-halving the width requires four times the data.
-We'll lean on this later when estimating how much data a given precision requires.
+halving the width takes four times the data. We'll return to that price later on.
 
 Note that the width says nothing about *where* the posterior sits, only how sure we are of it.
-Keep that in mind, because it is exactly the property that a reliable stopping rule needs.
+That is exactly the property a reliable stopping rule needs.
 
 ### Location: Where the Plausible Values Sit
 
 The location is read off the HDI boundaries.
-For the 2004/5 season the HDI spans 42.6%–49.7%: given that season's data, there is a 95% probability that his underlying success rate
-lay within this range.
-This direct probability statement about the parameter is what a credible interval offers, and a frequentist confidence interval, despite appearances, does not.
-For his career the HDI spans 51.8%–53.7%.
+For Shaq's 2004/5 season freethrow rate the HDI spans 42.6%–49.7%: given that season's data, there is a 95% probability that his underlying success rate lay within this range.
+For his career it spans 51.8%–53.7%.[^seasons]
 
-(Curiously, the two intervals sit on opposite sides of 50%. This is not a contradiction: a single season is not a random sample
-of a career, and his shooting varied over the years. A precise answer is only as good as the question it answers.)
-
-These numbers invite questions like:
+These numbers invite a question:
 
 > "Was Shaq's free throw ability better or worse than the toss of a fair coin?"
 
@@ -305,7 +297,11 @@ The more useful question is:
 
 To answer it, we first have to decide what "meaningful" means.
 
-[^hack]: The arithmetic behind Hack-a-Shaq: a foul sends him to the line for two shots, worth on average $2 \times 52.7\% \approx 1.05$ <!-- medium: 2 × 52.7% ≈ 1.05 --> points, which is roughly what an average NBA possession yielded at the time. Whether the tactic paid off therefore hinged on a few percentage points either side of 50%, a meaningful-difference question in its own right.
+[^hack]: Fouling him gave up two free throws instead of a regular possession, and at his career rate of 52.7% those were worth on average $2 \times 52.7\% \approx 1.05$ <!-- medium: 2 × 52.7% ≈ 1.05 --> points. It was a good trade only if that fell short of what his team would otherwise score, itself a question of what counts as a meaningful difference. <!-- Personal reference, removed as unverified: an earlier draft added that 1.05 points "is roughly what an average NBA possession yielded at the time. Whether the tactic paid off therefore hinged on a few percentage points either side of 50%." -->
+
+[^ci]: The resemblance is only partial. A credible interval is a direct probability statement about the parameter ("95% probability that the true rate lies here"), which a frequentist confidence interval, despite appearances, does not offer.
+
+[^seasons]: Curiously, the two intervals sit on opposite sides of 50%. This is not a contradiction: a single season is not a random sample of a career, and his shooting varied over the years.
 
 ## ⚖️ Quantifying "Close Enough"
 
