@@ -732,8 +732,7 @@ and DPitG is both decisive and right, for a little more data.
 
 ## 💰 The Cost of Precision
 
-Look back at the PitG and DPitG panels: both jump at about 600 tosses.
-That step is no accident.
+Look back at the PitG and DPitG panels: both jump at about 600 tosses, and that is no accident.
 Because the width of the HDI barely depends on the luck of the draw, the sample size at which it reaches
 the precision goal, $N_{\rm goal}$ <!-- medium: Ngoal -->, can be predicted before collecting any data:
 
@@ -749,20 +748,19 @@ For our fair coin and $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 --> this
 Two implications follow:
 
 * **Precision is expensive.** $N_{\rm goal}$ <!-- medium: Ngoal --> grows with the inverse square of the goal, so halving $\omega_{\rm goal}$ <!-- medium: ωgoal --> roughly quadruples the data. This is the same $1/\sqrt{N}$ <!-- medium: 1/√N --> law we met with Shaq's free throws, read in reverse.
-* **The fair coin is the worst case.** For binary data $V(\theta)$ <!-- medium: V(θ) --> is largest at $\theta=0.5$ <!-- medium: θ=0.5 -->, so planning with a 50/50 split gives an upper bound that covers the hardest scenario.
+* **Plan for the worst case.** The true $\theta$ <!-- medium: θ --> is unknown before you start, so you plug in a best guess, such as the null value. For binary data $V(\theta)$ <!-- medium: V(θ) --> is largest at $\theta=0.5$ <!-- medium: θ=0.5 -->, so a 50/50 guess gives an upper bound that covers the hardest scenario.
 
-For DPitG, $N_{\rm goal}$ <!-- medium: Ngoal --> is a floor rather than the expected stop.
-It can never stop before the precision goal is met, and the sequences whose HDI still straddles the ROPE keep going.
-As we saw with the 5,000 fair coins, at our settings that meant a median of only about 5% more data.
+For DPitG, $N_{\rm goal}$ <!-- medium: Ngoal --> is a floor rather than the expected stop:
+DPitG can never stop before the precision goal is met, and sequences whose HDI still straddles the ROPE keep going.
+On the 5,000 fair coins, that meant a median of only about 5% more data.
 
-How $N_{\rm goal}$ <!-- medium: Ngoal --> varies with the goal and with the true value is in the preprint's [Section 2.3](https://arxiv.org/html/2608.05301v1#S2.SS3){:target="_blank"} and [Appendix C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"},
-and using it to plan a study before any data is collected is the focus of the companion post.
-
-Everything in this post used single-group binary data, but the same logic extends to continuous data
-and to comparisons between groups, where what changes is mostly $V$ <!-- medium: V -->.
-The preprint derives these extensions, although, unlike the coin, they have not yet been put through
-large-scale simulations (see the preprint's Appendices [C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"} and [D](https://arxiv.org/html/2608.05301v1#A4){:target="_blank"}).
-The companion calculator below lets you try them on your own numbers.
+Using $N_{\rm goal}$ <!-- medium: Ngoal --> to plan a study before any data is collected is the focus of the companion post;
+for how it varies with the goal and the true value, see the preprint's [Section 2.3](https://arxiv.org/html/2608.05301v1#S2.SS3){:target="_blank"} and [Appendix C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"}.
+And while everything here used single-group binary data, the same logic extends to continuous data and to comparisons between groups,
+where what changes is mostly $V$ <!-- medium: V -->.
+The preprint derives these extensions, although, unlike the coin, they have not yet been put through large-scale simulations
+(see its Appendices [C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"} and [D](https://arxiv.org/html/2608.05301v1#A4){:target="_blank"}),
+and the [calculator](#-are-we-there-yet-test-your-own-data-for-precision) lets you try them on your own numbers.
 
 ## When Precision is Worth Using
 
