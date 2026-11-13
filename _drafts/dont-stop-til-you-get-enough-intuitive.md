@@ -760,7 +760,7 @@ And while everything here used single-group binary data, the same logic extends 
 where what changes is mostly $V$ <!-- medium: V -->.
 The preprint derives these extensions, although, unlike the coin, they have not yet been put through large-scale simulations
 (see its Appendices [C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"} and [D](https://arxiv.org/html/2608.05301v1#A4){:target="_blank"}),
-and the [calculator](#-are-we-there-yet-test-your-own-data-for-precision) lets you try them on your own numbers.
+and the [calculator](#-test-your-own-data-with-the-are-we-there-yet-calculator-) lets you try them on your own numbers.
 
 ## When Precision is Worth Using
 
@@ -829,17 +829,16 @@ Precision guards against noise, not against bias.
 [^polls]: Two widely analysed misses: the 2016 US presidential election, reviewed by Kennedy and colleagues in [*An Evaluation of the 2016 Election Polls in the United States*](https://doi.org/10.1093/poq/nfx047){:target="_blank"} (Public Opinion Quarterly, 2018), and the 2015 UK general election, where Sturgis and colleagues concluded in [*An Assessment of the Causes of the Errors in the 2015 UK General Election Opinion Polls*](https://doi.org/10.1111/rssa.12329){:target="_blank"} (Journal of the Royal Statistical Society Series A, 2017) that unrepresentative samples were the primary cause.
 
 
-## 🚗 Are We There Yet? Test Your Own Data for Precision
+## 🚗 Test Your Own Data with the *Are We There Yet?* Calculator 🧮
 
 Pollsters have their margin-of-error tables. For everyone else, there is still the question this post opened with:
-"Have we collected enough data yet?"
-To help answer it for your own experiments there is a companion calculator that I created
-for my own use which I call ``*Are We There Yet?*".
+*"Have we collected enough data yet?"*
+To help answer it for your own experiments, I created the *Are We There Yet?* calculator.
 
 It has two modes:
 
-* 🔍 **Retrospective, "I have data, is it enough?"** Enter the data collected so far and it tells you whether the precision goal is met and what the decision rule says, or whether to keep collecting, and how much. Re-enter it each time new data arrives and you are running the sequential test described in this post.
-* 📐 **Prospective, "I'm planning a study."** Before any data is collected, it estimates $N_{\rm goal}$ <!-- medium: Ngoal -->, the sample size your precision goal will take. Planning a study this way is the focus of the companion post.
+* 🔍 **Retrospective, *"I have data, is it enough?"*** Enter the data collected so far and it tells you whether the precision goal is met and what the decision rule says. If the goal isn't met yet, it also tells you roughly how much more data you need: it plugs your current estimate into the $N_{\rm goal}$ <!-- medium: Ngoal --> formula and subtracts what you have already collected. Re-enter your data each time more arrives, and you are running the sequential test described in this post.
+* 📐 **Prospective, *"I'm planning a study."*** Before any data is collected, it estimates $N_{\rm goal}$ <!-- medium: Ngoal -->, the sample size your precision goal will take. Planning a study this way is the focus of the companion post.
 
 It handles binary and continuous data, for a single group or a comparison between two groups, as well as categorical data in retrospective mode.
 There is no need to upload raw data, only summary numbers: counts of successes and failures for binary data,
@@ -856,27 +855,33 @@ with presets for popular domains such as e-commerce conversion, clinical trials 
      walking through the 🧭 guide step by step (smallest meaningful effect → ROPE; precision as a
      % of the ROPE width → ωgoal; sample-size preview) with one or two domain presets as examples. -->
 
-You can use it online at [r-w-t-y.streamlit.app](https://r-w-t-y.streamlit.app/){:target="_blank"},
-or clone [the repository](https://github.com/elzurdo/are-we-there-yet){:target="_blank"} and run it locally.
+Try it right here:
+
+<!-- medium: no live embeds on Medium; use the "Medium option" screenshot below instead. -->
+<div style="border-left:5px solid #c98a00; background:#fff8e6; padding:10px 14px; border-radius:6px; margin:1em 0; font-size:0.95em;">
+⚠️ <b>If the calculator has been idle, it may take a minute to wake up.</b>
+Free Streamlit apps fall asleep when nobody is using them.
+If it doesn't load, open it directly at <a href="https://r-w-t-y.streamlit.app/" target="_blank">r-w-t-y.streamlit.app</a>,
+or clone <a href="https://github.com/elzurdo/are-we-there-yet" target="_blank">the repository</a> and run it locally.
+</div>
+
+<!-- Wider than the text column on large screens, centred on the page; full width on phones. -->
+<div style="width:min(1100px, 96vw); position:relative; left:50%; transform:translateX(-50%); margin:1em 0 1.5em;">
+  <iframe src="https://r-w-t-y.streamlit.app/?embed=true" title="The Are We There Yet? calculator" style="width:100%; height:900px; border:1px solid #e3e3e3; border-radius:8px;" loading="lazy"></iframe>
+</div>
 
 [^calc_models]: Beta posteriors for binary data and Student-t posteriors for continuous data. Comparisons between two groups use a normal (CLT) approximation for binary data and Welch's unequal-variances approach for continuous data. In planning-formula terms, this is $V(\theta)$ <!-- medium: V(θ) --> taking a different form for each data type.
 
+<!-- Medium option: the live embed doesn't work on Medium, so use this linked screenshot there.
 <div style="text-align:center">
     <a href="https://r-w-t-y.streamlit.app/" target="_blank"><img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/00-streamlit-calculator.png" alt="Home screen of the Are We There Yet? calculator: choose prospective or retrospective mode, binary or continuous data, and single group or between groups" width="560"></a>
 </div>
-
-*Click through to the live calculator at [https://r-w-t-y.streamlit.app/](https://r-w-t-y.streamlit.app/){:target="_blank"}*
-
-<!-- Alternative to the screenshot above: embed the calculator live. Free Streamlit apps sleep
-     when idle, so a visitor may land on a wake-up screen rather than the calculator.
--->
-
-<iframe src="https://r-w-t-y.streamlit.app/?embed=true" width="100%" height="630" frameborder="0" scrolling="no"></iframe>
+*Click through to the live calculator at [r-w-t-y.streamlit.app](https://r-w-t-y.streamlit.app/), or clone [the repository](https://github.com/elzurdo/are-we-there-yet) and run it locally.* -->
 
 ## Simplified, Not Simplistic: What This Post Leaves Out
 
 This post kept things deliberately simple, a single coin and a handful of ideas, to make the concepts stick.
-That doesn't mean the harder questions were ignored. For those keen to dig deeper is where they are addressed.🪏
+That doesn't mean the harder questions were ignored. For those keen to dig deeper, here is where they are addressed: 🪏
 (If you're not keen, feel free to skip this section.)
 
 * **Priors**: flat versus informative priors, and the risk of a wrong prior. See the [preprint's discussion](https://arxiv.org/html/2608.05301v1#S4){:target="_blank"}.
