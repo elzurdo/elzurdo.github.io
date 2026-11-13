@@ -305,12 +305,12 @@ To answer it, we first have to decide what "meaningful" means.
 
 ## ⚖️ Quantifying "Close Enough"
 
-If Shaq's underlying rate was $\theta=0.501$ <!-- medium: θ=0.501 -->
+If Shaq's underlying rate was $\theta=0.501$ <!-- medium: θ=0.501 -->,
 would you consider it **practically** a fair coin toss? How about 0.51? Or 0.53?
-At the end of the day this is a subjective call. Which is fine. Part of analysing data is being aware of making such calls, as long as one can justify them.
+At the end of the day this is a subjective call, and that's fine. Part of analysing data is being aware of making such calls, as long as one can justify them.
 
-For argument's sake let's say that any success rate between 45% and 55% is practically a fair coin toss.
-Let's redraw Shaq's career posterior with these boundaries as a gray band.
+For argument's sake, let's say that any success rate between 45% and 55% is practically a fair coin toss,
+and redraw Shaq's career posterior with these boundaries as a gray band.
 
 <div style="text-align:center">
     <img src="{{ site.url }}/assets/dont-stop-til-you-get-enough/oneal_career_freethrows_pdf_rope.png" alt="Shaq's career posterior with its HDI sitting entirely inside a gray band from 45% to 55%" width="700">
@@ -319,27 +319,16 @@ Let's redraw Shaq's career posterior with these boundaries as a gray band.
 *Shaq's career posterior. The gray band marks 45%–55%, the success rates we consider practically a fair coin toss. The HDI (shaded) sits entirely inside it.*
 
 The career HDI, 51.8%–53.7%, sits entirely within the band.
-This allows us to state that, for all practical purposes, Shaq's free throw success was like a fair coin toss.
-
+So, for all practical purposes, Shaq's free throw success was like a fair coin toss.
 (We chose the band here after seeing the data. In a real experiment the order must be the other way round, as we'll see shortly.)
 
-This generalises to the question:
-
-> In an experiment or a study, what counts as a meaningful change? I.e, one that may be worth acting on.
-
-Recall the therapeutic that was beneficial for 72.1% of one group and 72.3% of the other:
-with enough patients the difference is "statistically significant", yet no clinician would prescribe differently on it.
-A meaningful effect is one large enough to justify a real-life decision, and which effects qualify depends on the decision.
-What we need is a way to state that in advance.
+The same question arises in every experiment: what change is large enough to be worth acting on?
+A meaningful effect is one large enough to justify a real-life decision, so which effects qualify depends on the decision.
+What we need is a way to state that, and to state it in advance.
 
 ### The ROPE: Committing to "Close Enough" in Advance
 
-<!-- Subheading alternatives, pick one:
-     · The ROPE: Committing to "Close Enough" in Advance
-     · ROPE: Drawing the Line Before the Data Arrives
-     · The ROPE: Where "No Difference" Lives
-     · Region of Practical Equivalence: Naming What Doesn't Matter
-     · ROPE: A Minimum Effect Size You Can Actually Hold To -->
+*[Subheading options to choose from: "ROPE: Drawing the Line Before the Data Arrives" · "The ROPE: Where 'No Difference' Lives" · "Region of Practical Equivalence: Naming What Doesn't Matter" · "ROPE: A Minimum Effect Size You Can Actually Hold To"]*
 
 The gray band has a name: the *Region of Practical Equivalence*, or ROPE.
 It is a region around the null value, wide enough to hold every value we would consider no meaningful change.
@@ -347,27 +336,25 @@ If the truth sits anywhere inside the ROPE, the honest report is that nothing me
 Given its boundaries $\rm ROPE_{min}$ and $\rm ROPE_{max}$ <!-- medium: ROPEmin and ROPEmax -->,
 its width is $\omega_{\rm ROPE}\equiv \rm ROPE_{max} - ROPE_{min}$ <!-- medium: ωROPE ≡ ROPEmax − ROPEmin -->.
 
-How wide should the ROPE be? There is no general answer, and that is the whole point,
-because the width *is* the domain-specific question of what a meaningful minimal effect size is.
+How wide should the ROPE be? There is no general answer, and that is the whole point:
+the width *is* the domain-specific question of what a meaningful minimal effect size is.
 
 Consider a dice manufacturer with two clients.
 A board-game publisher such as Hasbro, makers of Monopoly, needs dice fair enough that no player notices a bias.
 A casino needs dice fair enough to satisfy a gaming regulator, a far stricter standard.
-Testing a batch amounts to rolling and counting sixes, a binomial experiment whose null value is a probability of 1/6 ≈ 16.7%.[^information_threory]
+Testing a batch amounts to rolling and counting sixes, a binomial experiment whose null value is a probability of 1/6 ≈ 16.7%.[^dice]
 Same factory, same dice, same test, yet the casino's ROPE around 1/6 has to be much narrower than Hasbro's,
 and a batch may be practically fair for one client and not for the other.
 
-[^information_threory]: Or a more rigourous test would involve measuring for entropy to be as close as possible to -log2(6) bits. (TK: revise the -log2(6) number)
+[^dice]: Counting sixes checks only one face: a die biased between other faces would pass. A fuller test looks at all six faces at once, for example with a goodness-of-fit test, or by checking how close the entropy of the outcomes is to its maximum of $\log_2 6 \approx 2.585$ <!-- medium: log₂6 ≈ 2.585 --> bits.
 
-This means that the ROPE boundaries are not computed but rather chosen, before any data arrives, out of what we already know about the domain.
-That is the discipline of it. We commit to what counts as a meaningful change while the result is still unknown,
+So the ROPE boundaries are not computed but chosen, before any data arrives, from what we already know about the domain.
+That is the discipline of it: we commit to what counts as a meaningful change while the result is still unknown,
 so that the commitment cannot later be shaped by the result it is meant to judge.
-(For established ways of choosing a ROPE, see the appendix on choosing a ROPE in practice.)
+(For established ways of choosing a ROPE, see the [appendix on choosing a ROPE in practice](#appendix-choosing-a-rope-in-practice).)
 
-Now that we have both the HDI and the ROPE, we are ready to put them together.
-We'll start with how their locations combine into a decision rule.
-After that we'll see how the HDI width alone can serve as a reliable stopping rule.
-
+With both the HDI and the ROPE in hand, we can put them together:
+first their locations, into a decision rule, and then the HDI's width alone, into a reliable stopping rule.
 
 ## ⚖️ The HDI+ROPE Decision Rule
 
