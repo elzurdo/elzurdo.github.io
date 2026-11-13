@@ -56,15 +56,15 @@ A companion post will show that the same machinery also works before a study sta
 
 This post is for anyone who runs experiments and has to decide both when to stop them and how to interpret the result: A/B testers, analysts, data scientists, researchers, and anyone who has ever stared at a dashboard wondering whether today is the day to call it.
 
-No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning.)
+No prior knowledge of Bayesian statistics is required, just a basic understanding of probabilities. If you have a rough idea of what a p-value is, you already know more than enough. (If you don't, that's fine too — and it may save you some unlearning of common p-value misreadings.)
 
 
 By the end you will be able to:
 
-- 🛑⚖️ **Tell stopping apart from deciding**, and see why using one rule for both turns lucky streaks into false verdicts, even with Bayesian tools.
-- 📏 **Quantify what counts as "close enough"** to the null hypothesis, and hold to it, rather than letting the effect size you planned around be quietly forgotten between the planning meeting and the write-up.
+- 🛑⚖️ **Tell stopping apart from deciding**, and see why using one rule for both turns lucky streaks into false verdicts, even with the Bayesian tools often pitched as the fix.
+- 📏 **Quantify what counts as "close enough"** to the null hypothesis (the "no effect" baseline), and hold to it, rather than letting the effect size you planned around (in A/B testing, your minimum detectable effect, or MDE) be quietly forgotten between the planning meeting and the write-up.
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it, whenever "no meaningful difference" is the finding you actually need.
-- 🎯 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
+- 🎯 **Stop on precision** (how narrow your uncertainty has become) **rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
 - 💰 **See why precision costs data, and check whether you have enough**, and if not, how much more you need; the companion post takes this further into full study planning.
 
 Along the way you can play with two interactive simulations 🕹️⏯️ and try a calculator on your own data 🧮.
@@ -927,6 +927,7 @@ To see all this in action:
 * 🕹️ Play with the [Snapshot Explorer](#snapshot-explorer) to see how a single look at the data plays out under each rule.
 * ⏯️ Replay our hand-picked coin, or hunt for false rejects, in the [Sequence Simulator](#sequence-simulator).
 * 🧮 Test your own data with the [*Are We There Yet?* calculator](#-test-your-own-data-with-the-are-we-there-yet-calculator-).
+* 📄 Dig into the full technical treatment in the [preprint](https://arxiv.org/abs/2608.05301v1){:target="_blank"}.
 
 We opened with two questions, and answered the second: *"Have we collected enough data yet?"*
 That is the sequential, retrospective view, for an experiment already under way.
