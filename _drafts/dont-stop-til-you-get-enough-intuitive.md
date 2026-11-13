@@ -33,7 +33,7 @@ title: "🛑⚖️ Don't Stop 'til You Get Enough — Reintroducing the “Preci
 
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zurdo" data-description="Support me on Buy me a coffee!" data-message="Buy me a slice of pizza! 🍕" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
-#### Know when you have enough data, and when a null result is a real finding. Interactive simulations and a calculator included. 🕹️🧮
+#### Know when you have enough data, and when a null result is a real finding. Interactive simulations and a calculator included. 🕹️⏯️🧮
 
 > “How much data is required?”
 
@@ -67,7 +67,7 @@ By the end you will be able to:
 - 🎯 **Stop on precision rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
 - 💰 **See why precision costs data, and check whether you have enough**, and if not, how much more you need; the companion post takes this further into full study planning.
 
-Along the way you can play with two interactive simulations 🕹️ and try a calculator on your own data 🧮.
+Along the way you can play with two interactive simulations 🕹️⏯️ and try a calculator on your own data 🧮.
 
 If you are already comfortable with posteriors, HDIs and ROPEs, the main thread will feel slow in places, and the short appendices after the summary go a little further.
 
@@ -595,11 +595,11 @@ On our hand-picked coin this means carrying on past toss 598, where PitG stopped
 until toss 804 (bottom panel of the three snapshots), where the HDI is both narrow enough and inside the ROPE, and the null is correctly accepted.
 
 DPitG is thus a hybrid of the other two: PitG's precision criterion *and* HDI+ROPE's conclusiveness criterion.
-This is the careful recombination promised earlier, since the stopping rule still never rests on the verdict alone.
+This is the careful recombination promised earlier, since its stopping rule depends on whether the data can support a verdict, never on which verdict it is.
 Because precision must be met first, it never stops on an early lucky streak;
 and because it also requires a conclusive outcome, it rarely ends with nothing to say.
 
-### 🕹️ Snapshot Explorer
+### 🕹️ Snapshot Explorer {#snapshot-explorer}
 
 ▶️ **Try it yourself.** The Snapshot Explorer below shows a single look at a coin's tosses.
 Drag the number of tosses and the share of heads, and watch the posterior, its HDI and the decision rule respond,
@@ -665,7 +665,7 @@ DPitG carries on until toss 804, the first point at which the HDI is both narrow
 Notice that the green does not stay on once it appears: just after 804 the HDI drifts back across the boundary a few times
 before settling inside it. An accept can come and go, and DPitG stops at the first one.
 
-### 🕹️ Sequence Simulator
+### ⏯️ Sequence Simulator {#sequence-simulator}
 
 ▶️ **Try it yourself.** The Sequence Simulator below replays the same hand-picked coin, toss by toss.
 Press *Play / pause* to watch it again, *New random run* for a fresh coin, *Find a false reject* to search random fair coins until HDI+ROPE wrongly rejects one,
@@ -905,9 +905,10 @@ and more informative: accept, reject or inconclusive, judged against a "close en
      · Stop when you know enough, not when you like the answer.
      · A verdict is only as good as the reason you stopped collecting data. -->
 
-Precision is the Goal is about deciding what counts as meaningful before you look,
-and stopping for precision, not for the verdict.
+The lesson of this post in one sentence: decide what counts as meaningful before you look,
+and stop for precision, not for the verdict.
 
+> You can't spell proper without ROPE ...
 
 The five takeaways:
 
@@ -917,11 +918,15 @@ The five takeaways:
 
 ✅ **You can accept the null.** With a ROPE, "no meaningful difference" is a finding in its own right. Both verdicts are statements about the null value, not the sample value, and "inconclusive" is an honest third outcome.  
 
-🎯 **Stop on precision, then insist on a conclusion.** Precision is the Goal stops once the HDI is narrow enough, wherever it sits; Decisive Precision is the Goal also waits for a conclusive verdict. On a fair coin that meant zero false rejections, and rarely a verdict with nothing to say, for a little more data.  
+🎯 **Stop on precision, then insist on a conclusion.** Precision is the Goal stops once the HDI is narrow enough, wherever it sits; Decisive Precision is the Goal also waits until the data supports a conclusive verdict, whichever way it goes. On a fair coin that meant zero false rejections, and it rarely ended with nothing to say, for a little more data.  
 
 💰 **Precision costs data, but the cost is predictable.** The sample size a precision goal requires can be calculated in advance, and refusing to rule on an imprecise posterior is not a flaw but a form of honesty.  
 
-> You can't spell proper without ROPE ...
+To see all this in action:
+
+* 🕹️ Play with the [Snapshot Explorer](#snapshot-explorer) to see how a single look at the data plays out under each rule.
+* ⏯️ Replay our hand-picked coin, or hunt for false rejects, in the [Sequence Simulator](#sequence-simulator).
+* 🧮 Test your own data with the [*Are We There Yet?* calculator](#-test-your-own-data-with-the-are-we-there-yet-calculator-).
 
 We opened with two questions, and answered the second: *"Have we collected enough data yet?"*
 That is the sequential, retrospective view, for an experiment already under way.
@@ -985,9 +990,11 @@ top of the page.]
 
 ## The Story Behind This Post
 
-[2018, finding it buried in §13.6 of Kruschke's *Doing Bayesian Data Analysis* — the book with the
+[TK: 2018, seeing YouTube lecture and later finding it buried in §13.6 of Kruschke's *Doing Bayesian Data Analysis* — the book with the
 dogs 🐶. A statistics conference where 1 of 20+ attendees had heard of it. Why that gap prompted
 both the preprint and this post.
+
+five years in the making including presentation in conferences
 
 CLOSE ON DIRK NACHBAR: one attendee of the RSS talk went home, wrote his own summary, and extended
 the method to continuous variables unprompted. That is the adoption this post is arguing for, already
@@ -996,7 +1003,7 @@ happening — the strongest possible ending to a "why isn't this better known" o
 ## Credits
 
 [Unless otherwise noted, all images were created by the author. Named thanks — including Kruschke
-for the 2022 correspondence, if he's content to be named.]
+for the 2022 correspondence.]
 
 ## 📚 Resources
 
