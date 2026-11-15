@@ -148,9 +148,9 @@ The key takeaway is that a deviation from the null hypothesis should be large en
 Tiny real effects are one way a p-value can mislead. Repeated looking is another, and it misleads even when there is no effect at all,
 as the simplest sequential hypothesis test shows: a fair coin toss.
 
-### NHST Catastrophically Fails the Fair Coin Test
-
-*[Title options to choose from: "Peeking at P-Values: The Fair Coin Test" · "The Fair Coin Test: Where Peeking Goes Wrong" · "Peek Long Enough, and a Fair Coin Looks Loaded" · "A Fair Coin, an Impatient Analyst, and the P-Value"]*
+### P-Values Fail the Fair Coin Test
+<!-- 
+*[Title options to choose from: "Peeking at P-Values: The Fair Coin Test" · "The Fair Coin Test: Where Peeking Goes Wrong" · "Peek Long Enough, and a Fair Coin Looks Loaded" · "A Fair Coin, an Impatient Analyst, and the P-Value", NHST Catastrophically Fails the Fair Coin Test]* -->
 
 The beauty of tossing a virtual fair coin is that we know the ground truth, which makes it a useful testbed for any hypothesis-testing mechanism, sequential or otherwise.
 For a fair coin, the null hypothesis that it is fair should be accepted; for a heavily loaded coin, the same null hypothesis should be rejected.
@@ -194,6 +194,9 @@ John Kruschke, author of *Doing Bayesian Data Analysis*, demonstrated this vivid
      · Armitage, McPherson & Rowe (1969), "Repeated Significance Tests on Accumulating Data",
        Journal of the Royal Statistical Society Series A, doi:10.2307/2343787, the classic quantification
        of how repeated looks inflate the false positive rate. -->
+
+
+#### As Do Bayes Factors
 
 A natural first fix is a Bayesian heuristic that can accept the null hypothesis, such as the Bayes Factor.
 It turns out not to be enough: used both to stop and to decide, it runs into the same confirmation bias.
@@ -333,9 +336,9 @@ The same question arises in every experiment: what change is large enough to be 
 A meaningful effect is one large enough to justify a real-life decision, so which effects qualify depends on the decision.
 What we need is a way to state that, and to state it in advance.
 
-### The ROPE: Committing to "Close Enough" in Advance
+### The ROPE: Quantifying "Meaningful"
 
-*[Subheading options to choose from: "ROPE: Drawing the Line Before the Data Arrives" · "The ROPE: Where 'No Difference' Lives" · "Region of Practical Equivalence: Naming What Doesn't Matter" · "ROPE: A Minimum Effect Size You Can Actually Hold To"]*
+<!-- *[Subheading options to choose from: "ROPE: Drawing the Line Before the Data Arrives" · "The ROPE: Where 'No Difference' Lives" · "Region of Practical Equivalence: Naming What Doesn't Matter" · "ROPE: A Minimum Effect Size You Can Actually Hold To"]* -->
 
 The gray band has a name: the *Region of Practical Equivalence*, or ROPE.
 It is a region around the null value, wide enough to hold every value we would consider no meaningful change.
@@ -993,20 +996,50 @@ For more, see the [preprint's Appendix G](https://arxiv.org/html/2608.05301v1#A7
 
 ---
 
-[CTA — "Loved this post? ❤️🍕" with a LinkedIn link. The Buy-Me-A-Coffee widget is already at the
-top of the page.]
+[TODO: mention Medium material. Mention that this is outside of my day job and parenting duties.]
 
 ## The Story Behind This Post
 
-[TK: 2018, seeing YouTube lecture and later finding it buried in §13.6 of Kruschke's *Doing Bayesian Data Analysis* — the book with the
-dogs 🐶. A statistics conference where 1 of 20+ attendees had heard of it. Why that gap prompted
-both the preprint and this post.
+The preprint and this post are over five years in the working.
 
-five years in the making including presentation in conferences
+My first experimentation experience as a data scientist was back in 2016 involving a midsize restaruant chain
+in the United States. I was asked by the key stakeholders to design an A/B test for snail
+mail promotions to see who could do better, my firm or their default marketing vendor.
 
-CLOSE ON DIRK NACHBAR: one attendee of the RSS talk went home, wrote his own summary, and extended
-the method to continuous variables unprompted. That is the adoption this post is arguing for, already
-happening — the strongest possible ending to a "why isn't this better known" origin.]
+What key question of the process, of course, was how much data was required. Long story short,
+my list did better than their standard vendor and I was excilerated. It was the first time that
+I proved to myself that my machine learning algorithms could learn from data and actually perform
+better than a traditional rule based list that my competitor used.
+
+First time lucky, I realised there is a lot of interesting statistics behind the process that I wanted to learn more.
+In particular, since it took months to get the data back via snail mail, I wanted to adress the quesiton if "enough data has been collected yet".
+
+In my search I came across the Kruschke's videos on PitG (see link in Resources), which made a lot of sense to me.
+
+I noticed, however, that not only wasn't PitG being used it wasn't that well known.
+In defence of the analyst society, this has never been peer reviewed in a journal but
+buried in §13.6 of Kruschke's *Doing Bayesian Data Analysis* (Known as the book with the dogs 🐶).
+
+I started advocating for it in PyData meetings online and in real life, and while preparing
+my slides for PyData London 2022 I wanted to replicate with python his results.
+
+In the process my results wer a bit different and I realised that I had a bug in my code.
+But the results were intersting enough to realise that this bug is actual a beneficial variant.
+
+While discussing a poster I created for the Royal Statistics Society 2024 I actually started
+to undestand the importance of location vs. width of the posterior and realised that I might
+have a publication.
+
+I conducted further anlaysis and realised the close formula and its beneffits and sent
+a preprint to the arXive.
+
+In a few months I will send for publication review.
+
+First public mention of my work was by someone who attended the talk in RSS26 last Sepetmber
+(link to DIRK NACHBAR post).
+
+If people find useful, I hope they will be able to use to make better data decisions.
+
 
 ## Credits
 
