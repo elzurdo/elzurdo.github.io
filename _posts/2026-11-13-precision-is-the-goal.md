@@ -677,6 +677,8 @@ before settling inside it. An accept can come and go, and DPitG stops at the fir
 
 ### ⏯️ Sequence Simulator {#sequence-simulator}
 
+> **Warning:** Whereas this simulator works for the fair coin θ=0.5, for some technical reason it gets the loaded coins θ≠0.5 incorrect. I will updat this in the near future.
+
 ▶️ **Try it yourself.** The Sequence Simulator below replays the same hand-picked coin, toss by toss.
 Press *Play / pause* to watch it again, *New random run* for a fresh coin, *Find a false reject* to search random fair coins until HDI+ROPE wrongly rejects one,
 or *Find a PitG inconclusive* to see PitG's catch; *Our hand-picked coin* brings you back.
