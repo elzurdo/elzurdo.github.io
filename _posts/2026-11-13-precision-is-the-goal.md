@@ -66,7 +66,7 @@ By the end you will be able to:
 - 📏 **Quantify what counts as "close enough"** to the null hypothesis (the "no effect" baseline), and hold to it, rather than letting the effect size you planned around (in A/B testing, your minimum detectable effect, or MDE) be quietly forgotten between the planning meeting and the write-up.
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it, whenever "no meaningful difference" is the finding you actually need.
 - 🎯 **Stop on precision** (how narrow your uncertainty has become) **rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
-- 💰 **See why precision costs data, and check whether you have enough**, and if not, how much more you need; the companion post takes this further into full study planning.
+- 💰 **See why precision costs data, and check whether you have enough**, and if not, how much more you need.
 
 Along the way you can play with two interactive simulations 🕹️⏯️ and try a calculator on your own data 🧮.
 
@@ -110,7 +110,7 @@ such as a p-value, a confidence interval or a Bayes Factor, crosses a predetermi
 
 [^johari]: Continuous monitoring is standard practice in industry A/B testing. Johari, Koomen, Pekelis and Walsh build their method around it in [*Always Valid Inference: Continuous Monitoring of A/B Tests*](https://doi.org/10.1287/opre.2021.2135){:target="_blank"} (Operations Research, 2022), noting that A/B tests are typically analysed with p-values and confidence intervals, yet "these inferences are wholly unreliable if users endogenously choose sample sizes by continuously monitoring their tests".
 
-Scientific research mostly runs the other way round.[^simmons] The sample size is fixed in advance, usually by a power analysis, and the study runs to the end. Its characteristic failure arrives later, once the data is in: the minimum effect size that went into the planning calculation appears nowhere in the heuristics that are reported, so it quietly drops out of the conclusion.[^asa] That second failure is the subject of the companion post. This one is about the first: continuous monitoring.
+Scientific research mostly runs the other way round.[^simmons] The sample size is fixed in advance, usually by a power analysis, and the study runs to the end. Its characteristic failure arrives later, once the data is in: the minimum effect size that went into the planning calculation appears nowhere in the heuristics that are reported, so it quietly drops out of the conclusion.[^asa] That failure is the subject of the companion post. This one is about what can go wrong with continuous monitoring.
 
 [^simmons]: Mostly, but not always: researchers peek too. Simmons, Nelson and Simonsohn showed in [*False-Positive Psychology*](https://doi.org/10.1177/0956797611417632){:target="_blank"} (Psychological Science, 2011) that starting with 10 observations per condition and testing after every new one finds a "significant" effect 22% of the time when there is nothing there.
 
@@ -131,8 +131,7 @@ The experimenter stops because the result has turned "statistically significant"
 and many will unwittingly conclude that it is also *meaningful*.
 
 ### "Statistically Significant" Does Not Imply Meaningful
-
-A common misconception is to confuse "statistical significance" with a meaningful outcome.
+<!-- A common misconception is to confuse "statistical significance" with a meaningful outcome. -->
 A p-value below the threshold says only that the data would be unlikely if the null hypothesis were true.
 It says nothing about whether the difference is large enough to matter.
 
@@ -155,10 +154,10 @@ as the simplest sequential hypothesis test shows: a fair coin toss.
 The beauty of tossing a virtual fair coin is that we know the ground truth, which makes it a useful testbed for any hypothesis-testing mechanism, sequential or otherwise.
 For a fair coin, the null hypothesis that it is fair should be accepted; for a heavily loaded coin, the same null hypothesis should be rejected.
 
-The first limitation of NHST shows up straight away: the p-value carries no information for accepting the null
-(for details see the [appendix on why p-values cannot accept the null](#appendix-why-p-values-cannot-accept-the-null-hypothesis)).
-For a fair coin, the best it can offer is the awkward double negative of "not rejecting" it.
-We will later meet Bayesian mechanisms that can accept the null.
+As we saw in the prelude, the p-value cannot accept the null
+(see the [appendix on why p-values cannot accept the null](#appendix-why-p-values-cannot-accept-the-null-hypothesis));
+for a fair coin the best it can offer is "not rejecting" it.
+We will later meet Bayesian mechanisms that can.
 
 But even if we settle for NHST's ability to reject, it fails the sequential fair coin test badly.
 To see this, we simulated 200 fair coin sequences of 30,000 tosses each, and peeked at the p-value after every toss:
@@ -208,13 +207,10 @@ The root issue is shared by the p-value and the Bayes Factor alike: the heuristi
 
 ### 🛑 Gotta Keep 'em Separated ⚖️
 
-The fix is to keep the two jobs apart, by giving each its own heuristic.
-Using one heuristic for both is convenient, but it is exactly what lets a statistical fluke through:
-given enough looks, a chance fluctuation will eventually cross the line, and the experiment stops right there, with a verdict to match.
-
-It's like letting whichever team happens to be ahead decide when the game ends.
+Using one heuristic for both is like letting whichever team happens to be ahead decide when the game ends.
 In sport, the end is set by a rule agreed before the game starts, such as the clock in basketball or the target score in volleyball,
 however the game happens to be going at any given moment.
+The fix is to keep the two jobs apart, by giving each its own heuristic.
 
 The principle, then, is that the stopping rule must never be the verdict alone.
 (We'll see later that the two can be recombined, carefully.)
@@ -336,7 +332,7 @@ The same question arises in every experiment: what change is large enough to be 
 A meaningful effect is one large enough to justify a real-life decision, so which effects qualify depends on the decision.
 What we need is a way to state that, and to state it in advance.
 
-### The ROPE: Quantifying "Meaningful"
+### The ROPE: Committing in Advance
 
 <!-- *[Subheading options to choose from: "ROPE: Drawing the Line Before the Data Arrives" · "The ROPE: Where 'No Difference' Lives" · "Region of Practical Equivalence: Naming What Doesn't Matter" · "ROPE: A Minimum Effect Size You Can Actually Hold To"]* -->
 
@@ -422,7 +418,7 @@ If the budget is spent, a decision can still be forced, but it then becomes a ri
 that weighs the cost of being wrong in each direction, which is domain specific and beyond the scope of this post.[^forced]
 Much of the rest of this post is about the first option: when to keep collecting, and when it is safe to stop.
 
-[^forced]: The companion calculator offers two such forced decisions, under *Decide Now!*🎲 in its *Let Me Peek!*👀 tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
+[^forced]: The *Are We There Yet?* calculator offers two such forced decisions, under *Decide Now!*🎲 in its *Let Me Peek!*👀 tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
  <!-- medium: P(θ > θnull | data) -->
 
 ### One Fair Coin, Three Verdicts
@@ -447,8 +443,6 @@ Here is the posterior at three points along the same sequence:
 
 Same coin, same tosses, three different verdicts.
 The only thing that differed was *when* we stopped to look.
-Which raises the question this post is really about: when *should* we stop?
-Before we get there, the verdicts above deserve a closer look.
 
 [^handpicked]: The sequence is `SEQUENCE_HANDPICKED` in the open-source [dpitg repository](https://github.com/elzurdo/dpitg/blob/main/py/utils_experiments_binomial.py#L33){:target="_blank"}, and these figures can be reproduced with the notebook [fair_coin_handpicked.ipynb](https://github.com/elzurdo/dpitg/blob/main/notebooks/fair_coin_handpicked.ipynb){:target="_blank"}.
 
@@ -476,8 +470,8 @@ An inconclusive verdict, by contrast, is never wrong. It just isn't a verdict ye
 
 ## Three Stopping Algorithms
 
-So far we have used the HDI and the ROPE to decide on a verdict once we look at the data.
-Now back to the question we left hanging, and the key question of sequential testing: when *should* we stop collecting?
+Our fair coin gave three different verdicts, depending only on when we looked.
+Which raises the question this post is really about, and the key question of sequential testing: when *should* we stop collecting?
 
 The three snapshots of our fair coin, at 126, 598 and 804 tosses, were not picked at random.
 Each is where one of three stopping algorithms stops, which we now introduce: HDI+ROPE, *Precision is the Goal* (PitG),
@@ -667,10 +661,9 @@ with the precision goal at $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 -->
 
 *The 95% HDI (gray band) of our hand-picked fair coin sequence after each toss. Orange dashed lines: the ROPE boundaries. Red line: the HDI is fully outside the ROPE. Green: fully inside it. Purple dots: the precision goal is met.*
 
-Reading from left to right, all three stops sit on one timeline.
-At toss 126 an early run of heads pushes the HDI above the ROPE, and HDI+ROPE stops and wrongly rejects.
-At toss 598 the purple dots appear: the precision goal is met, so PitG stops, but the HDI still straddles the ROPE and its verdict is inconclusive.
-DPitG carries on until toss 804, the first point at which the HDI is both narrow enough and inside the ROPE, and correctly accepts.
+Reading from left to right, the three stops from the snapshots now sit on one timeline:
+HDI+ROPE's false reject at toss 126 (red line), PitG's inconclusive stop at 598 where the purple dots begin,
+and DPitG's correct accept at 804 (green).
 
 Notice that the green does not stay on once it appears: just after 804 the HDI drifts back across the boundary a few times
 before settling inside it. An accept can come and go, and DPitG stops at the first one.
@@ -686,8 +679,7 @@ And raise the true rate above 0.55, and rejecting becomes the correct answer.
 <!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/precision-is-the-goal/three-rules-sim.html instead. -->
 <iframe class="dpitg-widget" id="dpitg-sim" src="{{ "/assets/precision-is-the-goal/three-rules-sim.html" | relative_url }}" title="Interactive simulation: the same coin tosses under three stopping rules" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
 
-As mentioned before, the hand-picked sequence was chosen because it shows the three algorithms reaching different outcomes.
-To see how often each outcome actually happens, we need many sequences.
+A single hand-picked coin shows what can happen, not how often. For that, we need many sequences.
 
 ### 5,000 Fair Coin Sequences
 
@@ -725,7 +717,7 @@ The price is modest: the median DPitG sequence stops after 627 tosses, compared 
 In short, on a fair coin HDI+ROPE is decisive but sometimes wrong, PitG is never wrong but often says nothing,
 and DPitG is both decisive and right, for a little more data.
 
-[^asymptote]: Unlike the p-value's, this false rejection rate levels off. That isn't the ROPE's doing alone: Kruschke shows that stopping on Bayes Factors levels off too, albeit at just over 20% (see the [appendix on Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison) below, and the [preprint's Appendix F](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}). What both have, and the p-value lacks, is a way to accept the null: every sequence that is accepted stops, and so leaves the pool of those still at risk of a false rejection.
+[^asymptote]: Unlike the p-value's, this false rejection rate levels off. That isn't the ROPE's doing alone: Kruschke shows that stopping on Bayes Factors levels off too (see the [appendix on Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison) below, and the [preprint's Appendix F](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}). What both have, and the p-value lacks, is a way to accept the null: every sequence that is accepted stops, and so leaves the pool of those still at risk of a false rejection.
 
 [^sensitivity]: The exact split between conclusive and inconclusive outcomes depends on the settings, in particular on how narrow the precision goal is relative to the ROPE. At the extreme of $\omega_{\rm goal}=\omega_{\rm ROPE}$ <!-- medium: ωgoal=ωROPE --> PitG is never conclusive, whereas DPitG stays at about 98%. See the [preprint's sensitivity analysis](https://arxiv.org/html/2608.05301v1#S3.SS1.SSS3){:target="_blank"}.
 
@@ -780,18 +772,6 @@ Asking for precision before a verdict costs data and time. So when is it worth p
 
 It depends mostly on how expensive the data is and how time-sensitive the decision is, which gives the method two complementary roles.
 
-Time enters through the rate at which data arrives, which turns $N_{\rm goal}$ <!-- medium: Ngoal --> into a duration.
-An A/B test that sees 2,000 visitors a day and needs $N_{\rm goal}=20{,}000$ <!-- medium: Ngoal = 20,000 --> will take about 10 days,
-so a precision goal is a calendar commitment as well as a data one.
-
-<!-- COMPANION POST, more on time (not used here):
-     · Deadlines: if a decision is due before Ngoal can be reached, either loosen the goal deliberately
-       (a wider ωgoal, or a reconsidered ROPE) or make a forced, risk-assessed decision (the calculator's Decide Now! 🎲).
-     · The cost of waiting: opportunity cost in A/B tests (traffic spent on the worse variant) and ethical cost
-       in trials (patients kept on an inferior or harmful treatment), echoing the intro's clinical-trial example.
-     · Drift: the longer collection runs, the less likely the data comes from one unchanging θ (seasonality,
-       novelty effects), as with Shaq's season versus career. -->
-
 **As a stopping rule**, it is best suited to settings where data is relatively cheap and the budget comfortably
 exceeds $N_{\rm goal}$ <!-- medium: Ngoal -->:
 large-scale A/B testing, opinion polling and automated quality-control pipelines are typical examples.
@@ -803,7 +783,18 @@ longitudinal studies, clinical trials, costly policy evaluations.
 Here the precision goal makes explicit what precision the budget can actually buy, and so what conclusions
 the data can and cannot support.
 That works both before collection begins and after it ends, to audit the precision of a completed study.
-This is the focus of the companion post.
+
+Whichever the role, time enters through the rate at which data arrives, which turns $N_{\rm goal}$ <!-- medium: Ngoal --> into a duration.
+An A/B test that sees 2,000 visitors a day and needs $N_{\rm goal}=20{,}000$ <!-- medium: Ngoal = 20,000 --> will take about 10 days,
+so a precision goal is a calendar commitment as well as a data one.
+
+<!-- COMPANION POST, more on time (not used here):
+     · Deadlines: if a decision is due before Ngoal can be reached, either loosen the goal deliberately
+       (a wider ωgoal, or a reconsidered ROPE) or make a forced, risk-assessed decision (the calculator's Decide Now! 🎲).
+     · The cost of waiting: opportunity cost in A/B tests (traffic spent on the worse variant) and ethical cost
+       in trials (patients kept on an inferior or harmful treatment), echoing the intro's clinical-trial example.
+     · Drift: the longer collection runs, the less likely the data comes from one unchanging θ (seasonality,
+       novelty effects), as with Shaq's season versus career. -->
 
 ### Precision Is Honesty
 
@@ -848,7 +839,7 @@ To help answer it for your own experiments, I created the *Are We There Yet?* ca
 It has two modes:
 
 * 🔍 **Retrospective, *"I have data, is it enough?"*** Enter the data collected so far and it tells you whether the precision goal is met and what the decision rule says. If the goal isn't met yet, it also tells you roughly how much more data you need: it plugs your current estimate into the $N_{\rm goal}$ <!-- medium: Ngoal --> formula and subtracts what you have already collected. Re-enter your data each time more arrives, and you are running the sequential test described in this post.
-* 📐 **Prospective, *"I'm planning a study."*** Before any data is collected, it estimates $N_{\rm goal}$ <!-- medium: Ngoal -->, the sample size your precision goal will take. Planning a study this way is the focus of the companion post.
+* 📐 **Prospective, *"I'm planning a study."*** Before any data is collected, it estimates $N_{\rm goal}$ <!-- medium: Ngoal -->, the sample size your precision goal will take.
 
 It handles binary and continuous data, for a single group or a comparison between two groups, as well as categorical data in retrospective mode.
 There is no need to upload raw data, only summary numbers: counts of successes and failures for binary data,
@@ -897,16 +888,10 @@ If you'd rather skip ahead to the summary, go ahead; for those keen to dig deepe
 * **Priors**: flat versus informative priors, and the risk of a wrong prior. See the [preprint's discussion](https://arxiv.org/html/2608.05301v1#S4){:target="_blank"}.
 * **Multiple hypothesis testing**: why no correction is needed when running many tests at once. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}.
 * **Comparisons with NHST and Bayes Factors**: see the preprint's Appendices [B](https://arxiv.org/html/2608.05301v1#A2){:target="_blank"} and [F](https://arxiv.org/html/2608.05301v1#A6){:target="_blank"}, and the appendices below on [p-values](#appendix-why-p-values-cannot-accept-the-null-hypothesis) and [Bayes Factors](#appendix-bayes-factors-and-why-theyre-not-in-the-comparison).
-* **Relating to power analysis**: prospective, retrospective and replication power. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}, and the companion post.
+* **Relating to power analysis**: prospective, retrospective and replication power. See the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}.
 * **Choosing the ROPE and ω<sub>goal</sub>** (🧠 cognitive effort warning ⚠️): see the [preprint's Appendix G](https://arxiv.org/html/2608.05301v1#A7){:target="_blank"}, the [appendix below](#appendix-choosing-a-rope-in-practice), and the calculator's 🧭 guide.
 * **Non-analytical posteriors (e.g. MCMC)**: when the HDI itself has to be estimated from samples. See the [preprint's discussion](https://arxiv.org/html/2608.05301v1#S4){:target="_blank"} and its [note on the HDI](https://arxiv.org/html/2608.05301v1#S2.SS1.SSS2){:target="_blank"}.
 * **Risk assessment for ROPE straddlers**: what to do when the budget runs out on an inconclusive result. The calculator's *Decide Now!*🎲 offers a posterior tail probability and a Bayesian expected loss.
-
-And while the coin made a handy example, the method reaches well beyond it.
-It is a way of thinking about evidence that applies wherever statistics informs a decision,
-and in particular anywhere p-values and Bayes Factors are used today.
-In their place it offers something more reliable, a stopping rule that never depends on which way the verdict goes,
-and more informative: accept, reject or inconclusive, judged against a "close enough" agreed in advance.
 
 ## Summary
 
@@ -931,6 +916,8 @@ The five takeaways:
 🎯 **Stop on precision, then insist on a conclusion.** Precision is the Goal stops once the HDI is narrow enough, wherever it sits; Decisive Precision is the Goal also waits until the data supports a conclusive verdict, whichever way it goes. On a fair coin that meant zero false rejections, and it rarely ended with nothing to say, for a little more data.  
 
 💰 **Precision costs data, but the cost is predictable.** The sample size a precision goal requires can be calculated in advance, and refusing to rule on an imprecise posterior is not a flaw but a form of honesty.  
+
+And while the coin made a handy example, the method applies wherever p-values and Bayes Factors are used today.
 
 To see all this in action:
 
