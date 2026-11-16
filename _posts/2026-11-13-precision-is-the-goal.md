@@ -1050,33 +1050,39 @@ for the 2022 correspondence.]
 
 ## 📚 Resources
 
-[Annotated — every entry says *why* it's worth the reader's time, with the level named:]
+**The method**
 
-- [Kruschke, *Doing Bayesian Data Analysis* — §13.6 is where PitG lives]
-- [Kruschke's original video, below]
-- [The preprint — badges below]
-- [`github.com/elzurdo/dpitg` — the open-source implementation]
-- [The calculator — `https://r-w-t-y.streamlit.app/`]
-- [Dirk Nachbar's write-up — an independent practitioner's summary plus a continuous-variable
-  implementation: `https://www.linkedin.com/pulse/precision-goal-dirk-nachbar-yfh5e/`]
-- [Open Science Collaboration (2015), "Estimating the reproducibility of psychological science",
-  *Science* **349**(6251), aac4716 — the replication study quoted in *You Already Have a Stopping
-  Rule*. Annotate with why it is worth the reader's time; it is the empirical anchor for the
-  replication crisis, and the one entry here that is about the problem rather than the method.
-  `https://doi.org/10.1126/science.aac4716`
-  ⚠️ Check the headline figure before publishing — the draft says "only about a third came back
-  with the original result", which should match this paper's own reported replication rate.]
+- John Kruschke, [*Doing Bayesian Data Analysis*](https://shop.elsevier.com/books/doing-bayesian-data-analysis/kruschke/978-0-12-405888-0){:target="_blank"}
+  (2nd edition, Academic Press, 2014). *Precision is the Goal* lives in §13.6.
+  A friendly, thorough introduction to Bayesian analysis; beginners can start at chapter 1 (the book with the dogs 🐶).
+- Kruschke's *Precision is the Goal* videos: Part 1 is embedded below, and
+  [Part 2](https://www.youtube.com/watch?v=ObCrb5I49qo){:target="_blank"} continues it.
+  The method explained by the person who devised it, and the simulations that first convinced me.
+
+**This work**
+
+
+- The preprint, [*Precision and Decisiveness as Goals: Reliable Sequential Hypothesis Testing with a Dual Stopping Criterion*](https://arxiv.org/abs/2608.05301){:target="_blank"}. The full analysis behind this post: the proofs-by-simulation, loaded coins,
+  sensitivity to ω<sub>goal</sub>, and the closed-form planning formula. For readers comfortable with the maths. [![HTML](https://img.shields.io/badge/HTML-arXiv-b31b1b?logo=adobeacrobatreader&logoColor=white)](https://arxiv.org/html/2608.05301){:target="_blank"}
+- [`elzurdo/dpitg`](https://github.com/elzurdo/dpitg){:target="_blank"}: the open-source Python code and notebooks
+  that produced every simulation and figure here, including the hand-picked fair coin.
+- The [*Are We There Yet?* calculator](https://r-w-t-y.streamlit.app/){:target="_blank"}
+  and its source, [`elzurdo/are-we-there-yet`](https://github.com/elzurdo/are-we-there-yet){:target="_blank"}.
+  Plug in your own numbers, before collecting data or after; no code needed.
+
+**Elsewhere**
+
+- Dirk Nachbar's [write-up](https://www.linkedin.com/pulse/precision-goal-dirk-nachbar-yfh5e/){:target="_blank"}.
+  An independent practitioner's summary, plus an implementation for continuous data, which this post doesn't cover.
+- My talk [*Everything That You Wanted To Know About P-Values But Were Afraid To Ask*](https://www.youtube.com/watch?v=QVfgqkTv7b8){:target="_blank"}
+  (PyData Global 2022). Where the p-value fair coin experiment started; see the [appendix](#appendix-why-p-values-cannot-accept-the-null-hypothesis).
 
 <div style="text-align:center">
-    <iframe width="640" height="480" src="https://www.youtube.com/embed/lh5btlAvrLs" title="Precision is the Goal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="640" height="480" src="https://www.youtube.com/embed/lh5btlAvrLs" title="Precision is the Goal, Part 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-*Kruschke's original "Precision is the Goal" video.*
+*Kruschke's original "Precision is the Goal" video (Part 1).*
 
-[**Precision and Decisiveness as Goals: Reliable Sequential Hypothesis Testing with a Dual Stopping…**](https://arxiv.org/abs/2608.05301){:target="_blank"}
-*Sequential hypothesis testing offers flexibility over fixed-sample designs, but stopping rules coupled to decision…* — arxiv.org
-
-[![arXiv](https://img.shields.io/badge/arXiv-2608.05301-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.05301){:target="_blank"}  [![PDF](https://img.shields.io/badge/PDF-arXiv-b31b1b?logo=adobeacrobatreader&logoColor=white)](https://arxiv.org/pdf/2608.05301){:target="_blank"}
 
 <!-- ===========================================================================
      MATERIAL CONSIDERED BUT NOT USED
