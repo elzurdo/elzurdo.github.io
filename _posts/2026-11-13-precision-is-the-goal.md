@@ -1000,46 +1000,48 @@ For more, see the [preprint's Appendix G](https://arxiv.org/html/2608.05301v1#A7
 
 ## The Story Behind This Post
 
-The preprint and this post are over five years in the working.
+The preprint and this post have been years in the making: eight, counting from when I first came across PitG.
 
-My first experimentation experience as a data scientist was back in 2016 involving a midsize restaruant chain
-in the United States. I was asked by the key stakeholders to design an A/B test for snail
-mail promotions to see who could do better, my firm or their default marketing vendor.
+My first experimentation project as a data scientist was back in 2016, for a midsize restaurant chain in the United States.
+The key stakeholders asked me to design an A/B test for snail mail promotions to see who could do better:
+my firm or their default marketing vendor.
 
-What key question of the process, of course, was how much data was required. Long story short,
-my list did better than their standard vendor and I was excilerated. It was the first time that
-I proved to myself that my machine learning algorithms could learn from data and actually perform
-better than a traditional rule based list that my competitor used.
+One of the key questions in the process, of course, was how much data was required.
+Long story short, my list did better than the vendor's, and I was exhilarated.
+It was the first time I proved to myself that my machine learning algorithms could learn from data
+and actually outperform a traditional rule-based list.
 
-First time lucky, I realised there is a lot of interesting statistics behind the process that I wanted to learn more.
-In particular, since it took months to get the data back via snail mail, I wanted to adress the quesiton if "enough data has been collected yet".
+First time lucky, I realised there was a lot of interesting statistics behind the process that I wanted to learn more about.
+In particular, since it took months for the data to come back via snail mail, I wanted to address the question:
+"Have we collected enough data yet?"
 
-In my search I came across the Kruschke's videos on PitG (see link in Resources), which made a lot of sense to me.
+In my search I came across Kruschke's video on PitG in 2018 (see [Resources](#-resources)), which made a lot of sense to me.
 
-I noticed, however, that not only wasn't PitG being used it wasn't that well known.
-In defence of the analyst society, this has never been peer reviewed in a journal but
-buried in §13.6 of Kruschke's *Doing Bayesian Data Analysis* (Known as the book with the dogs 🐶).
+I noticed, however, that not only was PitG not being used, it wasn't that well known either.
+In defence of the analyst community, it has never been peer reviewed in a journal;
+it is buried in §13.6 of Kruschke's *Doing Bayesian Data Analysis* (known as the book with the dogs 🐶).
 
-I started advocating for it in PyData meetings online and in real life, and while preparing
-my slides for PyData London 2022 I wanted to replicate with python his results.
+I started advocating for it at PyData meetups, online and in person,
+and while preparing my slides for PyData London 2022 I wanted to replicate his results in Python.
 
-In the process my results wer a bit different and I realised that I had a bug in my code.
-But the results were intersting enough to realise that this bug is actual a beneficial variant.
+My results came out a bit different, and I realised I had a bug in my code.
+PitG stops once the HDI is narrow enough, *then* decides.
+I had coded the stop as narrow enough *and* conclusive
+(compare the two rows in the table in [Three Stopping Algorithms](#three-stopping-algorithms)).
+But the results were interesting enough for me to realise that this bug was actually a beneficial variant,
+and Decisive PitG was born.
 
-While discussing a poster I created for the Royal Statistics Society 2024 I actually started
-to undestand the importance of location vs. width of the posterior and realised that I might
-have a publication.
+While discussing a poster I presented at the [Royal Statistical Society's 2024 conference](https://virtual.oxfordabstracts.com/event/6693/submission/17){:target="_blank"},
+I started to understand the importance of the posterior's location versus its width,
+and realised I might have a publication on my hands.
 
-I conducted further anlaysis and realised the close formula and its beneffits and sent
-a preprint to the arXive.
+Further analysis led me to the closed-form planning formula and its benefits,
+and in August 2026 I posted the preprint to arXiv. I am now preparing it for peer review.
 
-In a few months I will send for publication review.
+The first public mention of the work came from Dirk Nachbar, who attended my talk at the [RSS 2026 conference](https://virtual.oxfordabstracts.com/event/76886/submission/19){:target="_blank"} in September,
+in his [write-up](https://www.linkedin.com/pulse/precision-goal-dirk-nachbar-yfh5e/){:target="_blank"}.
 
-First public mention of my work was by someone who attended the talk in RSS26 last Sepetmber
-(link to DIRK NACHBAR post).
-
-If people find useful, I hope they will be able to use to make better data decisions.
-
+If people find it useful, I hope it helps them make better data decisions.
 
 ## Credits
 
