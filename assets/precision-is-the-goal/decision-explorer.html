@@ -84,7 +84,7 @@ input[type=range]{width:100%;accent-color:var(--acc)}
 <script>
 (function(){
 "use strict";
-const{R0,R1,NMIN,hdi,logPdf,dec,pValue,DN}=window.DPITG;
+const{R0,R1,NMIN,betaParams,hdi,logPdf,dec,pValue,DN}=window.DPITG;
 const C={line:"#333",axis:"#828282",ropeFill:"#d9d9d9",ropeEdge:"#999",goal:"#111",met:"#7b2d8e",notMet:"#111",
          acc:"rgba(44,160,44,.30)",rej:"rgba(214,39,40,.25)",inc:"rgba(201,138,0,.28)",accS:"#2ca02c",rejS:"#d62728",incS:"#c98a00"};
 const $=id=>document.getElementById(id);
@@ -108,7 +108,7 @@ function resize(){const r=window.devicePixelRatio||1;W=cv.clientWidth;H=Math.max
   cv.style.height=H+"px";cv.width=Math.round(W*r);cv.height=Math.round(H*r);g.setTransform(r,0,0,r,0,0);draw()}
 const xm=t=>L+(t-X0)/(X1-X0)*(W-L-Rr);
 
-function state(){const wg=+$("rW").value,a=Math.max(K,.01),b=Math.max(N-K,.01),[lo,hi]=hdi(a,b),w=hi-lo;
+function state(){const wg=+$("rW").value,[a,b]=betaParams(K,N-K),[lo,hi]=hdi(a,b),w=hi-lo;
   return{N,K,a,b,lo,hi,w,wg,met:w<=wg,d:dec(lo,hi),p:pValue(K,N)}}
 
 function draw(){if(!W)return;const s=state();

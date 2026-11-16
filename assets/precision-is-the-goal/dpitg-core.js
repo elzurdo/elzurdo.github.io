@@ -7,6 +7,11 @@
   const R0 = 0.45, R1 = 0.55, NMIN = 30, G = 2000, CRED = 0.95;
   const gx = new Float64Array(G), gp = new Float64Array(G), gc = new Float64Array(G);
 
+  // Beta(s, f), but a zero count is raised to 1 (as in are-we-there-yet): with f≈0 an opening
+  // streak of heads collapses the HDI to ~zero width and PitG/DPitG stop within a handful of
+  // tosses. Alternative to consider: keep Beta(s, f) and apply N_min = 30 to PitG and DPitG.
+  function betaParams(s, f) { return [Math.max(s, 1), Math.max(f, 1)]; }
+
   function hdi(a, b) {
     const m = a / (a + b), sd = Math.sqrt(a * b / ((a + b) * (a + b) * (a + b + 1)));
     const x0 = Math.max(0, m - 10 * sd), x1 = Math.min(1, m + 10 * sd), dx = (x1 - x0) / G;
@@ -66,7 +71,7 @@
   }
 
   root.DPITG = {
-    R0, R1, NMIN, hdi, logPdf, dec, mulberry, pValue,
+    R0, R1, NMIN, betaParams, hdi, logPdf, dec, mulberry, pValue,
     DN: { acc: "ACCEPT", rej: "REJECT", inc: "INCONCLUSIVE" },
     COLORS: { R: "#d62728", P: "#7b2d8e", D: "#2ca02c", A: "#c98a00", rope: "#f5a623", acc: "#2ca02c", rej: "#d62728", inc: "#c98a00" }
   };
