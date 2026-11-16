@@ -996,8 +996,6 @@ For more, see the [preprint's Appendix G](https://arxiv.org/html/2608.05301v1#A7
 
 ---
 
-[TODO: mention Medium material. Mention that this is outside of my day job and parenting duties.]
-
 ## The Story Behind This Post
 
 The preprint and this post have been years in the making: eight, counting from when I first came across PitG.
@@ -1043,10 +1041,32 @@ in his [write-up](https://www.linkedin.com/pulse/precision-goal-dirk-nachbar-yfh
 
 If people find it useful, I hope it helps them make better data decisions.
 
+---
+
+## Loved this post? ❤️ 🍕
+
+💌 Follow me on [Medium](https://medium.com/@eyal-kazin){:target="_blank"}, join me on
+[LinkedIn](https://www.linkedin.com/in/eyal-kazin/){:target="_blank"} or 🍕 [buy me a slice of pizza](https://www.buymeacoffee.com/zurdo){:target="_blank"}!
+
+I specialise in crafting long-form material about applied statistics and machine learning,
+which I write in my spare time, outside of work and parenting duties.
+
+One way to support this is to read and comment on my articles on Medium,
+where, full disclosure, I earn loose change from its subscribers' reading time.
+
+A few to start with:
+
+* ➡️ [Start Asking Your Data “Why?” — A Gentle Intro To Causality](https://bit.ly/start-ask-why-medium){:target="_blank"}: *A beginner’s guide to thinking beyond correlations.*
+* 🚅 [Information Theory for People in a Hurry](https://pub.towardsai.net/information-theory-in-a-hurry-a549a57f9bbb){:target="_blank"}: *A quick guide to Entropy, Cross-Entropy and KL Divergence. Python code provided.* 🐍
+* 🚪🚪🐐 [Lessons in Decision Making from the Monty Hall Problem](https://medium.com/towards-data-science/lessons-in-decision-making-from-the-monty-hall-problem-a6032f4b1032){:target="_blank"}: *A journey into three intuitions: Common, Bayesian and Causal.*
+
+Not a subscriber? Sharing an article with someone who'd enjoy it helps too.
+
 ## Credits
 
-[Unless otherwise noted, all images were created by the author. Named thanks — including Kruschke
-for the 2022 correspondence.]
+Many thanks to John Kruschke for our brief correspondence about the state of Precision is the Goal and the new variant.
+
+Unless otherwise noted, all images were created by the author. 
 
 ## 📚 Resources
 
