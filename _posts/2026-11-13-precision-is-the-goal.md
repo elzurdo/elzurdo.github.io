@@ -224,7 +224,7 @@ To make both precise, we first need two key properties of a posterior: its width
 ## The HDI: A Posterior's Width and Location
 
 Everything the data tells us about a parameter is held in its
-*posterior distribution* $p(\theta \mid {\rm data})$ <!-- medium: p(θ|data) -->: how plausible
+*posterior distribution* $p(\theta \mid {\rm data})$ <!-- medium: p(θ∣data) -->: how plausible
 each possible value is, given what we have observed so far.
 Two of its properties do most of the work in hypothesis testing:
 
@@ -419,7 +419,7 @@ that weighs the cost of being wrong in each direction, which is domain specific 
 Much of the rest of this post is about the first option: when to keep collecting, and when it is safe to stop.
 
 [^forced]: The *Are We There Yet?* calculator offers two such forced decisions, under *Decide Now!*🎲 in its *Let Me Peek!*👀 tab. The *posterior tail probability* reports how much of the posterior lies on the observed side of the null, e.g. $P(\theta > \theta_{\rm null} \mid {\rm data})$, a Bayesian cousin of the one-sided p-value. The *Bayesian expected loss* weighs the posterior mass inside and outside the ROPE by the relative costs of a false accept and a false reject, and picks the cheaper verdict.
- <!-- medium: P(θ > θnull | data) -->
+ <!-- medium: P(θ > θnull ∣ data) -->
 
 ### One Fair Coin, Three Verdicts
 
