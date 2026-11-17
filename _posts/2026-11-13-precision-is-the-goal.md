@@ -278,7 +278,7 @@ The most striking difference between the two panels is their width:
 $\omega_{\rm HDI}=7.1\%$ <!-- medium: ωHDI = 7.1% --> for the single season, against $1.8\%$ <!-- medium: 1.8% --> for the full career.
 Roughly fifteen times as many attempts produced a posterior roughly four times narrower.
 
-That is no coincidence: the width shrinks in proportion to $1/\sqrt{N}$ <!-- medium: 1/√N -->, where $N$ is the sample size, and $\sqrt{15} \approx 3.9$ <!-- medium: √15 ≈ 3.9 -->.
+That is no coincidence: the width shrinks in proportion to $1/\sqrt{N}$ <!-- medium: 1/√N -->, where $N$ <!-- medium: N --> is the sample size, and $\sqrt{15} \approx 3.9$ <!-- medium: √15 ≈ 3.9 -->.
 This is the precise sense in which more data means more certainty, and it comes with a price tag:
 halving the width takes four times the data. We'll return to that price later on.
 
@@ -526,6 +526,7 @@ An early run of heads was enough to push a still-wide HDI past the ROPE, and the
 This is the same confirmation bias we saw with the p-value, now in Bayesian form.
 
 [^nmin]: In practice we also require a minimum number of tosses before the first look, $N_{\rm min}$ <!-- medium: Nmin -->, which we set to 30, so that the very first handful of tosses cannot trigger a verdict. A lower $N_{\rm min}$ makes false rejections more likely, a higher one less so.
+ <!-- medium: Nmin -->
 
 What we need is a reason to stop that does not consult the verdict. The HDI's width is exactly that.
 
@@ -777,6 +778,16 @@ exceeds $N_{\rm goal}$ <!-- medium: Ngoal -->:
 large-scale A/B testing, opinion polling and automated quality-control pipelines are typical examples.
 For A/B testers there is a bonus: unlike frequentist sequential designs, it needs no correction for how often
 you peek, nor for running many tests in parallel (see the [preprint's Appendix E](https://arxiv.org/html/2608.05301v1#A5){:target="_blank"}).
+
+**In batches**, it still works where data can't be watched as it arrives.
+Monitoring continuously is the ideal, but many setups deliver data in chunks:
+research groups that rely on data engineers or IT to supply each new extract,
+clinical trials that analyse accumulating data only at planned interim looks,
+or teams working from weekly or monthly reports.
+After each batch, check the precision goal and the decision rule, then either request another batch or make the call.
+Because the stopping rule never depends on which way the verdict goes, looking only after each batch is as valid
+as looking after every data point; the only cost is that you may collect up to a batch more than you needed.
+I'll dive into batch workflows further in the companion post.
 
 **As a planning tool**, it is useful even where data is expensive and $N_{\rm goal}$ <!-- medium: Ngoal --> may be out of reach:
 longitudinal studies, clinical trials, costly policy evaluations.

@@ -52,6 +52,7 @@ kramdown:
 #
 exclude:
   - _from_medium/
+  - _external/
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
