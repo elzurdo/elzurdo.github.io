@@ -40,7 +40,8 @@ title: "🛑 Don't Stop 'til You Get Enough — Reintroducing the “Precision i
     <img src="{{ site.url }}/assets/precision-is-the-goal/stop_signs.png" alt="An Array of Stop Signs" width="700">
 </div>
 
-> “How much data is required?”
+“How much data is required?”
+{: style="border-left:none; padding-left:0; text-align:center; font-size:1.6em; font-style:normal; letter-spacing:normal; color:#6b6b6b; margin:1.5em 0;"}
 
 This is one of the most common questions in hypothesis and A/B testing, and it can be asked at two different moments.
 
@@ -48,7 +49,8 @@ Before any data is collected, it is a planning question. The standard answer is 
 
 The more flexible alternative is to check as the data arrives, known as *sequential hypothesis testing*, or sequential testing for short. It asks a different question:
 
-> “Have we collected enough data yet?”
+“Have we collected enough data yet?”
+{: style="border-left:none; padding-left:0; text-align:center; font-size:1.6em; font-style:normal; letter-spacing:normal; color:#6b6b6b; margin:1.5em 0;"}
 
 As tempting as sequential hypothesis testing is, it has a well-known failure mode. Peek often enough, and sooner or later an early, unrepresentative stretch of data will meet the stopping rule. In most standard methods that same rule also decides the verdict, so the experiment stops precisely when the data happen to look most convincing. The result is a form of *confirmation bias*: the data appear to confirm a finding that is really just a chance fluctuation, and no ill intent is needed for it to happen. Why this happens is well understood, and it can be corrected for.
 
@@ -149,7 +151,7 @@ and many will unwittingly conclude that it is also *meaningful*.
 A p-value below the threshold says only that the data would be unlikely if the null hypothesis were true.
 It says nothing about whether the difference is large enough to matter.
 
-Think of a researcher asking whether a therapeutic works differently for men and women, who finds it beneficial in 72.1% of one group and 72.3% of the other.
+💊 Think of a researcher asking whether a therapeutic works differently for men and women, who finds it beneficial in 72.1% of one group and 72.3% of the other.
 With enough patients, even that 0.2 percentage point gap will become "statistically significant", whether judged by a p-value or a Bayes Factor.
 
 <div style="text-align:center">
