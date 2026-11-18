@@ -4,7 +4,7 @@ favicon_emoji: "🛑"
 title: "🛑 Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion, and Making It Decisive ⚖️"
 ---
 
-<!-- Useful unicode: ω, Δ, θ, ≈ -->
+<!-- Useful unicode: ω, Δ, θ, ≈  ₘᵢₙ ₘₐₓ ₜᵣᵤₑ ₙᵤₗₗ-->
 
 <!-- Notes:
 * analysts don't always know what they want at first
@@ -34,7 +34,7 @@ title: "🛑 Don't Stop 'til You Get Enough — Reintroducing the “Precision i
 
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zurdo" data-description="Support me on Buy me a coffee!" data-message="Buy me a slice of pizza! 🍕" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
-#### Know when you have enough data, and when a null result is a real finding. Interactive simulations and a calculator included. 🕹️⏯️🧮
+#### Know when you have enough data to make a call, and when a null result is a real finding. Interactive simulations and a calculator included. 🕹️⏯️🧮
 
 > “How much data is required?”
 
@@ -46,7 +46,7 @@ The more flexible alternative is to check as the data arrives, known as *sequent
 
 > “Have we collected enough data yet?”
 
-As tempting as sequential hypothesis testing is, it has a well-known failure mode. Peek often enough, and sooner or later an early, unrepresentative stretch of data will meet the stopping rule. In most standard methods that same rule also decides the verdict, so the experiment stops precisely when the data happen to look most convincing. The result is a form of *confirmation bias*: the data appear to confirm a finding that is really just a lucky fluctuation, and no ill intent is needed for it to happen. Why this happens is well understood, and it can be corrected for.
+As tempting as sequential hypothesis testing is, it has a well-known failure mode. Peek often enough, and sooner or later an early, unrepresentative stretch of data will meet the stopping rule. In most standard methods that same rule also decides the verdict, so the experiment stops precisely when the data happen to look most convincing. The result is a form of *confirmation bias*: the data appear to confirm a finding that is really just a chance fluctuation, and no ill intent is needed for it to happen. Why this happens is well understood, and it can be corrected for.
 
 That correction is the focus of this post: a rule that tells you when you can confidently stop an experiment already under way.
 A welcome side effect is that error rates stay low, and when there truly is no meaningful difference, you can say so,
@@ -66,7 +66,7 @@ By the end you will be able to:
 - 📏 **Quantify what counts as "close enough"** to the null hypothesis (the "no effect" baseline), and hold to it, rather than letting the effect size you planned around (in A/B testing, your minimum detectable effect, or MDE) be quietly forgotten between the planning meeting and the write-up.
 - ✅ **Accept the null hypothesis**, instead of awkwardly failing to reject it, whenever "no meaningful difference" is the finding you actually need.
 - 🎯 **Stop on precision** (how narrow your uncertainty has become) **rather than on the verdict**, using John Kruschke's *Precision is the Goal*, plus a small tweak of mine that makes it reliably conclusive.
-- 💰 **See why precision costs data, and check whether you have enough**, and if not, how much more you need.
+- 💰 **Estimate the cost of precision**: how much data your precision goal takes, whether you already have enough, and if not, how much more you need.
 
 Along the way you can play with two interactive simulations 🕹️⏯️ and try a calculator on your own data 🧮.
 
@@ -137,14 +137,20 @@ It says nothing about whether the difference is large enough to matter.
 
 Think of a researcher asking whether a therapeutic works differently for men and women, who finds it beneficial in 72.1% of one group and 72.3% of the other.
 With enough patients, even that 0.2 percentage point gap will become "statistically significant", whether judged by a p-value or a Bayes Factor.
+
+<div style="text-align:center">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/significant-not-meaningful.png" alt="Two bell curves of success rates, men at 72.1% and women at 72.3%, which look clearly separated, but the x-axis spans only 72.0% to 72.4%" width="700">
+</div>
+
+*The two groups' success rates, assuming 1,000,000 patients in each, drawn as the bell curves we'll later call posterior distributions, where $\theta$ <!-- medium: θ --> is the success rate. The curves look clearly separated and the p-value is about 0.002, but check the x-axis: the whole plot spans less than half a percentage point.*
+
 In practice, however, no clinician would prescribe differently because of it.
 Why does a gap that small cross the threshold? With more data the estimate becomes ever more precise,
 so even a tiny but real departure from the null eventually produces a p-value below the threshold.
-You'll be able to see this for yourself in the Snapshot Explorer further down, with its *p-value rejects, ROPE accepts* button.
 
 The key takeaway is that a deviation from the null hypothesis should be large enough to justify acting on it, for example by changing the status quo.
 
-Tiny real effects are one way a p-value can mislead. Repeated looking is another, and it misleads even when there is no effect at all,
+Tiny real effects are one way a p-value can mislead. Repeated looking is another, and it can fool us even when there is no effect at all,
 as the simplest sequential hypothesis test shows: a fair coin toss.
 
 ### P-Values Fail the Fair Coin Test
@@ -229,9 +235,9 @@ each possible value is, given what we have observed so far.
 Two of its properties do most of the work in hypothesis testing:
 
 * **Width**: how uncertain we still are. A wide posterior means many values remain plausible, a sign we may not have collected enough data.
-* **Location**: where the plausible values sit, which we can compare to the null value.
+* **Location**: where the plausible values reside, which we can compare to the null value.
 
-These map neatly onto the separation above: width will drive the stopping rule, and location the decision rule.
+These map neatly onto the separation above: width will drive the stopping criterion 🛑, and location the decision rule ⚖️.
 
 To get a feel for both, let's watch a posterior narrow as data piles up, using one of the
 most famous weaknesses in basketball: the free throws of Shaquille O'Neal.
@@ -253,7 +259,7 @@ the 2004/5 season, with 765 attempts in 73 games (left), and his full career, wi
     <img src="{{ site.url }}/assets/precision-is-the-goal/oneal-freethrows-pdfs.png" alt="Two posteriors of Shaq's free throw rate: a wide one for the 2004/5 season and a narrow one for his career" width="700">
 </div>
 
-*Posteriors of Shaq's free throw success rate. Shaded areas are the 95% HDIs and the dashed line marks 50%. Left: the 2004/5 season (765 attempts). Right: his full career (11,252 attempts). About fifteen times the data gives a posterior about four times narrower.*
+*Posteriors of Shaq's free throw success rate. Shaded areas are the 95% HDIs and the dashed line marks 50%. Left: the 2004/5 season (765 attempts). Right: his full career (11,252 attempts). About fifteen times the data gives a posterior about four times narrower. (For comparison Stephen Curry is considered the all time best at the line with, as of early November 2026, a 91.3% success rate of 4,684 attempts in 1,075 games.)*
 
 The higher a curve at a given value, the more plausible that value is as Shaq's true, underlying success rate.
 <!-- Parked prior footnote, for readers wondering about priors:
@@ -261,6 +267,7 @@ The higher a curve at a given value, the more plausible that value is as Shaq's 
 
 The shaded region is a *credible interval*, the Bayesian counterpart of the frequentist confidence interval,[^ci]
 marking where most of the posterior lies. Throughout this post we use 95% of it.
+
 There are several ways of choosing *which* 95%, and we use the *Highest Density Interval* (HDI).
 Picture a horizontal waterline slowly lowered from the peak of the curve: the HDI is the stretch between the two points
 where the line crosses the curve, at the moment the area beneath it first reaches 95%.
@@ -288,7 +295,7 @@ That is exactly the property a reliable stopping rule needs.
 ### Location: Where the Plausible Values Sit
 
 The location is read off the HDI boundaries.
-For Shaq's 2004/5 season freethrow rate the HDI spans 42.6%–49.7%: given that season's data, there is a 95% probability that his underlying success rate lay within this range.
+For Shaq's 2004/5 season free throw rate the HDI spans 42.6%–49.7%: given that season's data, there is a 95% probability that his underlying success rate lay within this range.
 For his career it spans 51.8%–53.7%.[^seasons]
 
 These numbers invite a question:
@@ -311,7 +318,7 @@ To answer it, we first have to decide what "meaningful" means.
 
 ## 📏 Quantifying "Close Enough"
 
-If Shaq's underlying rate was $\theta=0.501$ <!-- medium: θ=0.501 -->,
+If Shaq's underlying success rate was $\theta=0.501$ <!-- medium: θ=0.501 -->,
 would you consider it **practically** a fair coin toss? How about 0.51? Or 0.53?
 At the end of the day this is a subjective call, and that's fine. Part of analysing data is being aware of making such calls, as long as one can justify them.
 
@@ -345,11 +352,11 @@ its width is $\omega_{\rm ROPE}\equiv \rm ROPE_{max} - ROPE_{min}$ <!-- medium: 
 How wide should the ROPE be? There is no general answer, and that is the whole point:
 the width *is* the domain-specific question of what a meaningful minimal effect size is.
 
-Consider a dice manufacturer with two clients.
+🎲 Consider a dice manufacturer with two clients.
 A board-game publisher such as Hasbro, makers of Monopoly, needs dice fair enough that no player notices a bias.
 A casino needs dice fair enough to satisfy a gaming regulator, a far stricter standard.
 Testing a batch amounts to rolling and counting sixes, a binomial experiment whose null value is a probability of 1/6 ≈ 16.7%.[^dice]
-Same factory, same dice, same test, yet the casino's ROPE around 1/6 has to be much narrower than Hasbro's,
+Same factory, same dice, same test, yet the casino's ROPE around ⅙ null value has to be much narrower than Hasbro's,
 and a batch may be practically fair for one client and not for the other.
 
 [^dice]: Counting sixes checks only one face: a die biased between other faces would pass. A fuller test looks at all six faces at once, for example with a goodness-of-fit test, or by checking how close the entropy of the outcomes is to its maximum of $\log_2 6 \approx 2.585$ <!-- medium: log₂6 ≈ 2.585 --> bits.
@@ -360,7 +367,7 @@ so that the commitment cannot later be shaped by the result it is meant to judge
 (For established ways of choosing a ROPE, see the [appendix on choosing a ROPE in practice](#appendix-choosing-a-rope-in-practice).)
 
 With both the HDI and the ROPE in hand, we can put them together:
-first their locations, into a decision rule, and then the HDI's width alone, into a reliable stopping rule.
+first their locations, into a decision rule ⚖️, and then the HDI's width alone, into a reliable stopping criteria 🛑.
 
 ## ⚖️ The HDI+ROPE Decision Rule
 
@@ -453,7 +460,7 @@ When a verdict comes in, it is tempting to read it as a verdict on the sample va
 After 804 tosses we accept the null, $\theta_{\rm null}=0.5$ <!-- medium: θnull=0.5 -->, **not** the sample value of 0.515.
 What we are accepting is that the true rate is practically equivalent to 0.5, within the ROPE we committed to.
 
-After 126 tosses we reject the null, but that is **not** an endorsement of 0.635.
+After 126 tosses we reject the null, but that is **not** an endorsement of $\hat\theta=0.635$. <!-- medium: θ̂=0.635 -->
 Here the point is sharper, because we know the true value is 0.5, and it isn't even inside the HDI.
 Rejecting the null says only that the plausible values sit meaningfully away from it.
 
@@ -462,7 +469,7 @@ Rejecting the null says only that the plausible values sit meaningfully away fro
 That 126-toss verdict was also simply wrong, which brings us to the two ways a conclusive verdict can be incorrect:
 
 * A *false reject*: we reject the null although the true value lies inside the ROPE.
-  This is what is usually called a *false positive* (or Type I error), just named more literally, with the null now a region rather than a single point.
+  This is what is usually called a *false positive* (or Type I error), just named more literally.
 * A *false accept*: we accept the null although the true value lies outside the ROPE.
   This is the *false negative* (or Type II error) idea, with one difference: a classic false negative merely fails to reject a false null, whereas a false accept actively accepts it.
 
@@ -535,7 +542,7 @@ What we need is a reason to stop that does not consult the verdict. The HDI's wi
 John Kruschke's PitG gives the two jobs to two different heuristics:
 the stopping rule looks only at the width of the HDI, and the decision rule is applied only once data collection has stopped.
 
-We set a precision goal $\omega_{\rm goal}$ <!-- medium: ωgoal --> in advance and, after each toss, compare the HDI width to it:
+We set a precision goal $\omega_{\rm goal}\le \omega_{\rm ROPE}$ <!-- medium: ωgoal ≤ ωROPE --> in advance and, after each toss, compare the HDI width to it:
 
 * $\omega_{\rm HDI} \le \omega_{\rm goal}$ <!-- medium: ωHDI ≤ ωgoal -->: criterion met. Stop, then apply the decision rule.
 * $\omega_{\rm HDI} > \omega_{\rm goal}$ <!-- medium: ωHDI > ωgoal -->: not met. Continue collecting (or, if the budget is spent, conduct a risk assessment).
@@ -545,9 +552,9 @@ Following Kruschke's original analysis we use $\omega_{\rm goal}=0.08$ <!-- medi
 It is narrower than the ROPE ($\omega_{\rm ROPE}=0.1$ <!-- medium: ωROPE=0.1 -->), as it must be:
 as we saw earlier, an HDI wider than the ROPE can never accept the null.
 
-The key difference from HDI+ROPE, and from the p-value and the Bayes Factor, is that PitG monitors
+The key difference from HDI+ROPE, the p-value and the Bayes Factor, is that PitG monitors
 the posterior's *width* rather than its location.
-A lucky streak can shift where the posterior sits, but it barely changes how wide it is,
+A chance streak can shift where the posterior sits, but it barely changes how wide it is,
 so there is no early, extreme moment for the stopping rule to pounce on.
 In his fair coin simulations, Kruschke found that PitG made zero false rejections across 1,000 sequences,
 as it also does in the 5,000 sequences we'll see below.
@@ -564,7 +571,7 @@ This is not a quirk of one sequence.
 In Kruschke's own fair coin figure, which I have reproduced, it is the most common outcome:
 more often than not, PitG stops with an inconclusive verdict.
 He mentions it only in passing, noting that PitG "did remain undecided in some cases".[^undecided]
-In other words, PitG rarely says anything wrong, but often says nothing at all.
+In other words, in the true fair coin PitG rarely says anything wrong, but often says nothing at all.
 
 [^undecided]: Kruschke (2015), §13.3.2, page 391.
 
@@ -610,7 +617,7 @@ and because it also requires a conclusive outcome, it rarely ends with nothing t
 Drag the number of tosses and the share of heads, and watch the posterior, its HDI and the decision rule respond,
 together with what each stopping rule would do if this were the moment you looked.
 The p-value's verdict is included for comparison.
-The buttons jump to the three snapshots of our hand-picked coin, and to a few extreme cases worth a look.
+The buttons jump to the three snapshots of our hand-picked coin, and to a few extreme cases worth a look, such as *p-value rejects, ROPE accepts*.
 
 <!-- medium: no live embeds on Medium. Link to https://elzurdo.github.io/assets/precision-is-the-goal/decision-explorer.html instead. -->
 <iframe class="dpitg-widget" src="{{ "/assets/precision-is-the-goal/decision-explorer.html" | relative_url }}" title="Interactive explorer: where the HDI sits relative to the ROPE, and what each rule decides" width="100%" height="560" style="border:0;" loading="lazy"></iframe>
@@ -696,7 +703,7 @@ Since the coin is fair, accepting the null is the correct outcome and every reje
 *Cumulative decision rates for 5,000 fair coin sequences under each stopping algorithm. At every toss count the shares that have accepted the null (green solid), rejected it (red dashed) or are still inconclusive (gray dot-dashed) sum to 100%. Since the coin is fair, every rejection is a false one.*
 
 **HDI+ROPE (left).** The red line climbs early, well before 250 tosses, and levels off at about 6% of the sequences,
-fair coins wrongly rejected on an early lucky streak.[^asymptote]
+fair coins wrongly rejected on early chance streaks.[^asymptote]
 The green line, meanwhile, only starts at about 380 tosses.
 That is no coincidence: it is roughly when the HDI first becomes narrower than the ROPE,
 $\omega_{\rm HDI} \le \omega_{\rm ROPE}$ <!-- medium: ωHDI ≤ ωROPE -->,
@@ -711,9 +718,9 @@ And there are no false rejections at all.[^symmetry]
 
 **Decisive Precision is the Goal (right).** DPitG inherits PitG's zero false rejections and its start at about 600 tosses,
 where again just under 40% accept straight away.
-But rather than stopping inconclusive, the rest keep collecting, and the acceptances keep climbing,
+But rather than stopping inconclusively, the rest keep collecting, and the acceptances keep climbing,
 to about 98% by the end of the budget.[^budget]
-The price is modest: the median DPitG sequence stops after 627 tosses, compared with 599 for PitG, or about 5% more data.[^premium]
+The price is modest: ~40% of the sequences stop at 600 with PitG, the median DPitG sequence stops after 627 tosses, compared with 599 for PitG, or about 5% more data.[^premium]
 
 In short, on a fair coin HDI+ROPE is decisive but sometimes wrong, PitG is never wrong but often says nothing,
 and DPitG is both decisive and right, for a little more data.
@@ -742,10 +749,10 @@ the precision goal, $N_{\rm goal}$ <!-- medium: Ngoal -->, can be predicted befo
 $$N_{\rm goal} \approx \frac{4 z_*^2}{\omega_{\rm goal}^2} V(\theta)$$
 <!-- medium: use planning-formula.png (Ngoal ≈ 4z*² V(θ) / ωgoal²) -->
 
-Besides the precision goal, it has two ingredients:
+Besides the precision goal, it has two components:
 
 * $z_*$ <!-- medium: z* --> sets the credibility level: about 1.96 for a 95% HDI. Asking for more credibility widens the HDI, and so takes more data.
-* $V(\theta)$ <!-- medium: V(θ) --> is the noise of a single observation, the *aleatoric* uncertainty that no amount of data removes. For a coin it is $V(\theta)=\theta(1-\theta)$ <!-- medium: V(θ)=θ(1−θ) -->.
+* $V(\theta)$ <!-- medium: V(θ) --> is variance, i.e., the noise of a single observation, the *aleatoric* uncertainty that no amount of data removes. For a coin it is $V(\theta)=\theta(1-\theta)$ <!-- medium: V(θ)=θ(1−θ) -->.
 
 For our fair coin and $\omega_{\rm goal}=0.08$ <!-- medium: ωgoal=0.08 --> this gives $N_{\rm goal} \approx 600$ <!-- medium: Ngoal ≈ 600 -->, right where the step is.
 Two implications follow:
@@ -760,7 +767,7 @@ On the 5,000 fair coins, that meant a median of only about 5% more data.
 Using $N_{\rm goal}$ <!-- medium: Ngoal --> to plan a study before any data is collected is the focus of the companion post;
 for how it varies with the goal and the true value, see the preprint's [Section 2.3](https://arxiv.org/html/2608.05301v1#S2.SS3){:target="_blank"} and [Appendix C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"}.
 And while everything here used single-group binary data, the same logic extends to continuous data and to comparisons between groups,
-where what changes is mostly $V$ <!-- medium: V -->.
+where what changes is mostly the variance $V$ <!-- medium: V -->.
 The preprint derives these extensions, although, unlike the coin, they have not yet been put through large-scale simulations
 (see its Appendices [C](https://arxiv.org/html/2608.05301v1#A3){:target="_blank"} and [D](https://arxiv.org/html/2608.05301v1#A4){:target="_blank"}),
 and the [calculator](#-test-your-own-data-with-the-are-we-there-yet-calculator-) lets you try them on your own numbers.
@@ -832,7 +839,10 @@ For a question split close to 50/50 that takes roughly 1,070 respondents, which 
 that a precision goal of $\omega_{\rm goal}=0.06$ <!-- medium: ωgoal=0.06 --> requires for our fair coin.
 Pollsters, in other words, have been planning for precision all along.
 
-One caveat, since polls are famous for getting elections wrong: precision is not the same as accuracy.
+One caveat, since polls are famous for getting elections wrong: 
+
+> precision is not the same as accuracy.
+
 The margin of error covers only random sampling error.
 When polls miss, it is mostly because the sample itself is skewed, by who answers and who turns out to vote,
 and no sample size or stopping rule can fix that.[^polls]
@@ -918,7 +928,7 @@ and stop for precision, not for the verdict.
 
 The five takeaways:
 
-🛑 **Stopping and deciding are two different jobs.** ⚖️ When one heuristic does both, peeking turns lucky streaks into verdicts. That is the confirmation bias behind the p-value's false alarms, and a Bayesian HDI+ROPE rule is not immune to it either.  
+🛑 **Stopping and deciding are two different jobs.** ⚖️ When one heuristic does both, peeking turns chance streaks into verdicts. That is the confirmation bias behind the p-value's false alarms, and a Bayesian HDI+ROPE rule is not immune to it either.  
 
 📏 **Falling below a p-value threshold is not the same as meaningful.** Decide what counts as "close enough", the ROPE, before the data arrives, and hold to it.  
 
