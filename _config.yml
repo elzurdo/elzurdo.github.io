@@ -30,6 +30,13 @@ linkedin_username: eyal-kazin
 google_scholar_username: 7KJ4H4IAAAAJ
 bluesky_username: zur-do
 
+# Explicit nav list, so unlisted pages (e.g. medium/ import copies) stay out of the header.
+header_pages:
+  - about.markdown
+  - autobiography.markdown
+  - public_material.markdown
+  - resume.markdown
+
 # Build settings
 theme: minima
 plugins:
