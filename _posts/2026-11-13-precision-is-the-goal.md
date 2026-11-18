@@ -82,6 +82,16 @@ For the full technical treatment, I have also written this up as an arXiv prepri
 <!-- * TOC
 {:toc} -->
 
+<!-- medium: omit this box on Medium. -->
+<div style="border-left:5px solid #1a8917; background:#eef7ee; padding:10px 14px; border-radius:6px; margin:1em 0; font-size:0.95em;">
+📖 <b>Medium member?</b> This same article is also
+<a href="https://eyal-kazin.medium.com/precision-is-the-goal-2b8ad61d2c20" target="_blank">on Medium</a>,
+and reading it there is the best way to support work like this:
+your reading time counts towards it, Medium reaches far more readers than this site,
+and it's where you can leave a comment.
+<br><a href="https://eyal-kazin.medium.com/precision-is-the-goal-2b8ad61d2c20" target="_blank"><img src="https://img.shields.io/badge/Medium-Read%20%26%20comment-000000?logo=medium&logoColor=white" alt="Read and comment on Medium" style="margin-top:6px;"></a>
+</div>
+
 ### 🎬 Prelude: What I'm Talking About When I Talk About Accepting the Null
 
 Most of us learned hypothesis testing as a hunt for differences.
