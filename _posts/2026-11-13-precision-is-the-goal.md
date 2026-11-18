@@ -1,7 +1,7 @@
 ---
 layout: post
 favicon_emoji: "🛑"
-title: "🛑 Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion, and Making It Decisive ⚖️"
+title: "🛑 Don't Stop 'til You Get Enough — Reintroducing the “Precision is the Goal” Stopping Criterion, and Making it Decisive ⚖️"
 ---
 
 <!-- Useful unicode: ω, Δ, θ, ≈  ₘᵢₙ ₘₐₓ ₜᵣᵤₑ ₙᵤₗₗ-->
