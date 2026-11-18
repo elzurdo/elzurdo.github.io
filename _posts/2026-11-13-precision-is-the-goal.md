@@ -36,6 +36,10 @@ title: "🛑 Don't Stop 'til You Get Enough — Reintroducing the “Precision i
 
 #### Know when you have enough data to make a call, and when a null result is a real finding. Interactive simulations and a calculator included. 🕹️⏯️🧮
 
+<div style="text-align:center; margin-bottom:2em;">
+    <img src="{{ site.url }}/assets/precision-is-the-goal/stop_signs.png" alt="An Array of Stop Signs" width="700">
+</div>
+
 > “How much data is required?”
 
 This is one of the most common questions in hypothesis and A/B testing, and it can be asked at two different moments.
